@@ -1,5 +1,7 @@
 import React from 'react';
 import './Navbar.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   return (
@@ -8,11 +10,10 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-sm navContainer">
           <div className="container-fluid">
             <a className="navbar-brand brand" href="/">
-              Apotekcare
+              Apotakecare
             </a>
             <form className="d-flex SearchBar" role="search">
-              <span className="material-icons-outlined search">search</span>
-              <span class="material-icons">search</span>
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="search " />
               <input className="form-control me-2 input1" type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search" />
               <input className="form-control me-2 input2" type="search" placeholder="Cari Obat, Vitamin, dan lainnya" aria-label="Search" />
             </form>
