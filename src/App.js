@@ -1,21 +1,29 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {Routes, Route } from 'react-router-dom';
 // import Navbar from './Components/Navbar/Navbar.jsx';
 // import Footer from './Components/Footer/Footer.jsx';
-import Login from './Pages/Login/Login.jsx';
-import Register from './Pages/Register/Register.jsx';
-import ResetPassword from './Pages/ResetPassword/ResetPassword.jsx';
-import Cart from './Pages/Cart/Cart.jsx';
-import Checkout from './Pages/Checkout/Checkout.jsx';
-import Confirmation from './Pages/Confirmation/Confirmation.jsx';
-import FormAddress from './Pages/FormAddress/FormAddress.jsx';
-import Home from './Pages/Home/Home.jsx';
-import OrderProcess from './Pages/OrderProcess/OrderProcess.jsx';
-import ProductDetail from './Pages/ProductDetail/ProductDetail.jsx';
-import ProductList from './Pages/ProductList/ProductList.jsx';
-import Profile from './Pages/Profile/Profile.jsx';
-import UploadResep from './Pages/UploadResep/UploadResep.jsx';
-import UploadSuccess from './Pages/UploadSuccess/UploadSuccess.jsx';
+import Login from './Pages/User/Login/Login.jsx';
+import Register from './Pages/User/Register/Register.jsx';
+import ResetPassword from './Pages/User/ResetPassword/ResetPassword.jsx';
+import Cart from './Pages/User/Cart/Cart.jsx';
+import Checkout from './Pages/User/Checkout/Checkout.jsx';
+import Verification from './Pages/User/Verification/Verification.jsx';
+import FormAddress from './Pages/User/FormAddress/FormAddress.jsx';
+import Home from './Pages/User/Home/Home.jsx';
+import OrderProcess from './Pages/User/OrderProcess/OrderProcess.jsx';
+import ProductDetail from './Pages/User/ProductDetail/ProductDetail.jsx';
+import ProductList from './Pages/User/ProductList/ProductList.jsx';
+import Profile from './Pages/User/Profile/Profile.jsx';
+import UploadResep from './Pages/User/UploadResep/UploadResep.jsx';
+import UploadSuccess from './Pages/User/UploadSuccess/UploadSuccess.jsx';
+
+// Redux
+import { applyMiddleware, createStore } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import allReducer from './Redux/Reducers/Index.js';
+
+const store = createStore(allReducer, applyMiddleware(thunk))
 
 function App() {
   // const location = useLocation();
@@ -23,7 +31,7 @@ function App() {
   return (
     <>
       {/* {location.pathname === '/login' || location.pathname === '/register' ? null : <Navbar />} */}
-      <BrowserRouter>
+      <Provider store={store}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -31,7 +39,7 @@ function App() {
           <Route path="/ResetPassword" element={<ResetPassword />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/Checkout" element={<Checkout />} />
-          <Route path="/Confirmation" element={<Confirmation />} />
+          <Route path="/Verification" element={<Verification />} />
           <Route path="/FormAddress" element={<FormAddress />} />
           <Route path="/OrderProcess" element={<OrderProcess />} />
           <Route path="/ProductDetail" element={<ProductDetail />} />
@@ -40,7 +48,7 @@ function App() {
           <Route path="/UploadResep" element={<UploadResep />} />
           <Route path="/UploadSuccess" element={<UploadSuccess />} />
         </Routes>
-      </BrowserRouter>
+      </Provider>
       {/* {location.pathname === '/login' || location.pathname === '/register' ? null : <Footer />} */}
     </>
   );
