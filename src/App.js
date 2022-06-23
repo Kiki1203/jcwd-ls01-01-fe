@@ -16,6 +16,8 @@ import ProductList from './Pages/User/ProductList/ProductList.jsx';
 import Profile from './Pages/User/Profile/Profile.jsx';
 import UploadResep from './Pages/User/UploadResep/UploadResep.jsx';
 import UploadSuccess from './Pages/User/UploadSuccess/UploadSuccess.jsx';
+import ChangePassword from './Pages/User/ChangePassword/ChangePassword.jsx';
+import EditProfile from './Pages/User/EditProfile/EditProfile.jsx';
 
 // Redux
 import { applyMiddleware, createStore } from 'redux';
@@ -36,15 +38,18 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/changepassword" element={<ChangePassword />} />
           <Route path="/ResetPassword" element={<ResetPassword />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/Checkout" element={<Checkout />} />
-          <Route path="/Verification" element={<Verification />} />
+          {/* <Route path="/verification/:token" element={<Verification />} /> */}
+          <Route path="/verification" element={<Verification />} />
           <Route path="/FormAddress" element={<FormAddress />} />
           <Route path="/OrderProcess" element={<OrderProcess />} />
           <Route path="/ProductDetail" element={<ProductDetail />} />
           <Route path="/ProductList" element={<ProductList />} />
-          <Route path="/Profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/UploadResep" element={<UploadResep />} />
           <Route path="/UploadSuccess" element={<UploadSuccess />} />
         </Routes>
