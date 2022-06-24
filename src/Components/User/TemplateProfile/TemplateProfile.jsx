@@ -8,7 +8,7 @@ const TemplateProfile  = () => {
     return(
         <div className="container">
             <div className="box-profile">
-                <div className="d-lg-none d-md-none d-block"><FontAwesomeIcon icon={faAnglesLeft} lassName="pinggiran-atas" /></div>
+                <div className="d-lg-none d-md-none d-block"><FontAwesomeIcon icon={faAnglesLeft} className="pinggiran-atas" /></div>
                 <div className="keterangan-verifikasi">Akun Terverifikasi</div>
                 <div className="tab-versi-dekstop">
                     <Link to="/profile">
