@@ -17,7 +17,7 @@
 }
 .navContainer {
   position: absolute !important;
-  width: 1282px !important;
+  width: 1265px !important;
   height: 92px !important;
   left: -2px !important;
   top: 0px !important;
@@ -104,6 +104,47 @@
   height: 44px;
   left: 950px;
   top: 24px;
+}
+.Ocart {
+  position: absolute !important;
+  width: 50px !important;
+  height: 22px !important;
+  left: 1000px !important;
+  top: 31.5% !important;
+  cursor: pointer;
+  color: #dc3545;
+
+  display: inline-block !important;
+}
+.Ocart:active {
+  color: white;
+  transform: translateY(0.2rem);
+}
+.lcart:hover:not(:disabled) {
+  color: lightcoral;
+}
+.Obell:active {
+  color: white;
+  transform: translateY(0.2rem);
+}
+.Obell:hover:not(:disabled) {
+  color: lightcoral;
+}
+
+.Obell {
+  position: absolute !important;
+  width: 50px !important;
+  height: 22px !important;
+  left: 900px !important;
+  top: 31.5% !important;
+  color: #dc3545;
+  cursor: pointer;
+
+  display: inline-block !important;
+}
+.user {
+  left: 1100px !important;
+  top: 31.5% !important;
 }
 
 @media screen and (max-width: 767px) {
