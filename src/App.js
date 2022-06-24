@@ -1,7 +1,7 @@
 import './App.css';
-import {Routes, Route } from 'react-router-dom';
-// import Navbar from './Components/Navbar/Navbar.jsx';
-// import Footer from './Components/Footer/Footer.jsx';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Navbar from './Components/User/Navbar/Navbar.jsx';
+import Footer from './Components/User/Footer/Footer.jsx';
 import Login from './Pages/User/Login/Login.jsx';
 import Register from './Pages/User/Register/Register.jsx';
 import ResetPassword from './Pages/User/ResetPassword/ResetPassword.jsx';
@@ -25,15 +25,16 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import allReducer from './Redux/Reducers/Index.js';
 
-const store = createStore(allReducer, applyMiddleware(thunk))
+const store = createStore(allReducer, applyMiddleware(thunk));
 
 function App() {
-  // const location = useLocation();
+  const location = useLocation();
 
   return (
     <>
-      {/* {location.pathname === '/login' || location.pathname === '/register' ? null : <Navbar />} */}
       <Provider store={store}>
+        {location.pathname === '/login' || location.pathname === '/register' ? null : <Navbar />}
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -53,8 +54,8 @@ function App() {
           <Route path="/UploadResep" element={<UploadResep />} />
           <Route path="/UploadSuccess" element={<UploadSuccess />} />
         </Routes>
+        {location.pathname === '/login' || location.pathname === '/register' ? null : <Footer />}
       </Provider>
-      {/* {location.pathname === '/login' || location.pathname === '/register' ? null : <Footer />} */}
     </>
   );
 }
