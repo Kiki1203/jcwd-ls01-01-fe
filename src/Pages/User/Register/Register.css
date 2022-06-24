@@ -1,0 +1,96 @@
+.form {
+  padding: 77px 94px 348px 94px !important;
+}
+
+.header-form-register {
+  /* Mari Kita Mulai */
+
+  width: 283px;
+  height: 33px;
+  left: 94px;
+  top: 77px;
+
+  /* M Bold */
+
+  font-family: 'Public Sans';
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  line-height: 28px !important;
+
+  color: #222222 !important;
+}
+.akun-form-register {
+  /* Sudah punya akun? Masuk */
+
+  width: 174px;
+  height: 20px;
+  left: 95px;
+  top: 122px;
+
+  /* XS Reg */
+
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 143% */
+
+  /* Neutral (Greys, Whtes & Blacks/Dark Grey */
+
+  color: #737a8d;
+}
+
+.formGambar {
+  padding-left: 0px !important;
+}
+
+.gambar {
+  width: 650px !important;
+
+  left: 0px !important;
+  padding-left: 0px !important;
+  top: 0px;
+}
+.registerlogo {
+  position: absolute;
+
+  top: 11.94%;
+  bottom: 13.06%;
+
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22.5672px;
+  line-height: 27px;
+  /* identical to box height */
+
+  letter-spacing: -0.04em;
+
+  /* Blue/Primary Blue */
+
+  color: #213360;
+}
+.registerslogan {
+  position: absolute;
+  width: 292px;
+  height: 64px;
+  left: 214px;
+  top: 580px;
+
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  /* or 133% */
+
+  text-align: center;
+  letter-spacing: 0.03em;
+
+  background: linear-gradient(200.14deg, #7987bc -1.76%, #2b4179 48.98%, #000c36 106.44%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
