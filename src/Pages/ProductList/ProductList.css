@@ -1,0 +1,148 @@
+#page-container {
+    margin-top: 92px;
+    min-height: calc(100vh - 92px);
+    min-width: 100vw;
+    padding: 50px 100px;
+    display: flex;
+}
+
+#kategori {
+    width: 270px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+    padding: 25px;
+}
+
+.sidebar-title {
+    margin: 0;
+    padding-bottom: 6px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #213360;
+}
+
+.sidebar-text {
+    margin: 0;
+    padding: 6px 0px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #213360;
+}
+
+.sidebar-text:hover {
+    font-weight: 600;
+    color: #E0004D;
+}
+
+#filter {
+    width: 270px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+    padding: 25px;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+#hapus-semua-filter {
+    background-color: #B4B9C7;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    align-self: center;
+    cursor: pointer;
+}
+
+#hapus-semua-filter:hover {
+    background-color: #8f939e;
+}
+
+.separator {
+    margin: 25px -25px;
+    border-color: #B4B9C7;
+    border-width: 2px;
+}
+
+.sidebar-checkbox {
+    font-size: 14px;
+    margin: 5px 0px;
+    color: #213360;
+}
+
+.sidebar-checkbox input {
+    margin-right: 10px;
+}
+
+.lihat-lebih-lengkap{
+    font-size: 14px;
+    color: #E0004D;
+    font-weight: 600;
+    margin: 5px 0px 0px;
+    cursor: pointer;
+}
+
+.input-box-container {
+    position: relative;
+}
+
+.input-box {
+    width: 100%;
+    font-size: 14px;
+    padding: 5px 10px 5px 35px;
+    border: 2px solid #B4B9C7;
+    border-radius: 5px;
+    outline: none;
+}
+
+input::placeholder {
+    font-size: 14px;
+    color: #949494;
+}
+.rp {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #213360;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#products {
+    margin: 0px 20px 0px 50px;
+    width: 100%;
+}
+
+.custom-select select {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 20px;
+    width: 200px;
+    font-size: 14px;
+    border: 1px solid #8f939e;
+    background-color: white;
+    border-radius: 5px;
+    color: #8f939e;
+}
+
+#product-cards-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
