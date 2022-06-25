@@ -1,5 +1,9 @@
+.haedR {
+  height: 700px !important;
+}
 .form {
   padding: 77px 94px 348px 94px !important;
+  height: 700px !important;
 }
 
 .header-form-register {
@@ -44,6 +48,8 @@
 
 .formGambar {
   padding-left: 0px !important;
+  padding-bottom: 0px !important;
+  height: 650px;
 }
 
 .gambar {
@@ -53,11 +59,85 @@
   padding-left: 0px !important;
   top: 0px;
 }
+.bf {
+  /* Button */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 106px;
+  gap: 10px;
+
+  width: 256px;
+  height: 48px;
+  left: 368px;
+  top: 174px;
+
+  border: 1.6px solid #d5d7dd;
+  background: #527bcb;
+  border-radius: 8px;
+  /* XXS Bold */
+
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 17px;
+  /* identical to box height, or 142% */
+
+  text-align: center;
+
+  /* Neutral (Greys, Whtes & Blacks/White */
+
+  color: #ffffff;
+}
+.bg {
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 106px;
+  gap: 10px;
+
+  width: 256px;
+  height: 48px;
+  left: 96px;
+  top: 174px;
+  /* XXS Bold */
+
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 17px;
+  /* identical to box height, or 142% */
+
+  text-align: center;
+
+  /* Blue/Primary Blue */
+
+  color: #213360;
+  /* white */
+
+  background: #ffffff;
+  /* Neutral (Greys, Whtes & Blacks/Grey Outline */
+
+  border: 1.6px solid #d5d7dd;
+  border-radius: 8px;
+}
 .registerlogo {
   position: absolute;
 
   top: 11.94%;
   bottom: 13.06%;
+  left: 60px;
 
   font-family: 'Public Sans';
   font-style: normal;

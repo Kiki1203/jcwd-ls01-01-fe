@@ -1,37 +1,45 @@
 import { React, useState } from 'react';
 import Axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
-
 import Divider from '@mui/material/Divider';
 import './Register.css';
 import gambar from './../../../Assets/login.svg';
+import logo from './../../../Assets/logo.svg';
 import Swal from 'sweetalert2';
-const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 5000,
-  timerProgressBar: true,
-});
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [passwordConf, setPasswordConf] = useState('');
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 5000,
+    timerProgressBar: true,
+  });
 
   const onSubmit = () => {
     try {
       var data = { username: username, password: password, email: email };
-      // var data2 = passwordConf;
+      var data2 = passwordConf;
 
-      // Validation
-      // if (username === '' || email === '' || password === '' || data2 === '') throw { message: 'Fill All Data!' };
-      // if (!/\S+@\S+\.\S+/.test(email)) throw { message: 'Email address is invalid' };
-      // if (!username.match('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{4,}')) throw { message: 'Username should be contain uppercase, number, and symbol' };
-      // if (!password.match('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])')) throw { message: 'Password should be contain uppercase, number, and symbol' };
-      // if (password.length < 8) throw { message: 'Password weak, please add more characters' };
-      // if (password !== data2) throw { message: 'Password and Confirmation Password doesnt match!' };
+      if (!username || !email || !password || !data2) {
+        return Toast.fire({ html: 'Fill All Data!', icon: 'error', title: 'ERROR!' });
+      }
+      if (!/\S+@\S+\.\S+/.test(email)) {
+        return Toast.fire({ html: 'Email address is invalid', icon: 'error', title: 'ERROR!' });
+      }
+      if (password.length < 8) {
+        return Toast.fire({ html: 'Password weak, please add more characters', icon: 'error', title: 'ERROR!' });
+      }
+      if (!password.match('(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])')) {
+        return Toast.fire({ html: 'Password should be contain uppercase, number, and symbol', icon: 'error', title: 'ERROR!' });
+      }
+      if (password !== data2) {
+        return Toast.fire({ html: 'Password and Repeat Password doesnt match!', icon: 'error', title: 'ERROR!' });
+      }
 
       Axios.post(`${API_URL}/user/register`, data)
         .then((res) => {
@@ -68,23 +76,28 @@ const Register = () => {
   };
 
   return (
-    <div className="container-fluid">
-      <div className="row">
+    <div className="container-fluid ">
+      <div className="row haedR">
         <div className="col-6  formGambar">
-          <div className="registerlogo">Apotakecare</div>
+          <div className="registerlogo" href="/">
+            <img src={logo} alt="" />
+            Apotakecare
+          </div>
           <div className="registerslogan">Apotek Online Khusus Untuk Keperluanmu</div>
           <img className="gambar" src={gambar} alt="" />
         </div>
         <div className="col-6 form">
-          <div className="header-form-register">Mari Kita Mulai</div>
-          <div className="akun-form-register">
+          <div className="header-form-register mb-4">Mari Kita Mulai</div>
+          <div className="akun-form-register mb-4">
             Sudah punya akun? <span href="">Masuk</span>
           </div>
-          <div className="row">
-            <button className="col-6">Daftar dengan Google</button>
-            <button className="col-6">Daftar dengan Facebook</button>
+          <div className="row justify-content-evenly">
+            <button className="col-5 bg">Daftar dengan Google</button>
+            <button className="col-5 bf">Daftar dengan Facebook</button>
           </div>
+          <br />
           <Divider>atau</Divider>
+          <br />
           <div class="mb-3">
             <label for="exampleFormControlInput1" className="form-label">
               Name
@@ -109,7 +122,7 @@ const Register = () => {
             </label>
             <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Input Password Again" value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
           </div>
-          <div className="form-check">
+          <div className="form-check mt-4 mb-4">
             <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
             <label className="form-check-label" for="flexCheckDefault">
               Saya setuju dengan persyaratan dan ketentuan
