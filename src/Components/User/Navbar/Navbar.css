@@ -1,0 +1,197 @@
+.SearchBar {
+  position: absolute !important;
+  width: 620px !important;
+  height: 44px !important;
+  left: 250px !important;
+  top: 24px !important;
+  border-radius: 8px !important;
+}
+.search {
+  position: absolute;
+  left: 10px !important;
+  right: 13.24% !important;
+  top: 31.5% !important;
+  bottom: 13.25% !important;
+  color: #b4b9c7 !important;
+  cursor: default;
+}
+.navContainer {
+  position: absolute !important;
+  width: 1282px !important;
+  height: 92px !important;
+  left: -2px !important;
+  top: 0px !important;
+  background-color: #ffffff !important;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+}
+
+.input1 {
+  left: 250px !important;
+  font-family: 'Public Sans', sans-serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  display: inline-block !important;
+  color: #b4b9c7 !important;
+  padding-left: 40px !important;
+  cursor: text;
+}
+
+.input2 {
+  display: none !important;
+}
+
+.brand {
+  position: absolute;
+  left: 50px;
+
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23.6923px;
+  line-height: 28px;
+  letter-spacing: -0.04em;
+
+  /* Blue/Primary Blue */
+
+  color: #213360;
+}
+.lcart {
+  display: none !important;
+}
+.lbell {
+  display: none !important;
+}
+
+.btn-edit {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 13px 40px;
+  gap: 10px;
+
+  font-family: 'Public Sans', sans-serif !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  line-height: 17px !important;
+
+  position: absolute;
+  width: 118px;
+  height: 44px;
+  left: 1100px;
+  top: 24px;
+}
+
+.btn-edit1 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 13px 40px;
+  gap: 10px;
+
+  font-family: 'Public Sans', sans-serif !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  line-height: 17px !important;
+
+  position: absolute;
+  width: 118px;
+  height: 44px;
+  left: 950px;
+  top: 24px;
+}
+
+@media screen and (max-width: 767px) {
+  .navContainer {
+    position: absolute !important;
+    width: 500px !important;
+    height: 92px !important;
+    left: -2px !important;
+    top: 0px !important;
+    background-color: #ffffff !important;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+  }
+  .brand {
+    display: none;
+  }
+  .search {
+    position: absolute;
+    left: 14.26%;
+    right: 13.24%;
+    top: 27.5% !important;
+    bottom: 13.25%;
+  }
+
+  .input1 {
+    display: none !important;
+  }
+
+  .input2 {
+    font-family: 'Public Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    line-height: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    display: inline-block !important;
+    color: #b4b9c7 !important;
+    padding-left: 40px !important;
+  }
+  .SearchBar {
+    position: absolute !important;
+    width: 247px !important;
+    height: 36px !important;
+    left: 24px !important;
+    top: 44px !important;
+    border-radius: 8px !important;
+  }
+  .btn-edit1 {
+    display: none !important;
+  }
+  .btn-edit {
+    display: none !important;
+  }
+  .lcart {
+    position: absolute !important;
+    width: 50px !important;
+    height: 22px !important;
+    left: 325px !important;
+    top: 50px !important;
+    cursor: pointer;
+    color: #dc3545;
+
+    display: inline-block !important;
+  }
+  .lcart:active {
+    color: white;
+    transform: translateY(0.2rem);
+  }
+  .lcart:hover:not(:disabled) {
+    color: lightcoral;
+  }
+  .lbell:active {
+    color: white;
+    transform: translateY(0.2rem);
+  }
+  .lbell:hover:not(:disabled) {
+    color: lightcoral;
+  }
+
+  .lbell {
+    position: absolute !important;
+    width: 50px !important;
+    height: 22px !important;
+    left: 275px !important;
+    top: 50px !important;
+    color: #dc3545;
+    cursor: pointer;
+
+    display: inline-block !important;
+  }
+}
