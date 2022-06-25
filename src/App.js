@@ -8,6 +8,7 @@ import ResetPassword from './Pages/User/ResetPassword/ResetPassword.jsx';
 import Cart from './Pages/User/Cart/Cart.jsx';
 import Checkout from './Pages/User/Checkout/Checkout.jsx';
 import Verification from './Pages/User/Verification/Verification.jsx';
+import Confirmation from './Pages/User/Confirmation/Confirmation.jsx';
 import FormAddress from './Pages/User/FormAddress/FormAddress.jsx';
 import Home from './Pages/User/Home/Home.jsx';
 import OrderProcess from './Pages/User/OrderProcess/OrderProcess.jsx';
@@ -43,7 +44,7 @@ function App() {
           <Route path="/ResetPassword" element={<ResetPassword />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/Checkout" element={<Checkout />} />
-          {/* <Route path="/verification/:token" element={<Verification />} /> */}
+          <Route path="/confirmation/:token" element={<Confirmation />} />
           <Route path="/verification" element={<Verification />} />
           <Route path="/FormAddress" element={<FormAddress />} />
           <Route path="/OrderProcess" element={<OrderProcess />} />
