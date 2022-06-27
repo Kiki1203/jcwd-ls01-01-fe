@@ -1,9 +1,9 @@
 .haedR {
-  height: 700px !important;
+  height: 693px !important;
 }
 .form {
-  padding: 77px 94px 348px 94px !important;
-  height: 700px !important;
+  padding: 30px 94px 348px 94px !important;
+  height: 693px !important;
 }
 
 .header-form-register {
@@ -59,52 +59,31 @@
   padding-left: 0px !important;
   top: 0px;
 }
+.googleL {
+  width: 24px;
+  height: 24px;
+}
 .bf {
-  /* Button */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 106px;
-  gap: 10px;
-
-  width: 256px;
-  height: 48px;
-  left: 368px;
-  top: 174px;
-
-  border: 1.6px solid #d5d7dd;
-  background: #527bcb;
-  border-radius: 8px;
+  border: 1.6px solid #d5d7dd !important;
+  background: #527bcb !important;
+  border-radius: 8px !important;
   /* XXS Bold */
 
   font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 17px;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  line-height: 17px !important;
   /* identical to box height, or 142% */
 
-  text-align: center;
+  text-align: center !important;
 
   /* Neutral (Greys, Whtes & Blacks/White */
 
-  color: #ffffff;
+  color: #ffffff !important;
 }
 .bg {
   box-sizing: border-box;
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 106px;
-  gap: 10px;
 
   width: 256px;
   height: 48px;
@@ -114,23 +93,23 @@
 
   font-family: 'Public Sans';
   font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 17px;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  line-height: 17px !important;
   /* identical to box height, or 142% */
 
   text-align: center;
 
   /* Blue/Primary Blue */
 
-  color: #213360;
+  color: #213360 !important;
   /* white */
 
-  background: #ffffff;
+  background: #ffffff !important;
   /* Neutral (Greys, Whtes & Blacks/Grey Outline */
 
-  border: 1.6px solid #d5d7dd;
-  border-radius: 8px;
+  border: 1.6px solid #d5d7dd !important;
+  border-radius: 8px !important;
 }
 .registerlogo {
   position: absolute;
@@ -173,4 +152,85 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.input {
+  width: 529px !important;
+  height: 44px !important;
+  left: 96px;
+  top: 320px;
+
+  /* Neutral (Greys, Whtes & Blacks/Greyer */
+
+  border: 1px solid #b4b9c7;
+  border-radius: 8px;
+}
+
+.check {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 143% */
+
+  /* Neutral (Greys, Whtes & Blacks/Dark Grey */
+
+  color: #737a8d;
+}
+
+.inputL {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  /* or 143% */
+
+  color: #222222;
+}
+.inputLP {
+  padding-left: 40px !important;
+}
+.pLogin {
+  position: absolute;
+  left: 740px;
+  right: 8.34%;
+  top: 290px;
+  height: 16.666667938232422px;
+  width: 16.666667938232422px;
+  border-radius: 0px;
+}
+.pLogin {
+  position: absolute;
+  left: 740px;
+  right: 8.34%;
+  top: 290px;
+  height: 16.666667938232422px;
+  width: 16.666667938232422px;
+  border-radius: 0px;
+}
+.mLogin {
+  position: absolute;
+  left: 740px;
+  right: 8.34%;
+  top: 365px;
+  height: 16.666667938232422px;
+  width: 16.666667938232422px;
+  border-radius: 0px;
+}
+.pass1Login {
+  position: absolute;
+  left: 740px;
+  right: 8.34%;
+  top: 438px;
+  height: 16.666667938232422px;
+  width: 16.666667938232422px;
+  border-radius: 0px;
+}
+.pass2Login {
+  position: absolute;
+  left: 740px;
+  right: 8.34%;
+  top: 510px;
+  height: 16.666667938232422px;
+  width: 16.666667938232422px;
+  border-radius: 0px;
 }

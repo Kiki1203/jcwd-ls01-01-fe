@@ -3,32 +3,31 @@ import './Login.css';
 import Divider from '@mui/material/Divider';
 import gambar from './../../../Assets/login.svg';
 import logo from './../../../Assets/logo.svg';
+import google from './../../../Assets/googleL.svg';
 import { useDispatch } from 'react-redux';
 import { onUserLogin } from '../../../Redux/Actions/userAction';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
+// import { Redirect } from 'react-router';
 
 const Login = () => {
   const [password, setPassword] = useState('');
   const [account, setAccount] = useState('');
+  const [disable, setDisable] = useState(false);
   const dispatch = useDispatch();
-  // const is_login = useSelector((state) => state.userReducer);
-  const navigate = useNavigate();
+  const [direct, setDirect] = useState(false);
 
   const onSubmit = () => {
     let data = {
       account: account,
       password: password,
     };
+    setDisable(false);
     dispatch(onUserLogin(data));
-    navigate('/');
+    setDirect(true);
   };
 
-  // useEffect(() => {
-  //   onCheckUserLogin();
-  // }, [is_login]);
-
-  if (localStorage.getItem('myTkn')) {
-    return navigate('/');
+  if (direct || localStorage.getItem('myTkn')) {
+    return <Navigate to="/" />;
   }
 
   return (
@@ -57,8 +56,8 @@ const Login = () => {
             </label>
             <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Input Password " onChange={(e) => setPassword(e.target.value)} />
           </div>
-          <div className="row justify-content-between">
-            <div className="col-6">
+          <div className="row justify-content-evenly fc mt-2">
+            <div className="col-6 ">
               <div className="form-check  mb-4">
                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                 <label className="form-check-label" for="flexCheckDefault">
@@ -66,18 +65,36 @@ const Login = () => {
                 </label>
               </div>
             </div>
-            <div className="col-6 text-end">Lupa Kata Sandi?</div>
+            <div className="col-6 text-end">
+              Lupa Kata
+              <span>
+                {' '}
+                <Link to="/resetpassword" style={{ textDecoration: 'none', color: 'red' }}>
+                  Sandi?
+                </Link>
+              </span>{' '}
+            </div>
           </div>
           <div classNameName="mb-3">
-            <button type="button" className="btn btn-danger col-12 " onClick={onSubmit}>
+            <button type="button" className="btn btn-danger col-12" disabled={disable ? true : false} onClick={onSubmit}>
               Masuk
             </button>
           </div>
           <br />
           <Divider>Atau masuk dengan</Divider>
           <br />
-          <div>
-            <button className="col-12">Masuk dengan Google</button>
+          <div className="mb-5  ">
+            <button className="col-12 btn btn-outline-danger gb" disabled={disable ? true : false}>
+              <img className="googleL me-2" src={google} alt="" /> Daftar dengan Google Masuk dengan Google
+            </button>
+          </div>
+          <div className="bpm">
+            Belum Punya Akun?{' '}
+            <span>
+              <Link to="/register" style={{ textDecoration: 'none', color: 'red' }}>
+                Daftar
+              </Link>
+            </span>
           </div>
         </div>
       </div>
