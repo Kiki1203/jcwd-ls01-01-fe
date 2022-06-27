@@ -44,10 +44,14 @@ const SidebarProfile2  = () => {
                       <div className='sidebar-favorite'>Favorite</div>
                     </div>
                   </Link>
-                <div id='box-baris-7'>
-                 <FontAwesomeIcon icon={faEnvelope} id='sidebar-logo' />
-                  <div className='sidebar-pesan-bantuan'>Pesan Bantuan</div>
-                </div>
+                  <div style={{ color: "#213360" }}>
+                    <div id='box-baris-7'>
+                      <FontAwesomeIcon icon={faEnvelope} id='sidebar-logo' />
+                    <div className='sidebar-pesan-bantuan'>Pesan Bantuan</div>
+                  </div>
+                  </div>
+                  
+               
               </div>
           </div>
         </div>

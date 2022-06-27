@@ -1,10 +1,11 @@
-import { React, useState, useParams, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import './Verification.css';
 import Axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import VerifyPage from '../../../Assets/VerifyPage.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { useParams, Navigate } from 'react-router-dom'
 // SweetAlert
 import Swal from 'sweetalert2';
 const Toast = Swal.mixin({
@@ -16,44 +17,9 @@ const Toast = Swal.mixin({
 });
 
 const Verification = () => {
-  const [isRedirect, setIsRedirect] = useState(false);
-
-  let params = useParams();
-
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    Verification();
-  }, []);
-
-  const Verification = () => {
-    Axios.patch(
-      `${API_URL}/user/verification`,
-      {},
-      {
-        headers: {
-          Authorization: params.token,
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      }
-    )
-      .then((res) => {
-        Toast.fire({
-          icon: 'success',
-          title: res.data.message,
-        });
-        setIsRedirect(true);
-        localStorage.setItem('myTkn', params.token);
-      })
-      .catch((err) => {
-        setMessage(err.response.data.message);
-        Toast.fire({
-          icon: 'error',
-          title: err.response.data.message,
-        });
-      });
-  };
+//   useEffect(() => {
+//       Verification()
+//   }, [])
 
   const onResendEmail = () => {
     let token = localStorage.getItem('myTkn');
@@ -72,7 +38,7 @@ const Verification = () => {
       .then((res) => {
         Swal.fire({
           title: 'Success!',
-          text: 'Check Your Email',
+          text: 'Please Check Your Email to Verify',
           icon: 'success',
           confirmButtonText: 'Okay!',
         });
@@ -83,28 +49,18 @@ const Verification = () => {
   };
 
   return (
-    <div className="container">
-      <div className="d-lg-block d-md-block d-none" style={{ position: 'absolute', height: '109px', left: '-2px', top: '-16px', border: '1px solid blue', width: '1200px' }}>
-        NAVBAR
-      </div>
-      <div className="d-lg-none d-md-none d-block box-navbar-verify">
-        <div className="logo-to-homepage">
-          <FontAwesomeIcon icon={faAngleLeft} />
+    <div className='container'>
+        <div className="d-lg-none d-md-none d-block box-navbar-verify">
+            <div className="logo-to-homepage"><FontAwesomeIcon icon={faAngleLeft} /></div>
+            <div className="tulisan-verification">Verification</div>
         </div>
-        <div className="tulisan-verification">Verification</div>
-      </div>
-      <div className="logo-verify-page">
-        <img src={VerifyPage} alt="" />
-      </div>
-      <div className="tulisan-oops">Oops...sorry, </div>
-      <div className="tulisan-not-allowed">You are not allowed to access the homepage, don't forget to verify your account first via email or by clicking the button below:</div>
-      <div className="button-resend-email" onClick={() => onResendEmail()}>
-        Resend Email Verification
-      </div>
-      <div className="d-lg-block d-md-block d-none" style={{ position: 'absolute', height: '480px', left: '0px', top: '1036px', border: '1px solid blue', width: '1200px' }}>
-        FOOTER
-      </div>
-    </div>
+        <div className='box-verification-page'>
+            <div className="logo-verify-page"><img src={VerifyPage} alt=""/></div>
+            <div className="tulisan-oops">Oops...sorry, </div>
+            <div className="tulisan-not-allowed">You are not allowed to access the homepage, don't forget to verify your account first via email or by clicking the button below:</div>
+            <div className="button-resend-email" onClick={() => onResendEmail()}>Resend Email Verification</div>
+        </div>
+   </div>
   );
 };
 
