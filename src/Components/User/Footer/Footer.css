@@ -1,0 +1,242 @@
+.Footer {
+  margin-top: 2642px;
+  width: 1265px !important;
+}
+.a {
+  background-color: #f6fafb;
+  height: 160px;
+}
+.metode {
+  /* Metode Pembayaran */
+  padding-bottom: 30px;
+  padding-top: 50px;
+  /* position: absolute; */
+
+  height: 24px !important;
+  left: 563px !important;
+  top: 2642px;
+
+  /* S Bold */
+
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  align-items: center !important;
+  text-align: center !important;
+
+  /* Blue/Primary Blue */
+
+  color: #213360;
+}
+.bca {
+  /* bca-bank-central-asia 1 */
+
+  width: 117.26px;
+  height: 36px;
+  /* left: 249px;
+  top: 2690px; */
+}
+
+.mandiri {
+  /* bca-bank-central-asia 1 */
+
+  width: 117.26px;
+  height: 36px;
+  /* left: 249px;
+  top: 2690px; */
+}
+
+.permata {
+  /* position: absolute; */
+  width: 117.26px;
+  height: 36px;
+  /* left: 0px;
+  top: 1px; */
+}
+
+.ovo {
+  /* position: absolute; */
+  width: 117.26px;
+  height: 36px;
+  /* left: 0px;
+  top: -3px; */
+}
+
+.gopay {
+  /* position: absolute; */
+  width: 117.26px;
+  height: 36px;
+  /* left: 894px;
+  top: 2693px; */
+}
+
+.shoope {
+  /* position: absolute; */
+  width: 117.26px;
+  height: 36px;
+  /* left: 1085px;
+  top: 2680px; */
+}
+
+.b {
+  height: 260px;
+}
+.fbrand {
+  left: 23.03%;
+  right: -9.78%;
+  top: 11.94%;
+  bottom: 15.12%;
+
+  font-family: 'Public Sans';
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 31.7981px !important;
+  line-height: 37px !important;
+  letter-spacing: -0.04em !important;
+
+  /* Blue/Primary Blue */
+
+  color: #213360 !important;
+}
+.wa {
+  height: 39.6761589050293px;
+  width: 39.831817626953125px;
+  left: 4.16796875px;
+  top: 4px;
+  border-radius: 0px;
+
+  left: 8.68%;
+  right: 8.33%;
+  top: 8.33%;
+  bottom: 9.01%;
+
+  /* Blue/Primary Blue */
+
+  color: #213360;
+  /* Blue/Primary Blue */
+}
+.listF {
+  /* XS Reg */
+
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  /* or 143% */
+
+  display: flex;
+  align-items: center;
+
+  /* Blue/Primary Blue */
+
+  color: #213360 !important;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.ikutiF {
+  height: 19px;
+  left: 1149px;
+  top: 2838px;
+
+  /* M Bold */
+
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+
+  /* Blue/Primary Blue */
+
+  color: #213360;
+}
+.sosialF {
+  /* S Reg */
+
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  /* or 150% */
+
+  display: flex;
+  align-items: center;
+
+  /* Blue/Primary Blue */
+
+  color: #213360 !important;
+}
+.kontakHF {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  /* or 143% */
+
+  display: flex;
+  align-items: center;
+
+  /* Blue/Primary Blue */
+
+  color: #213360;
+}
+.kontakCF {
+  /* S Reg */
+
+  font-family: 'Public Sans';
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  /* identical to box height, or 150% */
+
+  display: flex;
+  align-items: center;
+
+  /* Blue/Primary Blue */
+
+  color: #213360;
+}
+
+.c {
+  width: 1265px !important;
+  height: 95px;
+  left: 0px;
+  top: 3163px;
+
+  /* Blue/Lighter Blue */
+
+  background: #4f618e;
+}
+.design {
+  height: 24px;
+  left: 98px;
+  top: 3199px;
+  padding-top: 36px;
+  /* S Reg */
+
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  align-items: center;
+  text-align: center;
+
+  /* Neutral (Greys, Whtes & Blacks/Grey */
+
+  color: #f5f6f9;
+}
