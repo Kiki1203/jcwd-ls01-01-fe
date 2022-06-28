@@ -6,6 +6,7 @@ import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import Swal from 'sweetalert2';
 import default1 from '../../../Assets/default.jpg';
+import Footer from "../../../Components/User/Footer/Footer.jsx";
 
 
 function EditProfile() {
@@ -59,6 +60,7 @@ function EditProfile() {
         }
 
          const onEditImageFileChange = (e) => {
+            console.log('e.target.files[0].name', e.target.files[0].name)
             if(e.target.files[0]) {
                 seteditImageFileName(e.target.files[0].name)
                 seteditImageFile(e.target.files[0])
@@ -125,14 +127,13 @@ function EditProfile() {
                 if(res.data[0].profile_picture) {setProfilepic(res.data[0].profile_picture)}
                 else {setProfilepic('')}
                 {setTanggallahir(res.data[0].tanggal_lahir)}
-                
-                setselectedEditProfile(0)
                 Swal.fire({
                     title: 'Success!',
                     text: res.data.message,
                     icon: 'success',
                     confirmButtonText: 'Okay!'
                 })
+                 seteditImageFileName('Select Image...')
             })
             .catch((err) =>{
                 Swal.fire({
@@ -166,47 +167,56 @@ function EditProfile() {
         <input className="button-edit-foto" type="file" label={editImageFileName} onChange={onEditImageFileChange} />
         </div>
         <div className="baris-edit-profile-1">
+            <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
+              Name
+            </label>
             <input type="text" 
             onChange={namaChange} defaultValue={nama}
             name="editUserName"
-            className="form-control input-edit-profile-1" placeholder="Name" />
+            className="form-control mt-2 input-edit-profile-1" placeholder="Enter Your Name" />
         </div>
-        <div className="form-group baris-edit-profile-2">
+        <div className="form-group mt-2 baris-edit-profile-2">
+            <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
+              Email
+            </label>
             <input type="text" 
              onChange={emailChange} defaultValue={email}
              name="editUserEmail"
-            className="form-control input-edit-profile-2"  placeholder="Email Address" />
+            className="form-control mt-2 input-edit-profile-2"  placeholder="Email Address" />
         </div>
-        <div className="form-group baris-edit-profile-3">
+        <div className="form-group mt-3 baris-edit-profile-3">
+            <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
+              Gender
+            </label>
             <select 
             id="inputGender" 
             onChange={genderChange} defaultValue={gender}
             name="editUserGender"
-            className="form-control input-edit-profile-3"  placeholder="Gender"
+            className="form-control mt-2 input-edit-profile-3"  placeholder="Gender"
             >
                 <option value="" >All</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
         </div>
-        <div className="form-group mt-3 mb-3 baris-edit-profile-4">
+        <div className="form-group mt-4 baris-edit-profile-4">
+            <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
+             Birthday
+            </label>
             <div className="input-group">
                 <input type="datetime-local"
                 defaultValue={tanggallahir}  onChange={tanggalChange}
-                 placeholder="Tanggal Lahir" className="form-control rounded-0 border-top-0 border-left-0 border-right-0 mytetring-input" required />
+                 placeholder="Tanggal Lahir" className="form-control rounded-0 border-left-0 border-right-0 mytetring-input" required />
                 <div className="input-group-prepend">
                 </div>
             </div>
         </div>
-        {/* <div className="form-group baris-edit-profile-4">
-            <input type="text"
-             value={this.state.usia} onChange={this.onUsiaEditChange}
-             name="editUserGender" 
-            className="form-control input-edit-profile-4"  placeholder="Usia" />
-        </div> */}
         <div className="d-lg-none d-md-none d-block" id="wanna-change-password">Wanna change password? <span>click here</span></div>
-        <button type="submit" className="button-batalkan-edit-profile" onClick={() => selectedEditProfile(0)} >Batalkan</button>
-        <button type="submit" className="button-simpan-edit-profile" onClick={() => onBtnUpdateProfile ()}>Simpan</button>
+        <button type="submit" className="mt-4 button-simpan-edit-profile"onClick={() => onBtnUpdateProfile ()} >Simpan</button>
+        {/* <div style={{top: "824px"}}>
+        < Footer />
+        </div> */}
+   
     </div>
     );
 }

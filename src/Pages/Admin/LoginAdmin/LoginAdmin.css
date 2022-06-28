@@ -1,0 +1,270 @@
+@media only screen and (max-width: 1400px) {
+  .box-foto-login-admin{
+    position: absolute;
+    width: 640px;
+    height: 568px;
+    left: 0px;
+    top: 0px;
+  } 
+
+  .AdminImgSet{
+    width: 640px;
+    height: 568px;
+    object-fit: cover;
+  }
+
+  .box-isi-login-admin{
+    position: absolute;
+    width: 640px;
+    height: 568px;
+    left: 640px;
+    top: 0px;
+    background: linear-gradient(155.7deg, #f5ded6 -45.88%, #fcf7f9 45.77%, #fcf1f7 117.72%);
+  }
+
+  .tab-button-admin-login{
+    position: absolute;
+    width: 170px;
+    height: 30px;
+    left: 450px;
+    top: 50px;
+  }
+
+
+  .tab-1-admin-login{
+    position: absolute;
+    width: 80px;
+    height: 27px;
+    left: 0px;
+    top: 0px;
+    background: #F2F2F2;
+    border-radius: 4px 0px 0px 4px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #E0004D;
+    cursor: pointer;
+  }
+
+  .tab-2-admin-login{
+    position: absolute;
+    width: 80px;
+    height: 27px;
+    left: 80px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #E0004D;
+    border-radius: 0px 4px 4px 0px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+
+  .box-login-admin-isi{
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    left: 80px;
+    top: 110px;
+  }
+
+  .welcome-login-admin{
+    position: absolute;
+    width: 400px;
+    height: 28px;
+    left: 0px;
+    top: 0px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #1A1E2B;
+  }
+
+  .box-email-login-admin{
+    position: absolute;
+    width: 500px;
+    height: 62px;
+    left: 0px;
+    top: 50px;
+  }
+
+  .label-email-or-username-login-admin{
+    position: absolute;
+    width: 200px;
+    height: 20px;
+    left: 0px;
+    top: -10px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+  }
+
+  .input-login-admin-1{
+    box-sizing: border-box;
+    position: absolute;
+    height: 40px;
+    left: 0px;
+    top: 20px;
+    background: #FFFFFF;
+    border: 1px solid #B4B9C7;
+    border-radius: 4px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .box-password-login-admin{
+    position: absolute;
+    width: 500px;
+    height: 62px;
+    left: 0px;
+    top: 140px;
+  }
+
+  .form-ingat-saya{
+    position: absolute;
+    width: 200px;
+    height: 20px;
+    left: 0px;
+    top: 210px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #1A1E2B;
+  }
+
+  .lupa-kata-sandi-admin{
+    position: absolute;
+    width: 93px;
+    height: 18px;
+    left: 410px;
+    top: 210px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #B4B9C7;
+    cursor: pointer;
+  }
+
+  .button-masuk-admin{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 106px;
+    gap: 10px;
+    width: 500px;
+    height: 48px;
+    left: 0px;
+    top: 250px;
+    background: #E0004D;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #FFFFFF;
+    border: none;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .button-masuk-admin:hover{
+    box-shadow: 0px 4px 10px rgba(155, 0, 36, 0.25), 0px 2px 4px rgba(155, 0, 31, 0.5);
+  }
+
+  .garis-1-login-admin{
+    position: absolute;
+    width: 159px;
+    height: 0px;
+    left: 0px;
+    top: 330px;
+    border: 1px solid #B4B9C7;
+  }
+
+  .atau-masuk-admin-login{
+    position: absolute;
+    width: 131px;
+    height: 20px;
+    left: 185px;
+    top: 320px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #1A1E2B;
+  }
+
+  .garis-2-login-admin{
+    position: absolute;
+    width: 159px;
+    height: 0px;
+    left: 340px;
+    top: 330px;
+    border: 1px solid #B4B9C7;
+  }
+
+  .login-with-google-admin{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 106px;
+    gap: 10px;
+    position: absolute;
+    width: 500px;
+    height: 48px;
+    left: 0px;
+    top: 360px;
+    background: #FFFFFF;
+    border: 2px solid #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #1A1E2B;
+  }
+
+  .login-with-google-admin:hover{
+    background-color: #E0004D;
+    color: #FFFFFF;
+    border: none ;
+  }
+  
+}
+  
+  
+@media only screen and (max-width: 500px) {
+
+}

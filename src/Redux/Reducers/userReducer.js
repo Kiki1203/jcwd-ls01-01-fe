@@ -5,6 +5,9 @@ let initialState = {
   is_redirect: false,
   is_login: false,
   is_confirmed: 0,
+  token: '',
+  id: '',
+  authChecked: false,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -14,7 +17,7 @@ const userReducer = (state = initialState, action) => {
     case 'LOGIN_ERROR':
       return { ...state, loading: false, error: action.payload.error, message: action.payload.message };
     case 'LOGIN_SUCCESS':
-      return { ...state, loading: false, authChecked: true, error: action.payload.error, message: action.payload.message, id: action.payload.id, is_redirect: true, is_login: true };
+      return { ...state, loading: false,  authChecked: true, error: action.payload.error, message: action.payload.message, id: action.payload.id, is_redirect: true, is_login: true };
     case 'ISLOGIN_TRUE':
       return { ...state, is_login: true };
     case 'ISLOGIN_FALSE':

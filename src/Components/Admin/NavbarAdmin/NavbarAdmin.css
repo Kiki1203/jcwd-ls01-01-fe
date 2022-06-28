@@ -1,0 +1,28 @@
+.navbar-box-admin{
+    position: absolute;
+    width: 1230px;
+    height: 64px;
+    left: 0px;
+    top: 0px;
+    background: #FFFFFF;
+    }
+  
+    
+    .logo-notif-navbar-admin{
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      left: 1160px;
+      top: 20px;
+      color: #213360;
+    }
+  
+    .logo-profile-navbar-admin{
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      left: 1210px;
+      top: 20px;
+      color: #213360;
+    }
+  
