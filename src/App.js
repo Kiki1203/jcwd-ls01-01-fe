@@ -1,5 +1,6 @@
 import './App.css';
 import { Routes, Route, useLocation } from 'react-router-dom';
+// USER
 import Navbar from './Components/User/Navbar/Navbar.jsx';
 import Footer from './Components/User/Footer/Footer.jsx';
 import Login from './Pages/User/Login/Login.jsx';
@@ -20,6 +21,11 @@ import UploadSuccess from './Pages/User/UploadSuccess/UploadSuccess.jsx';
 import ChangePassword from './Pages/User/ChangePassword/ChangePassword.jsx';
 import EditProfile from './Pages/User/EditProfile/EditProfile.jsx';
 
+// ADMIN
+import LoginAdmin from './Pages/Admin/LoginAdmin/LoginAdmin.jsx';
+import Dashboard from './Pages/Admin/Dashboard/Dashboard.jsx';
+
+
 // Redux
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -34,7 +40,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/resetpassword' ? null : <Navbar />}
+        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/loginadmin' ? null : <Navbar />}
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -54,8 +60,10 @@ function App() {
           <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/UploadResep" element={<UploadResep />} />
           <Route path="/UploadSuccess" element={<UploadSuccess />} />
+          <Route path="/loginadmin" element={<LoginAdmin />} />
+          <Route path="/homeadmin" element={<Dashboard />} />
         </Routes>
-        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/resetpassword' ? null : <Footer />}
+        {/* {location.pathname === '/login' || location.pathname === '/register' ? null : <Footer />} */}
       </Provider>
     </>
   );
