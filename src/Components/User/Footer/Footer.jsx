@@ -16,7 +16,7 @@ import call from './../../../Assets/call.svg';
 
 const Footer = () => {
   return (
-    <div className="Footer">
+    <div className="Footer d-lg-block d-md-block d-none">
       <div className="container-fluid a">
         <div className="metode">Metode Pembayaran</div>
         <div className="row justify-content-center">
