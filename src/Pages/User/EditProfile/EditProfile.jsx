@@ -7,6 +7,9 @@ import API_URL  from '../../../Helpers/API_URL.js';
 import Swal from 'sweetalert2';
 import default1 from '../../../Assets/default.jpg';
 import Footer from "../../../Components/User/Footer/Footer.jsx";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 
 function EditProfile() {
@@ -152,15 +155,19 @@ function EditProfile() {
         <div className="container">
         <TemplateProfile/>
         <SidebarProfile2/>
+        <div>
+            <div className="d-lg-none d-md-none d-block"><Link to="/profile" style={{ textDecoration:"none", color: "black", cursor: 'pointer' }}><FontAwesomeIcon icon={faAngleLeft} className="pinggiran-atas-profile" /></Link></div>
+            <div className="keterangan-verifikasi">Akun Terverifikasi</div>
+        </div>
         <div className="edit-foto-profile">
         {
             previewImage? 
-            <img src={previewImage} alt='Image Preview' className='userImgSet' /> 
+            <img src={previewImage} alt='Image Preview' id='userImgEdit' /> 
             : 
             profilepic?
-            <img src={`${API_URL + '/'}${profilepic}`} alt='Image Preview' className='userImgSet' />
+            <img src={`${API_URL + '/'}${profilepic}`} alt='Image Preview' id='userImgEdit' />
             :
-            <img  src={default1} alt='Image Preview' className='userImgSet' />
+            <img  src={default1} alt='Image Preview' id='userImgEdit' />
         }
         </div>
         <div>
@@ -211,7 +218,7 @@ function EditProfile() {
                 </div>
             </div>
         </div>
-        <div className="d-lg-none d-md-none d-block" id="wanna-change-password">Wanna change password? <span>click here</span></div>
+        <div className="d-lg-none d-md-none d-block" id="wanna-change-password">Wanna change password? <Link to="/changepassword" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}><span>click here</span></Link></div>
         <button type="submit" className="mt-4 button-simpan-edit-profile"onClick={() => onBtnUpdateProfile ()} >Simpan</button>
         {/* <div style={{top: "824px"}}>
         < Footer />

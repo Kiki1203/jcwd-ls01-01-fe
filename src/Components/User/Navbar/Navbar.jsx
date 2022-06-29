@@ -6,7 +6,7 @@ import { faMagnifyingGlass, faBell, faCartShopping } from '@fortawesome/free-sol
 
 const Navbar = () => {
   return (
-    <div>
+    <div className='d-lg-block d-md-block d-none'>
       <div>
         <nav className="navbar navbar-expand-sm navContainer">
           <div className="container-fluid">

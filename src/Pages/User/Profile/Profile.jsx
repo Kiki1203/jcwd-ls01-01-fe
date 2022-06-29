@@ -2,11 +2,12 @@ import React, {useState, useEffect }  from "react";
 import './Profile.css';
 import SidebarProfile from "../../../Components/User/SidebarProfile/SidebarProfile.jsx";
 import TemplateProfile from "../../../Components/User/TemplateProfile/TemplateProfile.jsx";
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import default1 from '../../../Assets/default.jpg';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Profile  = () => {
 
@@ -43,20 +44,46 @@ const Profile  = () => {
         <div className="container">
             <TemplateProfile/>
             <SidebarProfile/>
+            <div className="d-lg-block d-md-block d-none">
+            <div className="keterangan-verifikasi-desk">Akun Terverifikasi</div>
+            </div>
                 <div className="box-inside-profile-info">
+                     <div className="d-lg-none d-md-none d-block">
+                        <div>
+                            <Link to='/' style={{ textDecoration:"none", color: "black", cursor: 'pointer' }}>
+                                <FontAwesomeIcon icon={faAngleLeft} id="pinggiran-atas-profile-2" />
+                            </Link>
+                        </div>
+                        <div className="keterangan-verifikasi">Akun Terverifikasi</div>
+                    </div>
                     <div className="foto-profile"> 
                     {
                         profilepic?
-                        <img src={`${API_URL + '/'}${profilepic}`} className='userImgSet' />
+                        <img src={`${API_URL + '/'}${profilepic}`} id='userImgSet' />
                         :
-                        <img  src={default1} alt='Image Preview' className='userImgSet' />
+                        <img  src={default1} alt='Image Preview' id='userImgSet' />
                     }
                    </div>
                     <div className="personal-data">Personal Data</div>
                     <div className="d-lg-none d-md-none d-block">
-                        <div className="d-flex">
-                        <div className="full-name-profile">Amber Hania</div>
-                        <div className="isi-usia-profile-mobile">(25)</div>
+                        <div className="box-mobile-pd">
+                            <div className="full-name-profile-mobile"> 
+                                {
+                                    nama ?
+                                    <>{nama}</>
+                                    :
+                                    <><div className="full-name-profile-mobile-none">-</div></>
+                                }
+                            </div>
+                            <div className="isi-usia-profile-mobile">
+                            {
+                                umur ?
+                                <>({umur})</>
+                                :
+                                <><div>(-)</div></>
+                            }    
+
+                            </div>
                         </div>
                     </div>
                     <div className="bungkus-info-profile">
