@@ -1,6 +1,6 @@
 .Footer {
-  margin-top: 2642px;
-  width: 1265px !important;
+  width: 100vw !important;
+  margin-bottom: 0px !important;
 }
 .a {
   background-color: #f6fafb;
@@ -210,7 +210,7 @@
 }
 
 .c {
-  width: 1265px !important;
+  width: 100vw !important;
   height: 95px;
   left: 0px;
   top: 3163px;

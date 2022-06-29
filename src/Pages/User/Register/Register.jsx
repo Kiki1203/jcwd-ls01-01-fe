@@ -4,8 +4,14 @@ import API_URL from '../../../Helpers/API_URL.js';
 import Divider from '@mui/material/Divider';
 import './Register.css';
 import gambar from './../../../Assets/login.svg';
+import google from './../../../Assets/googleL.svg';
+import fb from './../../../Assets/fbL.svg';
 import logo from './../../../Assets/logo.svg';
+import pLogin from './../../../Assets/pLogin.svg';
+import mLogin from './../../../Assets/mLogin.svg';
+import passLogin from './../../../Assets/passLogin.svg';
 import Swal from 'sweetalert2';
+import { Navigate, Link } from 'react-router-dom';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -75,6 +81,10 @@ const Register = () => {
     }
   };
 
+  if (localStorage.getItem('myTkn')) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <div className="container-fluid ">
       <div className="row haedR">
@@ -89,43 +99,73 @@ const Register = () => {
         <div className="col-6 form">
           <div className="header-form-register mb-4">Mari Kita Mulai</div>
           <div className="akun-form-register mb-4">
-            Sudah punya akun? <span href="">Masuk</span>
+            Sudah punya akun?{' '}
+            <Link to="/login" style={{ textDecoration: 'none', color: 'red' }}>
+              Masuk
+            </Link>
           </div>
-          <div className="row justify-content-evenly">
-            <button className="col-5 bg">Daftar dengan Google</button>
-            <button className="col-5 bf">Daftar dengan Facebook</button>
+          <div className="row justify-content-around">
+            <button type="button" className="col-5 bg btn btn-light">
+              <img className="googleL me-2" src={google} alt="" /> Daftar dengan Google
+            </button>
+            <button className="col-6 bf btn btn-primary">
+              <img className="googleL me-2" src={fb} alt="" />
+              Daftar dengan Facebook
+            </button>
           </div>
           <br />
-          <Divider>atau</Divider>
+          <div>
+            <Divider>
+              {' '}
+              <span className="akun-form-register"> atau</span>
+            </Divider>
+          </div>
           <br />
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" className="form-label">
-              Name
-            </label>
-            <input type="username" className="form-control" id="exampleFormControlInput1" placeholder="Input Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <div className="inputL">
+            <div className="mb-2">
+              <label for="exampleFormControlInput1" className="form-label">
+                Name
+              </label>
+              <img className="pLogin" src={pLogin} alt="" />
+              <input type="username" className="form-control inputLP" id="exampleFormControlInput1" placeholder="Input Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+            </div>
+            <div className="mb-2">
+              <label for="exampleFormControlInput1" className="form-label">
+                Email Address
+              </label>
+              <img className="mLogin" src={mLogin} alt="" />
+              <input type="email" className="form-control inputLP" id="exampleFormControlInput1" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className="mb-2">
+              <label for="exampleFormControlInput1" className="form-label">
+                Password
+              </label>
+              <img className="pass1Login" src={passLogin} alt="" />
+              <input type="password" className="form-control inputLP" id="exampleFormControlInput1" placeholder="Input Password " value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <div className="mb-2">
+              <label for="exampleFormControlInput1" className="form-label">
+                Repeat Password
+              </label>
+              <img className="pass2Login" src={passLogin} alt="" />
+              <input type="password" className="form-control inputLP" id="exampleFormControlInput1" placeholder="Input Password Again" value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
+            </div>
           </div>
-          <div className="mb-3">
-            <label for="exampleFormControlInput1" className="form-label">
-              Email Address
-            </label>
-            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
-          </div>
-          <div className="mb-3">
-            <label for="exampleFormControlInput1" className="form-label">
-              Password
-            </label>
-            <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Input Password " value={password} onChange={(e) => setPassword(e.target.value)} />
-          </div>
-          <div className="mb-3">
-            <label for="exampleFormControlInput1" className="form-label">
-              Repeat Password
-            </label>
-            <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Input Password Again" value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
-          </div>
-          <div className="form-check mt-4 mb-4">
+          <div className="form-check check mt-4 mb-4 ">
             <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-            <label className="form-check-label" for="flexCheckDefault">
-              Saya setuju dengan persyaratan dan ketentuan
+            <label className="form-check-label " for="flexCheckDefault">
+              Saya setuju dengan{' '}
+              <span>
+                <Link to="" style={{ textDecoration: 'none', color: 'red' }}>
+                  persyaratan
+                </Link>
+              </span>
+              <span> dan </span>
+              <span>
+                <Link to="" style={{ textDecoration: 'none', color: 'red' }}>
+                  ketentuan
+                </Link>
+              </span>
             </label>
           </div>
           <div classNameName="mb-3">

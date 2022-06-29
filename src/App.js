@@ -34,14 +34,14 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        {location.pathname === '/login' || location.pathname === '/register' ? null : <Navbar />}
+        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/resetpassword' ? null : <Navbar />}
 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/changepassword" element={<ChangePassword />} />
-          <Route path="/ResetPassword" element={<ResetPassword />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/Checkout" element={<Checkout />} />
           <Route path="/confirmation/:token" element={<Confirmation />} />
@@ -55,7 +55,7 @@ function App() {
           <Route path="/UploadResep" element={<UploadResep />} />
           <Route path="/UploadSuccess" element={<UploadSuccess />} />
         </Routes>
-        {location.pathname === '/login' || location.pathname === '/register' ? null : <Footer />}
+        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/resetpassword' ? null : <Footer />}
       </Provider>
     </>
   );
