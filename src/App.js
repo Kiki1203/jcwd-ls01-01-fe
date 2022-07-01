@@ -54,7 +54,7 @@ function App() {
           <Route path="/verification" element={<Verification />} />
           <Route path="/FormAddress" element={<FormAddress />} />
           <Route path="/OrderProcess" element={<OrderProcess />} />
-          <Route path="/ProductDetail" element={<ProductDetail />} />
+          <Route path="/ProductDetail/:id" element={<ProductDetail />} />
           <Route path="/ProductList" element={<ProductList />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/editprofile" element={<EditProfile />} />
