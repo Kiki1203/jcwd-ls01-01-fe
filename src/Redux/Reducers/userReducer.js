@@ -7,7 +7,7 @@ let initialState = {
   is_confirmed: 0,
 };
 
-const userReducer = (state = initialState, action) => {
+export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOADING':
       return { ...state, loading: true, error: false, message: '' };
@@ -21,9 +21,9 @@ const userReducer = (state = initialState, action) => {
       return { ...state, is_login: false };
     case 'IS_CONFIRMED':
       return { ...state, is_confirmed: action.payload };
+    case 'USER_LOGOUT':
+      return initialState;
     default:
       return state;
   }
 };
-
-export default userReducer;

@@ -1,15 +1,9 @@
 .fc {
-  /* XS caption/reg */
-
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
-  /* identical to box height, or 150% */
-
-  /* Neutral (Greys, Whtes & Blacks/Black */
-
   color: #1a1e2b;
 }
 .gb {

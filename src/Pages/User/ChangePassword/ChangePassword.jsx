@@ -1,133 +1,135 @@
-// import React, { useState } from 'react';
-// import './ChangePassword.css';
-// import TemplateProfile from '../../../Components/User/TemplateProfile/TemplateProfile.jsx';
-// import SidebarProfile2 from '../../../Components/User/SidebarProfile/SidebarProfile2.jsx';
-// import ChangePasswords from '../../../Assets/ChangePassword.svg';
-// import axios from 'axios';
-// import API_URL from '../../../Helpers/API_URL.js';
-// import Swal from 'sweetalert2';
-// import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, CSSProperties } from 'react';
+import './ChangePassword.css';
+import TemplateProfile from '../../../Components/User/TemplateProfile/TemplateProfile.jsx';
+import SidebarProfile2 from '../../../Components/User/SidebarProfile/SidebarProfile2.jsx';
+import ChangePasswords from '../../../Assets/ChangePassword.svg';
+import axios from 'axios';
+import API_URL from '../../../Helpers/API_URL.js';
+import Swal from 'sweetalert2';
+import BeatLoader from 'react-spinners/BeatLoader';
+import { InputGroup, Input, Button } from 'reactstrap';
+import { useNavigate } from 'react-router-dom';
+const override: CSSProperties = {
+  display: 'block',
+  margin: '0 auto',
+  borderColor: 'black',
+};
 
-// const ChangePassword = () => {
-//   const [oldPasswordErrorMsg, setOldPasswordErrorMsg] = React.useState('');
-//   const [oldPassword, setOldPassword] = React.useState('');
-//   const [newPasswordErrorMsg, setNewPasswordErrorMsg] = React.useState('');
-//   const [newPassword, setNewPassword] = React.useState('');
-//   const [repeatNewPasswordErrorMsg, setRepeatNewPasswordErrorMsg] = React.useState('');
-//   const [repeatNewPassword, setRepeatNewPassword] = React.useState('');
-//   const [isSubmitting, setIsSubmitting] = React.useState(false);
+const ChangePassword = () => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 5000,
+    timerProgressBar: true,
+  });
 
-//   const { id } = useSelector((state) => state.userReducer);
-//   const token = localStorage.getItem('myTkn');
+  const [oldPassword, setOldPassword] = React.useState('');
+  const [newPassword, setNewPassword] = React.useState('');
+  const [passwordConf, setPasswordConf] = useState('');
 
-//   const oldPasswordChange = (event) => {
-//     let oldPassword = event.target.value;
-//     setOldPassword(oldPassword);
-//     axios
-//       .post(API_URL + '/user/getoldpassword', { password: oldPassword, id: id })
-//       .then(() => {
-//         setOldPasswordErrorMsg('');
-//       })
-//       .catch((e) => {
-//         setOldPasswordErrorMsg(e.response.data.message);
-//       });
-//     if (!oldPassword) {
-//       setOldPasswordErrorMsg('');
-//     }
-//   };
+  let oldPasswordChange = (event) => {
+    setOldPassword(event.target.value);
+  };
 
-//   const newPasswordChange = (event) => {
-//     let newPassword = event.target.value;
-//     setNewPassword(newPassword);
-//     if (!newPassword.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)) {
-//       setNewPasswordErrorMsg('Your new password is too weak');
-//     } else if (!newPassword) {
-//       setNewPasswordErrorMsg('');
-//     } else {
-//       setNewPasswordErrorMsg('');
-//     }
-//   };
+  let newPasswordChange = (event) => {
+    setNewPassword(event.target.value);
+  };
 
-//   const repeatNewPasswordChange = (event) => {
-//     let repeatPassword = event.target.value;
-//     setRepeatNewPassword(repeatPassword);
-//     if (!(repeatPassword === newPassword)) {
-//       setRepeatNewPasswordErrorMsg(`Passwords don't match`);
-//     } else if (!repeatPassword) {
-//       setRepeatNewPasswordErrorMsg('');
-//     } else {
-//       setRepeatNewPasswordErrorMsg('');
-//     }
-//   };
+  const onSubmit = () => {
+    const token = localStorage.getItem('myTkn');
+    var data = {
+      oldPassword: oldPassword,
+      newPassword: newPassword,
+    };
+    var data2 = passwordConf;
 
-//   const onSubmit = () => {
-//     setIsSubmitting(true);
-//     axios
-//       .post(
-//         API_URL + '/user/changepassword',
-//         { id: id, newPassword: newPassword },
-//         {
-//           headers: {
-//             authorization: token,
-//           },
-//         }
-//       )
-//       .then(() => {
-//         Swal.fire({
-//           title: 'Success!',
-//           text: 'Your password has been changed.',
-//           icon: 'success',
-//           confirmButtonText: 'Okay!',
-//           confirmButtonColor: '#369a7c',
-//         });
-//         setIsSubmitting(false);
-//       })
-//       .catch(() => {
-//         Swal.fire({
-//           title: 'Oops!',
-//           text: 'Something went wrong :(',
-//           icon: 'error',
-//           confirmButtonText: 'Okay...',
-//           confirmButtonColor: '#f0547b',
-//         });
-//         setIsSubmitting(false);
-//       });
-//   };
+    if (!oldPassword || !newPassword || !data2) {
+      return Toast.fire({ html: 'Fill All Data!', icon: 'error', title: 'ERROR!' });
+    }
+    if (newPassword !== data2) {
+      return Toast.fire({ html: 'Password and Repeat Password doesnt match!', icon: 'error', title: 'ERROR!' });
+    }
+    setLoading(true);
+    axios
+      .post(API_URL + '/user/changepassword', data, {
+        headers: {
+          authorization: token,
+        },
+      })
+      .then((res) => {
+        setLoading(true);
+        Toast.fire({
+          title: 'Success!',
+          text: res.data.message,
+          icon: 'success',
+          confirmButtonText: 'Okay!',
+          timer: 1500,
+        });
+        setLoading(true);
+        navigate('/');
+        console.log('ini res', res);
+        console.log('ini res.data', res.data);
+        console.log('ini res.data', res.data.message);
+      })
+      .catch((err) => {
+        setLoading(false);
+        Toast.fire({
+          title: 'Error!',
+          text: err.response.data.message,
+          icon: 'error',
+          confirmButtonText: 'Okay!',
+          timer: 1500,
+        });
+        console.log('ini err', err);
+        console.log('err.response.data.message', err.response.data.message);
+      });
+  };
 
-//   return (
-//     <div className="container">
-//       <TemplateProfile />
-//       <SidebarProfile2 />
-//       <div className="foto-change-password">
-//         <img src={ChangePasswords} alt="" />
-//       </div>
-//       <div className="baris-change-password-1">
-//         <input type="text" className="form-control input-change-password-1" placeholder="Old Password" onChange={oldPasswordChange} />
-//       </div>
-//       <div className="form-group baris-change-password-2">
-//         <input type="text" className="form-control input-change-password-2" placeholder="New Password" onChange={newPasswordChange} />
-//       </div>
-//       <div className="form-group baris-change-password-3">
-//         <input type="text" className="form-control input-change-password-3" placeholder="Confirmation Password" onChange={repeatNewPasswordChange} />
-//       </div>
-//       <button type="submit" className="button-batalkan-change-password">
-//         Batalkan
-//       </button>
-//       <button
-//         type="submit"
-//         className="button-simpan-change-password"
-//         onClick={() => {
-//           onSubmit();
-//           setOldPassword('');
-//           setNewPassword('');
-//           setRepeatNewPassword('');
-//         }}
-//         disabled={oldPasswordErrorMsg || newPasswordErrorMsg || repeatNewPasswordErrorMsg || !(oldPassword && newPassword && repeatNewPassword) || isSubmitting}
-//       >
-//         Simpan
-//       </button>
-//     </div>
-//   );
-// };
+  return (
+    <div className="container">
+      <TemplateProfile />
+      <SidebarProfile2 />
+      <div className="foto-change-password">
+        <img src={ChangePasswords} alt="" />
+      </div>
+      <div className="baris-change-password-1">
+        <div>Old Password</div>
+        <InputGroup className="mb-3">
+          <Input type="text" onChange={oldPasswordChange} />
+          <Button className="icon-email-newpassword">@</Button>
+        </InputGroup>
+      </div>
+      <div className="form-group baris-change-password-2">
+        <div>New Password</div>
+        <InputGroup className="mb-3">
+          <Input type="text" onChange={newPasswordChange} />
+          <Button className="icon-email-newpassword">@</Button>
+        </InputGroup>
+      </div>
+      <div className="form-group baris-change-password-3">
+        <div>Repeat New Password</div>
+        <InputGroup className="mb-5">
+          <Input type="text" value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
+          <Button className="icon-email-newpassword">@</Button>
+        </InputGroup>
+      </div>
+      <button type="submit" className=" btn btn-outline-danger button-batalkan-change-password" onClick={() => navigate('/')}>
+        Batal
+      </button>
+      {loading ? (
+        <button disable type="submit" className=" btn btn-secondary button-simpan-change-password">
+          <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={15} />
+        </button>
+      ) : (
+        <button type="submit" className=" btn btn-danger button-simpan-change-password" onClick={() => onSubmit()}>
+          Simpan{' '}
+        </button>
+      )}
+    </div>
+  );
+};
 
-// export default ChangePassword;
+export default ChangePassword;

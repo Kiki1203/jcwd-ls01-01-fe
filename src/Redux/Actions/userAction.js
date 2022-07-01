@@ -102,3 +102,10 @@ export const onCheckUserVerify = (token) => {
       });
   };
 };
+
+export const onUserLogout = () => {
+  localStorage.removeItem('myTkn');
+  return {
+    type: 'USER_LOGOUT',
+  };
+};

@@ -1,0 +1,26 @@
+#container-upload-resep {
+  margin-top: 50px;
+  min-height: calc(100vh - 92px);
+  min-width: 100vw;
+  padding: 0px 150px 50px 150px;
+}
+
+.box-upload {
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+  padding: 25px;
+}
+
+#box-dropzone {
+  background: #f6fafb;
+  border-radius: 8px;
+  border: 2px dashed black;
+  text-align: center;
+  padding: 100px 0px;
+}
+
+.loader {
+  text-align: center;
+  padding: 200px 0px;
+}

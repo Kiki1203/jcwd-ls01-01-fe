@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import './Login.css';
 import Divider from '@mui/material/Divider';
 import gambar from './../../../Assets/login.svg';
-import logo from './../../../Assets/logo.svg';
 import google from './../../../Assets/googleL.svg';
+import pLogin from './../../../Assets/pLogin.svg';
+import passLogin from './../../../Assets/passLogin.svg';
 import { useDispatch } from 'react-redux';
 import { onUserLogin } from '../../../Redux/Actions/userAction';
 import { Navigate, Link } from 'react-router-dom';
-// import { Redirect } from 'react-router';
+import { InputGroup, InputGroupText, Input, Button } from 'reactstrap';
 
 const Login = () => {
   const [password, setPassword] = useState('');
@@ -15,6 +16,7 @@ const Login = () => {
   const [disable, setDisable] = useState(false);
   const dispatch = useDispatch();
   const [direct, setDirect] = useState(false);
+  // const { is_login } = useSelector((state) => state.userReducer);
 
   const onSubmit = () => {
     let data = {
@@ -30,42 +32,45 @@ const Login = () => {
     return <Navigate to="/" />;
   }
 
-  return (
-    <div className="container-fluid ">
-      <div className="row haedR">
-        <div className="col-6  formGambar">
-          <div className="registerlogo" href="/">
-            <img src={logo} alt="" />
-            Apotakecare
-          </div>
-          <div className="registerslogan">Apotek Online Khusus Untuk Keperluanmu</div>
-          <img className="gambar" src={gambar} alt="" />
-        </div>
-        <div className="col-6 form">
-          <div className="header-form-register mb-4">Masuk</div>
+  // if (!direct || is_login) {
+  //   return <Navigate to="/" />;
+  // }
 
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" className="form-label">
-              Name or Email
-            </label>
-            <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Input Username or Email" onChange={(e) => setAccount(e.target.value)} />
-          </div>
-          <div className="">
-            <label for="exampleFormControlInput1" className="form-label">
-              Password
-            </label>
-            <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Input Password " onChange={(e) => setPassword(e.target.value)} />
-          </div>
-          <div className="row justify-content-evenly fc mt-2">
+  return (
+    <div className="container-register">
+      <div className="row">
+        <div className="col-xs-12 col-sm-12 col-md-6">
+          <img src={gambar} alt="" />
+        </div>
+        <div className="col-xs-12 col-sm-12 col-md-6 form-register">
+          <div className="mb-4">Masuk</div>
+          <label for="exampleFormControlInput1" className="form-label">
+            Username or Email
+          </label>
+          <InputGroup className=" col-12 col-sm-12 col-12 mb-3">
+            <InputGroupText className="icon-email-resetpassword">
+              <img src={pLogin} alt="" />
+            </InputGroupText>
+            <Input placeholder="" onChange={(e) => setAccount(e.target.value)} />
+          </InputGroup>
+          <label for="exampleFormControlInput1" className="form-label">
+            Password
+          </label>
+          <InputGroup className=" col-12 col-sm-12 col-12">
+            <InputGroupText className="icon-email-resetpassword">
+              <img src={passLogin} alt="" />
+            </InputGroupText>
+            <Input placeholder="" onChange={(e) => setPassword(e.target.value)} />
+            <Button className="icon-email-newpassword">@</Button>
+          </InputGroup>
+          <div className="row justify-content-evenly">
             <div className="col-6 ">
-              <div className="form-check  mb-4">
-                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                <label className="form-check-label" for="flexCheckDefault">
-                  Ingat Saya
-                </label>
+              <div className="mb-4">
+                <input type="checkbox" value="" id="flexCheckDefault" />
+                <label for="flexCheckDefault">Ingat Saya</label>
               </div>
             </div>
-            <div className="col-6 text-end">
+            <div className="col-6">
               Lupa Kata
               <span>
                 {' '}
@@ -84,11 +89,11 @@ const Login = () => {
           <Divider>Atau masuk dengan</Divider>
           <br />
           <div className="mb-5  ">
-            <button className="col-12 btn btn-outline-danger gb" disabled={disable ? true : false}>
-              <img className="googleL me-2" src={google} alt="" /> Daftar dengan Google Masuk dengan Google
+            <button className="col-12 btn btn-outline-danger" disabled={disable ? true : false}>
+              <img className="me-2" src={google} alt="" /> Daftar dengan Google Masuk dengan Google
             </button>
           </div>
-          <div className="bpm">
+          <div>
             Belum Punya Akun?{' '}
             <span>
               <Link to="/register" style={{ textDecoration: 'none', color: 'red' }}>

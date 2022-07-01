@@ -1,3 +1,14 @@
-.home {
-  width: 100vw !important;
+#container-home {
+  margin-top: 50px;
+  min-height: calc(100vh - 92px);
+  min-width: 100vw;
+  padding: 50px 150px 50px 150px;
+}
+#container-jumbotron-payment {
+  padding: 30px 0px 0px 0px;
+  height: 150px;
+  min-width: 100vw;
+  text-align: center;
+  align-items: center;
+  background: #f6fafb;
 }
