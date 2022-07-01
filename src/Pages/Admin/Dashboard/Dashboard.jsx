@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import './Dashboard.css';
-// import Prosentase1 from '../Gambar/Prosentase1.svg';
-// import Prosentase2 from '../Gambar/Prosentase2.svg';
-// import Grafik1 from '../Gambar/Grafik1.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleRight} from '@fortawesome/free-solid-svg-icons';
 import SidebarAdmin from '../../../Components/Admin/SidebarAdmin/SidebarAdmin.jsx';
 
 
@@ -16,21 +15,21 @@ const DashboardAdmin  = () => {
                 <div className="box-1-dashboard-admin">
                     <div className="judul-profit-hari-ini">Profit Hari Ini</div>
                     <div className="nominal-total-profit-hari-ini">Rp 10.213.500</div>
-                    <div className="row-profit-dashboard"><span className="material-icons">arrow_circle_right</span></div>
+                    <div className="row-profit-dashboard"><FontAwesomeIcon icon={faArrowCircleRight} className="" /></div>
                     <div className="keterangan-row-profit">+5.700.000</div>
                     <div className="prosentase-profit-box"></div>
                 </div>
                 <div className="box-2-dashboard-admin">
                     <div className="judul-total-pemesanan-today">Total Pemesanan Hari Ini </div>
                     <div  className="nominal-total-pemesanan-today">110</div>
-                    <div className="row-2-profit-dashboard"><span className="material-icons">arrow_circle_right</span></div>
+                    <div className="row-2-profit-dashboard"><FontAwesomeIcon icon={faArrowCircleRight} className="" /></div>
                     <div className="keterangan-row-2-profit">-60</div>
                     <div className="prosentase-profit-box-2"></div>
                 </div>
                 <div className="box-3-dashboard-admin">
                     <div className="judul-sisa-stok-today">Sisa Stok Hari Ini</div>
                     <div className="nominal-sisa-stok-today">5.980</div>
-                    <div className="row-sisa-stok-dashboard"><span className="material-icons">arrow_circle_right</span></div>
+                    <div className="row-sisa-stok-dashboard"><FontAwesomeIcon icon={faArrowCircleRight} className="" /></div>
                     <div className="keterangan-row-sisa-stok">+1.200</div>
                     <div className="prosentase-sisa-stok-box-2"></div>
                 </div>
