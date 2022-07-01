@@ -13,6 +13,50 @@
     object-fit: cover;
   }
 
+  .box-logo-1-admin {
+    position: absolute !important;
+    width: 500px !important;
+    height: 44px !important;
+    left: 0px !important;
+    top: 24px !important;
+    border-radius: 8px !important;
+  }
+  .logo-1-admin {
+    position: absolute;
+    left: 12px !important;
+    right: 13.24% !important;
+    top: 31.5% !important;
+    bottom: 13.25% !important;
+    color: #1A1E2B !important;
+    cursor: default;
+  }
+
+  .logo-input-group-text{
+    position: absolute;
+    left: 460px !important;
+    right: 13.24% !important;
+    top: 31.5% !important;
+    bottom: 13.25% !important;
+    color: #1A1E2B !important;
+    cursor: pointer;
+  }
+
+  .input-admin-1 {
+    left: 250px !important;
+    font-family: 'Public Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    line-height: 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    display: inline-block !important;
+    color: #1A1E2B !important;
+    padding-left: 40px !important;
+    cursor: text;
+  }
+  
+
   .box-isi-login-admin{
     position: absolute;
     width: 640px;
@@ -108,7 +152,7 @@
     width: 200px;
     height: 20px;
     left: 0px;
-    top: -10px;
+    top: -3px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -138,15 +182,15 @@
     width: 500px;
     height: 62px;
     left: 0px;
-    top: 140px;
+    top: 130px;
   }
 
   .form-ingat-saya{
     position: absolute;
     width: 200px;
     height: 20px;
-    left: 0px;
-    top: 210px;
+    left: -5px;
+    top: 220px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 400;
@@ -155,12 +199,26 @@
     color: #1A1E2B;
   }
 
+  .login-error-message{
+    position: absolute;
+    width: 130px;
+    height: 20px;
+    left: 400px;
+    top: 70px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #E0004D;
+  }
+
   .lupa-kata-sandi-admin{
     position: absolute;
     width: 93px;
     height: 18px;
     left: 410px;
-    top: 210px;
+    top: 220px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 400;
@@ -186,7 +244,7 @@
     border-radius: 8px;
     cursor: pointer;
     color: #FFFFFF;
-    border: none;
+    border: 1px solid #E0004D;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
