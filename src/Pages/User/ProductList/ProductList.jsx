@@ -4,7 +4,10 @@ import ProductCard from '../../../Components/User/ProductCard/ProductCard';
 import axios from 'axios';
 import API_URL from "../../../Helpers/API_URL.js"
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
+import noProductIllust from './../../../Assets/no-product.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 function ProductList(props) {
     const [numProducts, setNumProducts] = useState(0)
@@ -14,9 +17,32 @@ function ProductList(props) {
     const [error, setError] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
     const [products, setProducts] = useState([])
+    const [keluhan, setKeluhan] = useState([])
+    const [jenisObat, setJenisObat] = useState([])
+    const [golonganObat, setGolonganObat] = useState([])
+    const [headerKategori, setHeaderKategori] = useState('')
+    let { kategori } = useParams()
+    const [searchParams, setSearchParams] = useSearchParams()
+    let searchQuery = searchParams.get('search')
+    console.log(searchQuery)
+    const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`${API_URL}/product/totalproductsnum`, {headers: {'Access-Control-Allow-Origin': '*'}})
+        kategori === 'semua-kategori' && setHeaderKategori('Semua Kategori')
+        kategori === 'obat-obatan' && setHeaderKategori('Obat-obatan')
+        kategori === 'nutrisi' && setHeaderKategori('Nutrisi')
+        kategori === 'herbal' && setHeaderKategori('Herbal')
+        kategori === 'vitamin-suplemen' && setHeaderKategori('Vitamin & Suplemen')
+        kategori === 'alat-kesehatan' && setHeaderKategori('Alat Kesehatan')
+        kategori === 'perawatan-tubuh' && setHeaderKategori('Perawatan Tubuh')
+        kategori === 'ibu-anak' && setHeaderKategori('Ibu & Anak')
+    }, [kategori])
+
+    useEffect(() => {
+        setLoading(true)
+        let keluhanString = keluhan.join('-')
+        if(!searchQuery) {searchQuery = ''}
+        axios.get(`${API_URL}/product/totalproductsnum?search=${searchQuery}&category=${kategori}&keluhan=${keluhanString}`, {headers: {'Access-Control-Allow-Origin': '*'}})
         .then(res => {
         setNumProducts(res.data[0].countProducts)
         setLoading(false)
@@ -26,13 +52,16 @@ function ProductList(props) {
             setError(true)
             setErrorMsg(e.message)
         })
-    }, [])
+    }, [kategori, keluhan, searchQuery])
 
     useEffect(() => {
         setProducts([])
         setLoading(true)
         setError(false)
-        axios.get(`${API_URL}/product/productcards?page=${pageNumber}&limit=16&sortby=${sortBy}`, {headers: {'Access-Control-Allow-Origin': '*'}})
+        let keluhanString = keluhan.join('-')
+        if(!searchQuery) {searchQuery = ''}
+        axios.get(`${API_URL}/product/productcards?search=${searchQuery}&category=${kategori}&keluhan=${keluhanString}&page=${pageNumber}&limit=16&sortby=${sortBy}`,
+        {headers: {'Access-Control-Allow-Origin': '*'}})
         .then(res => {
         setProducts(prev => {
             return [...prev, ...res.data.map(product => ({
@@ -51,7 +80,7 @@ function ProductList(props) {
             setError(true)
             setErrorMsg(e.message)
         })
-    }, [pageNumber, sortBy])
+    }, [pageNumber, sortBy, kategori, keluhan, searchQuery])
 
     let paginationButtonGenerator = () => {
         let paginationButtons = []
@@ -61,9 +90,22 @@ function ProductList(props) {
             style={{marginRight: '5px', marginLeft: '5px'}}
             onClick={() => setPageNumber(i)}>{i}</button>)
         }
+        if(paginationButtons.length === 1) return
         return paginationButtons.map(value => {
             return value
         })
+    }
+
+    let keluhanFunc = (event, id) => {
+        if(event.target.checked) {
+            setKeluhan([...keluhan, id])
+        } else {
+            if(keluhan.includes(id)){
+                setKeluhan((keluhan) => keluhan.filter((val) => val !== id))
+            }
+        }
+        console.log(event.target.checked)
+        console.log(keluhan)
     }
 
     return (
@@ -73,13 +115,22 @@ function ProductList(props) {
                     <div>
                         <p className='sidebar-title'>KATEGORI</p>
                     </div>
-                    <p className='sidebar-text'>Obat-obatan</p>
-                    <p className='sidebar-text'>Nutrisi</p>
-                    <p className='sidebar-text'>Herbal</p>
-                    <p className='sidebar-text'>Vitamin & Suplemen</p>
-                    <p className='sidebar-text'>Alat Kesehatan</p>
-                    <p className='sidebar-text'>Perawatan Tubuh</p>
-                    <p className='sidebar-text'>Ibu & Anak</p>
+                    <p className='sidebar-text' onClick={ () => searchQuery ? navigate('/kategori/semua-kategori?search=' + searchQuery)
+        : navigate('/kategori/semua-kategori')}>Semua kategori</p>
+                    <p className='sidebar-text'  onClick={ () => searchQuery ? navigate('/kategori/obat-obatan?search=' + searchQuery)
+        : navigate('/kategori/obat-obatan')}>Obat-obatan</p>
+                    <p className='sidebar-text' onClick={() => searchQuery ? navigate('/kategori/nutrisi?search=' + searchQuery)
+        : navigate('/kategori/nutrisi')}>Nutrisi</p>
+                    <p className='sidebar-text' onClick={() => searchQuery ? navigate('/kategori/herbal?search=' + searchQuery)
+        : navigate('/kategori/herbal')}>Herbal</p>
+                    <p className='sidebar-text' onClick={() => searchQuery ? navigate('/kategori/vitamin-suplemen?search=' + searchQuery)
+        : navigate('/kategori/vitamin-suplemen')}>Vitamin & Suplemen</p>
+                    <p className='sidebar-text' onClick={() => searchQuery ? navigate('/kategori/alat-kesehatan?search=' + searchQuery)
+        : navigate('/kategori/alat-kesehatan')}>Alat Kesehatan</p>
+                    <p className='sidebar-text' onClick={() => searchQuery ? navigate('/kategori/perawatan-tubuh?search=' + searchQuery)
+        : navigate('/kategori/perawatan-tubuh')}>Perawatan Tubuh</p>
+                    <p className='sidebar-text' onClick={() => searchQuery ? navigate('/kategori/ibu-anak?search=' + searchQuery)
+        : navigate('/kategori/ibu-anak')}>Ibu & Anak</p>
                 </div>
                 <div id='filter'>
                     <button id='hapus-semua-filter'>
@@ -90,35 +141,35 @@ function ProductList(props) {
                         <p className='sidebar-title'>KELUHAN</p>
                     </div>
                     <label className='sidebar-checkbox'>
-                        <input type="checkbox" />
+                        <input type="checkbox" onClick={(event) => keluhanFunc(event, 1)} />
                         Batuk & flu
                     </label>
                     <label className='sidebar-checkbox'>
-                        <input type="checkbox" />
+                        <input type="checkbox" onClick={(event) => keluhanFunc(event, 2)} />
                         Mulut & tenggorokan
                     </label>
                     <label className='sidebar-checkbox'>
-                        <input type="checkbox" />
+                        <input type="checkbox" onClick={(event) => keluhanFunc(event, 13)} />
                         Imun booster
                     </label>
                     <label className='sidebar-checkbox'>
-                        <input type="checkbox" />
+                        <input type="checkbox" onClick={(event) => keluhanFunc(event, 10)} />
                         Maag
                     </label>
                     <label className='sidebar-checkbox'>
-                        <input type="checkbox" />
+                        <input type="checkbox" onClick={(event) => keluhanFunc(event, 5)} />
                         Diare
                     </label>
                     <label className='sidebar-checkbox'>
-                        <input type="checkbox" />
+                        <input type="checkbox" onClick={(event) => keluhanFunc(event, 6)} />
                         Demam & sakit kepala
                     </label>
                     <label className='sidebar-checkbox'>
-                        <input type="checkbox" />
+                        <input type="checkbox" onClick={(event) => keluhanFunc(event, 7)} />
                         Diabetes
                     </label>
                     <label className='sidebar-checkbox'>
-                        <input type="checkbox" />
+                        <input type="checkbox" onClick={(event) => keluhanFunc(event, 8)} />
                         Kolesterol
                     </label>
                     <p className='lihat-lebih-lengkap'>Lihat lebih lengkap</p>
@@ -196,10 +247,19 @@ function ProductList(props) {
                 </div>
             </div>
             <div id='products'>
-                <p style={{fontSize:'24px', fontWeight:'700'}}>Semua Kategori</p>
+                <p style={{fontSize:'24px', fontWeight:'700'}}>{headerKategori}</p>
                 <hr style={{borderColor:'#B4B9C7', borderWidth:'2px'}} />
                 <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
-                    <p style={{fontSize:'14px', color:'#737A8D', margin:'0px'}}>{`${numProducts} produk di semua kategori`}</p>
+                        {
+                            searchQuery 
+                            ? <div className='filter-bullet'>
+                                {`${numProducts} hasil pencarian "${searchQuery}"`}
+                                <FontAwesomeIcon icon={faXmark} className='filter-bullet-x'
+                                onClick={() => setSearchParams({})} />
+                            </div>
+                            : <p style={{fontSize:'14px', color:'#737A8D', margin:'0px'}}>{numProducts} produk di {headerKategori}</p>
+                        }
+                    
                     <div style={{display:'flex', alignItems:'center'}}>
                         <p style={{fontSize:'14px', color:'#737A8D', margin:'0px'}}>Urutkan</p>
                         <div class="custom-select">
@@ -214,11 +274,19 @@ function ProductList(props) {
                 </div>
                 <div id='product-cards-container'>
                     {
+                        loading
+                        ? <h1>Loading...</h1>
+                        : products.length ?
                         products.map((product, index) => {
                             return <div key={product.id}>
                                 <ProductCard product={product} />
                             </div>
                         })
+                        : <div className='d-flex flex-column align-items-center' style={{width:'100%'}}>
+                            <img src={noProductIllust} alt="" style={{width:'250px', margin:'20px'}} />
+                            <p style={{color:'#213360', fontSize:'20px', fontWeight:'700', margin:'0px 0px 10px'}}>Oops, produk tidak ditemukan</p>
+                            <p style={{color:'#8f939e', fontSize:'14px', margin:'0px 0px 30px'}}>Coba kurangi filter pencarian Anda</p>
+                        </div>
                     }
                 </div>
                 <div className='d-flex justify-content-end'>
