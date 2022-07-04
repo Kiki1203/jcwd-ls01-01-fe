@@ -1,0 +1,82 @@
+.gambar-produk-keranjang {
+    width: 100px;
+    height: 100px;
+    margin: 5px 20px 0px;
+    cursor: pointer;
+}
+
+.nama-produk-keranjang {
+    color: #213360;
+    font-size: 16px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.quantity-produk-keranjang {
+    color: #213360;
+    font-size: 12px;
+    margin: 0px;
+}
+
+.harga-produk-keranjang {
+    color: #213360;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0px;
+}
+
+#qty-button-left-keranjang {
+    border: none;
+    outline: none;
+    background-color: #ffe9f1;
+    color: #E0004D;
+    font-size: 16px;
+    font-weight: 900;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    padding: 0px 12px;
+    height: 25px;
+}
+.pindahkan-ke-favorit {
+    margin: 0px;
+    color: #E0004D;
+    font-size: 14px;
+    cursor: pointer;
+    padding-right: 15px;
+    border-right: 1px solid #bfbfbf;
+}
+
+.keranjang-buang {
+    color: #E0004D;
+    margin: 0px 20px 0px 15px;
+    cursor: pointer;
+}
+
+#qty-number-keranjang {
+    border: none;
+    outline: none;
+    background-color: #ffe9f1;
+    color: #E0004D;
+    width: 70px;
+    text-align: center;
+    height: 25px;
+    z-index: 100;
+    font-size: 14px;
+}
+
+#qty-button-right-keranjang {
+    border: none;
+    outline: none;
+    background-color: #ffe9f1;
+    color: #E0004D;
+    font-size: 16px;
+    font-weight: 900;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    padding: 0px 12px;
+    height: 25px;
+}
+
+#qty-button-left-keranjang:disabled, #qty-button-right-keranjang:disabled {
+    color: #bfbfbf;
+}

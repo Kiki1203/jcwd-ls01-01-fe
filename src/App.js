@@ -1,5 +1,6 @@
 import './App.css';
 import { Routes, Route, useLocation } from 'react-router-dom';
+// USER
 import Navbar from './Components/User/Navbar/Navbar.jsx';
 import Footer from './Components/User/Footer/Footer.jsx';
 import Login from './Pages/User/Login/Login.jsx';
@@ -9,6 +10,7 @@ import NewPassword from './Pages/User/NewPassword/NewPassword.jsx';
 import Cart from './Pages/User/Cart/Cart.jsx';
 import Checkout from './Pages/User/Checkout/Checkout.jsx';
 import Verification from './Pages/User/Verification/Verification.jsx';
+import Confirmation from './Pages/User/Confirmation/Confirmation.jsx';
 import FormAddress from './Pages/User/FormAddress/FormAddress.jsx';
 import Home from './Pages/User/Home/Home.jsx';
 import OrderProcess from './Pages/User/OrderProcess/OrderProcess.jsx';
@@ -19,6 +21,11 @@ import UploadResep from './Pages/User/UploadResep/UploadResep.jsx';
 import UploadSuccess from './Pages/User/UploadSuccess/UploadSuccess.jsx';
 import ChangePassword from './Pages/User/ChangePassword/ChangePassword.jsx';
 import EditProfile from './Pages/User/EditProfile/EditProfile.jsx';
+
+// ADMIN
+import LoginAdmin from './Pages/Admin/LoginAdmin/LoginAdmin.jsx';
+import Dashboard from './Pages/Admin/Dashboard/Dashboard.jsx';
+
 
 // Redux
 import { applyMiddleware, createStore } from 'redux';
@@ -34,7 +41,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/resetpassword' || location.pathname === '/newpassword' ? null : <Navbar />}
+        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/loginadmin' || location.pathname === '/resetpassword' || location.pathname === '/newpassword' ? null : <Navbar />}
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -45,16 +52,18 @@ function App() {
           <Route path="/newpassword/:token" element={<NewPassword />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/Checkout" element={<Checkout />} />
-          {/* <Route path="/verification/:token" element={<Verification />} /> */}
+          <Route path="/confirmation/:token" element={<Confirmation />} />
           <Route path="/verification" element={<Verification />} />
           <Route path="/FormAddress" element={<FormAddress />} />
           <Route path="/OrderProcess" element={<OrderProcess />} />
-          <Route path="/ProductDetail" element={<ProductDetail />} />
-          <Route path="/ProductList" element={<ProductList />} />
+          <Route path="/ProductDetail/:id" element={<ProductDetail />} />
+          <Route path="/kategori/:kategori" element={<ProductList />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/editprofile" element={<EditProfile />} />
           <Route path="/uploadresep" element={<UploadResep />} />
           <Route path="/uploadresepsuccess" element={<UploadSuccess />} />
+          <Route path="/loginadmin" element={<LoginAdmin />} />
+          <Route path="/homeadmin" element={<Dashboard />} />
         </Routes>
         {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/resetpassword' || location.pathname === '/newpassword' ? null : <Footer />}
       </Provider>

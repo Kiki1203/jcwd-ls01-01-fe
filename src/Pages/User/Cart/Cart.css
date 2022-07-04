@@ -1,0 +1,75 @@
+#keranjang-saya {
+    margin: 20px 0px 20px;
+    font-size: 28px;
+    color: #213360;
+    font-weight: 700; 
+}
+
+#produk-keranjang-container {
+    width: 700px;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.produk-keranjang {
+    border-top: 2px solid #D5D7DD;
+    padding: 10px 0px 20px;
+}
+
+#tab-total {
+    width: 350px;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+    border-radius: 20px;
+    padding: 30px;
+    height: 340px;
+    background-color: white;
+}
+
+#ringkasan-belanja {
+    font-size: 20px;
+    color: #213360;
+    font-weight: 700; 
+    margin-bottom: 20px;
+}
+
+.detail-ringkasan {
+    font-size: 15px;
+    color: #737A8D;
+    margin: 5px 0px;
+}
+
+.total-harga-container {
+    border-top: 1px solid #D5D7DD;
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+.total-harga {
+    font-size: 18px;
+    color: #213360;
+    font-weight: 700;
+}
+
+.button-bayar {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #E0004D;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 10px 50px;
+    margin-top: 30px;
+}
+
+.button-bayar:hover {
+    background-color: #ba0041;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+}
+
+.button-bayar:disabled {
+    background-color: #737A8D;
+    cursor:not-allowed; 
+}

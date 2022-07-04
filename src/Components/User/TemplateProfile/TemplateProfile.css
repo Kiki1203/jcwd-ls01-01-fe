@@ -1,149 +1,205 @@
-@media only screen and (max-width: 1400px) {
-    .box-profile{
-      position: absolute;
-      width: 800px;
-      height: 530px;
-      left: 400px;
-      top: 149px;
-      background: #FFFFFF;
-      box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
-      border-radius: 8px;
-    }
+.box-profile{
+  position: absolute;
+  width: 800px;
+  height: 530px;
+  left: 400px;
+  top: 149px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.tab-profile{
+  position: absolute;
+  width: 80px;
+  height: 36px;
+  left: 40px;
+  top: 80px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #213360;
+  cursor: pointer;
+}
+
+.tab-profile:hover{
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 2px solid #E0004D;
+  color:#E0004D
+}
+
+.tab-edit-profile{
+  position: absolute;
+  width: 100px;
+  height: 36px;
+  left: 160px;
+  top: 80px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #213360;
+}
+
+.tab-edit-profile:hover{
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 2px solid #E0004D;
+  color:#E0004D
+}
+
+.tab-change-password{
+  position: absolute;
+  width: 150px;
+  height: 36px;
+  left: 310px;
+  top: 80px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #213360;
+}
+
+.garis-batas-tab-profile{
+  position: absolute;
+  width: 740px;
+  height: 0px;
+  left: 40px;
+  top: 116px;
+  border: 1.5px solid #F5F6F9;
+}
+
+.tab-change-password:hover{
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 2px solid #E0004D;
+  color:#E0004D
+}
+
+@media only screen and (max-width: 850px) {
+  .box-profile{
+    position: absolute;
+    width: 700px;
+    height: 530px;
+    left: 400px;
+    top: 149px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+    border-radius: 8px;
+  }
   
-    .keterangan-verifikasi{
-      position: absolute;
-      width: 229px;
-      height: 24px;
-      left: 40px;
-      top: 28px;
-      font-family: 'Public Sans';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 24px;
-      display: flex;
-      align-items: center;
-      color: #008076;
-    }
+  .tab-profile{
+    position: absolute;
+    width: 80px;
+    height: 36px;
+    left: 40px;
+    top: 80px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #213360;
+    cursor: pointer;
+  }
   
-    .tab-profile{
-      position: absolute;
-      width: 80px;
-      height: 36px;
-      left: 40px;
-      top: 80px;
-      font-family: 'Public Sans';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      color: #213360;
-      cursor: pointer;
-    }
+  .tab-profile:hover{
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 2px solid #E0004D;
+    color:#E0004D
+  }
   
-    .tab-profile:hover{
-      text-decoration: none;
-      cursor: pointer;
-      border-bottom: 2px solid #E0004D;
-      color:#E0004D
-    }
+  .tab-edit-profile{
+    position: absolute;
+    width: 100px;
+    height: 36px;
+    left: 160px;
+    top: 80px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #213360;
+  }
   
-    .tab-edit-profile{
-      position: absolute;
-      width: 100px;
-      height: 36px;
-      left: 160px;
-      top: 80px;
-      font-family: 'Public Sans';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      color: #213360;
-    }
+  .tab-edit-profile:hover{
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 2px solid #E0004D;
+    color:#E0004D
+  }
   
-    .tab-edit-profile:hover{
-      text-decoration: none;
-      cursor: pointer;
-      border-bottom: 2px solid #E0004D;
-      color:#E0004D
-    }
+  .tab-change-password{
+    position: absolute;
+    width: 150px;
+    height: 36px;
+    left: 310px;
+    top: 80px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #213360;
+  }
   
-    .tab-change-password{
-      position: absolute;
-      width: 150px;
-      height: 36px;
-      left: 310px;
-      top: 80px;
-      font-family: 'Public Sans';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      color: #213360;
-    }
+  .garis-batas-tab-profile{
+    position: absolute;
+    width: 740px;
+    height: 0px;
+    left: 40px;
+    top: 116px;
+    border: 1.5px solid #F5F6F9;
+  }
   
-    .garis-batas-tab-profile{
-      position: absolute;
-      width: 740px;
-      height: 0px;
-      left: 40px;
-      top: 116px;
-      border: 1.5px solid #F5F6F9;
-    }
-  
-    .tab-change-password:hover{
-      text-decoration: none;
-      cursor: pointer;
-      border-bottom: 2px solid #E0004D;
-      color:#E0004D
-    }
+  .tab-change-password:hover{
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 2px solid #E0004D;
+    color:#E0004D
+  }
   
   }
   
   
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 500px) {
     .box-profile{
-      width: 502.5px;
+      width: 300px;
       height: 330px;
       left: 0px;
       top: 0px;
       box-shadow: none;
+      border-radius: none;
+      overflow-x: hidden;
     }
   
-    .pinggiran-atas{
-      position: absolute;
-      width: 24px;
-      height: 22.22px;
-      left: 20px;
-      top: 39px;
-    }
-  
-    .keterangan-verifikasi{
-      position: absolute;
-      width: 262px;
-      height: 22px;
-      left: 48px;
-      top: 40px;
-      font-family: 'Public Sans';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 19px;
-      display: flex;
-      align-items: center;
-      color: #009B90;
-    
-    }
+   
   
     .tab-versi-dekstop{
       display: none;

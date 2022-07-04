@@ -26,6 +26,7 @@ export const onUserLogin = (data) => {
 
     Axios.post(`${API_URL}/user/login`, { account: data.account, password: data.password })
       .then((res) => {
+        console.log('ini res.data login', res.data)
         if (res.data.error === true) {
           console.log('ini res.data.error', res.data.error);
           dispatch({
@@ -44,6 +45,7 @@ export const onUserLogin = (data) => {
             type: 'LOGIN_SUCCESS',
             payload: { error: res.data.error, message: res.data.message, id: res.data.id },
           });
+          
         }
       })
       .catch((err) => {

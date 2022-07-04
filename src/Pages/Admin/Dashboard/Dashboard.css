@@ -1,0 +1,850 @@
+.full-box-dashboard-admin-page{
+    position: absolute;
+    width: 1007px;
+    height: 950px;
+    left: 256px;
+    top: 64px;
+    background: linear-gradient(155.7deg, #f5ded6 -45.88%, #fcf7f9 45.77%, #fcf1f7 117.72%);
+}
+
+.tulisan-analisis-produk-admin{
+    position: absolute;
+    width: 218px;
+    height: 24px;
+    left: 48px;
+    top: 32px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+}
+
+.keterangan-update-terakhir-barang{
+    position: absolute;
+    width: 290px;
+    height: 20px;
+    left: 48px;
+    top: 60px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #737A8D;
+}
+
+.box-1-dashboard-admin{
+    position: absolute;
+    width: 280px;
+    height: 122px;
+    left: 48px;
+    top: 96px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 38, 0.02), 0px 4px 12px 4px rgba(155, 0, 41, 0.08);
+    border-radius: 10px;
+}
+
+.judul-profit-hari-ini{
+    position: absolute;
+    width: 77px;
+    height: 14px;
+    left: 16px;
+    top: 16px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    color: #737A8D;
+}
+
+.nominal-total-profit-hari-ini{
+    position: absolute;
+    width: 164px;
+    height: 28px;
+    left: 16px;
+    top: 42px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+}
+
+.row-profit-dashboard{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 10px;
+    top: 89px;
+    font-size: 10px;
+    color: #21CDC0;
+    transform: rotate(-40deg);
+}
+
+.keterangan-row-profit{
+    position: absolute;
+    width: 56px;
+    height: 24px;
+    left: 40px;
+    top: 85px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #21CDC0;
+}
+
+.prosentase-profit-box{
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    left: 190px;
+    top: 29px;
+    border: 1px solid blue;
+
+}
+
+.box-2-dashboard-admin{
+    position: absolute;
+    width: 280px;
+    height: 122px;
+    left: 370px;
+    top: 96px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 38, 0.02), 0px 4px 12px 4px rgba(155, 0, 41, 0.08);
+    border-radius: 10px;
+}
+
+.judul-total-pemesanan-today{
+    position: absolute;
+    width: 142px;
+    height: 14px;
+    left: 16px;
+    top: 16px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    color: #737A8D;
+}
+
+.nominal-total-pemesanan-today{
+    position: absolute;
+    width: 36px;
+    height: 28px;
+    left: 16px;
+    top: 42px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+}
+
+.row-2-profit-dashboard{
+    color: #FF6B6B;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 20px;
+    top: 80px;
+    transform: rotate(40deg);
+}
+
+.keterangan-row-2-profit{
+    position: absolute;
+    width: 17px;
+    height: 24px;
+    left: 40px;
+    top: 83px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #FF6B6B;
+}
+
+.prosentase-profit-box-2{
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    left: 190px;
+    top: 29px;
+    border: 1px solid blue;
+
+}
+
+.box-3-dashboard-admin{
+    position: absolute;
+    width: 280px;
+    height: 122px;
+    left: 690px;
+    top: 96px;    
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 38, 0.02), 0px 4px 12px 4px rgba(155, 0, 41, 0.08);
+    border-radius: 10px;
+}
+
+.judul-sisa-stok-today{
+    position: absolute;
+    width: 98px;
+    height: 14px;
+    left: 16px;
+    top: 16px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    color: #737A8D;
+}
+
+.nominal-sisa-stok-today{
+    position: absolute;
+    width: 70px;
+    height: 28px;
+    left: 16px;
+    top: 42px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+}
+
+.row-sisa-stok-dashboard{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 10px;
+    top: 89px;
+    color: #21CDC0;
+    transform: rotate(-40deg);
+}
+
+.keterangan-row-sisa-stok{
+    position: absolute;
+    width: 33px;
+    height: 24px;
+    left: 40px;
+    top: 82px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #21CDC0;
+
+}
+
+.prosentase-sisa-stok-box-2{
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    left: 190px;
+    top: 29px;
+    border: 1px solid blue;
+
+}
+
+.tulisan-penting-hari-ini{
+    position: absolute;
+    width: 147px;
+    height: 24px;
+    left: 48px;
+    top: 250px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+}
+
+.tulisan-aktivitas-dashboard{
+    position: absolute;
+    width: 459px;
+    height: 20px;
+    left: 48px;
+    top: 278px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #737A8D;
+}
+
+.tulisan-kadaluarsa-obat-dashboard{
+    position: absolute;
+    width: 175px;
+    height: 24px;
+    left: 601px;
+    top: 250px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+}
+
+.tulisan-cek-tanggal-kadaluarsa-dashboard{
+    position: absolute;
+    width: 367px;
+    height: 20px;
+    left: 601px;
+    top: 278px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #737A8D;
+}
+
+.box-pesanan-baru-dashboard-admin{
+    position: absolute;
+    width: 168px;
+    height: 93px;
+    left: 48px;
+    top: 314px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 38, 0.02), 0px 4px 12px 4px rgba(155, 0, 41, 0.08);
+    border-radius: 10px;
+}
+
+.judul-box-pesanan{
+    position: absolute;
+    width: 92px;
+    height: 20px;
+    left: 20px;
+    top: 20px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;    
+    color: #737A8D;
+}
+
+.nominal-box-pesanan{
+    position: absolute;
+    width: 18px;
+    height: 33px;
+    left: 20px;
+    top: 45px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+    
+}
+
+.box-siap-dikirim-dashboard-admin{
+    position: absolute;
+    width: 169px;
+    height: 93px;
+    left: 232px;
+    top: 314px;    
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 38, 0.02), 0px 4px 12px 4px rgba(155, 0, 41, 0.08);
+    border-radius: 10px;
+}
+
+.judul-box-siap-dikirim{
+    position: absolute;
+    width: 82px;
+    height: 20px;
+    left: 20px;
+    top: 20px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #737A8D;
+}
+
+.nominal-box-siap-dikirim{
+    position: absolute;
+    width: 19px;
+    height: 33px;
+    left: 20px;
+    top: 45px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;    
+    color: #213360;
+    
+}
+
+.box-sedang-dikirim-dashboard-admin{
+    position: absolute;
+    width: 168px;
+    height: 93px;
+    left: 417px;
+    top: 314px;    
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 38, 0.02), 0px 4px 12px 4px rgba(155, 0, 41, 0.08);
+    border-radius: 10px;
+}
+
+.judul-box-sedang-dikirim{
+    position: absolute;
+    width: 103px;
+    height: 20px;
+    left: 20px;
+    top: 20px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #737A8D;
+}
+
+.nominal-box-sedang-dikirim{
+    position: absolute;
+    width: 19px;
+    height: 33px;
+    left: 20px;
+    top: 45px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+}
+
+
+.box-selesai-dashboard-admin{
+    position: absolute;
+    width: 168px;
+    height: 93px;
+    left: 48px;
+    top: 423px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 38, 0.02), 0px 4px 12px 4px rgba(155, 0, 41, 0.08);
+    border-radius: 10px;
+}
+
+.judul-box-selesai{
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    left: 20px;
+    top: 20px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #737A8D;
+}
+
+.nominal-box-selesai{
+    position: absolute;
+    width: 18px;
+    height: 33px;
+    left: 20px;
+    top: 45px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+    
+}
+
+.box-dibatalkan-dashboard-admin{
+    position: absolute;
+    width: 169px;
+    height: 93px;
+    left: 232px;
+    top: 423px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 38, 0.02), 0px 4px 12px 4px rgba(155, 0, 41, 0.08);
+    border-radius: 10px;
+}
+
+.judul-box-dibatalkan{
+    position: absolute;
+    width: 73px;
+    height: 20px;
+    left: 20px;
+    top: 20px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #737A8D;
+}
+
+
+.nominal-box-dibatalkan{
+    position: absolute;
+    width: 19px;
+    height: 33px;
+    left: 20px;
+    top: 45px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+    
+}
+
+.box-chat-baru-dashboard-admin{
+    position: absolute;
+    width: 168px;
+    height: 93px;
+    left: 417px;
+    top: 423px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 38, 0.02), 0px 4px 12px 4px rgba(155, 0, 41, 0.08);
+    border-radius: 10px;
+}
+
+.judul-box-chat-baru{
+    position: absolute;
+    width: 67px;
+    height: 20px;
+    left: 20px;
+    top: 20px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #737A8D;
+}
+
+
+.nominal-box-chat-baru{
+    position: absolute;
+    width: 19px;
+    height: 33px;
+    left: 20px;
+    top: 45px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+    
+}
+
+.box-kadaluarsa-dashboard-admin{
+    position: absolute;
+    width: 353px;
+    height: 202px;
+    left: 601px;
+    top: 314px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 38, 0.02), 0px 4px 12px 4px rgba(155, 0, 41, 0.08);
+    border-radius: 10px;
+}
+
+.keterangan-telah-expired{
+    position: absolute;
+    width: 144px;
+    height: 19px;
+    left: 16px;
+    top: 44px; 
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+}
+
+.nominal-telah-expired{
+    position: absolute;
+    width: 26px;
+    height: 30px;
+    left: 311px;
+    top: 38px;  
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #FF6B6B;
+    
+}
+
+.keterangan-expired-bulan-ini{
+    position: absolute;
+    width: 169px;
+    height: 19px;
+    left: 16px;
+    top: 95px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+}
+
+.jumlah-expired-bulan-ini{
+    position: absolute;
+    width: 26px;
+    height: 30px;
+    left: 311px;
+    top: 89px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #FFDE6B;
+}
+
+.keterangan-expired-3-bulan-lagi{
+    position: absolute;
+    width: 232px;
+    height: 19px;
+    left: 16px;
+    top: 146px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+}
+
+.nominal-expired-3-bulan-lagi{
+    position: absolute;
+    width: 26px;
+    height: 30px;
+    left: 311px;
+    top: 145px;  
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #21CDC0;
+}
+
+.box-profit-dashboard-admin{
+    position: absolute;
+    width: 450px;
+    height: 380px;
+    left: 48px;
+    top: 548px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 38, 0.02), 0px 4px 12px 4px rgba(155, 0, 41, 0.08);
+    border-radius: 10px;
+}
+
+.judul-dalam-box-profit{
+    position: absolute;
+    width: 55px;
+    height: 24px;
+    left: 25px;
+    top: 25px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+    
+}
+
+.keterangan-dalam-box-profit{
+    position: absolute;
+    width: 205px;
+    height: 18px;
+    left: 25px;
+    top: 58px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    color: #737A8D;
+}
+
+.dropdown-dalam-box-profit{
+    position: absolute;
+    width: 141px;
+    height: 24px;
+    left: 280px;
+    top: 25px;
+    border: 1px solid #D5D7DD;
+    border-radius: 4px;
+}
+
+.grafix-box-dalam-box-profit{
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    left: 25px;
+    top: 100px;
+    border: 1px solid blue;
+}
+
+.box-penjualan-obat-dashboard-admin{
+    position: absolute;
+    width: 450px;
+    height: 380px;
+    left: 530px;
+    top: 548px;    
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 38, 0.02), 0px 4px 12px 4px rgba(155, 0, 41, 0.08);
+    border-radius: 10px;
+
+}
+
+.tulisan-pejualan-obat-1{
+    position: absolute;
+    width: 146px;
+    height: 24px;
+    left: 25px;
+    top: 20px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+}
+
+.garis-1-dalam-box-pejualan-obat{
+    position: absolute;
+    width: 10px;
+    height: 0px;
+    left: 25px;
+    top: 60px;
+    border: 2px solid #21CDC0;
+}
+
+.keterangan-dalam-box-pejualan-obat{
+    position: absolute;
+    width: 65px;
+    height: 18px;
+    left: 50px;
+    top: 55px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #737A8D;
+}
+
+.dropdown-dalam-box-pejualan-obat{
+    position: absolute;
+    width: 141px;
+    height: 24px;
+    left: 280px;
+    top: 20px;
+    border: 1px solid #D5D7DD;
+    border-radius: 4px;
+}
+
+.grafix-box-dalam-box-pejualan-obat{
+    position: absolute;
+    width: 400px;
+    height: 270px;
+    left: 25px;
+    top: 78px;
+    border: 1px solid blue;
+}
