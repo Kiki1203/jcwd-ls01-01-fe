@@ -6,6 +6,7 @@ import Footer from './Components/User/Footer/Footer.jsx';
 import Login from './Pages/User/Login/Login.jsx';
 import Register from './Pages/User/Register/Register.jsx';
 import ResetPassword from './Pages/User/ResetPassword/ResetPassword.jsx';
+import NewPassword from './Pages/User/NewPassword/NewPassword.jsx';
 import Cart from './Pages/User/Cart/Cart.jsx';
 import Checkout from './Pages/User/Checkout/Checkout.jsx';
 import Verification from './Pages/User/Verification/Verification.jsx';
@@ -40,7 +41,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/loginadmin' ? null : <Navbar />}
+        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/loginadmin' || location.pathname === '/resetpassword' || location.pathname === '/newpassword' ? null : <Navbar />}
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -48,6 +49,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/changepassword" element={<ChangePassword />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="/newpassword/:token" element={<NewPassword />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/Checkout" element={<Checkout />} />
           <Route path="/confirmation/:token" element={<Confirmation />} />
@@ -58,12 +60,12 @@ function App() {
           <Route path="/kategori/:kategori" element={<ProductList />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/editprofile" element={<EditProfile />} />
-          <Route path="/UploadResep" element={<UploadResep />} />
-          <Route path="/UploadSuccess" element={<UploadSuccess />} />
+          <Route path="/uploadresep" element={<UploadResep />} />
+          <Route path="/uploadresepsuccess" element={<UploadSuccess />} />
           <Route path="/loginadmin" element={<LoginAdmin />} />
           <Route path="/homeadmin" element={<Dashboard />} />
         </Routes>
-        {/* {location.pathname === '/login' || location.pathname === '/register' ? null : <Footer />} */}
+        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/resetpassword' || location.pathname === '/newpassword' ? null : <Footer />}
       </Provider>
     </>
   );

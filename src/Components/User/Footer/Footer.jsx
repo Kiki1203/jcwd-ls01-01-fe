@@ -1,11 +1,5 @@
 import React from 'react';
 import './Footer.css';
-import bca from './../../../Assets/Bca.svg';
-import mandiri from './../../../Assets/Mandiri.svg';
-import permata from './../../../Assets/Permata.svg';
-import ovo from './../../../Assets/Ovo.svg';
-import gopay from './../../../Assets/Gopay.svg';
-import shoope from './../../../Assets/Shoope.svg';
 import logo from './../../../Assets/logo.svg';
 import fb from './../../../Assets/fb.svg';
 import ig from './../../../Assets/ig.svg';
@@ -16,18 +10,7 @@ import call from './../../../Assets/call.svg';
 
 const Footer = () => {
   return (
-    <div className="Footer d-lg-block d-md-block d-none">
-      <div className="container-fluid a">
-        <div className="metode">Metode Pembayaran</div>
-        <div className="row justify-content-center">
-          <img src={bca} alt="" className="col-1 bca" />
-          <img src={mandiri} alt="" className="col-1 mandiri" />
-          <img src={permata} alt="" className="col-1 permata" />
-          <img src={ovo} alt="" className=" col-1 ovo" />
-          <img src={gopay} alt="" className="col-1 gopay" />
-          <img src={shoope} alt="" className="col-1 shoope" />
-        </div>
-      </div>
+    <div className="Footer">
       <div className="container-fluid b">
         <div className="row justify-content-center mt-5 ">
           <div className="col-4">

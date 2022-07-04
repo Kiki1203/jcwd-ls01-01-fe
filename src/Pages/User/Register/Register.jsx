@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, CSSProperties } from 'react';
 import Axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import Divider from '@mui/material/Divider';
@@ -6,18 +6,27 @@ import './Register.css';
 import gambar from './../../../Assets/login.svg';
 import google from './../../../Assets/googleL.svg';
 import fb from './../../../Assets/fbL.svg';
-import logo from './../../../Assets/logo.svg';
 import pLogin from './../../../Assets/pLogin.svg';
 import mLogin from './../../../Assets/mLogin.svg';
 import passLogin from './../../../Assets/passLogin.svg';
 import Swal from 'sweetalert2';
-import { Navigate, Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { InputGroup, InputGroupText, Input, Button } from 'reactstrap';
+import BeatLoader from 'react-spinners/BeatLoader';
+const override: CSSProperties = {
+  display: 'block',
+  margin: '0 auto',
+  borderColor: 'black',
+};
 
 const Register = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [passwordConf, setPasswordConf] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -46,9 +55,10 @@ const Register = () => {
       if (password !== data2) {
         return Toast.fire({ html: 'Password and Repeat Password doesnt match!', icon: 'error', title: 'ERROR!' });
       }
-
+      setLoading(true);
       Axios.post(`${API_URL}/user/register`, data)
         .then((res) => {
+          setLoading(true);
           Toast.fire({
             title: 'Success!',
             text: res.data.message,
@@ -60,8 +70,10 @@ const Register = () => {
           setEmail('');
           setPassword('');
           setPasswordConf('');
+          navigate('/login');
         })
         .catch((err) => {
+          setLoading(false);
           Toast.fire({
             title: 'Error!',
             text: err.response.data.message,
@@ -71,6 +83,7 @@ const Register = () => {
           });
         });
     } catch (error) {
+      setLoading(false);
       Toast.fire({
         title: 'Error!',
         text: error.message,
@@ -78,82 +91,84 @@ const Register = () => {
         confirmButtonText: 'Okay!',
         timer: 1500,
       });
+    } finally {
+      onSubmit.setSubmitting(false);
     }
   };
 
-  if (localStorage.getItem('myTkn')) {
-    return <Navigate to="/" />;
-  }
-
   return (
-    <div className="container-fluid ">
-      <div className="row haedR">
-        <div className="col-6  formGambar">
-          <div className="registerlogo" href="/">
-            <img src={logo} alt="" />
-            Apotakecare
-          </div>
-          <div className="registerslogan">Apotek Online Khusus Untuk Keperluanmu</div>
-          <img className="gambar" src={gambar} alt="" />
+    <div className="container-register ">
+      <div className="row">
+        <div className="col-xs-12 col-sm-12 col-md-6">
+          <img src={gambar} alt="" />
         </div>
-        <div className="col-6 form">
-          <div className="header-form-register mb-4">Mari Kita Mulai</div>
-          <div className="akun-form-register mb-4">
+        <div className="col-6 col-xs-12 col-sm-12 col-md-6 form-register">
+          <div className="mb-4">Mari Kita Mulai</div>
+          <div className="mb-4">
             Sudah punya akun?{' '}
             <Link to="/login" style={{ textDecoration: 'none', color: 'red' }}>
               Masuk
             </Link>
           </div>
           <div className="row justify-content-around">
-            <button type="button" className="col-5 bg btn btn-light">
-              <img className="googleL me-2" src={google} alt="" /> Daftar dengan Google
+            <button type="button" className="col-5 bg btn btn-light  login-other">
+              <img className="me-2" src={google} alt="" /> Daftar dengan Google
             </button>
-            <button className="col-6 bf btn btn-primary">
-              <img className="googleL me-2" src={fb} alt="" />
+            <button className="col-5 bf btn btn-primary  login-other">
+              <img className="me-2" src={fb} alt="" />
               Daftar dengan Facebook
             </button>
           </div>
           <br />
           <div>
             <Divider>
-              {' '}
-              <span className="akun-form-register"> atau</span>
+              <span> atau</span>
             </Divider>
           </div>
           <br />
-          <div className="inputL">
-            <div className="mb-2">
-              <label for="exampleFormControlInput1" className="form-label">
-                Name
-              </label>
-              <img className="pLogin" src={pLogin} alt="" />
-              <input type="username" className="form-control inputLP" id="exampleFormControlInput1" placeholder="Input Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-            </div>
-            <div className="mb-2">
-              <label for="exampleFormControlInput1" className="form-label">
-                Email Address
-              </label>
-              <img className="mLogin" src={mLogin} alt="" />
-              <input type="email" className="form-control inputLP" id="exampleFormControlInput1" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </div>
-            <div className="mb-2">
-              <label for="exampleFormControlInput1" className="form-label">
-                Password
-              </label>
-              <img className="pass1Login" src={passLogin} alt="" />
-              <input type="password" className="form-control inputLP" id="exampleFormControlInput1" placeholder="Input Password " value={password} onChange={(e) => setPassword(e.target.value)} />
-            </div>
-            <div className="mb-2">
-              <label for="exampleFormControlInput1" className="form-label">
-                Repeat Password
-              </label>
-              <img className="pass2Login" src={passLogin} alt="" />
-              <input type="password" className="form-control inputLP" id="exampleFormControlInput1" placeholder="Input Password Again" value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
-            </div>
+          <div>
+            <label for="exampleFormControlInput1" className="form-label">
+              Name
+            </label>
+            <InputGroup className=" col-12 col-sm-12 col-12 mb-3">
+              <InputGroupText className="icon-email-resetpassword">
+                <img src={pLogin} alt="" />
+              </InputGroupText>
+              <Input placeholder="" value={username} onChange={(e) => setUsername(e.target.value)} />
+            </InputGroup>
+            <label for="exampleFormControlInput1" className="form-label">
+              Email Address
+            </label>
+            <InputGroup className=" col-12 col-sm-12 col-12 mb-3">
+              <InputGroupText className="icon-email-resetpassword">
+                <img src={mLogin} alt="" />
+              </InputGroupText>
+              <Input placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </InputGroup>
+            <label for="exampleFormControlInput1" className="form-label">
+              Password
+            </label>
+            <InputGroup className=" col-12 col-sm-12 col-12 mb-3">
+              <InputGroupText className="icon-email-resetpassword">
+                <img src={passLogin} alt="" />
+              </InputGroupText>
+              <Input placeholder="" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <Button className="icon-email-newpassword">@</Button>
+            </InputGroup>
+            <label for="exampleFormControlInput1" className="form-label">
+              Repeat Password
+            </label>
+            <InputGroup className=" col-12 col-sm-12 col-12 mb-3">
+              <InputGroupText className="icon-email-resetpassword">
+                <img src={passLogin} alt="" />
+              </InputGroupText>
+              <Input placeholder="" value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
+              <Button className="icon-email-newpassword">@</Button>
+            </InputGroup>
           </div>
-          <div className="form-check check mt-4 mb-4 ">
-            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-            <label className="form-check-label " for="flexCheckDefault">
+          <div className="mt-4 mb-4 ">
+            <input type="checkbox" value="" id="flexCheckDefault" />
+            <label for="flexCheckDefault">
               Saya setuju dengan{' '}
               <span>
                 <Link to="" style={{ textDecoration: 'none', color: 'red' }}>
@@ -169,9 +184,16 @@ const Register = () => {
             </label>
           </div>
           <div classNameName="mb-3">
-            <button type="button" className="btn btn-danger col-12 " onClick={() => onSubmit()}>
-              Register
-            </button>
+            {loading ? (
+              <button type="button" className="btn btn-secondary col-12 ">
+                <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={15} />
+              </button>
+            ) : (
+              <button type="button" className="btn btn-danger col-12 " onClick={() => onSubmit()}>
+                {' '}
+                Sign up
+              </button>
+            )}
           </div>
         </div>
       </div>
