@@ -3,38 +3,59 @@ import './Navbar.css';
 import logo from './../../../Assets/logo.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faBell, faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import SearchBubble from '../SearchBubble/SearchBubble';
-import { useState } from 'react';
-import axios from 'axios';
-import API_URL from "../../../Helpers/API_URL.js"
-
+import { InputGroup, InputGroupText, Input } from 'reactstrap';
+import { Link } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
+// import { onCheckUserLogin, onUserLogout } from '../../../Redux/Actions/userAction';
 
 const Navbar = () => {
-  const [bubbleOpen, setBubbleOpen] = useState(false)
-  const [search, setSearch] = useState('')
-  const [products, setProducts] = useState([])
-  const [total, setTotal] = useState(0)
+  // const navigate = useNavigate();
+  // const { is_login } = useSelector((state) => state.userReducer);
 
-  useEffect(() => {
-    if(search.length){
-      axios.get(`${API_URL}/product/searchproducts?entry=${search}`, {headers: {'Access-Control-Allow-Origin': '*'}})
-      .then((res) => {
-          setProducts(res.data.products)
-          setTotal(res.data.total)
-      }).catch((err) => {
-          console.log('Error di search:', err)
-      })
+  // useEffect(() => {
+  //   onUserLogout();
+  //   onCheckUserLogin();
+  // }, []);
+
+  const navbar = () => {
+    if (localStorage.getItem('myTkn')) {
+      const btnLogOut = () => {
+        localStorage.removeItem('myTkn');
+      };
+      return [
+        <div className="col-1">
+          {' '}
+          <FontAwesomeIcon icon={faBell} />
+        </div>,
+        <div className="col-1">
+          <FontAwesomeIcon icon={faCartShopping} />
+        </div>,
+        <div className="col-1">
+          <button type="button" className="btn btn-danger " onClick={() => btnLogOut()}>
+            logout
+          </button>
+        </div>,
+      ];
+    } else {
+      return [
+        <Link to="/login" style={{ textDecoration: 'none', color: 'red' }} className="col-1">
+          <button type="button" className="btn btn-outline-danger btn-masuk">
+            Masuk
+          </button>
+        </Link>,
+        <Link to="/register" style={{ textDecoration: 'none', color: 'red' }} className="col-1">
+          <button className="btn btn-danger btn-daftar" type="submit" name="action">
+            Daftar
+          </button>
+        </Link>,
+      ];
     }
-  }, [search])
-
+  };
   return (
-    <div className='d-lg-block d-md-block d-none'>
-      {
-        bubbleOpen && <SearchBubble searchQuery={search} products={products} setBubbleOpen={setBubbleOpen} total={total} />
-      }
-      <div>
-        <nav className="navbar navbar-expand-sm navContainer">
-          <div className="container-fluid">
+    <div id="navbar">
+      <div className="container-fluid">
+        <div className="row justify-content-evenly align-content-center navbar-apotakecare ">
+          <div className="col-2">
             <a className="navbar-brand brand" href="/">
               <img src={logo} alt="" />
               Apotakecare
@@ -82,7 +103,17 @@ const Navbar = () => {
               Daftar
             </button> */}
           </div>
-        </nav>
+          <div className="col-6 d-flex">
+            <InputGroup>
+              <InputGroupText>
+                {' '}
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </InputGroupText>
+              <Input placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" className="search" />
+            </InputGroup>
+          </div>
+          {navbar()}
+        </div>
       </div>
     </div>
   );

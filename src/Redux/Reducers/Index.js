@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
 // Import Reducer
 import userReducer from './userReducer';
@@ -9,4 +9,4 @@ const allReducer = combineReducers({
     adminReducer,
 })
 
-export default allReducer
+export default allReducer;
