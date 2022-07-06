@@ -16,7 +16,7 @@ const DaftarProduk  = () => {
     const [totalProduk, setTotalProduk] = useState(0)
     const [produk, setProduk] = useState([])
     let [modalOpen, setModalOpen] = useState(false); 
-    let [modalOpen2, setModalOpen2] = useState(false);
+    let [modalOpens, setModalOpens] = useState(false);
     let [dropdownOpen, setDropdownOpen] = useState(false); 
     const [jumlahList, setJumlahList] = useState(0);
     const [totalPage, setTotalPage] = useState(0);
@@ -49,7 +49,6 @@ const DaftarProduk  = () => {
     for (let i=1; i <= pages; i++) {
         numOfPages.push(i);
     }
-    console.log('numOfPages', numOfPages)
 
     const [currentButton, setCurrentButton] = useState(1);
 
@@ -95,7 +94,7 @@ const DaftarProduk  = () => {
                                 <DropdownMenu>
                                     <DropdownItem>
                                     <ModalEditObat
-                                            modalOpen={modalOpen2}
+                                            modalOpen={!modalOpens}
                                             handleModal={handleModalEdit2}
                                             id={value.id}
                                         />
@@ -127,7 +126,7 @@ const DaftarProduk  = () => {
     }
 
     const handleModalEdit2 = (id) => {
-        setModalOpen2(true);
+        setModalOpens(true);
         setSelectedProdukId(id)
     }
 

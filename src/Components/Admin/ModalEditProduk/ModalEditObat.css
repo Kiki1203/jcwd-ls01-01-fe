@@ -1,9 +1,12 @@
-.box-modal-add-product-admin{
+/* .box-modal-add-product-admin{
+  position: absolute;
     background: #FFFFFF;
     box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.05);
     border-radius: 16px;
     margin-top: 50px;
-}
+    width: 700px !important;
+    height: 500px;
+} */
 
 .modal-title-add-obat{
     font-family: 'Public Sans';
@@ -14,22 +17,29 @@
     color: #1A1E2B;
 }
 
-.box-modal-header-admin{
+/* .box-modal-header-admin{
     display: flex;
-    justify-content: space-between;
-}
+ 
+} */
 
 .button-close-modal-admin{
-    margin-left: 320px;   
+    margin-left: 180px;   
     top: 10px;
+    cursor: pointer;
 }
 
+.button-close-modal-admin-2{
+  margin-left: 250px !important;   
+  top: 10px;
+  cursor: pointer;
+}
+
+
 .box-tab-modal-admin{
-    width: 320px;
-    height: 24px;
     display: flex;
     align-items: center;
     font-size: 12px;
+    margin-bottom: 15px;
 }
 
 .button-no-1{
@@ -93,28 +103,23 @@
 }
 
 .box-isi-modal-add-product{
-    width: 380px;
-    height: 300px;
-    margin-left: 10px;
     margin-top: 10px;
 }
 
-.box-isi-modal-add-product-2{
+/* .box-isi-modal-add-product-2{
     width: 380px;
     height: 300px;
     margin-left: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-}
+} */
 
 .box-inside-all-info-product{
-    width: 350px;
-    height: 50px;
     display: flex;
-    justify-content: space-between;
+    margin: 5 px;
 }
 
-.box-inside-all-info-product-2{
+/* .box-inside-all-info-product-2{
     width: 350px;
     height: 50px;
     display: flex;
@@ -124,7 +129,7 @@
     width: 400px;
     height: 50px;
     display: flex;
-}
+} */
 
 .nama-obat-info{
     font-family: 'Public Sans';
@@ -137,28 +142,16 @@
     width: 130px;
 }
 
-#nama-obat-info-2{
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: #000000;
-    margin-top: 10px;
-    width: 130px !important;
+.nama-obat-info-2{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  margin-top: 0px;
+  width: 130px;
 }
-
-.nama-obat-info-3{
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: #000000;
-    margin-top: 10px;
-    width: 210px !important;
-}
-
 
 
 .inputan-obat-info{
@@ -178,32 +171,54 @@
 }
 
 .inputan-obat-info-2{
-    padding: 8px 106px 8px 12px;
-    background: #FFFFFF;
-    border: 1px solid #CCCCCC;
-    border-radius: 4px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    color: #B4B9C7;
-    border: 1px solid red;
-    left: 0px  !important;
+  padding: 8px 106px 8px 12px;
+  gap: 10px;
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px  !important;
+  line-height: 18px;
+  color: #000000  !important;
+  width: 200px;
+  margin-left: 50px;
+  cursor: pointer;
 }
 
 .inputan-obat-info-3{
-    padding: 8px 106px 8px 12px;
-    background: #FFFFFF;
-    border-radius: 4px;
-    display: flex;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    color: #B4B9C7;
-    margin-left: 87px  !important;
+  padding: 8px 106px 8px 12px;
+  gap: 10px;
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px  !important;
+  line-height: 18px;
+  color: #000000  !important;
+  width: 200px;
+  margin-left: 40px;
+  cursor: pointer;
+}
+
+.inputan-obat-info-4{
+  padding: 8px 106px 8px 12px;
+  gap: 10px;
+  background: #FFFFFF;
+  border-radius: 4px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px  !important;
+  line-height: 18px;
+  color: #000000  !important;
+  width: 200px;
+  margin-left: 10px;
+  cursor: pointer;
+  display: flex;
 }
 
 .input-group-text-logo-kuantitas{
@@ -236,14 +251,19 @@
 .input-kuantitas-obat{
     height: 30px !important;
     width: 30px !important;
-    margin-top: -5px;
+    margin-top: 0px;
+    font-family: 'Public Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 16px !important;
 }
 
 
 .logo-input-group-text-2{
     position: absolute;
-    left: 310px;
-    margin-top: 8px;
+    left: 337px;
+    margin-top: 0px;
     color:  #737A8D;;
     cursor: pointer;
     font-size: 14px;
@@ -258,13 +278,12 @@
 
   .logo-input-group-text-3{
     position: absolute;
-    left: 345px;
-    margin-top: 8px;
+    left: 327px;
     color:  #737A8D;;
     cursor: pointer;
     font-size: 14px;
-    height: 34px;
-    width: 30px;
+    height: 38px;
+    width: 40px;
     background-color: #CCCCCC;
     display: flex;
     justify-content: center;
@@ -287,7 +306,7 @@
   }
 
   #adminImgUploud{
-    margin-left: -60px;
+    margin-left: 0px !important;
     width: 130px;
     height: 100px;
     object-fit: cover;
@@ -299,7 +318,7 @@
     width: 200px;
     height: 100px;
     object-fit: cover;
-    margin-left: 40px;
+    margin-left: 0px !important;
     margin-top: 10px;
     border: 1px solid #CCCCCC;
     border-radius: 4px;
@@ -312,8 +331,6 @@
   .button-choose-file-foto{
     height: 50px;
     width: 150px;
-    margin-top: -20px;
-    margin-bottom: 10px;
   }
   
 
@@ -357,6 +374,7 @@
     gap: 10px;
     width: 156px;
     height: 42px;
+    margin-left: 180px;
     background: #E0004D;
     border: 1px solid #E0004D;
     border-radius: 8px;
@@ -385,17 +403,17 @@
     text-align: center;
     color: #FFFFFF;
   }
+
+  .box-button-modal-2{
+    display: flex !important;
+    margin-top: 30px !important;
+  }
   
   .btn-kembali-before{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
     gap: 10px;
     width: 156px;
     height: 42px;
-    left: 432px;
-    top: 16px;
     border: 1px solid #E0004D;
     border-radius: 8px;
     font-family: 'Public Sans';
@@ -409,15 +427,10 @@
   }
 
   .btn-simpan-save{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     gap: 10px;
     width: 156px;
     height: 42px;
-    left: 432px;
-    top: 16px;
+    margin-left: 180px;
     border: 1px solid #E0004D;
     border-radius: 8px;
     font-family: 'Public Sans';
@@ -456,11 +469,11 @@
   }
 
   .box-modal-admin-sukses{
-    width: 450px;
-    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 280px;
+    margin-top: 30px !important;
   }
 
   .button-close-modal-admin-sukses{
@@ -470,10 +483,12 @@
     font-size: 18px;
     line-height: 18px;
     display: flex;
-    justify-content: end;
+    /* justify-content: end; */
     width: 450px;
     height: 20px;
     color: #737A8D;
+    position: absolute;
+    left: 340px;
   }
 
   .tulisan-sukses-add-produk-2{
@@ -496,7 +511,7 @@
     padding: 12px 24px;
     gap: 8px;
     position: absolute;
-    left: 720px;
+    left: 710px;
     top: 30px;
     cursor: pointer;
     font-family: 'Public Sans';
@@ -514,6 +529,7 @@
 }
 
 #choose-file-produk{
+  position: absolute;
   color: #FFFFFF;
   background: #E0004D;
   border: 1px solid #E0004D;
@@ -525,4 +541,16 @@
   font-size: 12px;
   line-height: 17px;
   border-radius: 8px;
+  top: 350px !important;
+}
+
+.button-edit-foto-produk{
+  position: absolute;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 17px;
+  border-radius: 8px;
+  top: 350px !important;
 }
