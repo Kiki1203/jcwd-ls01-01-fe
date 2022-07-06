@@ -1,0 +1,885 @@
+/* NEW */
+
+.judul-tabel-daftar-produk{
+    background: #213360;
+    border-radius: 10px 10px 0px 0px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+
+#dropdown-edit-menu-admin{
+    background: transparent;
+    border: none;
+    width: 20px;
+    height: 35px;
+    display: flex;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: center;
+    margin-left: -12px;
+    color: #1A1E2B;
+    appearance: none; 
+    margin-top: 7px;
+}
+
+.body-tabel-daftar-produk{
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    text-align: left;
+}
+
+.edit-list-produk-admin{
+    color: #1A1E2B;   
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+    margin-top: 7px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    appearance: none;    
+}
+
+
+/* OLD */
+.box-daftar-produk-admin{
+    position: absolute;
+    width: 983px;
+    height: 950px;
+    left: 280px;
+    top: 64px;
+    background: linear-gradient(155.7deg, #f5ded6 -45.88%, #fcf7f9 45.77%, #fcf1f7 117.72%);
+}
+
+.tulisan-dalam-daftar-produk-1{
+    position: absolute;
+    width: 113px;
+    height: 24px;
+    left: 48px;
+    top: 32px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+  
+}
+
+.input-admin-daftar-1 {
+    left: 250px !important;
+    font-family: 'Public Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    line-height: 16px !important;
+    color: #1A1E2B !important;
+    cursor: text;
+    border: 1px solid #CCCCCC;
+    height: 40px;
+}
+
+.logo-input-group-text-daftar{
+    position: absolute;
+    left: 220px !important;
+    right: 13.24% !important;
+    top: 31.5% !important;
+    bottom: 13.25% !important;
+    color: #1A1E2B !important;
+    cursor: pointer;
+  }
+
+  .input-admin-daftar-2 {
+    font-family: 'Public Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    line-height: 16px !important;
+    color: #1A1E2B !important;
+    cursor: text;
+    border: 1px solid #CCCCCC;
+    height: 40px;
+    cursor: pointer;
+}
+
+.input-admin-daftar-3{
+    font-family: 'Public Sans', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    line-height: 16px !important;
+    color: #1A1E2B !important;
+    cursor: text;
+    border: 1px solid #E0004D !important;
+    background: none;
+    cursor: pointer;
+}
+
+.logo-input-group-text-daftar-2{
+    position: absolute;
+    left: 95px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    height: 40px;
+    width: 30px;
+    text-align: center;
+    background: #F2F2F2;
+    border-radius: 0px 4px 4px 0px;
+    
+  }
+
+  .logo-input-group-text-daftar-3{
+    position: absolute;
+    color: #66788A !important;
+    
+  }
+
+  .logo-input-group-text-daftar-4{
+    left: 45px;
+    top: 8px !important;
+    font-size: 14px;
+    position: absolute;
+    color: #E0004D !important;
+  }
+
+.button-unduh-pdf-produk{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    width: 120px;
+    height: 32px;
+    left: 650px;
+    top: 30px;
+    border: 1px solid #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #E0004D;
+    cursor: pointer;
+}
+
+.button-unduh-excel-produk{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    width: 120px;
+    height: 32px;
+    left: 800px;
+    top: 30px;
+    border: 1px solid #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #E0004D;
+    cursor: pointer;
+}
+
+.inside-box-daftar-produk-admin{
+    position: absolute;
+    width: 880px;
+    height: 772px;
+    left: 48px;
+    top: 94px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 13, 0.08);
+    border-radius: 8px;
+    
+}
+
+.filter-cari-nama-obat-dalam-produk{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 10px;
+    position: absolute;
+    left: 2.94%;
+    right: 66.97%;
+    top: 4.15%;
+    bottom: 90.41%;
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+
+.filter-dropdown-dalam-produk{
+    position: absolute;
+    left: 34.5%;
+    right: 51.19%;
+    top: 4.15%;
+    bottom: 90.41%;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    height: 42px;
+    cursor: pointer;
+}
+
+.garis-inside-box-daftar-produk{
+    position: absolute;
+    left: 2.94%;
+    right: 2.94%;
+    top: 14.51%;
+    bottom: 85.49%;
+    border: 1px solid #D5D7DD;
+}
+
+.button-tambah-obat-produk:hover{
+    background: #FFFFFF;
+    color: #E0004D;
+    border: 1px solid #E0004D ;
+}
+
+.box-tabel-daftar-produk{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    position: absolute;
+    left: 2.94%;
+    right: 2.94%;
+    top: 18.65%;
+    bottom: 4.15%;
+    background: #f9f5f6;
+    border: 1px solid #c7b4ba;
+    border-radius: 10px;
+}
+
+.inside-box-daftar-produk{
+    width: 826px;
+    height: 600px;
+    border-radius: 10px;
+    overflow-x: scroll;
+}
+
+.box-footer-tabel-daftar-produk{
+    width: 826px;
+    height: 60px;
+    background: #FFFFFF;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.keterangan-footer-tabel-daftar-produk{
+    position: absolute;
+    width: 202px;
+    height: 23px;
+    left: 20px;
+    top: 550px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #222222;
+}
+
+.tulisan-jumlah-baris-footer{
+    position: absolute;
+    width: 135.46px;
+    height: 26px;
+    left: 300px;
+    top: 550px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #1A1E2B;
+}
+
+.button-dropdown-jumlah-baris{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 72.24px;
+    height: 33.88px;
+    padding: 5px;
+    left: 415px;
+    top: 550px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.box-pagination-footer-produk{
+    position: absolute;
+    width: 230px;
+    height: 28px;
+    left: 580px;
+    top: 550px;
+    border: 1px solid blue;
+}
+
+.table-dalam-daftar-produk{
+    display: flex;
+    flex-direction: row;
+    width: 1278px;
+    height: 48px;
+    background: #213360;
+    border-radius: 10px 10px 0px 0px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.table-nomer-1{
+    width: 50px;
+    height: 48px;
+    padding: 18px 14px;    
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-2{
+    padding: 18px 14px;
+    width: 230px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-3{
+    padding: 18px 32px 18px 14px;
+    width: 146px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-4{
+    padding: 18px 32px 18px 14px;
+    width: 141px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-5{
+    padding: 18px 14px;
+    width: 126px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-6{
+    padding: 18px 24px 18px 14px;
+    width: 93px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-7{
+    padding: 18px 14px;
+    width: 104px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-8{
+    padding: 18px 14px;
+    width: 230px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-9{
+    padding: 18px 14px;
+    width: 200px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-10{
+    padding: 18px 14px;
+    width: 200px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+
+.table-body-dalam-daftar-produk{
+    display: flex;
+    flex-direction: row;
+    width: 1278px;
+    height: 48px;
+    background: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.table-body-nomer-1{
+    width: 49px;
+    height: 48px;
+    padding: 18px 14px;    
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-2{
+    padding: 18px 14px;
+    width: 179px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-3{
+    padding: 18px 14px;
+    width: 131px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-4{
+    padding: 18px 14px;
+    width: 131px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-5{
+    padding-left: 10px;
+    width: 113px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-6{
+    padding-left: 20px;
+    width: 85px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-7{
+    padding: 18px 14px;
+    width: 93px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-8{
+    padding: 18px 14px;
+    width: 182px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-9{
+    padding: 18px 14px;
+    width: 156px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-10{
+    width: 120px;
+    height: 48px;
+    display: flex;
+    border: 1px solid blue;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 2;
+}
+
+.button-lihat-detail-produk{
+    gap: 8px;
+    width: 90px;
+    height: 30px;
+    margin-bottom: 10px;
+    background: transparent;
+    border: 1px solid #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 17px;
+    color: #E0004D;
+}
+
+.table-body-dalam-daftar-produk-2{
+    display: flex;
+    flex-direction: row;
+    width: 1278px;
+    height: 48px;
+    background: #F0F4FE;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+/*  */
+
+body {
+	color: #566787;
+	background: #f5f5f5;
+	font-family: 'Varela Round', sans-serif;
+	font-size: 13px;
+}
+
+.btn-act {
+	padding: 4px;
+}
+.table-responsive {
+    margin: 30px 0;
+}
+.table-wrapper {
+	background: #fff;
+	padding: 20px 25px;
+	border-radius: 3px;
+	min-width: 1000px;
+	box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {        
+	padding-bottom: 15px;
+	background: #435d7d;
+	color: #fff;
+	padding: 16px 30px;
+	min-width: 100%;
+	margin: -20px -25px 10px;
+	border-radius: 3px 3px 0 0;
+}
+.table-title h2 {
+	margin: 5px 0 0;
+	font-size: 24px;
+}
+.table-title .btn-group {
+	float: right;
+}
+.table-title .btn {
+	color: #fff;
+	float: right;
+	font-size: 13px;
+	border: none;
+	min-width: 50px;
+	border-radius: 2px;
+	border: none;
+	outline: none !important;
+	margin-left: 10px;
+}
+.table-title .btn i {
+	float: left;
+	font-size: 21px;
+	margin-right: 5px;
+}
+.table-title .btn span {
+	float: left;
+	margin-top: 2px;
+}
+table.table tr th, table.table tr td {
+	border-color: #e9e9e9;
+	padding: 12px 15px;
+	vertical-align: middle;
+}
+
+table.table tr th:last-child {
+	width: 150px;
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+	background-color: #fcfcfc;
+}
+table.table-striped.table-hover tbody tr:hover {
+	background: #f5f5f5;
+}
+table.table th i {
+	font-size: 13px;
+	margin: 0 5px;
+	cursor: pointer;
+}	
+table.table td:last-child i {
+	opacity: 0.9;
+	font-size: 22px;
+	margin: 0 5px;
+}
+table.table td a {
+	font-weight: bold;
+	color: #566787;
+	display: inline-block;
+	text-decoration: none;
+	outline: none !important;
+}
+table.table td a:hover {
+	color: #2196F3;
+}
+table.table td a.edit {
+	color: #FFC107;
+}
+table.table td a.delete {
+	color: #F44336;
+}
+table.table td i {
+	font-size: 19px;
+}
+table.table .avatar {
+	border-radius: 50%;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.pagination {
+	float: right;
+	margin: 0 0 5px;
+}
+.pagination li a {
+	border: none;
+	font-size: 13px;
+	min-width: 30px;
+	min-height: 30px;
+	color: #999;
+	margin: 0 2px;
+	line-height: 30px;
+	border-radius: 2px !important;
+	text-align: center;
+	padding: 0 6px;
+}
+.pagination li a:hover {
+	color: #666;
+}	
+.pagination li.active a, .pagination li.active a.page-link {
+	background: #03A9F4;
+}
+.pagination li.active a:hover {        
+	background: #0397d6;
+}
+.pagination li.disabled i {
+	color: #ccc;
+}
+.pagination li i {
+	font-size: 16px;
+	padding-top: 6px
+}
+.hint-text {
+	float: left;
+	margin-top: 10px;
+	font-size: 13px;
+}   
+
+/* Modal styles */
+.modal .modal-dialog {
+	max-width: 400px;
+}
+.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+	padding: 20px 30px;
+}
+.modal .modal-content {
+	border-radius: 3px;
+	font-size: 14px;
+}
+.modal .modal-footer {
+	background: #ecf0f1;
+	border-radius: 0 0 3px 3px;
+}
+.modal .modal-title {
+	display: inline-block;
+}
+.modal .form-control {
+	border-radius: 2px;
+	box-shadow: none;
+	border-color: #dddddd;
+}
+.modal textarea.form-control {
+	resize: vertical;
+}
+.modal .btn {
+	border-radius: 2px;
+	min-width: 100px;
+}	
+.modal form label {
+	font-weight: normal;
+}	

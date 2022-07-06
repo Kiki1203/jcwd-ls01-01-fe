@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css';
 import Divider from '@mui/material/Divider';
 import gambar from './../../../Assets/login.svg';
 import google from './../../../Assets/googleL.svg';
 import pLogin from './../../../Assets/pLogin.svg';
 import passLogin from './../../../Assets/passLogin.svg';
-import { useDispatch } from 'react-redux';
-import { onUserLogin } from '../../../Redux/Actions/userAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { onUserLogin, onCheckUserLogin } from '../../../Redux/Actions/userAction';
 import { Navigate, Link } from 'react-router-dom';
 import { InputGroup, InputGroupText, Input, Button } from 'reactstrap';
 
@@ -18,6 +18,11 @@ const Login = () => {
   const [direct, setDirect] = useState(false);
   // const { is_login } = useSelector((state) => state.userReducer);
 
+    
+    useEffect(() => {
+      onCheckUserLogin()
+        }, [])
+
   const onSubmit = () => {
     let data = {
       account: account,
@@ -28,9 +33,9 @@ const Login = () => {
     setDirect(true);
   };
 
-  if (direct || localStorage.getItem('myTkn')) {
-    return <Navigate to="/" />;
-  }
+  // if (direct || localStorage.getItem('myTkn')) {
+  //   return <Navigate to="/" />;
+  // }
 
   // if (!direct || is_login) {
   //   return <Navigate to="/" />;

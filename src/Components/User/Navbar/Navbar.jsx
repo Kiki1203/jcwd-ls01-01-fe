@@ -62,12 +62,14 @@ const Navbar = () => {
             </a>
             <form className="d-flex SearchBar" role="search">
               <FontAwesomeIcon icon={faMagnifyingGlass} className="search " />
-              <input className="form-control me-2 input1" type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"  onChange={(e) => {
-                      setSearch(e.target.value)
-                      e.target.value ? setBubbleOpen(true)
-                      : setBubbleOpen(false)
+              <input className="form-control me-2 input1" type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"  
+              // onChange={(e) => {
+              //         setSearch(e.target.value)
+              //         e.target.value ? setBubbleOpen(true)
+              //         : setBubbleOpen(false)
 
-                    }} />
+              //       }} 
+                    />
               <input className="form-control me-2 input2" type="search" placeholder="Cari Obat, Vitamin, dan lainnya" aria-label="Search" />
             </form>
             <FontAwesomeIcon icon={faBell} className="lbell  " />

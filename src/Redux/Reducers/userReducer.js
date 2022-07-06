@@ -10,7 +10,7 @@ let initialState = {
   authChecked: false,
 };
 
-export const userReducer = (state = initialState, action) => {
+ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOADING':
       return { ...state, loading: true, error: false, message: '' };
@@ -30,3 +30,5 @@ export const userReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default userReducer
