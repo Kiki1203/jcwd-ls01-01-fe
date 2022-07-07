@@ -6,7 +6,7 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 const TemplateProfile  = () => {    
     return(
-        <div className="container">
+        <div id="container-tp">
             <div className="box-profile">
                 <div className="tab-versi-dekstop">
                     <Link to="/profile">

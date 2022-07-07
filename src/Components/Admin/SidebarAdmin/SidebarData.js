@@ -17,7 +17,7 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Daftar Produk',
-        path: '/',
+        path: '/daftarprodukadmin',
         
       },
       {
