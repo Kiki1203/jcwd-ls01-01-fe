@@ -1,75 +1,90 @@
 .Footer {
-  width: 100vw !important;
+  width: 98.5vw !important;
   margin-bottom: 0px !important;
 }
 
-.b {
-  height: 260px;
+.box-footer-user{
+  padding: 40px 50px;
+  display: flex;
+  
 }
-.fbrand {
-  left: 23.03%;
-  right: -9.78%;
-  top: 11.94%;
-  bottom: 15.12%;
 
+.box-1-inside-footer-user{
+  width: 318px;
+  height: 251px;
+}
+
+.footer-logo{
   font-family: 'Public Sans';
   font-style: normal !important;
   font-weight: 700 !important;
-  font-size: 31.7981px !important;
-  line-height: 37px !important;
+  font-size: 23.6923px !important;
+  line-height: 28px !important;
   letter-spacing: -0.04em !important;
-
-  /* Blue/Primary Blue */
-
   color: #213360 !important;
+  margin-top: 5px;
 }
-.wa {
-  height: 39.6761589050293px;
-  width: 39.831817626953125px;
-  left: 4.16796875px;
-  top: 4px;
-  border-radius: 0px;
 
-  left: 8.68%;
-  right: 8.33%;
-  top: 8.33%;
-  bottom: 9.01%;
-
-  /* Blue/Primary Blue */
-
+.judul-kontak{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
   color: #213360;
-  /* Blue/Primary Blue */
 }
-.listF {
-  /* XS Reg */
 
+.isi-kontak{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #213360;
+}
+
+.box-2-inside-footer-user{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 195px;
+  height: 240px;
+  margin-left: 50px;
+
+}
+
+.listF {
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 400 !important;
   font-size: 14px !important;
   line-height: 20px !important;
-  /* or 143% */
-
-  display: flex;
-  align-items: center;
-
-  /* Blue/Primary Blue */
-
   color: #213360 !important;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 }
-.ikutiF {
-  height: 19px;
-  left: 1149px;
-  top: 2838px;
 
-  /* M Bold */
+.box-3-inside-footer-user{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 30px;
+  width: 195px;
+  height: 186px;
+  left: 740px;
+  top: 50px;
+  margin-left: 50px;
 
+}
+
+.box-4-inside-footer-user{
+  width: 195px;
+  height: 164px;
+  left: 1020px;
+  top: 50px;
+  margin-left: 50px;
+}
+
+.ikuti-kami{
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 700;
@@ -77,89 +92,36 @@
   line-height: 28px;
   display: flex;
   align-items: center;
-
-  /* Blue/Primary Blue */
-
-  color: #213360;
-}
-.sosialF {
-  /* S Reg */
-
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 400 !important;
-  font-size: 16px !important;
-  line-height: 24px !important;
-  /* or 150% */
-
-  display: flex;
-  align-items: center;
-
-  /* Blue/Primary Blue */
-
-  color: #213360 !important;
-}
-.kontakHF {
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 700 !important;
-  font-size: 14px !important;
-  line-height: 20px !important;
-  /* or 143% */
-
-  display: flex;
-  align-items: center;
-
-  /* Blue/Primary Blue */
-
-  color: #213360;
-}
-.kontakCF {
-  /* S Reg */
-
-  font-family: 'Public Sans';
-  font-style: normal !important;
-  font-weight: 400 !important;
-  font-size: 16px !important;
-  line-height: 24px !important;
-  /* identical to box height, or 150% */
-
-  display: flex;
-  align-items: center;
-
-  /* Blue/Primary Blue */
-
   color: #213360;
 }
 
-.c {
-  width: 100vw !important;
-  height: 95px;
-  left: 0px;
-  top: 3163px;
-
-  /* Blue/Lighter Blue */
-
-  background: #4f618e;
-}
-.design {
-  height: 24px;
-  left: 98px;
-  top: 3199px;
-  padding-top: 36px;
-  /* S Reg */
-
+.judul-medsos{
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  /* identical to box height, or 150% */
+  color: #213360;
+}
 
+
+.box-5-inside-footer-user{
+  
+  height: 95px;
+  background: #4F618E;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.design-footer{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
   align-items: center;
   text-align: center;
-
-  /* Neutral (Greys, Whtes & Blacks/Grey */
-
-  color: #f5f6f9;
+  color: #F5F6F9;
 }

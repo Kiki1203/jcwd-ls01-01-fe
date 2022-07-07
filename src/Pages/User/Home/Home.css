@@ -1,14 +1,727 @@
 #container-home {
-  margin-top: 50px;
   min-height: calc(100vh - 92px);
-  min-width: 100vw;
+  min-width: 98vw;
   padding: 50px 150px 50px 150px;
 }
 #container-jumbotron-payment {
   padding: 30px 0px 0px 0px;
   height: 150px;
-  min-width: 100vw;
+  min-width: 80vw;
   text-align: center;
   align-items: center;
   background: #f6fafb;
+}
+
+.logo-home{
+  width: 40px;
+  height: 40px;
+}
+
+/* .gradient{
+  position: absolute;
+  width: 50vw;
+  height: 500px;
+  left: 640px;
+  top: -190px;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(155, 0, 47, 0.1) 0%, rgba(205, 33, 56, 0) 100%);
+} */
+
+.inside-container-home{
+  width: 80vw;
+  height: 232px;
+  left: 98px;
+  top: 136px;
+  margin-top: 160px;
+  background: #92C3D1;
+  border-radius: 16px;
+}
+
+.box-jumbotron1{
+  width: 247px;
+  height: 232px;
+  margin-left: 776px;
+  margin-top: -73px;
+  background: linear-gradient(15.03deg, #2A426F 16.41%, #355182 95.92%);
+  border-radius: 16px;
+}
+
+.head-image{
+  position: relative;
+  width: 990px;
+  height: 232px;
+  top: -231px;
+  left: 0px;
+}
+
+.jumbotron1{
+  width: 648px;
+  height: 230px;
+  margin-left: 410px;
+  margin-top: 0px;
+  border-radius: 16px !important;
+}
+
+.apotake-terpercaya{
+  position: absolute;
+  width: 800px !important;
+  height: 42px;
+  left: 30px;
+  top: 80px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 42px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, #6472A8 0%, #000C36 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+
+}
+
+.selamat-datang-home{
+  position: absolute;
+  width: 179px;
+  height: 24px;
+  left: 30px;
+  top: 30px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #213360;
+}
+
+.box-apotakecare{
+  position: absolute;
+  width: 300px;
+  height: 42px;
+  left: 190px;
+  top: 20px;
+}
+
+.tulisan-apotakecare{
+  position: absolute;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26.2334px;
+  line-height: 31px;
+  color: #213360;
+  left: 70px;
+  top: 5px;
+}
+
+.keterangan-persen-asli{
+  position: absolute;
+  width: 403px;
+  height: 21px;
+  left: 30px;
+  top: 160px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: #213360;
+}
+
+.inside-container-home-2{
+  width: 80vw;
+  height: 168px;
+  margin-left: 0px;
+  margin-top: 50px;
+  background: #FFFFFF;
+  box-shadow: -1px -1px 5px 4px rgba(54, 0, 7, 0.01), 2px 2px 2px rgba(96, 33, 62, 0.04), 4px 4px 4px 6px rgba(155, 0, 121, 0.04);
+  border-radius: 16px;
+  display: flex;
+}
+
+.jumbotron2{
+  width: 511px;
+  height: 168px;
+  object-fit: cover;
+}
+
+.box-unggah-resep{
+  width: 352px;
+  height: 168px;
+  margin-left: -20px;
+}
+
+.tulisan-perlu-resep{
+  margin-top: 35px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #213360;
+}
+
+.btn-unggah-resep{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 0px;
+  gap: 10px;
+  width: 140px;
+  height: 48px;
+  background: #E0004D;
+  border: 1px solid #E0004D;
+  border-radius: 8px;
+  margin-top: 50px;
+  margin-left: 5px;
+}
+
+.tulisan-tak-antre{
+  width: 352px;
+  margin-top: 10px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #525252;
+}
+
+
+.inside-container-home-3{
+  width: 80vw;
+  height: 200px;
+  margin-top: 30px;
+}
+
+.home-kategori{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #213360;
+}
+
+.box-home-kategori{
+  width: 80vw;
+  height: 130px;
+  margin-top: 30px;
+}
+
+.box-home-kategori-2{
+  display: flex;
+}
+
+.product-card-home {
+  width: 150px;
+  height: 119px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.product-card-home:hover {
+  transform: translate(0, -10px);
+  box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
+}
+
+.product-card-home-2 {
+  width: 194px;
+  height: 331px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: .2s;
+  margin-top: 20px;
+  left: 0px;
+  top: 35px;
+}
+
+.product-card-home-2:hover {
+  transform: translate(0, -10px);
+  box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
+}
+
+.box-isi-card-home{
+  position: absolute;
+  width: 70vw;
+  height: 400px;
+  display: flex;
+  left: 350px;
+}
+
+
+.Obat-obatan{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #213360;
+}
+
+.obat1{
+  width: 64px;
+  height: 64px;
+}
+
+.inside-container-home-4{
+  width: 80vw;
+  height: 450px;
+  margin-top: 30px;
+}
+
+.kejar-diskon{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #213360
+}
+
+.box-buruan-ikut{
+  position: absolute;
+  width: 301px;
+  height: 395px;
+  background: linear-gradient(150.85deg, #B0E7E8 -3.37%, #7FB4C4 103.24%);
+  border-radius: 16px;
+  margin-top: 20px;
+}
+
+.kranjang{
+  position: absolute;
+  width: 123px;
+  height: 145px;
+  left: 50px;
+  top: 100px;
+  
+}
+
+.manusia1{
+  position: absolute;
+  width: 231px;
+  height: 206px;
+  left: 0px;
+  top: 190px;
+}
+
+.yuk-buruan-ikut{
+  padding-top: 50px;
+  margin-left: 40px;
+  width: 159px;
+  height: 48px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #2B478B;
+}
+
+.inside-container-home-5{
+  width: 80vw;
+  height: 220px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-1-jumbotron{
+  width: 39vw;
+  height: 212px;
+  background: #FFB156;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
+  border-radius: 16px;
+}
+
+.box-2-jumbotron{
+  width: 39vw;
+  height: 212px;
+  background: #92C3D1;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
+  border-radius: 16px;
+}
+
+.hamil{
+  position: absolute;
+  left: 150px;
+  top: 1355px;
+  width: 338px;
+  height: 212px;
+}
+
+.framebg{
+  position: absolute;
+  width: 348px;
+  height: 212px;
+  left: 650px;
+  top: 1335px;
+}
+
+.friend{
+  position: absolute;
+  width: 294px;
+  height: 249px;
+  left: 670px;
+  top: 1340px;
+}
+
+.program-hamil{
+  margin-left: 310px;
+  margin-top: 60px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #213360;
+}
+
+.wujudkan-rumah{
+  margin-left: 270px;
+  margin-top: 5px;
+  width: 230px;
+  height: 48px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #213360;
+}
+
+.kebutuhan{
+  margin-left: 270px;
+  margin-top: 60px;
+  width: 201px;
+  height: 56px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #213360;
+}
+
+.lengkapi-kebutuhan{
+  margin-left: 270px;
+  margin-top: 5px;
+  width: 200px;
+  height: 48px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #213360;
+}
+
+.inside-container-home-6{
+  width: 80vw;
+  height: 430px;
+  margin-top: 30px;
+ 
+}
+
+.box-3-jumbotron{
+  width: 80vw;
+  height: 340px;
+  display: flex;
+  margin-top: 30px;
+}
+
+
+.box-tulisan-6-2{
+  width: 80vw;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tulisan-6-1{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #213360;
+}
+
+.tulisan-6-2{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #E0004D;
+  margin-top: 5px;
+}
+
+.inside-container-home-7{
+  width: 80vw;
+  height: 300px;
+  margin-top: 30px;
+  border: 1px solid black;
+}
+
+.jaminan{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #213360;
+  margin-top: 10px;
+}
+
+.container-box-7{
+  width: 80vw;
+  height: 200px;
+  margin-top: 30px;
+  display: flex;
+}
+
+.product-card-home-3 {
+  width: 405px;
+  height: 181px;
+  border-radius: 20px;
+  background: #F6FAFB;
+  box-shadow: -1px -1px 5px 4px rgba(54, 0, 25, 0.01), 2px 2px 2px rgba(96, 33, 51, 0.04), 4px 4px 4px 6px rgba(155, 0, 90, 0.04);
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.product-card-home-3:hover {
+  transform: translate(0, -10px);
+  box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
+}
+
+.obats{
+  width: 64px;
+  height: 64px;
+}
+
+.hemat{
+  width: 64px;
+  height: 64px;
+}
+
+.kirim{
+  width: 70px;
+  height: 70px;
+}
+
+.tulisan-7{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #213360;
+  margin-left: 10px;
+}
+
+.tulisan-7-2{
+  width: 203px;
+  height: 60px;
+  margin-left: 10px;
+  margin-top: 5px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #213360;
+}
+
+.product-card-home-4 {
+  width: 194px;
+  height: 331px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: .2s;
+  left: 0px;
+}
+
+.product-card-home-4:hover {
+  transform: translate(0, -10px);
+  box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
+}
+
+.circle-home {
+  border-radius: 50%;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+.circle-home:hover {
+  transform: scale(1.2)
+}
+
+
+.product-image-home {
+  width: 80%;
+  margin-bottom: 0px;
+  margin-left: 20px;
+}
+
+.product-name-home {
+  font-size: 14px;
+  font-weight: 700;
+  color: #213360;
+  margin-left: 20px;
+  width: 130px;
+}
+
+.product-price-home {
+  font-size: 16px;
+  font-weight: 700;
+  color: #213360;
+  margin-right: 5px;
+  margin-left: 20px;
+}
+
+.product-unit-home {
+  font-size: 16px;
+  color: #213360;
+}
+
+.keranjang-home {
+  background-color: white;
+  border: 3px solid #E0004D;
+  /* padding: 7px 10px; */
+  margin-top: 8px;
+  width: 150px !important;
+  height: 30px !important;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  width: 100%;
+  color: #E0004D;
+  align-self: center;
+  cursor: pointer;
+}
+
+.keranjang-home:hover {
+  background-color: #ffe9f1;
+}
+
+.box-diskon-produk{
+  width: 150px;
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+.nominal-diskon{
+  width: 36px;
+  height: 24px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border: 1px solid #FF6B6B;
+  color: #FF6B6B;
+  border-radius: 6px;
+}
+
+.harga-diskon-home{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #B4B9C7;
+  text-decoration-line: line-through;
 }
