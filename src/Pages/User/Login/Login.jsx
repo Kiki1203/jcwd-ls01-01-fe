@@ -7,7 +7,7 @@ import pLogin from './../../../Assets/pLogin.svg';
 import passLogin from './../../../Assets/passLogin.svg';
 import { useDispatch } from 'react-redux';
 import { onUserLogin } from '../../../Redux/Actions/userAction';
-import { Navigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { InputGroup, InputGroupText, Input, Button } from 'reactstrap';
 
 const Login = () => {
@@ -15,8 +15,6 @@ const Login = () => {
   const [account, setAccount] = useState('');
   const [disable, setDisable] = useState(false);
   const dispatch = useDispatch();
-  const [direct, setDirect] = useState(false);
-  // const { is_login } = useSelector((state) => state.userReducer);
 
   const onSubmit = () => {
     let data = {
@@ -25,16 +23,7 @@ const Login = () => {
     };
     setDisable(false);
     dispatch(onUserLogin(data));
-    setDirect(true);
   };
-
-  if (direct || localStorage.getItem('myTkn')) {
-    return <Navigate to="/" />;
-  }
-
-  // if (!direct || is_login) {
-  //   return <Navigate to="/" />;
-  // }
 
   return (
     <div className="container-register">

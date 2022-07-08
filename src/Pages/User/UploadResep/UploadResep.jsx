@@ -121,17 +121,11 @@ const UploadResep = () => {
                   id="box-dropzone"
                   {...getRootProps({
                     className: 'dropzone',
-                    onChange: uploadResep,
+                    label: { editImageFileName },
+                    onChange: { uploadResep },
                   })}
                 >
-                  <input
-                    type="file"
-                    label={editImageFileName}
-                    {...getInputProps({
-                      onChange: { uploadResep },
-                      label: { editImageFileName },
-                    })}
-                  />
+                  <input type="file" label={editImageFileName} {...getInputProps({ label: { editImageFileName }, onChange: { uploadResep } })} />
                   <h4 className="mb-4">Drag 'n' drop files here</h4>
                   <Divider className="mb-4 mx-5">
                     <span> atau</span>
