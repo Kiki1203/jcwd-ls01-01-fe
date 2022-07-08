@@ -1,119 +1,91 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import logo from './../../../Assets/logo.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faBell, faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { InputGroup, InputGroupText, Input } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { faMagnifyingGlass, faBell, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Link, useNavigate } from "react-router-dom";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 // import { useSelector } from 'react-redux';
 // import { onCheckUserLogin, onUserLogout } from '../../../Redux/Actions/userAction';
 
 const Navbar = () => {
-  // const navigate = useNavigate();
-  // const { is_login } = useSelector((state) => state.userReducer);
+  let [dropdownOpen, setDropdownOpen] = useState(false); 
+  const navigate = useNavigate()
+  const btnLogOut = () => {
+    localStorage.removeItem('myTkn');
+     navigate("/")
+  }
 
-  // useEffect(() => {
-  //   onUserLogout();
-  //   onCheckUserLogin();
-  // }, []);
+  if (localStorage.getItem('myTkn')){
+    return (
+      <div id="navbar" className="d-lg-block d-md-block d-none">
+        <div className="box-navbar-logo">
+        <a className="navbar-brand brand" href="/">
+                <img src={logo} alt="" />
+                Apotakecare
+              </a>
+        </div>
+        <div className="box-navbar-search-2">
+          <form>
+              <input className="form-control input-home-2"  type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"   />
+              <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home-2'/>
+            </form>
+        </div>
+        <div className="box-navbar-dropdown">
+            <FontAwesomeIcon icon={faBell} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}}/>
+            <Link to="/cart" style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}}>
+            <FontAwesomeIcon icon={faCartShopping} />
+            </Link>
+            <div>
+              <Dropdown isOpen={dropdownOpen}
+                  toggle={() => setDropdownOpen(!dropdownOpen)}>
+                  <DropdownToggle id="dropdown-navbar" className="rounded-0">
+                  <FontAwesomeIcon icon={faUser} />
+                  <div>username</div>
+                  </DropdownToggle>
+                  <DropdownMenu>
+                      <DropdownItem>
+                      <Link to="/profile" style={{textDecoration: "none", cursor:"pointer", color:"black"}}>
+                        Profile
+                        </Link>
+                      </DropdownItem>
+                      <DropdownItem>
+                         <div  onClick={() => btnLogOut()}>Log Out</div>
+                      </DropdownItem>
+                  </DropdownMenu>
+              </Dropdown>
+            </div>
+        </div>
+      </div>
+    );
+  }
 
-  const navbar = () => {
-    if (localStorage.getItem('myTkn')) {
-      const btnLogOut = () => {
-        localStorage.removeItem('myTkn');
-      };
-      return [
-        <div className="col-1">
-          {' '}
-          <FontAwesomeIcon icon={faBell} />
-        </div>,
-        <div className="col-1">
-          <FontAwesomeIcon icon={faCartShopping} />
-        </div>,
-        <div className="col-1">
-          <button type="button" className="btn btn-danger " onClick={() => btnLogOut()}>
-            logout
-          </button>
-        </div>,
-      ];
-    } else {
-      return [
-        <Link to="/login" style={{ textDecoration: 'none', color: 'red' }} className="col-1">
-          <button type="button" className="btn btn-outline-danger btn-masuk">
-            Masuk
-          </button>
-        </Link>,
-        <Link to="/register" style={{ textDecoration: 'none', color: 'red' }} className="col-1">
-          <button className="btn btn-danger btn-daftar" type="submit" name="action">
-            Daftar
-          </button>
-        </Link>,
-      ];
-    }
-  };
+
   return (
-    <div id="navbar">
-      <div className="container-fluid">
-        <div className="row justify-content-evenly align-content-center navbar-apotakecare ">
-          <div className="col-2">
-            <a className="navbar-brand brand" href="/">
+    <div id="navbar" className="d-lg-block d-md-block d-none">
+      <div className="box-navbar-logo">
+      <a className="navbar-brand brand" href="/">
               <img src={logo} alt="" />
               Apotakecare
             </a>
-            <form className="d-flex SearchBar" role="search">
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="search " />
-              <input className="form-control me-2 input1" type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"  onChange={(e) => {
-                      setSearch(e.target.value)
-                      e.target.value ? setBubbleOpen(true)
-                      : setBubbleOpen(false)
-
-                    }} />
-              <input className="form-control me-2 input2" type="search" placeholder="Cari Obat, Vitamin, dan lainnya" aria-label="Search" />
-            </form>
-            <FontAwesomeIcon icon={faBell} className="lbell  " />
-            <FontAwesomeIcon icon={faCartShopping} className="lcart   " />
-            <FontAwesomeIcon icon={faBell} className="Obell  " />
-            <FontAwesomeIcon icon={faCartShopping} className="Ocart   " />
-            <div class="dropdown user">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                User
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </div>
-            {/* <button type="button" className="btn btn-outline-danger btn-edit1">
-              Masuk
-            </button>
-            <button type="button" className="btn btn-danger btn-edit">
-              Daftar
-            </button> */}
-          </div>
-          <div className="col-6 d-flex">
-            <InputGroup>
-              <InputGroupText>
-                {' '}
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
-              </InputGroupText>
-              <Input placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" className="search" />
-            </InputGroup>
-          </div>
-          {navbar()}
-        </div>
+      </div>
+      <div className="box-navbar-search">
+        <form>
+            <input className="form-control input-home"  type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"   />
+            <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home'/>
+          </form>
+      </div>
+      <div className="box-navbar-button">
+      <Link to="/login" style={{ textDecoration: 'none'}}>
+          <button type="button" className="btn-masuk-home">
+            Masuk
+          </button>
+        </Link>
+        <Link to="/register" style={{ textDecoration: 'none'}}>
+          <button className="btn-daftar-home" type="submit" name="action">
+            Daftar
+          </button>
+        </Link>
       </div>
     </div>
   );

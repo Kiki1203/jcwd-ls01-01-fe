@@ -80,6 +80,7 @@ function ProductList(props) {
             setError(true)
             setErrorMsg(e.message)
         })
+        console.log(products)
     }, [pageNumber, sortBy, kategori, keluhan, searchQuery])
 
     let paginationButtonGenerator = () => {
@@ -278,9 +279,7 @@ function ProductList(props) {
                         ? <h1>Loading...</h1>
                         : products.length ?
                         products.map((product, index) => {
-                            return <div key={product.id}>
-                                <ProductCard product={product} />
-                            </div>
+                            return <ProductCard key={product.id} product={product} />
                         })
                         : <div className='d-flex flex-column align-items-center' style={{width:'100%'}}>
                             <img src={noProductIllust} alt="" style={{width:'250px', margin:'20px'}} />

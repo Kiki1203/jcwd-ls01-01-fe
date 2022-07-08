@@ -1,0 +1,83 @@
+.custom-select
+{
+	width: 300px;
+    padding: 20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	background: #E0004D;
+	color: white;
+    font-weight: 600;
+	font-size: 14px;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	margin-top: 10px;
+    position: relative;
+}
+
+.custom-select:hover {
+    background-color: #ba0041;
+}
+
+.options-container {
+    width: 300px;
+    max-height: 200px;
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    background-color: white;
+    border: 1px solid #E0E0E0;
+    overflow-y: auto;
+}
+
+.kurir-option {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    border-bottom: 1px solid #E0E0E0;
+    cursor: pointer;
+}
+
+.kurir-option:hover {
+    background-color: #F3F4F5;
+}
+
+.kurir-option:last-child {
+    border-bottom: none;
+}
+
+.kurir-nama {
+    font-size: 14px;
+    font-weight: 700;
+    color: #213360;
+    margin: 0px;
+}
+
+.kurir-etd {
+    font-size: 12px;
+    color: #213360;
+    margin: 0px
+}
+
+.kurir-tarif {
+    font-size: 14px;
+    color: #213360;
+    margin: 0px;
+}
+
+.header-total {
+    font-size: 20px;
+    color: #213360;
+    font-weight: 700; 
+    margin: 0px;
+}
+
+.total-harga-container-checkout {
+    border-top: 1px solid #D5D7DD;
+    border-bottom: 1px solid #D5D7DD;
+    margin: 15px 0px;
+    padding: 15px 0px;
+    display: flex;
+    justify-content: space-between;
+}

@@ -5,11 +5,13 @@
     font-weight: 700; 
 }
 
-#produk-keranjang-container {
+.produk-keranjang-container {
     width: 700px;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
     border-radius: 20px;
     padding: 30px;
+    height: auto;
+    margin-bottom: 30px;
 }
 
 .produk-keranjang {
@@ -46,9 +48,10 @@
 }
 
 .total-harga {
-    font-size: 18px;
+    font-size: 16px;
     color: #213360;
     font-weight: 700;
+    margin: 0px;
 }
 
 .button-bayar {
@@ -72,4 +75,9 @@
 .button-bayar:disabled {
     background-color: #737A8D;
     cursor:not-allowed; 
+}
+
+.button-bayar:disabled:hover {
+    background-color: #737A8D;
+    box-shadow: none;
 }

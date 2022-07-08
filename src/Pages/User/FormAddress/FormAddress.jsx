@@ -1,6 +1,5 @@
 import React from 'react';
 import './FormAddress.css';
-import Footer from '../../../Components/User/Footer/Footer';
 
 const FormAddress = () => {
 
@@ -85,7 +84,6 @@ const FormAddress = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   )
 }
