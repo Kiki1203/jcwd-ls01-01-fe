@@ -1,0 +1,78 @@
+#form-address-container {
+  width: 600px;
+}
+
+#header-alamat-pengiriman {
+  color: #213360;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.title-input {
+  color: #213360;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0px;
+}
+
+.contoh-input {
+  color: #b4b9c7;
+  font-size: 16px;
+  margin: 0px;
+  margin-left: 10px;
+}
+
+.input-alamat {
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 6px 12px;
+  color: #213360;
+  font-size: 14px;
+  margin: 10px 0px;
+}
+
+.mini-title-input {
+  color: #737a8d;
+  font-size: 14px;
+  margin: 10px 0px 0px;
+}
+
+.select-alamat {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  background-color: white;
+  padding: 6px 12px;
+  color: #213360;
+  margin: 10px 0px;
+  background-image: url('../../../Assets/select-arrow-down.jpeg');
+  background-repeat: no-repeat;
+  background-size: 44px;
+  background-position: top right;
+  outline: none;
+}
+select::-ms-expand {
+  display: none;
+}
+
+.option-alamat {
+  background-color: white;
+  font-size: 14px;
+  color: #213360;
+  width: 100%;
+}
+
+.option-alamat:hover {
+  background-color: white;
+}
+
+.selected {
+  display: none;
+}

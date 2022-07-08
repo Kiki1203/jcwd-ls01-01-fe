@@ -26,8 +26,8 @@ const ChangePassword = () => {
     timerProgressBar: true,
   });
 
-  const [oldPassword, setOldPassword] = React.useState('');
-  const [newPassword, setNewPassword] = React.useState('');
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
   const [passwordConf, setPasswordConf] = useState('');
 
   let oldPasswordChange = (event) => {

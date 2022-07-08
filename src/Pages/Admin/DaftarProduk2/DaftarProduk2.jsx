@@ -7,6 +7,11 @@ import { GlobalFilter, DefaultFilterForColumn, SelectColumnFilter } from './Glob
 const DaftarProduk = () => {
   const [products, setProducts] = useState([]);
 
+  useEffect(() => {
+    fetchProducts();
+    deleteProduct();
+  }, []);
+
   const fetchProducts = async () => {
     const response = await axios.get('http://localhost:5000/admin/dataproduct').catch((err) => console.log(err));
     if (response) {
@@ -25,10 +30,6 @@ const DaftarProduk = () => {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   const productsData = useMemo(() => [...products], [products]);
 
