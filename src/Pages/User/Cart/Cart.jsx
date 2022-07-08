@@ -1,6 +1,5 @@
 import React from 'react';
 import './Cart.css';
-import Footer from '../../../Components/User/Footer/Footer.jsx';
 import CartItem from '../../../Components/User/CartItem/CartItem.jsx';
 import ProductCardSmall from '../../../Components/User/ProductCardSmall/ProductCardSmall.jsx';
 import axios from 'axios';
@@ -12,8 +11,9 @@ import { useNavigate } from 'react-router-dom';
 function Cart(props) {
   const [products, setProducts] = useState([])
   const [relatedProducts, setRelatedProducts] = useState([])
-  const [totalHarga, setTotalHarga] = useState({})
-  const [totalQuantity, setTotalQuantity] = useState({})
+  const [objHargaAll, setObjHargaAll] = useState({})
+  const [objQtyAll, setObjQtyAll] = useState({})
+  const [selectAll, setSelectAll] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
@@ -22,37 +22,53 @@ function Cart(props) {
   useEffect(() => {
     setLoading(true)
     setError(false)
-    axios.get(`${API_URL}/transaction/getcart`, {headers: {authorization: token}})
-    .then(res => {
-      setProducts([...res.data])
-      setLoading(false)
-      console.log(products)
-    })
-    .catch(e => {
-      setLoading(false)
-      setError(true)
-      setErrorMsg(e.message)
-    })
+    getCart()
   }, [])
 
   useEffect(() => {
+    console.log('products', products)
     setError(false)
     if(products.length !== 0){
       axios.get(`${API_URL}/product/relatedproducts?id=${products[0].produkId}&keluhanid=${products[0].keluhanId}&golonganobatid=${products[0].golonganObatId}`,
       {headers: {'Access-Control-Allow-Origin': '*'}})
       .then(res => {
         setRelatedProducts([...res.data])
-        console.log('related products: ' + relatedProducts)
       })
       .catch(e => {
         setError(true)
         setErrorMsg(e.message)
       })
     }
+    let newObjQtyAll = {}
+    let newObjHargaAll = {}
+    products.forEach(p => {
+        if(p.selected === 1){
+          newObjQtyAll[p.namaObat.replace(/[^A-Za-z]+/g, '')] = p.quantity
+          newObjHargaAll[p.namaObat.replace(/[^A-Za-z]+/g, '')] = p.quantity * p.harga
+        } else {
+          newObjQtyAll[p.namaObat.replace(/[^A-Za-z]+/g, '')] = 0
+          newObjHargaAll[p.namaObat.replace(/[^A-Za-z]+/g, '')] = 0
+        }
+    })
+    setObjQtyAll(newObjQtyAll)
+    setObjHargaAll(newObjHargaAll)
   }, [products])
 
+  const getCart = async () => {
+    await axios.get(`${API_URL}/transaction/getcart`, {headers: {authorization: token}})
+    .then(res => {
+      setLoading(false)
+      setProducts([...res.data])
+    })
+    .catch(e => {
+      setLoading(false)
+      setError(true)
+      setErrorMsg(e.message)
+    })
+  }
+
   const totalHargaFunc = () => {
-    let arrayHarga = Object.values(totalHarga)
+    let arrayHarga = Object.values(objHargaAll)
     let total = 0
     arrayHarga.forEach(harga => {
       total += harga
@@ -60,13 +76,37 @@ function Cart(props) {
     return total
   }
   
-  const totalQuantityFunc = () => {
-    let arrayQty = Object.values(totalQuantity)
+  const totalQtyFunc = () => {
+    let arrayQty = Object.values(objQtyAll)
     let total = 0
     arrayQty.forEach(qty => {
       total += qty
     })
     return total
+  }
+
+  const selectAllFunc = (selected) => {
+    let productsId = products.map(p => p.produkId)
+    console.log(productsId)
+    let checkMark
+    selected ? checkMark = 1 : checkMark = 0 
+    axios.patch(`${API_URL}/transaction/selectall`,{
+      productsId: productsId,
+      checkMark: checkMark
+    },{headers: {authorization: token}})
+    .then(res => {
+      if(selected){
+        setSelectAll(true)
+        setProducts(prev => prev.map(p => p.selected === 0 ? { ...p, selected: 1 } : p))
+      } else {
+        setSelectAll(false)
+        setProducts(prev => prev.map(p => p.selected === 1 ? { ...p, selected: 0 } : p))
+      }
+    })
+    .catch(e => {
+        setError(true)
+        setErrorMsg(e.message)
+    })
   }
 
   return (
@@ -79,19 +119,24 @@ function Cart(props) {
         : <div style={{minWidth:'1100px'}}>
           <p id='keranjang-saya' style={{marginTop:'0px'}}>Keranjang Saya</p> 
           <div className='d-flex justify-content-between'>
-            <div id='produk-keranjang-container'>
+            <div className='produk-keranjang-container'>
               <label className='sidebar-checkbox mb-3'>
-                  <input type="checkbox" />
+                  <input type="checkbox" onChange={(event) => {
+                    selectAllFunc(event.target.checked)}} />
                   Pilih Semua
               </label>
               {
                 products.map((product, index) => {
-                  return <div className='produk-keranjang' key={product.produkId}>
-                    <CartItem product={product}
-                              totalHarga={totalHarga}
-                              setTotalHarga={setTotalHarga}
-                              totalQuantity={totalQuantity}
-                              setTotalQuantity={setTotalQuantity} />
+                  return <div className='produk-keranjang'>
+                    <CartItem key={product.produkId}
+                              product={product}
+                              products={products}
+                              setProducts={setProducts}
+                              objHargaAll={objHargaAll}
+                              setObjHargaAll={setObjHargaAll}
+                              objQtyAll={objQtyAll}
+                              setObjQtyAll={setObjQtyAll}
+                              selectAll={selectAll} />
                   </div>
                 })
               }
@@ -99,7 +144,7 @@ function Cart(props) {
             <div id='tab-total'>
               <p id='ringkasan-belanja'>Ringkasan Belanja</p>
               <div className='d-flex justify-content-between'>
-                <p className='detail-ringkasan'>{`Total harga (${totalQuantityFunc()} produk)`}</p>
+                <p className='detail-ringkasan'>{`Total harga (${totalQtyFunc()} produk)`}</p>
                 <p className='detail-ringkasan'><b>{`Rp${totalHargaFunc().toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</b></p>
               </div>
               <div className='d-flex justify-content-between'>
@@ -110,7 +155,7 @@ function Cart(props) {
                 <p className='total-harga'>Total harga</p>
                 <p className='total-harga'>{`Rp${totalHargaFunc().toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</p>
               </div>
-              <button className='button-bayar' disabled={totalQuantity === 0}>{`Beli (${totalQuantityFunc()})`}</button>
+              <button className='button-bayar' disabled={objQtyAll === 0}>{`Beli (${totalQtyFunc()})`}</button>
             </div>
           </div>
           <div style={{marginTop:'70px', borderTop:'2px solid #D5D7DD'}}>
@@ -118,9 +163,7 @@ function Cart(props) {
             <div className='d-flex justify-content-between'>
               {
                 relatedProducts.map((product, index) => {
-                  return <div key={product.id}>
-                    <ProductCardSmall product={product} />
-                  </div>
+                  return <ProductCardSmall key={product.id} product={product} />
                 })
               }
             </div>
@@ -128,7 +171,6 @@ function Cart(props) {
         </div>
       }
     </div>
-    <Footer />
   </div>
   )
 }

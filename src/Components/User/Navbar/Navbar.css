@@ -2,6 +2,8 @@
   min-height: 92px;
   min-width: 100vw;
   position: fixed;
+  top: 0px;
+  left: 0px;
   background: #fff;
   z-index: 999;
   display: flex !important;

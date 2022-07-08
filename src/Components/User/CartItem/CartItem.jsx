@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './CartItem.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import API_URL from "../../../Helpers/API_URL.js"
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function CartItem({product, totalHarga, setTotalHarga, totalQuantity, setTotalQuantity}) {
+function CartItem({product, products, setProducts, objHargaAll, setObjHargaAll, objQtyAll, setObjQtyAll, selectAll}) {
     const [qty, setQty] = useState(product.quantity)
     const [selected, setSelected] = useState(product.selected)
     const [error, setError] = useState(false)
@@ -54,13 +53,41 @@ function CartItem({product, totalHarga, setTotalHarga, totalQuantity, setTotalQu
         const harga = product.harga
         
         if(selected === 1){
-            setTotalQuantity({...totalQuantity, [nama]: qty})
-            setTotalHarga({...totalHarga, [nama]: qty * harga})
+            setObjQtyAll({...objQtyAll, [nama]: qty})
+            setObjHargaAll({...objHargaAll, [nama]: qty * harga})
         } else {
-            setTotalQuantity({...totalQuantity, [nama]: 0})
-            setTotalHarga({...totalHarga, [nama]: 0})
+            setObjQtyAll({...objQtyAll, [nama]: 0})
+            setObjHargaAll({...objHargaAll, [nama]: 0})
         }
+        console.log(objQtyAll)
     }, [qty, selected])
+
+    useEffect(() => {
+        if(selectAll === true) setSelected(1) 
+        if(selectAll === false) setSelected(0)
+    }, [selectAll])
+
+    const deleteFunc = () => {
+        axios.delete(`${API_URL}/transaction/deleteproduct?produkId=${product.produkId}`,{headers: {authorization: token}})
+        .then(res => {
+            const index = products.findIndex(x => x.id === product.id)
+            setProducts([...products.slice(0,index), ...products.slice(index+1, products.length)])
+            Swal.fire({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                text: 'Barang berhasil dihapus dari keranjang.',
+                timer: 5000,
+                color: 'white',
+                background: '#3A3B3C',
+                backdrop: 'rgba(0,0,0,0)'
+              })
+        })
+        .catch(e => {
+            setError(true)
+            setErrorMsg(e.message)
+        })
+    }
 
     return (
         <div>
@@ -84,7 +111,8 @@ function CartItem({product, totalHarga, setTotalHarga, totalQuantity, setTotalQu
             </div>
             <div className='d-flex justify-content-end align-items-center' >
                 <p className='pindahkan-ke-favorit'>Masukkan ke Favorit</p>
-                <FontAwesomeIcon icon={faTrashCan} className='keranjang-buang' />
+                <FontAwesomeIcon icon={faTrashCan} className='keranjang-buang' 
+                onClick={() => deleteFunc()}/>
                 <div className='d-flex align-items-center'>
                     <button id='qty-button-left-keranjang' disabled={qty === 1} onClick={() => setQty(qty - 1)}><FontAwesomeIcon icon={faMinus} className='qty-icon' /></button>
                     <input type="number" value={qty} id='qty-number-keranjang'

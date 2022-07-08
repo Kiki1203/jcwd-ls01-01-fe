@@ -1,6 +1,5 @@
 import React from 'react';
 import './ProductDetail.css';
-import Footer from '../../../Components/User/Footer/Footer.jsx';
 import ProductCardSmall from '../../../Components/User/ProductCardSmall/ProductCardSmall.jsx';
 import CartModal from '../../../Components/User/CartModal/CartModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -197,9 +196,7 @@ const addToCart = () => {
               <div className='d-flex justify-content-between'>
                 {
                   relatedProducts.map((product, index) => {
-                    return <div key={product.id}>
-                      <ProductCardSmall product={product} />
-                    </div>
+                    return <ProductCardSmall key={product.id} product={product} />
                   })
                 }
               </div>
@@ -207,7 +204,6 @@ const addToCart = () => {
           </div>
         }
       </div>
-      <Footer />
     </div>
   );
 };

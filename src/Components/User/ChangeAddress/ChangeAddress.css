@@ -1,0 +1,107 @@
+.modal-background {
+    position: fixed !important;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-alamat-container {
+    height: auto;
+    width: 700px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    padding: 35px;
+    padding-bottom: 45px;
+}
+
+.modal-alamat-header {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #213360;
+}
+
+.tambah-alamat-baru {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px dashed #DBDEE2;
+    background-color: white;
+    color: #9FA6B0;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
+.alamat-rows-container {
+    margin-top: 20px;
+    height: 300px;
+    overflow-y: auto;
+    scrollbar-color: #B4B9C7 white;
+    scrollbar-width: thin;
+}
+
+.alamat-rows-container::-webkit-scrollbar {
+    width: 7px;
+}
+  
+.alamat-rows-container::-webkit-scrollbar-track {
+    background: white; 
+}
+   
+.alamat-rows-container::-webkit-scrollbar-thumb {
+    background: #B4B9C7; 
+}
+  
+.alamat-rows-container::-webkit-scrollbar-thumb:hover {
+    background: #9a9ea9; 
+}
+
+.alamat-row {
+    border-radius: 10px;
+    padding: 15px 20px;
+    border: 1px solid #9FA6B0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.alamat-utama {
+    color: #E0004D;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 0px;
+    margin-left: 4px;
+    background-color: #ffe9f1;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+.pilih-alamat {
+    background-color: #E0004D;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.lihat-keranjang:hover {
+    background-color: #cc0047;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+}
