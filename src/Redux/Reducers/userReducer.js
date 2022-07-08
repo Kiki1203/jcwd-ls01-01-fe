@@ -10,14 +10,16 @@ let initialState = {
   authChecked: false,
 };
 
-export const userReducer = (state = initialState, action) => {
+ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOADING':
       return { ...state, loading: true, error: false, message: '' };
     case 'LOGIN_ERROR':
       return { ...state, loading: false, error: action.payload.error, message: action.payload.message };
     case 'LOGIN_SUCCESS':
-      return { ...state, loading: false,  authChecked: true, error: action.payload.error, message: action.payload.message, id: action.payload.id, is_redirect: true, is_login: true };
+      return { ...state, loading: false,  authChecked: true, error: action.payload.error, 
+        message: action.payload.message, 
+        id: action.payload.id, is_redirect: true, is_login: true };
     case 'ISLOGIN_TRUE':
       return { ...state, is_login: true };
     case 'ISLOGIN_FALSE':
@@ -30,3 +32,5 @@ export const userReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default userReducer

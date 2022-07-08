@@ -28,7 +28,7 @@ function CartModal({addresses, setOpenModal, selected, setSelected, setSelectedK
                                 </div>
                                 <p style={{fontSize:'14px', color:'#4F618E', margin:'0px'}}>{a.no_hp}</p>
                                 <p style={{fontSize:'14px', color:'#4F618E', margin:'0px'}}>{a.alamat}</p>
-                                <p style={{fontSize:'14px', color:'#4F618E', margin:'0px'}}>{`${a.kecamatan}, ${a.kabupaten_kota}, ${a.provinsi}, ${a.kode_pos}`}</p>
+                                <p style={{fontSize:'14px', color:'#4F618E', margin:'0px'}}>{`${a.kabupaten_kota}, ${a.provinsi}, ${a.kode_pos}`}</p>
                             </div>
                             {
                                 a.id !== selected.id && <button className='pilih-alamat' onClick={() => {

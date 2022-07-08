@@ -8,11 +8,28 @@
   border-radius: 50%;
 }
 
+#choose-file-edit-profile{
+  position: absolute;
+  color: #FFFFFF;
+  background: #E0004D;
+  border: 1px solid #E0004D;
+  cursor: pointer;
+  padding: 6px 12px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 17px;
+  border-radius: 8px;
+  top: 530px !important;
+  left: 500px;
+}
+
 .keterangan-verifikasi{
   position: absolute;
   width: 229px;
   height: 24px;
-  left: 430px;
+  left: 440px;
   top: 170px;
   font-family: 'Public Sans';
   font-style: normal;

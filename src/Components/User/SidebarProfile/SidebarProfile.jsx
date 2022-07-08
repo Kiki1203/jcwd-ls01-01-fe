@@ -30,7 +30,7 @@ const SidebarProfile  = () => {
       }, [])
 
     return(
-        <div className="container">
+        <div id="container-sb">
           <div className="d-md-block d-lg-block d-none">
               <div className='sidebar-profile-box'>
                 <div className='box-baris-1'>

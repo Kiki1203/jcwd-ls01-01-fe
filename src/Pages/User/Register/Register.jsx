@@ -3,7 +3,7 @@ import Axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import Divider from '@mui/material/Divider';
 import './Register.css';
-import gambar from './../../../Assets/login.svg';
+import gambar from './../../../Assets/Frame.svg';
 import google from './../../../Assets/googleL.svg';
 import fb from './../../../Assets/fbL.svg';
 import pLogin from './../../../Assets/pLogin.svg';
@@ -98,39 +98,39 @@ const Register = () => {
 
   return (
     <div className="container-register ">
-      <div className="row">
-        <div className="col-xs-12 col-sm-12 col-md-6">
-          <img src={gambar} alt="" />
+      <div className="d-flex">
+        <div className="box-image-register">
+          <img src={gambar} alt="" className="image-register" />
         </div>
-        <div className="col-6 col-xs-12 col-sm-12 col-md-6 form-register">
-          <div className="mb-4">Mari Kita Mulai</div>
-          <div className="mb-4">
+        <div className=" form-register">
+          <div className="mb-2 mt-4">Mari Kita Mulai</div>
+          <div className="mb-3">
             Sudah punya akun?{' '}
             <Link to="/login" style={{ textDecoration: 'none', color: 'red' }}>
               Masuk
             </Link>
           </div>
-          <div className="row justify-content-around">
-            <button type="button" className="col-5 bg btn btn-light  login-other">
+          <div className="d-flex">
+            <button type="button" className=" bg btn btn-light w-100 mx-3 login-other">
               <img className="me-2" src={google} alt="" /> Daftar dengan Google
             </button>
-            <button className="col-5 bf btn btn-primary  login-other">
+            <button className="bf btn btn-primary w-100 login-other">
               <img className="me-2" src={fb} alt="" />
               Daftar dengan Facebook
             </button>
           </div>
           <br />
-          <div>
+          <div style={{marginTop: '-10px'}}>
             <Divider>
               <span> atau</span>
             </Divider>
           </div>
           <br />
-          <div>
+          <div style={{marginTop: '-20px'}}>
             <label for="exampleFormControlInput1" className="form-label">
               Name
             </label>
-            <InputGroup className=" col-12 col-sm-12 col-12 mb-3">
+            <InputGroup>
               <InputGroupText className="icon-email-resetpassword">
                 <img src={pLogin} alt="" />
               </InputGroupText>
@@ -139,7 +139,7 @@ const Register = () => {
             <label for="exampleFormControlInput1" className="form-label">
               Email Address
             </label>
-            <InputGroup className=" col-12 col-sm-12 col-12 mb-3">
+            <InputGroup>
               <InputGroupText className="icon-email-resetpassword">
                 <img src={mLogin} alt="" />
               </InputGroupText>
@@ -148,7 +148,7 @@ const Register = () => {
             <label for="exampleFormControlInput1" className="form-label">
               Password
             </label>
-            <InputGroup className=" col-12 col-sm-12 col-12 mb-3">
+            <InputGroup>
               <InputGroupText className="icon-email-resetpassword">
                 <img src={passLogin} alt="" />
               </InputGroupText>
@@ -158,7 +158,7 @@ const Register = () => {
             <label for="exampleFormControlInput1" className="form-label">
               Repeat Password
             </label>
-            <InputGroup className=" col-12 col-sm-12 col-12 mb-3">
+            <InputGroup>
               <InputGroupText className="icon-email-resetpassword">
                 <img src={passLogin} alt="" />
               </InputGroupText>
@@ -166,7 +166,7 @@ const Register = () => {
               <Button className="icon-email-newpassword">@</Button>
             </InputGroup>
           </div>
-          <div className="mt-4 mb-4 ">
+          <div className="mt-3 ">
             <input type="checkbox" value="" id="flexCheckDefault" />
             <label for="flexCheckDefault">
               Saya setuju dengan{' '}
@@ -183,13 +183,13 @@ const Register = () => {
               </span>
             </label>
           </div>
-          <div classNameName="mb-3">
+          <div className="mt-3">
             {loading ? (
-              <button type="button" className="btn btn-secondary col-12 ">
+              <button type="button" className="btn btn-secondary ">
                 <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={15} />
               </button>
             ) : (
-              <button type="button" className="btn btn-danger col-12 " onClick={() => onSubmit()}>
+              <button type="button" className="btn btn-danger w-100 " onClick={() => onSubmit()}>
                 {' '}
                 Sign up
               </button>

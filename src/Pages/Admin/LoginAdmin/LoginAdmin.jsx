@@ -2,36 +2,58 @@ import React, { useEffect, useState } from 'react'
 import './LoginAdmin.css';
 import { useParams, Navigate } from 'react-router-dom'
 import Frame from '../../../Assets/Frame.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
+import Axios from 'axios';
+import API_URL from '../../../Helpers/API_URL.js';
 import { onAdminLogin, onCheckAdminLogin  } from '../../../Redux/Actions/adminAction';
 
 const LoginAdmin = () => {
-
+ 
   const [usernameOrEmail, setusernameOrEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [redirect, setRedirect] = React.useState(false)
+  const [isLogedIn, setIsLogedIn] = React.useState(false)
+  const [error, setError]  = React.useState('');
   const [inVisible, setInVisible] = React.useState({
       type: "password",
       title: "Show"
   });
 
+  const navigate = useNavigate()
 
-  const dispatch = useDispatch();
-  const {error, is_login} = useSelector(state => state.adminReducer)
+  useEffect(() => {
+    onCheckIsLogedIn()
+    handleLogin()
+}, [])
 
-  
+const onCheckIsLogedIn = () => {
+  let token = localStorage.getItem('myTkn')
+  if(token){
+     setIsLogedIn(true)
+  }
+}
+
   const handleLogin = () =>{
     let data = {
       usernameOrEmail: usernameOrEmail,
       password: password,
     };
-    dispatch(onAdminLogin(data));
+
+    Axios.post(`${API_URL}/admin/loginadmin`, data)
+    .then((res) => {
+      console.log(res.data)
+      localStorage.setItem('myTkn', res.data.token)
+      if( res.data.token){
+        navigate("/homeadmin")
+      }
+    }).catch((err) => {
+        console.log('ini err get',err)
+        setError(err.response.data.message)
+    })
   };
-
-  const [redirect, setRedirect] = React.useState(false)
-
 
 const handleVisible = () => {
   if (inVisible.type == "password") {
@@ -47,8 +69,10 @@ const handleVisible = () => {
   }
 }
 
-if(is_login || !redirect){
-  return <Navigate to='/homeadmin' />
+if(isLogedIn){
+  return(
+      <Navigate to='/homeadmin' />
+  )
 }
 
   return (
@@ -73,7 +97,7 @@ if(is_login || !redirect){
             </form>
             <div className='login-error-message'>
             {
-              error  == 'Account not found' ||  error  == 'Data incomplete!' ?
+              error  == 'Account not found' ?
               <>{error}</>
               :
               <><div></div></>
@@ -98,7 +122,7 @@ if(is_login || !redirect){
             </form>
             <div className='login-error-message'>
               {
-              error  == 'Incorrect password' ||  error  == 'Data incomplete!' ?
+              error  == 'Incorrect password'  ?
               <>{error}</>
               :
               <><div></div></>

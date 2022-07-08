@@ -15,7 +15,7 @@ const Checkout = () => {
   const [selectedKurir, setSelectedKurir] = useState(null)
   const [selectedPaymentMtd, setSelectedPaymentMtd] = useState(null)
   const [kurirOpen, setKurirOpen] = useState(false)
-  const [openMdlAlamat, setOpenMdlAlamat] = useState(true)
+  const [openMdlAlamat, setOpenMdlAlamat] = useState(false)
   const [openMdlPembayaran, setOpenMdlPembayaran] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -97,11 +97,11 @@ const Checkout = () => {
                     onClick={() => setOpenMdlAlamat(true)}>Pilih Alamat Lain</p>
                 </div>
                 <p style={{fontSize:'14px', color:'#213360', margin:'0px'}}>{selectedAddress.label_alamat}</p>
-                <p style={{fontSize:'14px', color:'#4F618E', margin:'0px 100px 0px 0px'}}>{`${selectedAddress.alamat}, ${selectedAddress.kecamatan}, ${selectedAddress.kabupaten_kota}, ${selectedAddress.provinsi}, ${selectedAddress.kode_pos}`}</p>
+                <p style={{fontSize:'14px', color:'#4F618E', margin:'0px 100px 0px 0px'}}>{`${selectedAddress.alamat}, ${selectedAddress.kabupaten_kota}, ${selectedAddress.provinsi}, ${selectedAddress.kode_pos}`}</p>
               </div>
               <p style={{fontSize:'14px', fontWeight:'700', color:'#213360', marginTop:'20px', marginBottom:'0px'}}>Pilih jasa pengiriman:</p>
               <div style={{position:'relative'}}>
-                <div className="custom-select" style={{borderRadius: kurirOpen && '10px 10px 0px 0px'}} onClick={() => setKurirOpen(!kurirOpen)}>
+                <div className="custom-select-checkout" style={{borderRadius: kurirOpen && '10px 10px 0px 0px'}} onClick={() => setKurirOpen(!kurirOpen)}>
                   {selectedKurir ? selectedKurir.nama : 'Pengiriman'}
                   <FontAwesomeIcon icon={faAngleDown} style={{position:'absolute', top:'12px', right:'20px'}} />
                 </div>
@@ -133,7 +133,7 @@ const Checkout = () => {
                         onClick={() => navigate(`/productdetail/${product.produkId}`)} alt="" />
                       <div>
                         <p className='nama-produk-keranjang' onClick={() => navigate(`/productdetail/${product.produkId}`)}>{product.namaObat}</p>
-                        <p className='quantity-produk-keranjang'>{`${product.quantity} ${product.satuanObat}`}</p>
+                        <p className='quantity-produk-keranjang'>{`${product.quantity} ${product.satuanObat} (${product.berat * product.quantity} gr)`}</p>
                       </div>
                     </div>
                     <p className='harga-produk-keranjang'>{'Rp' + (product.harga * product.quantity).toLocaleString('de-DE', {minimumFractionDigits: 0})}</p>

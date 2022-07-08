@@ -1,5 +1,4 @@
-.custom-select
-{
+.custom-select-checkout {
 	width: 300px;
     padding: 20px 0px;
     display: flex;
@@ -16,7 +15,7 @@
     position: relative;
 }
 
-.custom-select:hover {
+.custom-select-checkout:hover {
     background-color: #ba0041;
 }
 

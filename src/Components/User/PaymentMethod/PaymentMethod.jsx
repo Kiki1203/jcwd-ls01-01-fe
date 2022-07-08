@@ -34,8 +34,8 @@ const PaymentMethod = ({total, setOpenModal, selected, setSelected}) => {
           selected &&  <FontAwesomeIcon icon={faAngleLeft} className='back-icon' onClick={() => setSelected(null)} />
         } 
         <FontAwesomeIcon icon={faXmark} className='close-icon' onClick={() => setOpenModal(false)} />
-        <p className='modal-title'>Metode Pembayaran</p>
-        <div className='total-harga-container'>
+        <p className='modal-title' style={{marginBottom:'15px'}}>Metode Pembayaran</p>
+        <div className='total-harga-container-modal'>
           <div>
             <p className='total-harga'>Total Harga</p>
             <p className='rp-total-harga'>{`Rp${total.toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</p>
@@ -49,11 +49,11 @@ const PaymentMethod = ({total, setOpenModal, selected, setSelected}) => {
               <p className='payment-method-name-header'>{selected.metode_pembayaran}</p>
               <img className='payment-method-logo-corner' src={`${API_URL}/${selected.logo}`} alt="" />
             </div>
-            <p style={{color:'#213360', fontSize:'14px', fontWeight:'700', margin:'10px 0px'}}>Perhatian:</p>
+            <p style={{color:'#213360', fontSize:'13px', fontWeight:'700', margin:'5px 0px'}}>Perhatian:</p>
             <ul>
               {
                 selected.cara_bayar_modal.split(',').map((item) => {
-                  return <li style={{color:'#4F618E', fontSize:'14px', margin:'0 10px 10px -18px'}}>{item}</li>
+                  return <li style={{color:'#4F618E', fontSize:'12px', margin:'0 10px 5px -18px'}}>{item}</li>
                 })
               }
             </ul>
@@ -72,8 +72,8 @@ const PaymentMethod = ({total, setOpenModal, selected, setSelected}) => {
             }
           </div>
         }
-        <button className='pilih-metode' onClick={() => {
-                navigate('/cart')
+        <button className='pilih-metode' disabled={selected === null} onClick={() => {
+                // navigate('/')
                 setOpenModal(false)
             }}>Pilih Metode</button>
       </div>

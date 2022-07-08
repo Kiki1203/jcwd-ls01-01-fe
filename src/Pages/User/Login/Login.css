@@ -1,3 +1,28 @@
+.container-login{
+  min-width: 90vw;
+  display: flex;
+}
+
+.box-image-login{
+  height: 40vh;
+  width: 20vw;
+  object-fit: cover;
+}
+
+
+.image-login{
+  height: 99vh;
+  width: 45vw;
+  object-fit: cover;
+}
+
+.form-login{
+  height: 99vh;
+  width: 45vw;
+  margin-left: 400px;
+}
+
+
 .fc {
   font-family: 'Nunito';
   font-style: normal;

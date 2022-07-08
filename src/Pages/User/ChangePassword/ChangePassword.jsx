@@ -92,6 +92,7 @@ const ChangePassword = () => {
     <div className="container">
       <TemplateProfile />
       <SidebarProfile2 />
+      <div className="keterangan-verifikasi-desk">Akun Terverifikasi</div>
       <div className="foto-change-password">
         <img src={ChangePasswords} alt="" />
       </div>

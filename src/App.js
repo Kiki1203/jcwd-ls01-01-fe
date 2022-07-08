@@ -25,6 +25,7 @@ import EditProfile from './Pages/User/EditProfile/EditProfile.jsx';
 // ADMIN
 import LoginAdmin from './Pages/Admin/LoginAdmin/LoginAdmin.jsx';
 import Dashboard from './Pages/Admin/Dashboard/Dashboard.jsx';
+import DaftarProduk from './Pages/Admin/DaftarProduk/DaftarProduk.jsx';
 
 
 // Redux
@@ -41,8 +42,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/loginadmin' || location.pathname === '/resetpassword' || location.pathname === '/newpassword' ? null : <Navbar />}
-
+        {location.pathname === '/login' || location.pathname === '/register'  || location.pathname === '/homeadmin' || location.pathname === '/daftarprodukadmin' || location.pathname === '/newpassword' || location.pathname === '/loginadmin' || location.pathname === '/resetpassword' ? null : <Navbar />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -64,8 +64,9 @@ function App() {
           <Route path="/uploadresepsuccess" element={<UploadSuccess />} />
           <Route path="/loginadmin" element={<LoginAdmin />} />
           <Route path="/homeadmin" element={<Dashboard />} />
+          <Route path="/daftarprodukadmin" element={<DaftarProduk />} />
         </Routes>
-        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/resetpassword' || location.pathname === '/newpassword' ? null : <Footer />}
+        {location.pathname === '/login' || location.pathname === '/daftarprodukadmin' || location.pathname === '/homeadmin' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/loginadmin'  || location.pathname === '/resetpassword' ? null : <Footer />}
       </Provider>
     </>
   );

@@ -8,8 +8,8 @@ import Swal from 'sweetalert2';
 import default1 from '../../../Assets/default.jpg';
 import Footer from "../../../Components/User/Footer/Footer.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link, Navigate } from 'react-router-dom';
 
 
 function EditProfile() {
@@ -23,6 +23,24 @@ function EditProfile() {
     const [previewImage, setpreviewImage] =  React.useState(null);
     const [listProfile, setlistrofile] = React.useState([]);
     const [selectedEditProfile, setselectedEditProfile] = React.useState(0);
+    const [file, setFile] = useState(null);
+
+    const onImagesValidation = (e) => {
+        try {
+            let file = [...e.target.files]
+            setFile(file[0])
+            const reader = new FileReader()
+            //   reader.readAsDataURL(e.target.files[0])
+              reader.onload = () => {
+                  if(reader.readyState === 2){
+                      setpreviewImage(reader.result)
+                  }
+              }
+            reader.readAsDataURL(file[0])
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 
     
     useEffect(() => {
@@ -110,7 +128,7 @@ function EditProfile() {
                 umur: tahun
             }
     
-            formData.append('image', editImageFile)
+            formData.append('image', file)
             formData.append('data', JSON.stringify(data))
             
             if(!data.email.includes('@')) throw { message: Swal.fire({
@@ -148,8 +166,11 @@ function EditProfile() {
             })
         }
        
-  
-  
+   if(!localStorage.getItem('myTkn')){
+            return(
+                <Navigate to='/' />
+            )
+    }
 
     return (
         <div className="container">
@@ -171,7 +192,11 @@ function EditProfile() {
         }
         </div>
         <div>
-        <input className="button-edit-foto" type="file" label={editImageFileName} onChange={onEditImageFileChange} />
+        {/* <input className="button-edit-foto" type="file" label={editImageFileName} onChange={onEditImageFileChange} /> */}
+        <form method="POST" action="/upload" encType='multipart/form-data'>
+                        <input type="file" name='photo' accept="image/*" id="image-input" style={{display: 'none'}} onChange={(e) => onImagesValidation(e)} />
+                        </form>
+                        <label htmlFor='image-input' id="choose-file-edit-profile">Choose image</label>
         </div>
         <div className="baris-edit-profile-1">
             <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">

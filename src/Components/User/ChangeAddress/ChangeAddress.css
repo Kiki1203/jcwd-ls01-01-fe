@@ -14,7 +14,7 @@
 .modal-alamat-container {
     height: auto;
     width: 700px;
-    height: 600px;
+    height: 500px;
     background-color: white;
     border-radius: 10px;
     position: relative;
@@ -44,7 +44,7 @@
 
 .alamat-rows-container {
     margin-top: 20px;
-    height: 400px;
+    height: 300px;
     overflow-y: auto;
     scrollbar-color: #B4B9C7 white;
     scrollbar-width: thin;

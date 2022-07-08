@@ -6,6 +6,7 @@ let initialState = {
   is_login: false,
   is_confirmed: 0,
   token: '',
+  username:"",
   id: '',
   authChecked: false,
 };
