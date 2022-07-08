@@ -3,16 +3,17 @@ import './Navbar.css';
 import logo from './../../../Assets/logo.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faBell, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 // import { useSelector } from 'react-redux';
 // import { onCheckUserLogin, onUserLogout } from '../../../Redux/Actions/userAction';
 
 const Navbar = () => {
   let [dropdownOpen, setDropdownOpen] = useState(false); 
-
+  const navigate = useNavigate()
   const btnLogOut = () => {
     localStorage.removeItem('myTkn');
+     navigate("/")
   }
 
   if (localStorage.getItem('myTkn')){

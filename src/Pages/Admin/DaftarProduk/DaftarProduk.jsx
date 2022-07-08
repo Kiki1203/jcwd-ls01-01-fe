@@ -6,6 +6,7 @@ import ModalEditObat from '../../../Components/Admin/ModalEditProduk/ModalEditOb
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import TableData from './TableData';
+import { Link, Navigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 import { faDownload, faFileExcel, faSearch, faAngleDown, faEllipsisVertical} from '@fortawesome/free-solid-svg-icons';
@@ -133,6 +134,12 @@ const DaftarProduk  = () => {
     const klikModalEdit = (id) => {
         setSelectedProdukId(id)
     }
+
+    if(!localStorage.getItem('myTkn')){
+        return(
+            <Navigate to='/loginadmin' />
+        )
+      }
 
 
     return(

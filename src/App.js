@@ -42,7 +42,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        {location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/daftarprodukadmin' || location.pathname === '/newpassword' || location.pathname === '/loginadmin' || location.pathname === '/resetpassword' ? null : <Navbar />}
+        {location.pathname === '/login' || location.pathname === '/register'  || location.pathname === '/homeadmin' || location.pathname === '/daftarprodukadmin' || location.pathname === '/newpassword' || location.pathname === '/loginadmin' || location.pathname === '/resetpassword' ? null : <Navbar />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -66,7 +66,7 @@ function App() {
           <Route path="/homeadmin" element={<Dashboard />} />
           <Route path="/daftarprodukadmin" element={<DaftarProduk />} />
         </Routes>
-        {location.pathname === '/login' || location.pathname === '/daftarprodukadmin' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/resetpassword' ? null : <Footer />}
+        {location.pathname === '/login' || location.pathname === '/daftarprodukadmin' || location.pathname === '/homeadmin' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/loginadmin'  || location.pathname === '/resetpassword' ? null : <Footer />}
       </Provider>
     </>
   );

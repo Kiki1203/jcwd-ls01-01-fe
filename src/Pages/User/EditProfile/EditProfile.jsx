@@ -8,8 +8,8 @@ import Swal from 'sweetalert2';
 import default1 from '../../../Assets/default.jpg';
 import Footer from "../../../Components/User/Footer/Footer.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link, Navigate } from 'react-router-dom';
 
 
 function EditProfile() {
@@ -166,8 +166,11 @@ function EditProfile() {
             })
         }
        
-  
-  
+   if(!localStorage.getItem('myTkn')){
+            return(
+                <Navigate to='/' />
+            )
+    }
 
     return (
         <div className="container">

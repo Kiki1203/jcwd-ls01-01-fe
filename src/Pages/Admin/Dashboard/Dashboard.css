@@ -1,15 +1,15 @@
 .full-box-dashboard-admin-page{
     position: absolute;
-    width: 1007px;
+    width: 983px;
     height: 950px;
-    left: 256px;
+    left: 280px;
     top: 64px;
     background: linear-gradient(155.7deg, #f5ded6 -45.88%, #fcf7f9 45.77%, #fcf1f7 117.72%);
 }
 
 .tulisan-analisis-produk-admin{
     position: absolute;
-    width: 218px;
+    width: 300px;
     height: 24px;
     left: 48px;
     top: 32px;

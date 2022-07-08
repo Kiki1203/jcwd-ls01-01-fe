@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import './Dashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleRight} from '@fortawesome/free-solid-svg-icons';
@@ -6,6 +7,24 @@ import SidebarAdmin from '../../../Components/Admin/SidebarAdmin/SidebarAdmin.js
 
 
 const DashboardAdmin  = () => {
+    // const [isLogedIn, setIsLogedIn] = React.useState(false)
+    // useEffect(() => {
+    //     onCheckIsLogedIn()
+    // }, [])
+
+    // const onCheckIsLogedIn = () => {
+    //     let token = localStorage.getItem('myTkn')
+    //     if(token){
+    //        setIsLogedIn(true)
+    //     }
+    //   }
+    
+      if(!localStorage.getItem('myTkn')){
+        return(
+            <Navigate to='/loginadmin' />
+        )
+      }
+
     return(
         <>
         <SidebarAdmin />

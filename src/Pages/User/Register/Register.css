@@ -1,6 +1,28 @@
-.form-register {
-  padding: 50px 94px 50px 140px !important;
+.container-register{
+  min-width: 90vw;
+  display: flex;
 }
+
+.box-image-register{
+  height: 40vh;
+  width: 20vw;
+  object-fit: cover;
+}
+
+
+.image-register{
+  height: 99vh;
+  width: 45vw;
+  object-fit: cover;
+}
+
+.form-register{
+  height: 99vh;
+  width: 45vw;
+  margin-left: 400px;
+}
+
+
 .login-other {
   font-size: 10px !important;
 }

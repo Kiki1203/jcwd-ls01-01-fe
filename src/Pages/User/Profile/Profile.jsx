@@ -3,13 +3,16 @@ import './Profile.css';
 import SidebarProfile from "../../../Components/User/SidebarProfile/SidebarProfile.jsx";
 import TemplateProfile from "../../../Components/User/TemplateProfile/TemplateProfile.jsx";
 import axios from 'axios';
+// import {connect} from 'react-redux';
+// import { onUserLogin, onCheckUserLogin } from '../../../Redux/Actions/userAction';
 import API_URL  from '../../../Helpers/API_URL.js';
 import default1 from '../../../Assets/default.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Profile  = () => {
+    
 
     const [nama, setNama] = React.useState("");
     const [email, setEmail] = React.useState("");
@@ -17,6 +20,10 @@ const Profile  = () => {
     const [gender, setGender] = React.useState("");
     const [umur, setUmur] = React.useState("");
     const [profilepic, setProfilepic] = React.useState("");
+
+    // useEffect(() => {
+    //     onCheckUserLogin()
+    //  }, [])
 
     useEffect(() => {
         let token = localStorage.getItem('myTkn')
@@ -38,8 +45,12 @@ const Profile  = () => {
             console.log('ini err get',err)
         })
         }, [])
-
-   
+    
+    if(!localStorage.getItem('myTkn')){
+            return(
+                <Navigate to='/' />
+            )
+    }
     return(
         <div className="container">
             <TemplateProfile/>
@@ -124,4 +135,6 @@ const Profile  = () => {
     )
 }
 
-export default Profile
+
+  
+  export default Profile
