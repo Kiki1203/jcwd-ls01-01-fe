@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './Checkout.css';
 import axios from 'axios';
 import API_URL from "../../../Helpers/API_URL.js"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import PaymentMethod from '../../../Components/User/PaymentMethod/PaymentMethod.jsx';
@@ -22,28 +22,32 @@ const Checkout = () => {
   const [errorMsg, setErrorMsg] = useState('')
   const token = localStorage.getItem('myTkn')
   const navigate = useNavigate()
+  const params = useParams()
+  const jenisTransaksi = params.jenis
 
   useEffect(() => {
     setLoading(true)
     setError(false)
-    axios.get(`${API_URL}/transaction/getcheckoutdata`, {headers: {authorization: token}})
-    .then(res => {
-      setLoading(false)
-      setProducts([...res.data.products])
-      setAddresses([...res.data.alamat])
-      setSelectedAddress(res.data.alamat.find(item => item.alamat_utama === 1))
-    })
-    .catch(e => {
-      setLoading(false)
-      setError(true)
-      setErrorMsg(e.message)
-    })
+    if(jenisTransaksi === 'produk-bebas'){
+      axios.get(`${API_URL}/transaction/getcheckoutdata`, {headers: {authorization: token}})
+      .then(res => {
+        setLoading(false)
+        setProducts([...res.data.products])
+        setAddresses([...res.data.alamat])
+        setSelectedAddress(res.data.alamat.find(item => item.alamat_utama === 1))
+      })
+      .catch(e => {
+        setLoading(false)
+        setError(true)
+        setErrorMsg(e.message)
+      })
+    }
   }, [])
   
   const totalHargaFunc = () => {
     let total = 0
     products.forEach(p => {
-      total += p.harga
+      total += p.harga * p.quantity
     })
     return total
   }
@@ -73,7 +77,11 @@ const Checkout = () => {
       openMdlPembayaran && <PaymentMethod total={totalHargaFunc() + selectedKurir.tarif}
                             setOpenModal={setOpenMdlPembayaran}
                             selected={selectedPaymentMtd}
-                            setSelected={setSelectedPaymentMtd} />
+                            setSelected={setSelectedPaymentMtd}
+                            products={products}
+                            address={selectedAddress}
+                            jenis={jenisTransaksi}
+                            kurir={selectedKurir}  />
     }
     {
       openMdlAlamat && <ChangeAddress addresses={addresses}
@@ -148,7 +156,7 @@ const Checkout = () => {
               </div>
               </div>
             </div>
-            <div id='tab-total' style={{height:'380px'}}>
+            <div id='tab-total' style={{height:'410px'}}>
               <p className='header-total' style={{marginBottom:'20px'}}>Ringkasan Belanja</p>
               <div className='d-flex justify-content-between'>
                 <p className='detail-ringkasan'>{`Subtotal (${totalQtyFunc()} Produk)`}</p>
@@ -163,7 +171,7 @@ const Checkout = () => {
                 <p className='total-harga' style={{color:'#E0004D'}}>{`Rp${(totalHargaFunc() + (selectedKurir ? selectedKurir.tarif : 0)).toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</p>
               </div>
               <p className='header-total' >Metode Pembayaran</p>
-              <p style={{fontSize:'12px', color:'#4F618E', margin:'0px'}}>Silakan pilih metode pembayaran Anda di sini</p>
+              <p style={{fontSize:'12px', color:'#4F618E', margin:'10px 0 0'}}>Sebelum memilih metode pembayaran, pastikan Anda telah memilih jasa pengiriman.</p>
               <button className='button-bayar' disabled={selectedKurir === null} style={{marginTop:'20px', fontSize:'14px', padding:'15px'}}
               onClick={() => setOpenMdlPembayaran(true)}>
                 {`Pilih Metode Pembayaran`}</button>

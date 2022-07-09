@@ -18,6 +18,7 @@ function Cart(props) {
   const [error, setError] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const token = localStorage.getItem('myTkn')
+  const navigate = useNavigate()
 
   useEffect(() => {
     setLoading(true)
@@ -155,7 +156,9 @@ function Cart(props) {
                 <p className='total-harga'>Total harga</p>
                 <p className='total-harga'>{`Rp${totalHargaFunc().toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</p>
               </div>
-              <button className='button-bayar' disabled={objQtyAll === 0}>{`Beli (${totalQtyFunc()})`}</button>
+              <button className='button-bayar' disabled={objQtyAll === 0}
+                onClick={() => navigate('/checkout/produk-bebas')}>
+                {`Beli (${totalQtyFunc()})`}</button>
             </div>
           </div>
           <div style={{marginTop:'70px', borderTop:'2px solid #D5D7DD'}}>

@@ -21,6 +21,7 @@ import UploadResep from './Pages/User/UploadResep/UploadResep.jsx';
 import UploadSuccess from './Pages/User/UploadSuccess/UploadSuccess.jsx';
 import ChangePassword from './Pages/User/ChangePassword/ChangePassword.jsx';
 import EditProfile from './Pages/User/EditProfile/EditProfile.jsx';
+import Payment from './Pages/User/Payment/Payment.jsx';
 
 // ADMIN
 import LoginAdmin from './Pages/Admin/LoginAdmin/LoginAdmin.jsx';
@@ -51,7 +52,7 @@ function App() {
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/newpassword/:token" element={<NewPassword />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/Checkout" element={<Checkout />} />
+          <Route path="/checkout/:jenis" element={<Checkout />} />
           <Route path="/confirmation/:token" element={<Confirmation />} />
           <Route path="/verification" element={<Verification />} />
           <Route path="/FormAddress" element={<FormAddress />} />
@@ -65,6 +66,7 @@ function App() {
           <Route path="/loginadmin" element={<LoginAdmin />} />
           <Route path="/homeadmin" element={<Dashboard />} />
           <Route path="/daftarprodukadmin" element={<DaftarProduk />} />
+          <Route path="/payment/:id" element={<Payment />} />
         </Routes>
         {location.pathname === '/login' || location.pathname === '/daftarprodukadmin' || location.pathname === '/homeadmin' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/loginadmin'  || location.pathname === '/resetpassword' ? null : <Footer />}
       </Provider>
