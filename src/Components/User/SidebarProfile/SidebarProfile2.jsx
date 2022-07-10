@@ -50,25 +50,25 @@ const SidebarProfile2  = () => {
                       <div className='sidebar-profile'>Profile</div>
                     </div>
                   </Link>
-                  <Link to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+                  <Link to='/semuapesanan' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                   <div className='box-baris-3'>
                       <FontAwesomeIcon icon={faReceipt} id='sidebar-logo' />
                       <div className='sidebar-proses-pemesanan'>Proses Pemesanan</div>
                     </div>
                   </Link>
-                  <Link to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+                  <Link to='/metodepembayaran' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                     <div className='box-baris-4'>
                       <FontAwesomeIcon icon={faMoneyBills} id='sidebar-logo' />
                       <div className='sidebar-metode-pembayaran'>Metode Pembayaran</div>
                     </div>
                   </Link>
-                  <Link to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+                  <Link to='/alamatpengiriman' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                   <div className='box-baris-5'>
                       <FontAwesomeIcon icon={faLocationDot} id='sidebar-logo' />
                       <div className='sidebar-alamat-pengiriman'>Alamat Pengiriman</div>
                     </div>
                   </Link>
-                  <Link to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+                  <Link to='/favorite' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                   <div className='box-baris-6'>
                       <FontAwesomeIcon icon={faHeart} id='sidebar-logo' />
                       <div className='sidebar-favorite'>Favorite</div>
