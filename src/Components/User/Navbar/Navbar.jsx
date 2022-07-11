@@ -45,12 +45,12 @@ const Navbar = () => {
                   </DropdownToggle>
                   <DropdownMenu>
                       <DropdownItem>
-                      <Link to="/profile" style={{textDecoration: "none", cursor:"pointer", color:"black"}}>
+                        <div  onClick={() => navigate('/profile')}  style={{textDecoration: "none", cursor:"pointer", color:"black"}}>
                         Profile
-                        </Link>
+                        </div>
                       </DropdownItem>
                       <DropdownItem>
-                         <div  onClick={() => btnLogOut()}>Log Out</div>
+                         <div  onClick={() => btnLogOut()}  style={{textDecoration: "none", cursor:"pointer", color:"black"}}>Log Out</div>
                       </DropdownItem>
                   </DropdownMenu>
               </Dropdown>

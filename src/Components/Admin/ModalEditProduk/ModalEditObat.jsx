@@ -245,8 +245,8 @@ const ModalEditObat = (id) => {
   
     return (
         <>
-        <div onClick={() => klikOpenMOdal()} >Edit Obat</div>
-        <Modal  isOpen={!modalOpen}>
+        <div onClick={() => setModalOpen(true)} >Edit Obat</div>
+        <Modal   toggle={() => setModalOpen(true)} isOpen={modalOpen}>
              <ModalHeader>
                  <span className="modal-title-add-obat">Edit Obat</span>
                  <FontAwesomeIcon icon={faXmark} className="button-close-modal-admin"  onClick={() => setModalOpen(false)}/>

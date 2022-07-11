@@ -6,6 +6,19 @@
     justify-content: flex-start;
     align-items: center;
   }
+
+  .apotakecare-admin{
+    font-family: 'Public Sans';
+    font-style: normal ;
+    font-weight: 700 ;
+    font-size: 24px ;
+    line-height: 28px ;
+    top: 17px;
+    left: 75px;
+    letter-spacing: -0.04em ;
+    color: #213360 ;
+    position: absolute;
+  }
   
   .sidebar-icon{
     margin-top: 20px;
@@ -25,11 +38,10 @@
   .box-nav-icon{
     margin-left: 2rem;
     font-size: 2rem;
-    height: 80px;
+    width: 200px;
+    height: 50px;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    
+    margin-top: 5px
    
   }
   
