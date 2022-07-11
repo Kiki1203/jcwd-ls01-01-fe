@@ -5,13 +5,17 @@ import { faXmark, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import API_URL from "../../../Helpers/API_URL.js"
+import Swal from 'sweetalert2';
 
-const PaymentMethod = ({total, setOpenModal, selected, setSelected}) => {
+const PaymentMethod = ({total, setOpenModal, selected, setSelected, products, address, jenis, kurir}) => {
   const [paymentMethods, setPaymentMethods] = useState([])
   const [loading, setLoading] = useState(false)
+  const [submitLoading, setSubmitLoading] = useState(false)
   const [error, setError] = useState(false)
+  const [transactionId, setTransactionId] = useState(null)
   const navigate = useNavigate()
   const token = localStorage.getItem('myTkn')
+  const code = jenis === 'produk-bebas' ? 'BBS' : 'RSP'
 
   useEffect(() => {
     setLoading(true)
@@ -25,7 +29,58 @@ const PaymentMethod = ({total, setOpenModal, selected, setSelected}) => {
       setLoading(false)
       setError(true)
     })
+    getTransactionId()
   }, [])
+
+  const getTransactionId = async () => {
+    await axios.get(`${API_URL}/transaction/getmaxid`, {headers: {'Access-Control-Allow-Origin': '*'}})
+    .then(res => {
+      setTransactionId(res.data[0].maxId === null ? 1 : res.data[0].maxId + 1)
+      // console.log('res getTransactionId', res.data[0].maxId)
+    })
+    .catch(e => {
+      console.log('masuk error getTransactionId', e)
+    })
+  }
+
+  const addTransaction = async () => {
+    const dataTransaksi = {
+      noPemesanan: `APTK${code}${transactionId}`,
+      labelAlamat: address.label_alamat,
+      namaDepan: address.nama_depan_penerima,
+      namaBelakang: address.nama_belakang_penerima,
+      noHp: address.no_hp,
+      idProvinsi: address.id_provinsi,
+      provinsi: address.provinsi,
+      idKabupaten_kota: address.id_kabupaten_kota,
+      kabupatenKota: address.kabupaten_kota,
+      alamat: address.alamat,
+      kodePos: address.kode_pos,
+      totalPembayaran: total,
+      kurir: kurir.nama,
+      ongkir: kurir.tarif,
+      MetodePembayaranId: selected.id
+    }
+
+    await axios.post(`${API_URL}/transaction/addnewtransaction`, {dataTransaksi: dataTransaksi, products: products}, { headers: {authorization: token}})
+    .then((res) => {
+      // console.log('res addTransaction', res)
+    }).catch((err) => {
+      Swal.fire({
+        title: 'Error!',
+        text: err.message,
+        icon: 'error',
+        confirmButtonText: 'Okay!'
+      })
+    })
+  }
+
+  const onSubmit = async () => {
+    addTransaction()   
+    // delete selected products from cart
+    // alert success / error
+    navigate(`/payment/${transactionId}`)
+  }
 
   return (
     <div className='modal-background fixed-top' onClick={() => setOpenModal(false)}>
@@ -73,8 +128,8 @@ const PaymentMethod = ({total, setOpenModal, selected, setSelected}) => {
           </div>
         }
         <button className='pilih-metode' disabled={selected === null} onClick={() => {
-                // navigate('/')
-                setOpenModal(false)
+          onSubmit()
+          setOpenModal(false)
             }}>Pilih Metode</button>
       </div>
   </div>
