@@ -260,9 +260,9 @@
 }
 
 
-.logo-input-group-text-2{
+#logo-input-group-text-2{
     position: absolute;
-    left: 337px;
+    left: 410px;
     margin-top: 0px;
     color:  #737A8D;;
     cursor: pointer;
@@ -276,9 +276,25 @@
     
   }
 
-  .logo-input-group-text-3{
+  #logo-input-group-text-4{
     position: absolute;
-    left: 327px;
+    left: 410px;
+    margin-top: 0px;
+    color:  #737A8D;;
+    cursor: pointer;
+    font-size: 14px;
+    height: 34px;
+    width: 30px;
+    background-color: #CCCCCC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  #logo-input-group-text-3{
+    position: absolute;
+    left: 400px;
     color:  #737A8D;;
     cursor: pointer;
     font-size: 14px;
@@ -374,7 +390,7 @@
     gap: 10px;
     width: 156px;
     height: 42px;
-    margin-left: 180px;
+    margin-left: 270px;
     background: #E0004D;
     border: 1px solid #E0004D;
     border-radius: 8px;
@@ -424,13 +440,15 @@
     text-align: center;
     color: #E0004D;
     background: #FFFFFF;
+    left: 20px;
+    top: 445px
   }
 
   .btn-simpan-save{
     gap: 10px;
     width: 156px;
     height: 42px;
-    margin-left: 180px;
+    margin-left: 300px;
     border: 1px solid #E0004D;
     border-radius: 8px;
     font-family: 'Public Sans';
@@ -441,6 +459,7 @@
     text-align: center;
     color: #FFFFFF;
     background: #E0004D;
+    margin-top: 20px;
   }
 
   .box-khusus-tulisan{
@@ -544,7 +563,7 @@
   top: 350px !important;
 }
 
-.button-edit-foto-produk{
+#button-edit-foto-produk{
   position: absolute;
   font-family: 'Public Sans';
   font-style: normal;
@@ -552,5 +571,6 @@
   font-size: 12px;
   line-height: 17px;
   border-radius: 8px;
-  top: 350px !important;
+  top: 410px !important;
+  left: 200px;
 }

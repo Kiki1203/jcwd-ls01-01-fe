@@ -108,7 +108,7 @@ const ModalTambahObat = (props) => {
   
       const onBtnAddProduct = () => {
           var formData = new FormData()
-          let token = localStorage.getItem('myTkn')
+          let token = localStorage.getItem('token')
           var headers = {
               headers: {
                   'Authorization': `${token}`,
@@ -216,14 +216,17 @@ const ModalTambahObat = (props) => {
             </ModalHeader>
             <ModalBody>
                 <div className='box-tab-modal-admin'>
-                    <div className='button-no-1'>1</div>
+                   <div  className='mx-4 d-flex'>
+                   <div className='button-no-1'>1</div>
                     <div className='tulisan-detail-obat-modal'>Detail Obat</div>
                     <FontAwesomeIcon icon={faAngleRight} className='logo-slash'  />
                     <div className='button-no-2'>2</div>
                     <div className='tulisan-detail-dan-kuantitas'>Detail Kuantitas & Harga</div>
+                   </div>
                 </div>
                 <div className='box-isi-modal-add-product'>
-                    <div className='box-inside-all-info-product'>
+                   <div className='box-isi-modal-add-product-two'>
+                   <div className='box-inside-all-info-product'>
                         <div className='nama-obat-info'>Nama Obat</div>  
                         <input type="text" className='form-control inputan-obat-info' placeholder='Masukkan nama obat'  onChange={namaObatChange} defaultValue={namaObat}/>                  
                     </div>
@@ -250,30 +253,31 @@ const ModalTambahObat = (props) => {
                             <option value="3">Medical Device & Consumable</option>
                             <option value="4">Lain-lain</option>
                         </select>
-                        <div className='input-group-text logo-input-group-text-2' ><FontAwesomeIcon icon={faAngleDown} /></div>
+                        <div className='input-group-text' id="logo-input-group-text-2" ><FontAwesomeIcon icon={faAngleDown} /></div>
                     </div>
                     <div className='box-inside-all-info-product mt-3'>
-                        <div className='nama-obat-info-2'>Tgl. Kadaluarsa</div>  
+                        <div className='nama-obat-info-2' >Tgl. Kadaluarsa</div>  
                         <input type="datetime-local"  onChange={tanggalKadaluarsaChange} defaultValue={tanggalKadaluarsa}
                          placeholder="Tanggal Lahir" className="form-control inputan-obat-info"/>
                     </div>
                     <div className='box-inside-all-info-product mt-3'>
-                        <div className='nama-obat-info-2'>Lokasi Penyimpanan</div>  
+                        <div className='nama-obat-info-3'>Lokasi Penyimpanan</div>  
                         <select 
                         id="inputObatLokasi" 
                         name="LokasiObat"
                         onChange={lokasiSimpanChange} defaultValue={lokasiSimpan}
-                        className="form-control  inputan-obat-info-3 "  placeholder="Lokasi"
+                        className="form-control inputan-obat-info-3 "  placeholder="Lokasi"
                         >
                             <option value="">Pilih Tempat</option>
                             <option value="Gudang 1">Gudang 1</option>
                             <option value="Gudang 2">Gudang 2</option>
                         </select>
-                        <div className='input-group-text logo-input-group-text-3' ><FontAwesomeIcon icon={faAngleDown} /></div>
+                        <div className='input-group-text' id="logo-input-group-text-3" ><FontAwesomeIcon icon={faAngleDown} /></div>
                     </div>
                 </div>
+                   </div>
                 </div>
-                <button className="btn-lanjutkan mt-3" type="button" onClick={() => btnLanjutkan()}>Lanjutkan</button>
+                <button className="mt-3" id="btn-lanjutkan" type="button" onClick={() => btnLanjutkan()}>Lanjutkan</button>
             </ModalBody>
         </Modal>
   
@@ -286,14 +290,17 @@ const ModalTambahObat = (props) => {
             </ModalHeader>
             <ModalBody>
                 <div className='box-tab-modal-admin' style={{marginLeft: '-10px'}}>
+                    <div className='mx-4 d-flex'>
                     <div className='button-no-2'>1</div>
                     <div className='tulisan-detail-dan-kuantitas '>Detail Obat</div>
                     <FontAwesomeIcon icon={faAngleRight} className='logo-slash'  />
                     <div className='button-no-1'  style={{marginLeft: '10px'}}>2</div>
                     <div className='tulisan-detail-obat-modal'>Detail Kuantitas & Harga</div>
+                    </div>
                 </div>
                 <div className='box-isi-modal-add-product'>
-                    <div className='box-inside-all-info-product'>
+                  <div  className='box-isi-modal-add-product-two'>
+                  <div className='box-inside-all-info-product'>
                         <div className='nama-obat-info'>Kuantitas</div>  
                         <div className='inputan-obat-info-4' style={{marginLeft: '-5px'}}>
                             <button className='input-group-text-logo-kuantitas' disabled={qty <= 1 ? true : false}  onClick={() => handleDec()} ><FontAwesomeIcon icon={faMinus} /></button>
@@ -323,7 +330,7 @@ const ModalTambahObat = (props) => {
                             <option value="8">Pack</option>
                             <option value="9">Kaleng</option>
                         </select>
-                        <div className='input-group-text logo-input-group-text-2' ><FontAwesomeIcon icon={faAngleDown} /></div>                 
+                        <div className='input-group-text' id="logo-input-group-text-4" ><FontAwesomeIcon icon={faAngleDown} /></div>                 
                     </div>
                     <div className='box-inside-all-info-product mt-3'>
                         <div className='nama-obat-info'>Nilai Barang (Rp)</div>  
@@ -335,7 +342,7 @@ const ModalTambahObat = (props) => {
                     </div>
                     <div className='box-inside-all-info-product mt-3'>
                         <div className='nama-obat-info'>Foto Obat</div>    
-                        <div>
+                        <div className='mx-2'>
                         {
                               previewImage? 
                               <img src={previewImage} alt='Image Preview' id='adminImgUploud' /> 
@@ -350,10 +357,11 @@ const ModalTambahObat = (props) => {
                         </form>
                         <label htmlFor='image-input' id="choose-file-produk">Choose image</label>
                 </div>
+                  </div>
                 </div>
-               <div classname="box-button-modal-2" style={{marginTop: '30px'}}>
+               <div className="box-button-modal-2" style={{marginTop: '30px'}}>
                     <button className="btn-kembali-before" type="button"  onClick={() => btnKembali()}>Kembali</button>
-                    <button className="btn-simpan-save"  type="button" onClick={() => onBtnAddProduct ()}>Simpan</button>
+                    <button id="btn-simpan-save"  type="button" onClick={() => onBtnAddProduct ()}>Simpan</button>
                </div>
             </ModalBody>
         </Modal>
@@ -364,7 +372,7 @@ const ModalTambahObat = (props) => {
         <Modal  toggle={() => setModalOpen3(false)} isOpen={modalOpen3}>
             <ModalBody>
                 <div className="button-close-modal-admin-sukses">
-                 <FontAwesomeIcon icon={faXmark}  style={{cursor: 'pointer'}}  onClick={() => setModalOpen3(false)}/>
+                 <FontAwesomeIcon icon={faXmark}  style={{cursor: 'pointer', marginLeft: "100px"}}  onClick={() => setModalOpen3(false)}/>
                  </div>
                  <div className='box-modal-admin-sukses'>
                     <div className='gambar-sukses-add-produk mt-4'> <img  src={default1} alt='Image Preview' id='adminImgSukses' /></div>
