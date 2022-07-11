@@ -32,7 +32,7 @@ import Diproses from './Components/User/ProsesPemesanan/Diproses/TabDiproses.jsx
 import Ditunggu from './Components/User/ProsesPemesanan/Ditunggu/TabDitunggu.jsx';
 import Selesai from './Components/User/ProsesPemesanan/Selesai/TabSelesai.jsx';
 import SemuaPesanan from './Components/User/ProsesPemesanan/SemuaPesanan/SemuaPesanan.jsx';
-
+import Payment from './Pages/User/Payment/Payment.jsx';
 
 // ADMIN
 import LoginAdmin from './Pages/Admin/LoginAdmin/LoginAdmin.jsx';
@@ -65,7 +65,7 @@ function App() {
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/newpassword/:token" element={<NewPassword />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/Checkout" element={<Checkout />} />
+          <Route path="/checkout/:jenis" element={<Checkout />} />
           <Route path="/confirmation/:token" element={<Confirmation />} />
           <Route path="/verification" element={<Verification />} />
           <Route path="/FormAddress" element={<FormAddress />} />
@@ -91,7 +91,7 @@ function App() {
           <Route path="/ditunggu" element={<Ditunggu />} />
           <Route path="/selesai" element={<Selesai/>} />
           <Route path="/semuapesanan" element={<SemuaPesanan />} />
-         
+          <Route path="/payment/:id" element={<Payment />} />
         </Routes>
         {location.pathname === '/login' || location.pathname === '/daftarprodukadmin' || location.pathname === '/kartustok/:id' || location.pathname === '/homeadmin' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/loginadmin'  || location.pathname === '/resetpassword' ? null : <Footer />}
       </Provider>

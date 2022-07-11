@@ -1,0 +1,133 @@
+#payment-container {
+    width: 700px;
+}
+
+#header-payment {
+    color: #213360;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.payment-section-container {
+    width: 100%;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+    border-radius: 10px;
+    padding: 30px;
+    height: auto;
+    margin-bottom: 40px;
+    background-color: white;
+}
+
+.payment-small-title {
+    color: #737A8D;
+    font-size: 14px;
+    margin: 0px;
+}
+
+.payment-deadline {
+    color: #213360;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0px;
+}
+
+.payment-timer-number {
+    background-color: #FF6B6B;
+    margin: 0px;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-timer-colon {
+    color: #FF6B6B;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0px 10px;
+}
+
+.payment-section-header {
+    font-size:20px;
+    font-weight:700;
+    color:#213360;
+    margin:0px;
+}
+
+.payment-method-numbers {
+    color: #213360;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0px;
+}
+
+.payment-salin {
+    color: #E0004D;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0px;
+}
+
+.button-red {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #E0004D;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 10px 50px;
+    margin-top: 30px;
+}
+
+.button-red-outline {
+    width: 100%;
+    border: 2px solid #E0004D;
+    outline: none;
+    background-color: white;
+    color: #E0004D;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 10px 50px;
+    margin-top: 30px;
+}
+
+.button-red:hover {
+    background-color: #ba0041;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+}
+
+.button-red-outline:hover {
+    background-color: #ffe9f1;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+}
+
+.button-red:disabled {
+    background-color: #737A8D;
+    cursor:not-allowed; 
+}
+
+.button-red-outline:disabled {
+    color: #737A8D;
+    border: 2px solid #737A8D;
+    cursor:not-allowed; 
+}
+
+.button-red:disabled:hover {
+    background-color: #737A8D;
+    box-shadow: none;
+}
+
+.button-red-outline:disabled:hover {
+    background-color: white;
+    cursor:not-allowed; 
+}
