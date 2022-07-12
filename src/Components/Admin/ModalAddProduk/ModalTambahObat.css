@@ -477,6 +477,12 @@
     background: #E0004D;
   }
 
+  #btn-simpan-save:disabled{
+    border: 1px solid #B4B9C7;
+    background: #B4B9C7;
+    color: #FFFFFF;
+  }
+
   .box-khusus-tulisan{
     display: flex;
     flex-direction: column;

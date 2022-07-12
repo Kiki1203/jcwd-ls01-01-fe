@@ -24,6 +24,7 @@ function EditProfile() {
     const [listProfile, setlistrofile] = React.useState([]);
     const [selectedEditProfile, setselectedEditProfile] = React.useState(0);
     const [file, setFile] = useState(null);
+    const [loading, setLoading] = React.useState(false);
 
     const onImagesValidation = (e) => {
         try {
@@ -100,6 +101,7 @@ function EditProfile() {
         }
 
         const onBtnUpdateProfile = () => {
+            setLoading(true)
             var formData = new FormData()
             let token = localStorage.getItem('myTkn')
             var headers = {
@@ -155,6 +157,7 @@ function EditProfile() {
                     confirmButtonText: 'Okay!'
                 })
                  seteditImageFileName('Select Image...')
+                 setLoading(false)
             })
             .catch((err) =>{
                 Swal.fire({
@@ -163,6 +166,7 @@ function EditProfile() {
                     icon: 'error',
                     confirmButtonText: 'Okay!'
                 })
+                setLoading(false)
             })
         }
        
@@ -244,10 +248,15 @@ function EditProfile() {
             </div>
         </div>
         <div className="d-lg-none d-md-none d-block" id="wanna-change-password">Wanna change password? <Link to="/changepassword" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}><span>click here</span></Link></div>
-        <button type="submit" className="mt-4 button-simpan-edit-profile"onClick={() => onBtnUpdateProfile ()} >Simpan</button>
-        {/* <div style={{top: "824px"}}>
-        < Footer />
-        </div> */}
+        <button type="submit" disabled={loading} className="mt-4 button-simpan-edit-profile"onClick={() => onBtnUpdateProfile ()} >
+        {
+            loading?
+                'Loading'
+            :
+                'Simpan'
+        }
+        </button>
+       
    
     </div>
     );

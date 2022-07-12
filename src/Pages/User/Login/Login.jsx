@@ -5,29 +5,26 @@ import gambar from './../../../Assets/Frame.svg';
 import google from './../../../Assets/googleL.svg';
 import pLogin from './../../../Assets/pLogin.svg';
 import passLogin from './../../../Assets/passLogin.svg';
-import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Link, useNavigate } from 'react-router-dom';
 import { InputGroup, InputGroupText, Input, Button } from 'reactstrap';
 import Axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const [password, setPassword] = useState('');
   const [account, setAccount] = useState('');
+  const [error, setError] = useState('');
   const [disable, setDisable] = useState(false);
-  const [direct, setDirect] = useState(false);
+  const [verified, setVerified] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [myTkn, setMyTkn] = useState([]);
 
-  // useEffect(() => {
-  //     onCheckUserLogin()
-  //  }, [])
 
   const navigate = useNavigate()
 
-//   useEffect(() => {
-//     onSubmit()
-// }, [])
-
   const onSubmit = () =>{
+    setLoading(true)
     let data = {
       account: account,
       password: password,
@@ -36,18 +33,42 @@ const Login = () => {
     Axios.post(`${API_URL}/user/login`, data)
     .then((res) => {
       console.log(res.data)
-      localStorage.setItem('myTkn', res.data.token)
-      if(res.data.verified === 0){
-        navigate("/verification")
+      if(res.data.error === true){
+        setLoading(false)
+        console.log(res.data.message)
+        setError(res.data.message)
       }
-      
-      if(res.data.verified === 1){
-        navigate("/")
+
+      if(res.data.error === false){
+        localStorage.setItem('myTkn', res.data.token)
+        if(res.data.token){
+          if(res.data.verified == 0){
+            setMyTkn(res.data.token)
+            navigate("/verification")
+          }
+
+          if(res.data.verified == 1){
+            setMyTkn(res.data.token)
+            navigate("/")
+          }
+        }
+        // if(res.data.token || res.data.verified === 0  ){
+        //   setMyTkn(res.data.token)
+        //   setVerified(false)
+        //   setLoading(false)
+        //   navigate("/verification")
+        // }
+        
+        // if(res.data.token || res.data.verified === 1){
+          // setMyTkn(res.data.token)
+          // setVerified(true)
+          // setLoading(false)
+          // navigate("/")
+        // }
       }
-      
     }).catch((err) => {
-        console.log('ini err get',err)
-       
+      setLoading(false)
+      console.log('ini err get',err)
     })
   };
 
@@ -116,10 +137,16 @@ const Login = () => {
             </div>
           </div>
           <div className="mb-3">
-            <button type="button" className="btn btn-danger w-100" disabled={disable ? true : false} onClick={onSubmit}>
-              Masuk
+            <button type="button" disable={loading} className="btn btn-danger w-100" disabled={disable ? true : false} onClick={onSubmit}>
+             {
+              loading ?
+              'Loading...'
+              :
+              'Masuk'
+             }
             </button>
           </div>
+          <div>{error}</div>
           <br />
           <Divider>Atau masuk dengan</Divider>
           <br />
