@@ -23,7 +23,6 @@ import ChangePassword from './Pages/User/ChangePassword/ChangePassword.jsx';
 import EditProfile from './Pages/User/EditProfile/EditProfile.jsx';
 import AlamatProfile from './Pages/User/AlamatProfile/AlamatPageProfile.jsx';
 import MenungguKonfirmasi from './Pages/User/MenungguKonfirmasi/MenungguKonfirmasi.jsx';
-import MenungguPembayaran from './Pages/User/MenungguKonfirmasi/MenungguPembayaran.jsx';
 import Favorite from './Pages/User/Favorite/FavoritePage.jsx';
 import MetodePembayaran from './Pages/User/MetodePembayaran/MetodePembayaranPage.jsx';
 import Dibatalkan from './Components/User/ProsesPemesanan/Dibatalkan/TabDibatalkan.jsx';
@@ -82,7 +81,6 @@ function App() {
           <Route path="/kartustok/:id" element={<KartuStok />} />
           <Route path="/alamatpengiriman" element={<AlamatProfile />} />
           <Route path="/menunggukonfirmasi" element={<MenungguKonfirmasi />} />
-          <Route path="/menunggupembayaran" element={<MenungguPembayaran />} />
           <Route path="/metodepembayaran" element={<MetodePembayaran />} />
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/dibatalkan" element={<Dibatalkan />} />

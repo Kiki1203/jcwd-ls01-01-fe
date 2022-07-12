@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import Axios from 'axios';
+import google from './../../../Assets/googleL.svg';
 import API_URL from '../../../Helpers/API_URL.js';
 import { onAdminLogin, onCheckAdminLogin  } from '../../../Redux/Actions/adminAction';
 
@@ -24,17 +25,11 @@ const LoginAdmin = () => {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    onCheckIsLogedIn()
-    handleLogin()
-}, [])
+//   useEffect(() => {
+//     handleLogin()
+// }, [])
 
-const onCheckIsLogedIn = () => {
-  let token = localStorage.getItem('myTkn')
-  if(token){
-     setIsLogedIn(true)
-  }
-}
+
 
   const handleLogin = () =>{
     let data = {
@@ -45,8 +40,8 @@ const onCheckIsLogedIn = () => {
     Axios.post(`${API_URL}/admin/loginadmin`, data)
     .then((res) => {
       console.log(res.data)
-      localStorage.setItem('myTkn', res.data.token)
-      if( res.data.token){
+      localStorage.setItem('token', res.data.token)
+      if(res.data.token){
         navigate("/homeadmin")
       }
     }).catch((err) => {
@@ -69,7 +64,14 @@ const handleVisible = () => {
   }
 }
 
-if(isLogedIn){
+if(localStorage.getItem('myTkn')){
+  return(
+      <Navigate to='/' />
+  )
+}
+
+
+if(localStorage.getItem('token')){
   return(
       <Navigate to='/homeadmin' />
   )
@@ -141,7 +143,7 @@ if(isLogedIn){
           <div className='garis-1-login-admin'></div>
           <div className='atau-masuk-admin-login'>Atau Masuk Dengan</div>
           <div className='garis-2-login-admin'></div>
-          <button className='login-with-google-admin'>Masuk dengan Google</button>
+          <button className='login-with-google-admin'><img className="me-2" src={google} alt="" /> Masuk dengan Google</button>
       </div>
     </div>
    </div>

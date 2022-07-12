@@ -23,7 +23,7 @@
 } */
 
 .button-close-modal-admin{
-    margin-left: 180px;   
+    margin-left: 300px !important;   
     top: 10px;
     cursor: pointer;
 }
@@ -36,8 +36,7 @@
 
 
 .box-tab-modal-admin{
-    display: flex;
-    align-items: center;
+   
     font-size: 12px;
     margin-bottom: 15px;
 }
@@ -104,6 +103,14 @@
 
 .box-isi-modal-add-product{
     margin-top: 10px;
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.box-isi-modal-add-product-two{
+  width: 400px;
 }
 
 /* .box-isi-modal-add-product-2{
@@ -153,6 +160,18 @@
   width: 130px;
 }
 
+.nama-obat-info-3{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  margin-top: 0px;
+  width: 120px;
+  margin-right: 10px;
+}
+
 
 .inputan-obat-info{
     padding: 8px 106px 8px 12px;
@@ -199,8 +218,8 @@
   font-size: 14px  !important;
   line-height: 18px;
   color: #000000  !important;
-  width: 200px;
-  margin-left: 40px;
+  width: 180px;
+  margin-left: 0px;
   cursor: pointer;
 }
 
@@ -260,9 +279,9 @@
 }
 
 
-.logo-input-group-text-2{
+#logo-input-group-text-2{
     position: absolute;
-    left: 337px;
+    left: 410px;
     margin-top: 0px;
     color:  #737A8D;;
     cursor: pointer;
@@ -276,13 +295,27 @@
     
   }
 
-  .logo-input-group-text-3{
+  #logo-input-group-text-3{
     position: absolute;
-    left: 327px;
+    left: 400px;
     color:  #737A8D;;
     cursor: pointer;
     font-size: 14px;
     height: 38px;
+    width: 40px;
+    background-color: #CCCCCC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #logo-input-group-text-4{
+    position: absolute;
+    left: 400px;
+    color:  #737A8D;;
+    cursor: pointer;
+    font-size: 14px;
+    height: 35px;
     width: 40px;
     background-color: #CCCCCC;
     display: flex;
@@ -315,10 +348,10 @@
   }
 
   #adminImgUploud2{
-    width: 200px;
-    height: 100px;
+    width: 300px;
+    height: 200px;
     object-fit: cover;
-    margin-left: 0px !important;
+    margin-left: 10px !important;
     margin-top: 10px;
     border: 1px solid #CCCCCC;
     border-radius: 4px;
@@ -369,12 +402,12 @@
   }
 
 
-  .btn-lanjutkan{
+  #btn-lanjutkan{
     padding: 8px 12px;
     gap: 10px;
     width: 156px;
     height: 42px;
-    margin-left: 180px;
+    margin-left: 270px;
     background: #E0004D;
     border: 1px solid #E0004D;
     border-radius: 8px;
@@ -387,7 +420,7 @@
     color: #FFFFFF;
   }
 
-  .btn-lanjutkan:disabled{
+  #btn-lanjutkan:disabled{
     padding: 8px 12px;
     gap: 10px;
     width: 156px;
@@ -407,10 +440,10 @@
   .box-button-modal-2{
     display: flex !important;
     margin-top: 30px !important;
+    width: 450px;
   }
   
   .btn-kembali-before{
-    position: absolute;
     gap: 10px;
     width: 156px;
     height: 42px;
@@ -424,13 +457,14 @@
     text-align: center;
     color: #E0004D;
     background: #FFFFFF;
+    margin-left: 120px;
   }
 
-  .btn-simpan-save{
+  #btn-simpan-save{
     gap: 10px;
     width: 156px;
     height: 42px;
-    margin-left: 180px;
+    margin-left: 300px;
     border: 1px solid #E0004D;
     border-radius: 8px;
     font-family: 'Public Sans';

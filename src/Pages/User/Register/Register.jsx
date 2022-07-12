@@ -10,7 +10,7 @@ import pLogin from './../../../Assets/pLogin.svg';
 import mLogin from './../../../Assets/mLogin.svg';
 import passLogin from './../../../Assets/passLogin.svg';
 import Swal from 'sweetalert2';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { InputGroup, InputGroupText, Input, Button } from 'reactstrap';
 import BeatLoader from 'react-spinners/BeatLoader';
 const override: CSSProperties = {
@@ -95,6 +95,18 @@ const Register = () => {
       onSubmit.setSubmitting(false);
     }
   };
+
+  if(localStorage.getItem('token')){
+    return(
+        <Navigate to='/homeadmin' />
+    )
+  }
+
+  if(localStorage.getItem('myTkn')){
+    return(
+        <Navigate to='/' />
+    )
+}
 
   return (
     <div className="container-register ">

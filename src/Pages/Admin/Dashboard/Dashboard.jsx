@@ -19,7 +19,7 @@ const DashboardAdmin  = () => {
     //     }
     //   }
     
-      if(!localStorage.getItem('myTkn')){
+      if(!localStorage.getItem('token')){
         return(
             <Navigate to='/loginadmin' />
         )

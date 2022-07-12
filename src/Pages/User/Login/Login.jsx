@@ -6,29 +6,56 @@ import google from './../../../Assets/googleL.svg';
 import pLogin from './../../../Assets/pLogin.svg';
 import passLogin from './../../../Assets/passLogin.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import {connect} from 'react-redux';
-import { onUserLogin, onCheckUserLogin } from '../../../Redux/Actions/userAction';
-import { Navigate, Link } from 'react-router-dom';
+import { Navigate, Link, useNavigate } from 'react-router-dom';
 import { InputGroup, InputGroupText, Input, Button } from 'reactstrap';
+import Axios from 'axios';
+import API_URL from '../../../Helpers/API_URL.js';
 
 const Login = () => {
   const [password, setPassword] = useState('');
   const [account, setAccount] = useState('');
   const [disable, setDisable] = useState(false);
-  const dispatch = useDispatch();
   const [direct, setDirect] = useState(false);
 
   // useEffect(() => {
   //     onCheckUserLogin()
   //  }, [])
 
-  const onSubmit = () => {
+  const navigate = useNavigate()
+
+//   useEffect(() => {
+//     onSubmit()
+// }, [])
+
+  const onSubmit = () =>{
     let data = {
       account: account,
       password: password,
     };
-    dispatch(onUserLogin(data));
+
+    Axios.post(`${API_URL}/user/login`, data)
+    .then((res) => {
+      console.log(res.data)
+      localStorage.setItem('myTkn', res.data.token)
+      if(res.data.verified === 0){
+        navigate("/verification")
+      }
+      
+      if(res.data.verified === 1){
+        navigate("/")
+      }
+      
+    }).catch((err) => {
+        console.log('ini err get',err)
+       
+    })
   };
+
+  if(localStorage.getItem('token')){
+    return(
+        <Navigate to='/homeadmin' />
+    )
+  }
 
   if(localStorage.getItem('myTkn')){
     return(

@@ -28,13 +28,15 @@ import kirim from './../../../Assets/Kirim.svg';
 import logo from './../../../Assets/LogoFull.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 
 
 const Home = () => {
   const [produkDiskon, setProdukDiskon] = useState([])
   const [produkTerbaru, setProdukTerbaru] = useState([])
+  const [verified, setVerified] = useState([])
   const navigate = useNavigate()
+
   useEffect(() => {
     axios.get(`${API_URL}/product/homeproduk`)
     .then((res) => {
@@ -44,6 +46,23 @@ const Home = () => {
     }).catch((err) => {
         console.log('ini err get',err)
     })
+}, [])
+
+useEffect(() => {
+  let token = localStorage.getItem('myTkn')
+  const headers = {
+      headers: { 
+          'Authorization': `${token}`,
+      }
+  }
+  axios.get(`${API_URL}/user/checkuserverify`, headers)
+  .then((res) => {
+      console.log('verified',res.data)
+      setVerified(res.data.verified)
+  
+  }).catch((err) => {
+      console.log('ini err get',err)
+  })
 }, [])
 
 const printData = (props) => {
@@ -132,7 +151,11 @@ const printData2 = (props) => {
   })
 }
 
-
+if(localStorage.getItem('token')){
+  return(
+      <Navigate to='/homeadmin' />
+  )
+}
 
 
   return (

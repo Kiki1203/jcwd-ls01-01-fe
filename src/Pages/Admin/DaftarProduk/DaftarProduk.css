@@ -12,6 +12,10 @@
     text-align: center;
 }
 
+.dropdown-toggle::after {
+    display: none !important; 
+  }
+
 
 #dropdown-edit-menu-admin{
     background: transparent;
@@ -26,7 +30,7 @@
     margin-left: -12px;
     color: #1A1E2B;
     appearance: none; 
-    margin-top: 7px;
+    margin-top: 0px;
 }
 
 .body-tabel-daftar-produk{

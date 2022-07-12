@@ -32,7 +32,7 @@ const DaftarProduk  = () => {
     const [totalProduk, setTotalProduk] = useState(0)
 
     useEffect(() => {
-        let token = localStorage.getItem('myTkn')
+        let token = localStorage.getItem('token')
         const headers = {
             headers: { 
                 'Authorization': `${token}`,
@@ -142,11 +142,8 @@ const DaftarProduk  = () => {
                     <td>
                         <div  className="d-flex">
                         <button className="button-lihat-detail-produk mx-3" type="button" onClick={() => navigate(`/kartustok/${value.id}`)} >Lihat Detail</button>
-                        {
-                            value.id === selectedProdukId ? 
-                            <>
-                            <Dropdown>
-                                <Dropdown.Toggle variant="info" id="dropdown-basic dropdown-edit-menu-admin">
+                        <Dropdown>
+                                <Dropdown.Toggle id="dropdown-edit-menu-admin">
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
@@ -162,14 +159,6 @@ const DaftarProduk  = () => {
                                 </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-                            </>
-                            :
-                            <> 
-                            <div className="edit-list-produk-admin">
-                            <FontAwesomeIcon icon={faEllipsisVertical}  onClick={() => klikModalEdit(value.id)}/>
-                            </div>
-                            </>
-                        }
                        
                         </div>
                     </td>
@@ -195,13 +184,10 @@ const DaftarProduk  = () => {
                     <td>{value.harga}</td>    
                     <td>
                         <div  className="d-flex">
-                        <div  onClick={() => deleteDataKiki(value.id)}>Delete</div>
+                        
                         <button className="button-lihat-detail-produk mx-3" type="button" onClick={() => navigate(`/kartustok/${value.id}`)}>Lihat Detail</button>
-                        {
-                            value.id === selectedProdukId ? 
-                            <>
-                               <Dropdown>
-                                <Dropdown.Toggle variant="info" id="dropdown-basic dropdown-edit-menu-admin">
+                        <Dropdown>
+                                <Dropdown.Toggle id="dropdown-edit-menu-admin">
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
@@ -215,15 +201,6 @@ const DaftarProduk  = () => {
                                 <Dropdown.Item value="2" onClick={() => deleteDataKiki(value.id)}>Delete</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-                            </>
-                            :
-                            <> 
-                            <div className="edit-list-produk-admin">
-                            <FontAwesomeIcon icon={faEllipsisVertical}  onClick={() => klikModalEdit(value.id)}/>
-                            </div>
-                            </>
-                        }
-                       
                         </div>
                     </td>
                 </tr>
@@ -234,7 +211,7 @@ const DaftarProduk  = () => {
 
     const deleteDataKiki = (id) => {
         console.log('ini id delete', id)
-        let token = localStorage.getItem('myTkn')
+        let token = localStorage.getItem('token')
         var headers = {
             headers: {
                 'Authorization': `${token}`,
@@ -266,7 +243,7 @@ const DaftarProduk  = () => {
     }
 
 
-    if(!localStorage.getItem('myTkn')){
+    if(!localStorage.getItem('token')){
         return(
             <Navigate to='/loginadmin' />
         )
