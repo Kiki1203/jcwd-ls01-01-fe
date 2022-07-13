@@ -17,21 +17,26 @@ const Navbar = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-  let token = localStorage.getItem('myTkn')
-  const headers = {
-      headers: { 
-          'Authorization': `${token}`,
-      }
+  if(localStorage.getItem('token')){
+
+  }else{
+    let token = localStorage.getItem('myTkn')
+    const headers = {
+        headers: { 
+            'Authorization': `${token}`,
+        }
+    }
+    axios.get(`${API_URL}/user/checkuserverify`, headers)
+    .then((res) => {
+        console.log('verified',res.data)
+        setVerified(res.data.verified)
+        setUsername(res.data.username)
+    
+    }).catch((err) => {
+        console.log('ini err get',err)
+    })
   }
-  axios.get(`${API_URL}/user/checkuserverify`, headers)
-  .then((res) => {
-      console.log('verified',res.data)
-      setVerified(res.data.verified)
-      setUsername(res.data.username)
   
-  }).catch((err) => {
-      console.log('ini err get',err)
-  })
 }, [])
 
   const btnLogOut = () => {
@@ -45,6 +50,11 @@ const Navbar = () => {
   }
 
   
+  if(localStorage.getItem('token')){
+    return(
+      <></>
+    )
+  }
 
   if (localStorage.getItem('myTkn')){
     return (

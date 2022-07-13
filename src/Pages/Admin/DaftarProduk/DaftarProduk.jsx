@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import './DaftarProduk.css';
 import SidebarAdmin from '../../../Components/Admin/SidebarAdmin/SidebarAdmin.jsx';
 import ModalTambahObat from '../../../Components/Admin/ModalAddProduk/ModalTambahObat.jsx';
+import Modal2 from '../../../Components/Admin/ModalAddProduk/Modal2.jsx';
 import ModalEditObat from '../../../Components/Admin/ModalEditProduk/ModalEditObat.jsx';
+import Modal1 from '../../../Components/Admin/ModalEditProduk/Modal1.jsx';
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import TableData from './TableData';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import LoadingSpinner from "./LoadingSpinner";
+import { Navigate, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Dropdown from "react-bootstrap/Dropdown";
 import { faDownload, faFileExcel, faSearch, faAngleDown, faEllipsisVertical, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
@@ -14,13 +17,14 @@ import { faDownload, faFileExcel, faSearch, faAngleDown, faEllipsisVertical, faA
 
 const DaftarProduk  = () => {
     const navigate = useNavigate()
+    const [loading, setLoading] = React.useState(false);
     const [produkFilter, setProdukFilter] = useState([])
     let [modalOpen, setModalOpen] = useState(false); 
+    const [openModal, setOpenModal] = useState(false)
+    const [openModal2, setOpenModal2] = useState(false)
     let [modalOpens, setModalOpens] = useState(false);
-    let [dropdownOpen, setDropdownOpen] = useState(false); 
     const [kategori, setKategori] = React.useState("");
     const [nama, setNama] = React.useState("");
-    const [msg, setMsg] = useState("");  
     const [selectedProdukId, setSelectedProdukId]  = useState();
     const [data, setData] = useState([]);
     const [jumlahList, setJumlahList] = useState(0);
@@ -29,9 +33,12 @@ const DaftarProduk  = () => {
     const [pageNumberLimit, setpageNumberLimit] = useState(5);
     const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
     const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
-    const [totalProduk, setTotalProduk] = useState(0)
+    const [totalProduk, setTotalProduk] = useState(0);
+    const [selected, setSelected] = useState(null)
+    const [selected2, setSelected2] = useState(null)
 
     useEffect(() => {
+        setLoading(true)
         let token = localStorage.getItem('token')
         const headers = {
             headers: { 
@@ -43,20 +50,25 @@ const DaftarProduk  = () => {
             setData(res.data.data)
             setTotalProduk(res.data.pagination.totalRow[0].TotalData)
             setJumlahList(res.data.data.length)
+            setLoading(false)
         }).catch((err) => {
             console.log('ini err get',err)
+            setLoading(false)
         })
     }, [currentPage])
 
     useEffect(() => {
+        setLoading(true)
         var data = parseInt(kategori)
         var searchNama = nama
        
         axios.get(`${API_URL}/admin/search?kategori=${data}&nama=${searchNama}`)
         .then((res) => {
             setProdukFilter(res.data.result)
+            setLoading(false)
         }).catch((err) => {
             console.log('ini err get',err)
+            setLoading(false)
         })
        
     }, [kategori, nama])
@@ -184,6 +196,10 @@ const DaftarProduk  = () => {
                     <td>{value.harga}</td>    
                     <td>
                         <div  className="d-flex">
+                        {
+                                openModal2 && <Modal1 setOpenModal={setOpenModal2}  selected={selected2}
+                                setSelected={setSelected2} id={value.id}/>
+                        }
                         
                         <button className="button-lihat-detail-produk mx-3" type="button" onClick={() => navigate(`/kartustok/${value.id}`)}>Lihat Detail</button>
                         <Dropdown>
@@ -192,11 +208,12 @@ const DaftarProduk  = () => {
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                 <Dropdown.Item value="1">
-                                <ModalEditObat
+                                <div onClick={() => setOpenModal2(true)} >Edit Obat</div>
+                                {/* <ModalEditObat
                                             modalOpen={modalOpens}
                                             handleModal={handleModalEdit2}
                                             id={value.id}
-                                        />
+                                        /> */}
                                 </Dropdown.Item>
                                 <Dropdown.Item value="2" onClick={() => deleteDataKiki(value.id)}>Delete</Dropdown.Item>
                                 </Dropdown.Menu>
@@ -255,7 +272,18 @@ const DaftarProduk  = () => {
         <SidebarAdmin />
          <div className="container">
              <div className="box-daftar-produk-admin">
-             <div className="tulisan-dalam-daftar-produk-1">Daftar Obat</div>
+             <div className="tulisan-dalam-daftar-produk-1">Daftar Obat
+             {
+                    openModal && <Modal2 setOpenModal={setOpenModal}  selected={selected}
+                    setSelected={setSelected}/>
+             }
+             
+             </div>
+             <div id="button-tambah-obat-produk"  onClick={() => setOpenModal(true)} ><FontAwesomeIcon icon={faDownload} className="" />Tambah Obat</div>
+             {/* <button className='button-bayar' style={{marginTop:'20px', fontSize:'14px', padding:'15px'}}
+              onClick={() => setOpenModal(true)}>
+                {`Open Modal`}</button> */}
+            
              <div className="button-unduh-pdf-produk"><FontAwesomeIcon icon={faDownload} className="" />Unduh PDF</div>
              <div className="button-unduh-excel-produk"><FontAwesomeIcon icon={faFileExcel} className="" />Excel</div>
              <div className="inside-box-daftar-produk-admin">
@@ -290,14 +318,20 @@ const DaftarProduk  = () => {
                  <div className="garis-inside-box-daftar-produk"></div>
                  <div className="box-tabel-daftar-produk">
                  <div className="inside-box-daftar-produk">
-                    <TableData>
-                      {
+                    {
+                        loading ?
+                        <LoadingSpinner />
+                        :
+                        <TableData>
+                       {
                         produkFilter.length !== 0   ?
                         <>{printFilterKiki()}</>
                         :
                         <>{printDataAisyah()}</>
-                      }
+                       }
                     </TableData>
+                    }
+                   
                  </div>
  
                  <div className="box-footer-tabel-daftar-produk">

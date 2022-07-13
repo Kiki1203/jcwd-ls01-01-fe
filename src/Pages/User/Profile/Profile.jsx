@@ -21,10 +21,6 @@ const Profile  = () => {
     const [umur, setUmur] = React.useState("");
     const [profilepic, setProfilepic] = React.useState("");
 
-    // useEffect(() => {
-    //     onCheckUserLogin()
-    //  }, [])
-
     useEffect(() => {
         let token = localStorage.getItem('myTkn')
         const headers = {

@@ -13,10 +13,9 @@ const ModalEditObat = (id) => {
     let [modalOpen, setModalOpen] = useState(false); 
     let [modalOpen2, setModalOpen2] = useState(false); 
     let [modalOpen3, setModalOpen3] = useState(false); 
+    const [loading, setLoading] = React.useState(false);
     let [qty, setQty] = useState(1); 
     const [idProduk, setIdProduk]  = useState(id)
-    console.log('id atas', id)
-    console.log('idProduk', idProduk.id)
     const [namaObat, setNamaObat] = React.useState("");
     const [beratObat, setBeratObat] = React.useState("");
     const [noBPOM, setNoBPOM] = React.useState("");
@@ -44,19 +43,17 @@ const ModalEditObat = (id) => {
     
         axios.get(`${API_URL}/admin/getprodukID?id=${idProduk.id}`, headers)
         .then((res) => {
-            console.log(res.data)
             setNamaObat(res.data[0].nama_obat)
             setBeratObat(res.data[0].berat)
             setNoBPOM(res.data[0].NIE)
-            setKategori(res.data[0].golongan_obat)
+            setKategori(res.data[0].golonganObat_id)
             setTanggalKadaluarsa(res.data[0].expired)
             setLokasiSimpan(res.data[0].tempat_penyimpanan)
             setQty(res.data[0].stok)
-            setSatuan(res.data[0].satuan_obat)
+            setSatuan(res.data[0].satuanObat_id)
             setNilaiBarang(res.data[0].nilai_barang)
             setNilaiJual(res.data[0].harga)
             setGambar(res.data[0].gambar)
-            console.log('ini res.data.nama_obat', res.data[0].nama_obat)
         }).catch((err) => {
             console.log('ini err get',err)
         })
@@ -137,7 +134,8 @@ const ModalEditObat = (id) => {
           }
       }
   
-      const onBtnAddProduct = () => {
+      const onBtnEditProduct = () => {
+        setLoading(true)
           var formData = new FormData()
           let token = localStorage.getItem('token')
           var headers = {
@@ -150,35 +148,13 @@ const ModalEditObat = (id) => {
           let expired = tanggalKadaluarsa
           expired =expired.split('T')
           expired =expired.join(' ')
-  
-          if(beratObat.includes('.')){
-              var berat = beratObat.split('.').join('')
-          }else{
-              var berat = beratObat
-          }
-  
-          if(nilaiBarang.includes('.')){
-              var nilai = nilaiBarang.split('.').join('')
-          }else{
-              var nilai = nilaiBarang
-          }
-  
-          if(nilaiJual.includes('.')){
-              var harga = nilaiJual.split('.').join('')
-          }else{
-              var harga = nilaiJual
-          }
-  
-          console.log('ini berat', berat)
-          console.log('ini nilai barang', nilai)
-          console.log('ini hargajual', harga)
           
           var data = {
               nama_obat: namaObat,
-              berat: berat,
+              berat: beratObat,
               NIE: noBPOM,
-              harga: harga,
-              nilai_barang: nilai,
+              harga: nilaiJual,
+              nilai_barang: nilaiBarang,
               SatuanObat_id: satuan,
               GolonganObat_id: kategori,
               tempat_penyimpanan: lokasiSimpan,
@@ -186,31 +162,27 @@ const ModalEditObat = (id) => {
               expired: expired,   
           }
   
-          console.log('ini data', data)
-  
-  
           formData.append('gambar', addImageFile)
           formData.append('data', JSON.stringify(data))
-    
           axios.patch(API_URL + `/admin/editproduct?id=${idProduk.id}`, formData, headers)
           .then((res) => {
-  
               if(res.data.message === "Update Product Success"){
                   setModalOpen3(true)
                   setModalOpen(false)
                   setModalOpen2(false)
               }
-              console.log('ini res.data', res.data)
-              console.log('ini res.data.message', res.data.message)
-              console.log('ini res.data[0]', res.data.results)
+              setLoading(false)
+           
           })
           .catch((err) =>{
-              Swal.fire({
-                  title: 'Error!',
-                  text: err.response.data.message,
-                  icon: 'error',
-                  confirmButtonText: 'Okay!'
-              })
+            Swal.fire({
+                title: 'Error!',
+                text: err.response.data.message,
+                icon: 'error',
+                confirmButtonText: 'Okay!'
+            })
+             console.log('err edit', err)
+              setLoading(false)
           })
       }
      
@@ -404,7 +376,14 @@ const ModalEditObat = (id) => {
                  </div>
                 <div className="mb-3" style={{marginTop: '30px'}}>
                      <button className="btn-kembali-before" type="button"  onClick={() => btnKembali()}>Kembali</button>
-                     <button className="btn-simpan-save"  type="button" onClick={() => onBtnAddProduct ()}>Simpan</button>
+                     <button className="btn-simpan-save"  disabled={loading} type="button" onClick={() => onBtnEditProduct ()}>
+                     {
+                        loading?
+                            'Loading'
+                        :
+                            'Simpan'
+                    }
+                     </button>
                 </div>
 
                

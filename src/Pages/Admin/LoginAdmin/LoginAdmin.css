@@ -256,6 +256,12 @@
     box-shadow: 0px 4px 10px rgba(155, 0, 36, 0.25), 0px 2px 4px rgba(155, 0, 31, 0.5);
   }
 
+  .button-masuk-admin:disabled{
+    border: 1px solid #B4B9C7;
+    background: #B4B9C7;
+    color: #FFFFFF;
+  }
+
   .garis-1-login-admin{
     position: absolute;
     width: 159px;

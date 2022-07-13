@@ -17,9 +17,7 @@ const Toast = Swal.mixin({
 });
 
 const Verification = () => {
-//   useEffect(() => {
-//       Verification()
-//   }, [])
+  const [verified, setVerified] = useState(false);
 
   const onResendEmail = () => {
     let token = localStorage.getItem('myTkn');

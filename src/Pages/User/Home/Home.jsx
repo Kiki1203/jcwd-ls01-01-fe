@@ -28,14 +28,31 @@ import kirim from './../../../Assets/Kirim.svg';
 import logo from './../../../Assets/LogoFull.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 
 const Home = () => {
   const [produkDiskon, setProdukDiskon] = useState([])
   const [produkTerbaru, setProdukTerbaru] = useState([])
-  const [verified, setVerified] = useState([])
+  const [verified, setVerified] = useState(false)
+  const [token, setToken] = useState('')
   const navigate = useNavigate()
+
+//   useEffect(() => {
+//     let token = localStorage.getItem('myTkn')
+//     const headers = {
+//         headers: { 
+//             'Authorization': `${token}`,
+//         }
+//     }
+//     axios.get(`${API_URL}/user/gettokenuser`, headers)
+//     .then((res) => {
+//         console.log('token', res.data)
+//         setToken(res.data[0].token)
+//     }).catch((err) => {
+//         console.log('ini err get',err)
+//     })
+// }, [])
 
   useEffect(() => {
     axios.get(`${API_URL}/product/homeproduk`)
@@ -58,7 +75,15 @@ useEffect(() => {
   axios.get(`${API_URL}/user/checkuserverify`, headers)
   .then((res) => {
       console.log('verified',res.data)
-      setVerified(res.data.verified)
+      console.log(res.data.verified)
+  
+
+      if(res.data.verified == 0){
+        setVerified(false)
+      }else if(res.data.verified == 1){
+        setVerified(true)
+      }
+    
   
   }).catch((err) => {
       console.log('ini err get',err)
@@ -151,11 +176,20 @@ const printData2 = (props) => {
   })
 }
 
+//Check value di getItem('myTkn') dan ('token')
+// kalau valuenya sama dengan state token alias data token di user, maka  
+
 if(localStorage.getItem('token')){
   return(
       <Navigate to='/homeadmin' />
   )
 }
+
+// if(verified){
+//   return(
+//       <Navigate to='/verification' />
+//   )
+// }
 
 
   return (
