@@ -3,12 +3,10 @@ import { useDropzone } from 'react-dropzone';
 import Divider from '@mui/material/Divider';
 import './UploadResep.css';
 import Swal from 'sweetalert2';
-import { InputGroup, InputGroupText, Input, Button } from 'reactstrap';
-import image from './../../../Assets/iconImage.svg';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import { useNavigate } from 'react-router-dom';
-import RiseLoader from 'react-spinners/RiseLoader';
+import PropagateLoader from 'react-spinners/PropagateLoader';
 const override: CSSProperties = {
   display: 'block',
   borderColor: 'black',
@@ -18,14 +16,21 @@ const UploadResep = () => {
   const [editImageFile, seteditImageFile] = React.useState(undefined);
   const navigate = useNavigate();
   const [loading, setLoading] = React.useState(false);
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 5000,
+    timerProgressBar: true,
+  });
 
-  const uploadResep = (e) => {
-    console.log('e.target.files[0].name', e.target.files[0].name);
-    if (e.target.files[0]) {
-      seteditImageFileName(e.target.files[0].name);
-      seteditImageFile(e.target.files[0]);
+  const uploadResep = (file) => {
+    console.log('e.target.files[0].name', file[0].name);
+    if (file[0]) {
+      seteditImageFileName(file[0].name);
+      seteditImageFile(file[0]);
       const reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
+      reader.readAsDataURL(file[0]);
     } else {
       seteditImageFileName('Select Image...');
       seteditImageFile('');
@@ -35,6 +40,7 @@ const UploadResep = () => {
   const onBtnUpload = () => {
     var formData = new FormData();
     let token = localStorage.getItem('myTkn');
+
     var headers = {
       headers: {
         Authorization: `${token}`,
@@ -61,29 +67,14 @@ const UploadResep = () => {
       });
   };
   const maxSize = 1000000;
-  const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 5000,
-    timerProgressBar: true,
-  });
-  const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
+
+  const { getRootProps, getInputProps, open } = useDropzone({
     // Disable click and keydown behavior
     noClick: true,
     noKeyboard: true,
     validator: maxSizeValidator,
+    onDrop: (acceptedFiles) => uploadResep(acceptedFiles),
   });
-
-  const files = acceptedFiles.map((file) => (
-    <InputGroup>
-      <InputGroupText>
-        <img src={image} alt="" />
-      </InputGroupText>
-      <Input disabled key={file.path} placeholder={`${file.path} - ${file.size / 1000000} MB`} />
-      <Button>X</Button>
-    </InputGroup>
-  ));
 
   function maxSizeValidator(file) {
     if (file.size > maxSize) {
@@ -97,12 +88,10 @@ const UploadResep = () => {
     <div id="container-upload-resep">
       {loading ? (
         <div className="loader">
-          <RiseLoader color={'red'} loading={loading} cssOverride={override} size={50} />
-          <h4>Loading..</h4>
+          <PropagateLoader color={'red'} loading={loading} cssOverride={override} size={20} />
         </div>
       ) : (
         <div>
-          <input label={editImageFileName} type="file" onChange={uploadResep} />
           <div className="mb-2">Send Receipt</div>
           <div className="mb-4">
             Tak perlu antre & obat langsung dikirimkan ke lokasi anda! <b> Foto tidak boleh lebih dari 10 MB.</b>
@@ -110,28 +99,11 @@ const UploadResep = () => {
           <div className="box-upload">
             <div>Unggah Resep Dokter</div>
             <hr />
-            <div className="d-flex align-items-center mb-2">
-              <div>{files}</div>
-            </div>
+            <div className="d-flex align-items-center mb-2"></div>
             <div>
               <div className="mb-3">
-                <div
-                  label={editImageFileName}
-                  type="file"
-                  id="box-dropzone"
-                  {...getRootProps({
-                    className: 'dropzone',
-                    onChange: uploadResep,
-                  })}
-                >
-                  <input
-                    type="file"
-                    label={editImageFileName}
-                    {...getInputProps({
-                      onChange: { uploadResep },
-                      label: { editImageFileName },
-                    })}
-                  />
+                <div label={editImageFileName} id="box-dropzone" {...getRootProps({ className: 'dropzone' })}>
+                  <input label={editImageFileName} {...getInputProps()} />
                   <h4 className="mb-4">Drag 'n' drop files here</h4>
                   <Divider className="mb-4 mx-5">
                     <span> atau</span>

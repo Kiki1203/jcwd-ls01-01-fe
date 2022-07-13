@@ -6,6 +6,8 @@ import API_URL from '../../../Helpers/API_URL.js';
 import Swal from 'sweetalert2';
 import { useParams, useNavigate } from 'react-router-dom';
 import gambar from './../../../Assets/login.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import BeatLoader from 'react-spinners/BeatLoader';
 const override: CSSProperties = {
   display: 'block',
@@ -26,6 +28,41 @@ const NewPassword = () => {
   const [password, setPassword] = useState('');
   const [passwordConf, setPasswordConf] = useState('');
   const navigate = useNavigate();
+  const [inVisible, setInVisible] = useState({
+    type: 'password',
+    title: 'Show',
+  });
+  const [inVisibleR, setInVisibleR] = useState({
+    type: 'password',
+    title: 'Show',
+  });
+
+  const handleVisible = () => {
+    if (inVisible.type === 'password') {
+      setInVisible({
+        type: 'text',
+        title: 'Hide',
+      });
+    } else {
+      setInVisible({
+        type: 'password',
+        title: 'Show',
+      });
+    }
+  };
+  const handleVisibleR = () => {
+    if (inVisibleR.type === 'password') {
+      setInVisibleR({
+        type: 'text',
+        title: 'Hide',
+      });
+    } else {
+      setInVisibleR({
+        type: 'password',
+        title: 'Show',
+      });
+    }
+  };
 
   let passwordChange = (event) => {
     setPassword(event.target.value);
@@ -85,35 +122,53 @@ const NewPassword = () => {
   };
   return (
     <div>
-      <div className="container-register">
+      <div className="container-fluid">
         <div className="row">
-          <div className="col-xs-12 col-sm-12 col-md-6 gambar-newpassword">
+          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 image-register">
             <img src={gambar} alt="" />
           </div>
-          <div className="col-xs-12 col-sm-12 col-md-6 form-newpassword">
-            <div className="mb-5">Forgot Password</div>
-            <div>New Password</div>
-            <InputGroup className="mb-3">
-              <Input onChange={passwordChange} />
-              <Button className="icon-email-newpassword">@</Button>
-            </InputGroup>
-            <div>Repeat New Password</div>
-            <InputGroup className="mb-5">
-              <Input value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
-              <Button className="icon-email-newpassword">@</Button>
-            </InputGroup>
-            {loading ? (
-              <button type="button" className="btn btn-secondary col-12 col-sm-12 col-12 mb-4 ">
-                <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={15} />
-              </button>
-            ) : (
-              <Button className="col-12 col-sm-12 col-12 mb-4" color="danger" onClick={() => onSubmit()}>
-                Send
+          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 box-form-register">
+            <div className="form-newpassword">
+              <div className="mb-5">Forgot Password</div>
+              <div>New Password</div>
+              <InputGroup className="mb-3">
+                <Input placeholder="" type={inVisible.type} value={password} onChange={passwordChange} />
+                {inVisible.title === 'Show' ? (
+                  <Button className="icon-email-newpassword" onClick={handleVisible}>
+                    <FontAwesomeIcon icon={faEye} />
+                  </Button>
+                ) : (
+                  <Button className="icon-email-newpassword" onClick={handleVisible}>
+                    <FontAwesomeIcon icon={faEyeSlash} />
+                  </Button>
+                )}
+              </InputGroup>
+              <div>Repeat New Password</div>
+              <InputGroup className="mb-5">
+                <Input placeholder="" type={inVisibleR.type} value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
+                {inVisibleR.title === 'Show' ? (
+                  <Button className="icon-email-newpassword" onClick={handleVisibleR}>
+                    <FontAwesomeIcon icon={faEye} />
+                  </Button>
+                ) : (
+                  <Button className="icon-email-newpassword" onClick={handleVisibleR}>
+                    <FontAwesomeIcon icon={faEyeSlash} />
+                  </Button>
+                )}
+              </InputGroup>
+              {loading ? (
+                <button type="button" className="btn btn-secondary col-12 col-sm-12 col-12 mb-4 ">
+                  <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={15} />
+                </button>
+              ) : (
+                <Button className="col-12 col-sm-12 col-12 mb-4" color="danger" onClick={() => onSubmit()}>
+                  Send
+                </Button>
+              )}
+              <Button className="col-12 col-sm-12 col-12" color="danger" outline>
+                Cancel
               </Button>
-            )}
-            <Button className="col-12 col-sm-12 col-12" color="danger" outline>
-              Cancel
-            </Button>
+            </div>
           </div>
         </div>
       </div>
