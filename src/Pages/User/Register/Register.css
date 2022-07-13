@@ -1,27 +1,13 @@
-.container-register{
-  min-width: 90vw;
-  display: flex;
+.image-register {
+  padding-left: 0px !important;
 }
-
-.box-image-register{
-  height: 40vh;
-  width: 20vw;
-  object-fit: cover;
+.box-form-register {
+  padding: 0px !important;
+  background: linear-gradient(155.7deg, #f5ded6 -45.88%, #fcf7f9 45.77%, #fcf1f7 117.72%);
 }
-
-
-.image-register{
-  height: 99vh;
-  width: 45vw;
-  object-fit: cover;
+.form-register {
+  padding: 30px 94px 20px 120px !important;
 }
-
-.form-register{
-  height: 99vh;
-  width: 45vw;
-  margin-left: 400px;
-}
-
 
 .login-other {
   font-size: 10px !important;

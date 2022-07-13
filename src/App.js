@@ -40,8 +40,6 @@ import Dashboard from './Pages/Admin/Dashboard/Dashboard.jsx';
 import DaftarProduk from './Pages/Admin/DaftarProduk/DaftarProduk.jsx';
 import KartuStok from './Pages/Admin/KartuStok/KartuStok.jsx';
 
-
-
 // Redux
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -56,7 +54,17 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        {location.pathname === '/login' || location.pathname === '/register'|| location.pathname === '/kartustok/:id'  || location.pathname === '/homeadmin' || location.pathname === '/daftarprodukadmin' || location.pathname === '/newpassword' || location.pathname === '/loginadmin' || location.pathname === '/resetpassword' ? null : <Navbar />}
+        {location.pathname === '/login' ||
+        location.pathname === '/register' ||
+        location.pathname === '/kartustok/:id' ||
+        location.pathname === '/homeadmin' ||
+        location.pathname === '/daftarprodukadmin' ||
+        location.pathname === '/newpassword' ||
+        location.pathname === '/loginadmin' ||
+        location.pathname === '/resetpassword' ||
+        location.pathname === '/newpassword/:token' ? null : (
+          <Navbar />
+        )}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -89,11 +97,21 @@ function App() {
           <Route path="/dikirim" element={<Dikirim />} />
           <Route path="/diproses" element={<Diproses />} />
           <Route path="/ditunggu" element={<Ditunggu />} />
-          <Route path="/selesai" element={<Selesai/>} />
+          <Route path="/selesai" element={<Selesai />} />
           <Route path="/semuapesanan" element={<SemuaPesanan />} />
           <Route path="/payment/:id" element={<Payment />} />
         </Routes>
-        {location.pathname === '/login' || location.pathname === '/daftarprodukadmin' || location.pathname === '/kartustok/:id' || location.pathname === '/homeadmin' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/loginadmin'  || location.pathname === '/resetpassword' ? null : <Footer />}
+        {location.pathname === '/login' ||
+        location.pathname === '/daftarprodukadmin' ||
+        location.pathname === '/kartustok/:id' ||
+        location.pathname === '/homeadmin' ||
+        location.pathname === '/register' ||
+        location.pathname === '/newpassword' ||
+        location.pathname === '/loginadmin' ||
+        location.pathname === '/resetpassword' ||
+        location.pathname === '/newpassword/:token' ? null : (
+          <Footer />
+        )}
       </Provider>
     </>
   );
