@@ -25,11 +25,16 @@ function EditProfile() {
     const [selectedEditProfile, setselectedEditProfile] = React.useState(0);
     const [file, setFile] = useState(null);
     const [loading, setLoading] = React.useState(false);
+    const [errorMessage, setErrorMessage] = useState('')
+    console.log('errorMessage', errorMessage)
 
     const onImagesValidation = (e) => {
         try {
             let file = [...e.target.files]
             setFile(file[0])
+            if(file.length > 1) throw { message: 'You can only upload 1 image' }
+            if(file[0].size > 4000000) throw { message: 'Your file size is too big (>5mb)' }
+            if(!file[0].type.includes('image'))  throw { message: 'This file type is not supported'}
             const reader = new FileReader()
             //   reader.readAsDataURL(e.target.files[0])
               reader.onload = () => {
@@ -38,8 +43,9 @@ function EditProfile() {
                   }
               }
             reader.readAsDataURL(file[0])
+            setErrorMessage('')
         } catch (error) {
-            console.log(error.message)
+            setErrorMessage(error.message)
         }
     }
 
@@ -53,8 +59,8 @@ function EditProfile() {
         }
         axios.get(`${API_URL}/user/datauser`, headers)
         .then((res) => {
-            console.log(res.data)
-            console.log('ini res.data.nama', res.data[0].nama)
+            // console.log(res.data)
+            // console.log('ini res.data.nama', res.data[0].nama)
             if(res.data[0].nama) {setNama(res.data[0].nama)}
             if(res.data[0].email) {setEmail(res.data[0].email)}
             if(res.data[0].gender) {setGender(res.data[0].gender)}
@@ -111,7 +117,7 @@ function EditProfile() {
                 }
             }
 
-            console.log('ini tanggallahir', tanggallahir)
+          
             let borndate = tanggallahir
             borndate = borndate.split('T')
             borndate = borndate.join(' ') 
@@ -141,7 +147,7 @@ function EditProfile() {
             }) }
             axios.patch(API_URL + "/user/editprofiledata", formData, headers)
             .then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
                 if(res.data[0].nama) {setNama(res.data[0].nama)}
                 else {setNama('')}
                 if(res.data[0].email) {setEmail(res.data[0].email)}
@@ -182,7 +188,14 @@ function EditProfile() {
         <SidebarProfile2/>
         <div>
             <div className="d-lg-none d-md-none d-block"><Link to="/profile" style={{ textDecoration:"none", color: "black", cursor: 'pointer' }}><FontAwesomeIcon icon={faAngleLeft} className="pinggiran-atas-profile" /></Link></div>
-            <div className="keterangan-verifikasi">Akun Terverifikasi</div>
+            <div className="keterangan-verifikasi">Akun Terverifikasi
+            {
+         errorMessage && <p style={{margin: '10px', color: 'black;', fontSize:'14px'}}>{errorMessage}</p>
+         }
+            </div>
+            <div className="mt-5">
+       
+        </div>
         </div>
         <div className="edit-foto-profile">
         {
@@ -198,9 +211,9 @@ function EditProfile() {
         <div>
         {/* <input className="button-edit-foto" type="file" label={editImageFileName} onChange={onEditImageFileChange} /> */}
         <form method="POST" action="/upload" encType='multipart/form-data'>
-                        <input type="file" name='photo' accept="image/*" id="image-input" style={{display: 'none'}} onChange={(e) => onImagesValidation(e)} />
-                        </form>
-                        <label htmlFor='image-input' id="choose-file-edit-profile">Choose image</label>
+        <input type="file" name='photo' accept="image/*" id="image-input" style={{display: 'none'}} onChange={(e) => onImagesValidation(e)} />
+        </form>
+         <label htmlFor='image-input' id="choose-file-edit-profile">Choose image</label>
         </div>
         <div className="baris-edit-profile-1">
             <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">

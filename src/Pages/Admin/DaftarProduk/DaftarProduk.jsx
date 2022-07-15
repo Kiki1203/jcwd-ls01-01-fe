@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import './DaftarProduk.css';
 import SidebarAdmin from '../../../Components/Admin/SidebarAdmin/SidebarAdmin.jsx';
 import ModalTambahObat from '../../../Components/Admin/ModalAddProduk/ModalTambahObat.jsx';
-import Modal2 from '../../../Components/Admin/ModalAddProduk/Modal2.jsx';
 import ModalEditObat from '../../../Components/Admin/ModalEditProduk/ModalEditObat.jsx';
 import Modal1 from '../../../Components/Admin/ModalEditProduk/Modal1.jsx';
 import axios from 'axios';
@@ -36,6 +35,8 @@ const DaftarProduk  = () => {
     const [totalProduk, setTotalProduk] = useState(0);
     const [selected, setSelected] = useState(null)
     const [selected2, setSelected2] = useState(null)
+    const [idProduk, setIdProduk] = useState(0)
+    const [idRandom, setIdRandom] = useState([])
 
     useEffect(() => {
         setLoading(true)
@@ -47,6 +48,7 @@ const DaftarProduk  = () => {
         }
         axios.get(`${API_URL}/admin/paginate?page=${currentPage}&limit=${itemsPerPage}`, headers)
         .then((res) => {
+            // console.log(res.data)
             setData(res.data.data)
             setTotalProduk(res.data.pagination.totalRow[0].TotalData)
             setJumlahList(res.data.data.length)
@@ -140,11 +142,42 @@ const DaftarProduk  = () => {
 
     const printFilterKiki = (props) => {
         return produkFilter.map((value, index) => {
+           
             return (
                 <tr key={value.id}>
-                    <td>{value.id}</td>
+                    <td>
+                    {
+                        value.id > 115 ?
+                        <>{value.id - 30}</>
+                        :
+                        <>{value.id}</>
+                        
+                    }
+                    </td>
                     <td>{value.nama_obat}</td>
-                    <td>{Math.random(value.nomerObat).toString(36).substr(2, 9).toUpperCase()}</td>
+                    <td>
+                    {
+                        value.golongan_obat === "Obat Keras" ?
+                        <> {"OBK"+ value.id + 15211}</>
+                        :
+                        <>
+                        {
+                           value.golongan_obat ===  "Obat Bebas Terbatas" ?
+                           <>{"OBT"+ value.id + 15220}</>
+                           :
+                           <>
+                           {
+                             value.golongan_obat ===  "Lain-lain" ?
+                             <>{"OLL"+ value.id + 151212}</>
+                             :
+                             <>{"MDC"+ value.id + 1343}</>
+                           }
+                           </>
+                        }
+                       
+                        </>
+                    }
+                    </td>
                     <td>{value.NIE}</td>
                     <td>{value.golongan_obat}</td>
                     <td>{value.stok}</td>
@@ -160,11 +193,7 @@ const DaftarProduk  = () => {
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                 <Dropdown.Item value="1">
-                                <ModalEditObat
-                                            modalOpen={modalOpens}
-                                            handleModal={handleModalEdit2}
-                                            id={value.id}
-                                        />
+                                <div onClick={() => klikModalEdit(value.id)}>Edit Obat</div>
                                 </Dropdown.Item>
                                 <Dropdown.Item value="2"  onClick={() => deleteDataKiki(value.id)}>
                                     Delete
@@ -185,9 +214,39 @@ const DaftarProduk  = () => {
         return data.map((value, index) => {
             return (
                 <tr key={value.id}>
-                    <td>{value.id}</td>
+                    <td>
+                    {
+                        value.id > 115 ?
+                        <>{value.id - 30}</>
+                        :
+                        <>{value.id}</>
+                        
+                    }
+                    </td>
                     <td>{value.nama_obat}</td>
-                    <td>{Math.random(value.nomerObat).toString(36).substr(2, 9).toUpperCase()}</td>
+                    <td>
+                    {
+                        value.golongan_obat === "Obat Keras" ?
+                        <> {"OBK"+ value.id + 15211}</>
+                        :
+                        <>
+                        {
+                           value.golongan_obat ===  "Obat Bebas Terbatas" ?
+                           <>{"OBT"+ value.id + 15220}</>
+                           :
+                           <>
+                           {
+                             value.golongan_obat ===  "Lain-lain" ?
+                             <>{"OLL"+ value.id + 151212}</>
+                             :
+                             <>{"MDC"+ value.id + 1343}</>
+                           }
+                           </>
+                        }
+                       
+                        </>
+                    }
+                    </td>
                     <td>{value.NIE}</td>
                     <td>{value.golongan_obat}</td>
                     <td>{value.stok}</td>
@@ -198,7 +257,7 @@ const DaftarProduk  = () => {
                         <div  className="d-flex">
                         {
                                 openModal2 && <Modal1 setOpenModal={setOpenModal2}  selected={selected2}
-                                setSelected={setSelected2} id={value.id}/>
+                                setSelected={setSelected2} id={idProduk}/>
                         }
                         
                         <button className="button-lihat-detail-produk mx-3" type="button" onClick={() => navigate(`/kartustok/${value.id}`)}>Lihat Detail</button>
@@ -208,12 +267,7 @@ const DaftarProduk  = () => {
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                 <Dropdown.Item value="1">
-                                <div onClick={() => setOpenModal2(true)} >Edit Obat</div>
-                                {/* <ModalEditObat
-                                            modalOpen={modalOpens}
-                                            handleModal={handleModalEdit2}
-                                            id={value.id}
-                                        /> */}
+                                <div onClick={() => klikModalEdit(value.id)}>Edit Obat</div>
                                 </Dropdown.Item>
                                 <Dropdown.Item value="2" onClick={() => deleteDataKiki(value.id)}>Delete</Dropdown.Item>
                                 </Dropdown.Menu>
@@ -237,8 +291,12 @@ const DaftarProduk  = () => {
         }
         axios.delete(API_URL + `/admin/deleteproduct/${id}?page=${currentPage}&limit=${itemsPerPage}`, headers)
         .then((res) => {
-            console.log('get delete kiki', res.data.data)
-            setData(res.data.data)
+            console.log('get delete kiki', res.data.error)
+            if(res.data.error === false){
+                let newData = data.splice(0,115)
+                setData(newData)
+            }
+            // setData(res.data.data)
             // setProducts(products);
         })
         .catch((err) =>{
@@ -246,19 +304,12 @@ const DaftarProduk  = () => {
         })
     }
     
-    const handleModalEdit = () => {
-        setModalOpen(true);
-    }
-
-    const handleModalEdit2 = (id) => {
-        setModalOpens(true);
-        setSelectedProdukId(id)
-    }
 
     const klikModalEdit = (id) => {
-        setSelectedProdukId(id)
+        setIdProduk(id)
+        console.log('klik edit', id)
+        setOpenModal2(true)
     }
-
 
     if(!localStorage.getItem('token')){
         return(
@@ -274,15 +325,11 @@ const DaftarProduk  = () => {
              <div className="box-daftar-produk-admin">
              <div className="tulisan-dalam-daftar-produk-1">Daftar Obat
              {
-                    openModal && <Modal2 setOpenModal={setOpenModal}  selected={selected}
+                    openModal && <ModalTambahObat setOpenModal={setOpenModal}  selected={selected}
                     setSelected={setSelected}/>
              }
              
              </div>
-             <div id="button-tambah-obat-produk"  onClick={() => setOpenModal(true)} ><FontAwesomeIcon icon={faDownload} className="" />Tambah Obat</div>
-             {/* <button className='button-bayar' style={{marginTop:'20px', fontSize:'14px', padding:'15px'}}
-              onClick={() => setOpenModal(true)}>
-                {`Open Modal`}</button> */}
             
              <div className="button-unduh-pdf-produk"><FontAwesomeIcon icon={faDownload} className="" />Unduh PDF</div>
              <div className="button-unduh-excel-produk"><FontAwesomeIcon icon={faFileExcel} className="" />Excel</div>
@@ -310,10 +357,11 @@ const DaftarProduk  = () => {
                  </div>
  
                  </div>
-                 <ModalTambahObat
+                 <div id="button-tambah-obat-produk"  onClick={() => setOpenModal(true)} ><FontAwesomeIcon icon={faDownload} className="" />Tambah Obat</div>
+                 {/* <ModalTambahObat
                      modalOpen={modalOpen}
                      handleModal={handleModalEdit}
-                 />
+                 /> */}
                  {/* <div className="button-tambah-obat-produk"><span className="material-icons">file_download</span>Tambah Obat</div> */}
                  <div className="garis-inside-box-daftar-produk"></div>
                  <div className="box-tabel-daftar-produk">

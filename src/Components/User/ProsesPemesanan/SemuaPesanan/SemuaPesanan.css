@@ -39,6 +39,7 @@
     left: 0px;
     top: -10px;
     border: 1.5px solid #F5F6F9;
+
   }
   
   .box-chat-cs-semua-resep{
@@ -96,9 +97,9 @@
   }
 
   .position-all-box{
-    position: absolute;
-    left: 418px;
-    top: 330px;
+    height: 130vh;
+    width: 57vw;
+    margin-left: 20px;
   }
 
   .foto-produk-semua{
@@ -110,11 +111,10 @@
   .box-semua-pesanan{
     width: 720px;
     height: 302px;
-    left: 482px;
-    top: 380px;
     background: #FFFFFF;
     box-shadow: -1px -1px 5px 4px rgba(54, 0, 5, 0.01), 2px 2px 2px rgba(96, 33, 33, 0.04), 4px 4px 4px 6px rgba(155, 0, 34, 0.04);
     border-radius: 8px;
+    margin-top: 30px;
   }
 
   .inside-box-semua-pesanan{
@@ -144,21 +144,19 @@
   .notifikasi-semua-pesanan{
     box-sizing: border-box;
     position: relative;
-    width: 156px;
+    width: 210px;
     height: 26px;
     top: -20px;
-    left: 490px;
+    left: 440px;
     background: rgba(255, 222, 107, 0.3);
     border: 1px solid #FFDE6B;
     border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .status-semua-pesanan{
-    position: relative;
-    width: 156px;
-    height: 11px;
-    left: 20px;
-    top: 6px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -189,7 +187,7 @@
   
   .nama-obat-semua-pesanan{
     position: relative;
-    width: 194.14px;
+    width: 300px;
     height: 24px;
     left: 148px;
     top: -50px;
@@ -202,12 +200,68 @@
     align-items: center;
     color: #213360;
   }
+
+  .button-selesai-resep{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    width: 130px;
+    height: 30px;
+    left: 520px;
+    top: -50px;
+    background: #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+
+  .button-selesai-resep:hover{
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.28);
+    cursor: pointer;
+  }
+
+  .button-dikirim{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    width: 130px;
+    height: 30px;
+    left: 520px;
+    top: -50px;
+    background: #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  
+  .button-dikirim:hover{
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.28);
+    cursor: pointer;
+  }
   
   .harga-obat-semua-pesanan{
     position: relative;
     width: 90.22px;
     height: 20px;
-    left: 580px;
+    left: 550px;
     top: -70px;
     font-family: 'Public Sans';
     font-style: normal;
@@ -222,7 +276,7 @@
   
   .jumlah-obat-semua-pesanan{
     position: relative;
-    width: 41.85px;
+    width: 150px;
     height: 18px;
     left: 148px;
     top: -70px;
@@ -241,7 +295,7 @@
     width: 146px;
     height: 18px;
     left: 148px;
-    top: -30px;
+    top: -50px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -250,6 +304,7 @@
     display: flex;
     align-items: center;
     color: #E0004D;
+    cursor: pointer;
   }
   
   .keterangan-sub-total-semua{
@@ -257,7 +312,7 @@
     width: 299px;
     height: 28px;
     left: 148px;
-    top: -20px;
+    top: -30px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -272,7 +327,7 @@
     position: relative;
     width: 182px;
     height: 28px;
-    left: 580px;
+    left: 550px;
     top: -50px;
     font-family: 'Public Sans';
     font-style: normal;
