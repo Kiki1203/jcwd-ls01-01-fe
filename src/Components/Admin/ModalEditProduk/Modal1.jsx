@@ -31,6 +31,35 @@ const Modal1 = ({setOpenModal, selected, setSelected, id}) => {
     const [previewImage, setpreviewImage] =  React.useState(null);
     const [imageURL, setImageURL] = useState('')
     const [file, setFile] = useState(null);
+    const [idProduk, setIdProduk]  = useState(id)
+    const [gambar, setGambar]  = React.useState("");
+
+    useEffect(() => {
+        let token = localStorage.getItem('token')
+        const headers = {
+            headers: { 
+                'Authorization': `${token}`,
+            }
+        }
+    
+        axios.get(`${API_URL}/admin/getprodukID?id=${idProduk}`, headers)
+        .then((res) => {
+            console.log('res edit', res)
+            setNamaObat(res.data[0].nama_obat)
+            setBeratObat(res.data[0].berat)
+            setNoBPOM(res.data[0].NIE)
+            setKategori(res.data[0].golonganObat_id)
+            setTanggalKadaluarsa(res.data[0].expired)
+            setLokasiSimpan(res.data[0].tempat_penyimpanan)
+            setQty(res.data[0].stok)
+            setSatuan(res.data[0].satuanObat_id)
+            setNilaiBarang(res.data[0].nilai_barang)
+            setNilaiJual(res.data[0].harga)
+            setGambar(res.data[0].gambar)
+        }).catch((err) => {
+            console.log('ini err get',err)
+        })
+        }, [])
 
     const onImagesValidation = (e) => {
         try {
@@ -107,7 +136,7 @@ const Modal1 = ({setOpenModal, selected, setSelected, id}) => {
           }
       }
   
-      const onBtnAddProduct = () => {
+      const onBtnEditProduct = () => {
         setLoading(true)
           var formData = new FormData()
           let token = localStorage.getItem('token')
@@ -121,35 +150,13 @@ const Modal1 = ({setOpenModal, selected, setSelected, id}) => {
           let expired = tanggalKadaluarsa
           expired =expired.split('T')
           expired =expired.join(' ')
-  
-          if(beratObat.includes('.')){
-              var berat = beratObat.split('.').join('')
-          }else{
-              var berat = beratObat
-          }
-  
-          if(nilaiBarang.includes('.')){
-              var nilai = nilaiBarang.split('.').join('')
-          }else{
-              var nilai = nilaiBarang
-          }
-  
-          if(nilaiJual.includes('.')){
-              var harga = nilaiJual.split('.').join('')
-          }else{
-              var harga = nilaiJual
-          }
-  
-          console.log('ini berat', berat)
-          console.log('ini nilai barang', nilai)
-          console.log('ini hargajual', harga)
           
           var data = {
               nama_obat: namaObat,
-              berat: berat,
+              berat: beratObat,
               NIE: noBPOM,
-              harga: harga,
-              nilai_barang: nilai,
+              harga: nilaiJual,
+              nilai_barang: nilaiBarang,
               SatuanObat_id: satuan,
               GolonganObat_id: kategori,
               tempat_penyimpanan: lokasiSimpan,
@@ -157,26 +164,24 @@ const Modal1 = ({setOpenModal, selected, setSelected, id}) => {
               expired: expired,   
           }
   
-          formData.append('gambar', file)
+          formData.append('gambar', addImageFile)
           formData.append('data', JSON.stringify(data))
-          
-          axios.post(API_URL + "/admin/addproduct", formData, headers)
+          axios.patch(API_URL + `/admin/editproduct?id=${idProduk}`, formData, headers)
           .then((res) => {
-  
-              if(res.data.message === "Add Product Success"){
-                //   setModalOpen3(true)
-                //   setModalOpen(false)
-                //   setModalOpen2(false)
+              if(res.data.message === "Update Product Success"){
+                setSelected(3)
               }
               setLoading(false)
+           
           })
           .catch((err) =>{
-              Swal.fire({
-                  title: 'Error!',
-                  text: err.response.data.message,
-                  icon: 'error',
-                  confirmButtonText: 'Okay!'
-              })
+            Swal.fire({
+                title: 'Error!',
+                text: err.response.data.message,
+                icon: 'error',
+                confirmButtonText: 'Okay!'
+            })
+             console.log('err edit', err)
               setLoading(false)
           })
       }
@@ -198,11 +203,23 @@ const Modal1 = ({setOpenModal, selected, setSelected, id}) => {
   return (
     <div className='modal-background fixed-top' onClick={() => setOpenModal(false)}>
       <div className='modal-container-payment' onClick={e => e.stopPropagation()}>
-        <FontAwesomeIcon icon={faXmark} className='close-icon' onClick={() => setOpenModal(false)} />
-        <p className='modal-title' style={{marginBottom:'15px'}}>Tambah Obat</p>
+        {
+            selected  === 3 ?
+            <></>
+            :
+            <>
+            <FontAwesomeIcon icon={faXmark} className='close-icon' onClick={() => setOpenModal(false)} />
+            <p className='modal-title' style={{marginBottom:'15px'}}>Tambah Obat</p>
+            </>
+        }
         <div>
         {
-            selected ?
+            selected === 3 ?
+            <>yes</>
+            :
+            <>
+            {
+            selected === 1 ?
             <>
              <div className='mx-3 d-flex'>
                 <div className='button-no-2'>1</div>
@@ -274,11 +291,15 @@ const Modal1 = ({setOpenModal, selected, setSelected, id}) => {
                         <div className='nama-obat-info'>Foto Obat</div>    
                         <div className='mx-2'>
                         {
-                              previewImage? 
-                              <img src={previewImage} alt='Image Preview' id='adminImgUploud' /> 
-                              : 
-                              <img src={NoImage} alt='Image Preview' id='adminImgUploud2' /> 
-                          } 
+                               previewImage? 
+                               <img src={previewImage} alt='Image Preview' id='adminImgUploud' /> 
+                               : 
+                               gambar?
+                               <img src={`${API_URL + '/'}${gambar}`} alt='Image Preview' id='adminImgUploud' />
+                               :
+                               <img  src={NoImage} alt='Image Preview'  id='adminImgUploud2' />
+                           
+                           } 
                                 
                         </div>
                     </div>
@@ -291,7 +312,7 @@ const Modal1 = ({setOpenModal, selected, setSelected, id}) => {
                 </div>
              <div className='d-flex mb-3'>
              <button className='btn btn-danger mx-2 w-50' onClick={() => setSelected(null)} >Kembali</button>
-             <button className='btn btn-danger w-50'>Simpan</button>
+             <button className='btn btn-danger w-50' onClick={() => onBtnEditProduct()}>Simpan</button>
              </div>
             </>
             :
@@ -359,6 +380,8 @@ const Modal1 = ({setOpenModal, selected, setSelected, id}) => {
             <button className='pilih-metode' onClick={() => setSelected(1)} >Lanjutkan</button>
             </>
             } 
+            </>
+        }
         </div>
       </div>
   </div>

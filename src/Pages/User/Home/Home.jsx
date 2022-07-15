@@ -38,21 +38,21 @@ const Home = () => {
   const [token, setToken] = useState('')
   const navigate = useNavigate()
 
-//   useEffect(() => {
-//     let token = localStorage.getItem('myTkn')
-//     const headers = {
-//         headers: { 
-//             'Authorization': `${token}`,
-//         }
-//     }
-//     axios.get(`${API_URL}/user/gettokenuser`, headers)
-//     .then((res) => {
-//         console.log('token', res.data)
-//         setToken(res.data[0].token)
-//     }).catch((err) => {
-//         console.log('ini err get',err)
-//     })
-// }, [])
+  useEffect(() => {
+    let token = localStorage.getItem('myTkn')
+    const headers = {
+        headers: { 
+            'Authorization': `${token}`,
+        }
+    }
+    axios.get(`${API_URL}/user/gettokenuser`, headers)
+    .then((res) => {
+        console.log('token', res.data)
+        setToken(res.data[0].token)
+    }).catch((err) => {
+        console.log('ini err get',err)
+    })
+}, [])
 
   useEffect(() => {
     axios.get(`${API_URL}/product/homeproduk`)
@@ -176,21 +176,17 @@ const printData2 = (props) => {
   })
 }
 
-//Check value di getItem('myTkn') dan ('token')
-// kalau valuenya sama dengan state token alias data token di user, maka  
+// if(localStorage.getItem('token') === token && localStorage.getItem('myTkn') === token ){
+//   return(
+//       <Navigate to='/' />
+//   )
+// }
 
-if(localStorage.getItem('token')){
+if(localStorage.getItem('token') ){
   return(
       <Navigate to='/homeadmin' />
   )
 }
-
-// if(verified){
-//   return(
-//       <Navigate to='/verification' />
-//   )
-// }
-
 
   return (
     <div>

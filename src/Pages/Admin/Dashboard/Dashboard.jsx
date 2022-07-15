@@ -4,26 +4,45 @@ import './Dashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleRight} from '@fortawesome/free-solid-svg-icons';
 import SidebarAdmin from '../../../Components/Admin/SidebarAdmin/SidebarAdmin.jsx';
+import axios from 'axios';
+import API_URL  from '../../../Helpers/API_URL.js';
 
 
 const DashboardAdmin  = () => {
-    // const [isLogedIn, setIsLogedIn] = React.useState(false)
-    // useEffect(() => {
-    //     onCheckIsLogedIn()
-    // }, [])
+    const [token, setToken] = useState('')
+  useEffect(() => {
+    let token = localStorage.getItem('token')
+    const headers = {
+        headers: { 
+            'Authorization': `${token}`,
+        }
+    }
+    axios.get(`${API_URL}/admin/gettokenadmin`, headers)
+    .then((res) => {
+        console.log('token', res.data)
+        setToken(res.data[0].token)
+    }).catch((err) => {
+        console.log('ini err get',err)
+    })
+}, [])
 
-    // const onCheckIsLogedIn = () => {
-    //     let token = localStorage.getItem('myTkn')
-    //     if(token){
-    //        setIsLogedIn(true)
-    //     }
+    // if(localStorage.getItem('token') === token && localStorage.getItem('myTkn') === token ){
+    //     return(
+    //         <Navigate to='/homeadmin' />
+    //     )
+    // }
+
+    // if(localStorage.getItem('token') !== token){
+    //     return(
+    //         <Navigate to='/' />
+    //     )
     //   }
     
-      if(!localStorage.getItem('token')){
+    if(!localStorage.getItem('token')){
         return(
             <Navigate to='/loginadmin' />
         )
-      }
+    }
 
     return(
         <>
