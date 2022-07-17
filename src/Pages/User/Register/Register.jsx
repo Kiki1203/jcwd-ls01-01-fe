@@ -3,14 +3,16 @@ import Axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import Divider from '@mui/material/Divider';
 import './Register.css';
-import gambar from './../../../Assets/Frame.svg';
+import gambar from './../../../Assets/login.svg';
 import google from './../../../Assets/googleL.svg';
 import fb from './../../../Assets/fbL.svg';
 import pLogin from './../../../Assets/pLogin.svg';
 import mLogin from './../../../Assets/mLogin.svg';
 import passLogin from './../../../Assets/passLogin.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { InputGroup, InputGroupText, Input, Button } from 'reactstrap';
 import BeatLoader from 'react-spinners/BeatLoader';
 const override: CSSProperties = {
@@ -26,6 +28,41 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [passwordConf, setPasswordConf] = useState('');
   const [loading, setLoading] = useState(false);
+  const [inVisible, setInVisible] = useState({
+    type: 'password',
+    title: 'Show',
+  });
+  const [inVisibleR, setInVisibleR] = useState({
+    type: 'password',
+    title: 'Show',
+  });
+
+  const handleVisible = () => {
+    if (inVisible.type === 'password') {
+      setInVisible({
+        type: 'text',
+        title: 'Hide',
+      });
+    } else {
+      setInVisible({
+        type: 'password',
+        title: 'Show',
+      });
+    }
+  };
+  const handleVisibleR = () => {
+    if (inVisibleR.type === 'password') {
+      setInVisibleR({
+        type: 'text',
+        title: 'Hide',
+      });
+    } else {
+      setInVisibleR({
+        type: 'password',
+        title: 'Show',
+      });
+    }
+  };
 
   const Toast = Swal.mixin({
     toast: true,
@@ -96,104 +133,134 @@ const Register = () => {
     }
   };
 
+  if(localStorage.getItem('token')){
+    return(
+        <Navigate to='/homeadmin' />
+    )
+  }
+
+  if(localStorage.getItem('myTkn')){
+    return(
+        <Navigate to='/' />
+    )
+}
+
   return (
-    <div className="container-register ">
-      <div className="d-flex">
-        <div className="box-image-register">
-          <img src={gambar} alt="" className="image-register" />
+    <div className="container-fluid ">
+      <div className="row">
+        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 image-register">
+          <img src={gambar} alt="" />
         </div>
-        <div className=" form-register">
-          <div className="mb-2 mt-4">Mari Kita Mulai</div>
-          <div className="mb-3">
-            Sudah punya akun?{' '}
-            <Link to="/login" style={{ textDecoration: 'none', color: 'red' }}>
-              Masuk
-            </Link>
-          </div>
-          <div className="d-flex">
-            <button type="button" className=" bg btn btn-light w-100 mx-3 login-other">
-              <img className="me-2" src={google} alt="" /> Daftar dengan Google
-            </button>
-            <button className="bf btn btn-primary w-100 login-other">
-              <img className="me-2" src={fb} alt="" />
-              Daftar dengan Facebook
-            </button>
-          </div>
-          <br />
-          <div style={{marginTop: '-10px'}}>
-            <Divider>
-              <span> atau</span>
-            </Divider>
-          </div>
-          <br />
-          <div style={{marginTop: '-20px'}}>
-            <label for="exampleFormControlInput1" className="form-label">
-              Name
-            </label>
-            <InputGroup>
-              <InputGroupText className="icon-email-resetpassword">
-                <img src={pLogin} alt="" />
-              </InputGroupText>
-              <Input placeholder="" value={username} onChange={(e) => setUsername(e.target.value)} />
-            </InputGroup>
-            <label for="exampleFormControlInput1" className="form-label">
-              Email Address
-            </label>
-            <InputGroup>
-              <InputGroupText className="icon-email-resetpassword">
-                <img src={mLogin} alt="" />
-              </InputGroupText>
-              <Input placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </InputGroup>
-            <label for="exampleFormControlInput1" className="form-label">
-              Password
-            </label>
-            <InputGroup>
-              <InputGroupText className="icon-email-resetpassword">
-                <img src={passLogin} alt="" />
-              </InputGroupText>
-              <Input placeholder="" value={password} onChange={(e) => setPassword(e.target.value)} />
-              <Button className="icon-email-newpassword">@</Button>
-            </InputGroup>
-            <label for="exampleFormControlInput1" className="form-label">
-              Repeat Password
-            </label>
-            <InputGroup>
-              <InputGroupText className="icon-email-resetpassword">
-                <img src={passLogin} alt="" />
-              </InputGroupText>
-              <Input placeholder="" value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
-              <Button className="icon-email-newpassword">@</Button>
-            </InputGroup>
-          </div>
-          <div className="mt-3 ">
-            <input type="checkbox" value="" id="flexCheckDefault" />
-            <label for="flexCheckDefault">
-              Saya setuju dengan{' '}
-              <span>
-                <Link to="" style={{ textDecoration: 'none', color: 'red' }}>
-                  persyaratan
-                </Link>
-              </span>
-              <span> dan </span>
-              <span>
-                <Link to="" style={{ textDecoration: 'none', color: 'red' }}>
-                  ketentuan
-                </Link>
-              </span>
-            </label>
-          </div>
-          <div className="mt-3">
-            {loading ? (
-              <button type="button" className="btn btn-secondary ">
-                <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={15} />
+        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 box-form-register">
+          <div className="form-register">
+            <div className="mb-2 mt-4">Mari Kita Mulai</div>
+            <div className="mb-3">
+              Sudah punya akun?{' '}
+              <Link to="/login" style={{ textDecoration: 'none', color: 'red' }}>
+                Masuk
+              </Link>
+            </div>
+            <div className="d-flex">
+              <button type="button" className=" bg btn btn-light w-100 mx-3 login-other">
+                <img className="me-2" src={google} alt="" /> Daftar dengan Google
               </button>
-            ) : (
-              <button type="button" className="btn btn-danger w-100 " onClick={() => onSubmit()}>
-                {' '}
-                Sign up
+              <button className="bf btn btn-primary w-100 login-other">
+                <img className="me-2" src={fb} alt="" />
+                Daftar dengan Facebook
               </button>
-            )}
+            </div>
+            <br />
+            <div style={{ marginTop: '-10px' }}>
+              <Divider>
+                <span> atau</span>
+              </Divider>
+            </div>
+            <br />
+            <div style={{ marginTop: '-20px' }}>
+              <label for="exampleFormControlInput1" className="form-label">
+                Name
+              </label>
+              <InputGroup>
+                <InputGroupText className="icon-email-resetpassword">
+                  <img src={pLogin} alt="" />
+                </InputGroupText>
+                <Input placeholder="" value={username} onChange={(e) => setUsername(e.target.value)} />
+              </InputGroup>
+              <label for="exampleFormControlInput1" className="form-label">
+                Email Address
+              </label>
+              <InputGroup>
+                <InputGroupText className="icon-email-resetpassword">
+                  <img src={mLogin} alt="" />
+                </InputGroupText>
+                <Input placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+              </InputGroup>
+              <label for="exampleFormControlInput1" className="form-label">
+                Password
+              </label>
+              <InputGroup>
+                <InputGroupText className="icon-email-resetpassword">
+                  <img src={passLogin} alt="" />
+                </InputGroupText>
+                <Input placeholder="" type={inVisible.type} value={password} onChange={(e) => setPassword(e.target.value)} />
+                {inVisible.title === 'Show' ? (
+                  <Button className="icon-email-newpassword" onClick={handleVisible}>
+                    <FontAwesomeIcon icon={faEye} />
+                  </Button>
+                ) : (
+                  <Button className="icon-email-newpassword" onClick={handleVisible}>
+                    <FontAwesomeIcon icon={faEyeSlash} />
+                  </Button>
+                )}
+              </InputGroup>
+              <label for="exampleFormControlInput1" className="form-label">
+                Repeat Password
+              </label>
+              <InputGroup>
+                <InputGroupText className="icon-email-resetpassword">
+                  <img src={passLogin} alt="" />
+                </InputGroupText>
+                <Input placeholder="" type={inVisibleR.type} value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
+                {inVisibleR.title === 'Show' ? (
+                  <Button className="icon-email-newpassword" onClick={handleVisibleR}>
+                    <FontAwesomeIcon icon={faEye} />
+                  </Button>
+                ) : (
+                  <Button className="icon-email-newpassword" onClick={handleVisibleR}>
+                    <FontAwesomeIcon icon={faEyeSlash} />
+                  </Button>
+                )}
+              </InputGroup>
+            </div>
+            <div className="mt-3 ">
+              <input type="checkbox" value="" id="flexCheckDefault" />
+              <label for="flexCheckDefault">
+                Saya setuju dengan{' '}
+                <span>
+                  <Link to="" style={{ textDecoration: 'none', color: 'red' }}>
+                    persyaratan
+                  </Link>
+                </span>
+                <span> dan </span>
+                <span>
+                  <Link to="" style={{ textDecoration: 'none', color: 'red' }}>
+                    ketentuan
+                  </Link>
+                </span>
+              </label>
+            </div>
+            <div className="mt-3">
+              {loading ? (
+                <button type="button" className="btn btn-secondary w-100 ">
+                  <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={10} />
+                </button>
+              ) : (
+                <button type="button" className="btn btn-danger w-100 " onClick={() => onSubmit()}>
+                  {' '}
+                  Sign up
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

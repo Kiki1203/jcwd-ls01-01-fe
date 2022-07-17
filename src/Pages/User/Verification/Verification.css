@@ -1,4 +1,9 @@
 @media only screen and (max-width: 1400px) {
+    .container-verification{
+    min-height: 100vh;
+    min-width: 90vw;
+    padding: 50px 150px 50px 150px;
+  }
    
     .box-verification-page{
         position: absolute;

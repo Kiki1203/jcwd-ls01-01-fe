@@ -28,22 +28,66 @@ import kirim from './../../../Assets/Kirim.svg';
 import logo from './../../../Assets/LogoFull.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate, Navigate } from "react-router-dom";
 
 
 const Home = () => {
   const [produkDiskon, setProdukDiskon] = useState([])
   const [produkTerbaru, setProdukTerbaru] = useState([])
+  const [verified, setVerified] = useState(false)
+  const [token, setToken] = useState('')
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    let token = localStorage.getItem('myTkn')
+    const headers = {
+        headers: { 
+            'Authorization': `${token}`,
+        }
+    }
+    axios.get(`${API_URL}/user/gettokenuser`, headers)
+    .then((res) => {
+        console.log('token', res.data)
+        setToken(res.data[0].token)
+    }).catch((err) => {
+        console.log('ini err get',err)
+    })
+}, [])
 
   useEffect(() => {
     axios.get(`${API_URL}/product/homeproduk`)
     .then((res) => {
-        console.log(res.data.produkDiskon)
-        console.log(res.data.produkTerbaru)
+
         setProdukDiskon(res.data.produkDiskon)
         setProdukTerbaru(res.data.produkTerbaru)
     }).catch((err) => {
         console.log('ini err get',err)
     })
+}, [])
+
+useEffect(() => {
+  let token = localStorage.getItem('myTkn')
+  const headers = {
+      headers: { 
+          'Authorization': `${token}`,
+      }
+  }
+  axios.get(`${API_URL}/user/checkuserverify`, headers)
+  .then((res) => {
+      console.log('verified',res.data)
+      console.log(res.data.verified)
+  
+
+      if(res.data.verified == 0){
+        setVerified(false)
+      }else if(res.data.verified == 1){
+        setVerified(true)
+      }
+    
+  
+  }).catch((err) => {
+      console.log('ini err get',err)
+  })
 }, [])
 
 const printData = (props) => {
@@ -132,8 +176,17 @@ const printData2 = (props) => {
   })
 }
 
+// if(localStorage.getItem('token') === token && localStorage.getItem('myTkn') === token ){
+//   return(
+//       <Navigate to='/' />
+//   )
+// }
 
-
+if(localStorage.getItem('token') ){
+  return(
+      <Navigate to='/homeadmin' />
+  )
+}
 
   return (
     <div>
@@ -158,7 +211,7 @@ const printData2 = (props) => {
           <div className='tulisan-perlu-resep'>Punya Resep Doktor?</div>
           <div className='tulisan-tak-antre'>Tak perlu antre & obat langsung dikirimkan ke lokasi anda! Foto tidak boleh lebih dari 10 MB</div>
         </div>
-        <button className='btn-unggah-resep'>Unggah Resep</button>
+        <button className='btn-unggah-resep' onClick={() => navigate('/uploadresep')}>Unggah Resep</button>
 
         </div>
         <div className='inside-container-home-3'>
@@ -237,7 +290,7 @@ const printData2 = (props) => {
           </div>
         </div>
         <hr />
-        <div lassName='inside-container-home-7'>
+        <div className='inside-container-home-7'>
          <div className='jaminan'> Jaminan Untuk Anda</div>
          <div className='container-box-7'>
             <div className='product-card-home-3 mx-2'>

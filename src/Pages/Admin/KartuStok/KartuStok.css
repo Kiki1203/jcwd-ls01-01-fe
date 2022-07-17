@@ -1,0 +1,576 @@
+#judul-tabel-kartu-produk{
+    background: #213360;
+    border-radius: 10px 10px 0px 0px !important;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.body-tabel-kartu-produk{
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    text-align: center;
+}
+
+
+.navbar-kartu-stok{
+    position: absolute;
+    width: 1263px;
+    height: 64px;
+    left: 0px;
+    top: 0px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 48, 0.02), 0px 4px 12px 4px rgba(155, 0, 10, 0.08);
+}
+
+.pinggiran-atas-navbar-kartu-stok{
+    position: absolute;
+    left: 60px;
+    right: 40.62%;
+    top: 25px;
+    bottom: 30.21%;
+    color: #1A1E2B;
+    cursor: pointer
+}
+
+.detail-obat-navbar{
+    position: absolute;
+    width:400px;
+    height: 24px;
+    left: 88px;
+    top: 20px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #222222;
+}
+
+.button-unduh-excel-kartu-stok{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 8px;
+    position: absolute;
+    width: 94px;
+    height: 32px;
+    left: 1100px;
+    top: 16px;
+    border: 1px solid #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 12px;
+    color: #E0004D;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    cursor: pointer
+}
+
+.box-kartu-stok{
+    position: absolute;
+    width: 1263px;
+    height: 800px;
+    left: 0px;
+    top: 64px;
+    background: linear-gradient(155.7deg, #f5ded6 -45.88%, #fcf7f9 45.77%, #fcf1f7 117.72%);
+}
+
+.inside-kartu-stok-box{
+    position: absolute;
+    width: 900px;
+    height: 700px;
+    left: 170px;
+    top: 50px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 50, 0.02), 0px 4px 12px 4px rgba(155, 0, 28, 0.08);
+    border-radius: 8px;
+}
+
+.inside-kartu-stok-box-1{
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    width: 100px;
+    height: 50px;
+}
+
+.bulan-inside-kartu-stok-box-1{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555555;
+}
+
+.dropdown-inside-kartu-stok-box-1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    left: 0px;
+    top: 23px;
+    width: 120px;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.inside-kartu-stok-box-2{
+    position: absolute;
+    left: 200px;
+    top: 40px;
+    width: 100px;
+    height: 50px;
+}
+
+.tahun-inside-kartu-stok-box-2{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555555;
+}
+
+.dropdown-inside-kartu-stok-box-2{
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    height: 30px;
+    width: 120px;
+    border-radius: 4px;
+
+}
+
+.inside-kartu-stok-box-3{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    width: 120px;
+    gap: 10px;
+    position: absolute;
+    left: 350px;
+    top: 60px;
+    background: #FFFFFF;
+    border-radius: 4px;
+}
+
+.garis-kartu-stok{
+    position: absolute;
+    left: 170px;
+    top: 160px;
+    height: 0px;
+    width: 900px;
+    border: 1px solid #D5D7DD;
+}
+
+
+.box-tabel-kartu-produk{
+    display: flex;
+    width: 850px;
+    height: 540px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    position: absolute;
+    left: 195px;
+    top: 190px;
+    background: #f9f5f6;
+    border: 1px solid #c7b4ba;
+    border-radius: 10px 10px 0px 0px !important;
+}
+
+.inside-box-kartu-produk{
+    width: 847px;
+    height: 1000px;
+    border-radius: 10px 10px 0px 0px !important;
+    /* overflow-x: scroll; */
+}
+
+.box-footer-tabel-kartu-produk{
+    width: 847px;
+    height: 100px;
+    background: #FFFFFF;
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+}
+
+.keterangan-footer-tabel-kartu-produk{
+    width: 202px;
+    height: 23px;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #222222;
+}
+
+.tulisan-jumlah-baris-footer-kartu{
+    width: 135.46px;
+    height: 26px;
+    margin-top: 10px;
+    margin-left: 70px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #1A1E2B;
+}
+
+.button-dropdown-jumlah-baris-kartu{
+    width: 72.24px;
+    height: 33.88px;
+    margin-top: 8px;
+    margin-left: -20px;
+}
+
+.box-pagination-footer-produk-kartu{
+    width: 230px;
+    height: 28px;
+    margin-top: 10px;
+    margin-left: 110px;
+}
+
+.table-dalam-kartu-produk{
+    display: flex;
+    flex-direction: row;
+    width: 850px;
+    height: 48px;
+    background: #213360;
+    border-radius: 10px 10px 0px 0px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.table-nomer-1-kartu{
+    width: 68px;
+    height: 48px;
+    padding: 0px;
+    text-align: center;    
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-2-kartu{
+    padding: 0px;
+    text-align: center;
+    width: 188px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-3-kartu{
+    padding: 0px;
+    text-align: center;
+    width: 238px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-4-kartu{
+    padding: 0px;
+    text-align: center;
+    width: 161px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-5-kartu{
+    padding: 0px;
+    text-align: center;
+    width: 87px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-6-kartu{
+    padding: 0px;
+    text-align: center;
+    width: 98px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-7-kartu{
+    padding: 0px;
+    text-align: center;
+    width: 100px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-nomer-8-kartu{
+    padding: 0px;
+    text-align: center;
+    width: 223px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+
+.table-body-dalam-kartu-produk{
+    display: flex;
+    flex-direction: row;
+    width: 850px;
+    height: 48px;
+    background: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.table-body-nomer-1-kartu{
+    width: 53px;
+    height: 48px;
+    text-align: center; 
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-2-kartu{
+    padding: 0px;
+    text-align: center;
+    width: 149px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-3-kartu{
+    padding: 0px;
+    text-align: center;
+    width: 180px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-4-kartu{
+    padding: 0px;
+    text-align: center;
+    width: 130px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-5-kartu{
+    padding-left: 0px;
+    text-align: center;
+    width: 80px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-6-kartu{
+    padding-left: 0px;
+    text-align: center;
+    width: 85px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-7-kartu{
+    padding: 0px;
+    text-align: center;
+    width: 80px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.table-body-nomer-8-kartu{
+    padding: 0px;
+    text-align: center;
+    width: 182px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1E2B;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.button-lihat-detail-produk-kartu{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1px solid #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 17px;
+    color: #E0004D;
+}
+
+.table-body-dalam-kartu-produk-2{
+    display: flex;
+    flex-direction: row;
+    width: 850px;
+    height: 48px;
+    background: #F0F4FE;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+

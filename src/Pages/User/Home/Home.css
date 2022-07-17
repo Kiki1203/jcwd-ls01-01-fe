@@ -385,7 +385,7 @@
 .hamil{
   position: absolute;
   left: 150px;
-  top: 1355px;
+  top: 1345px;
   width: 338px;
   height: 212px;
 }
@@ -395,7 +395,7 @@
   width: 348px;
   height: 212px;
   left: 650px;
-  top: 1335px;
+  top: 1330px;
 }
 
 .friend{
@@ -403,7 +403,7 @@
   width: 294px;
   height: 249px;
   left: 670px;
-  top: 1340px;
+  top: 1330px;
 }
 
 .program-hamil{
@@ -513,7 +513,6 @@
   width: 80vw;
   height: 300px;
   margin-top: 30px;
-  border: 1px solid black;
 }
 
 .jaminan{

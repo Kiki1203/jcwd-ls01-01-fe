@@ -21,6 +21,16 @@ import UploadResep from './Pages/User/UploadResep/UploadResep.jsx';
 import UploadSuccess from './Pages/User/UploadSuccess/UploadSuccess.jsx';
 import ChangePassword from './Pages/User/ChangePassword/ChangePassword.jsx';
 import EditProfile from './Pages/User/EditProfile/EditProfile.jsx';
+import AlamatProfile from './Pages/User/AlamatProfile/AlamatPageProfile.jsx';
+import MenungguKonfirmasi from './Pages/User/MenungguKonfirmasi/MenungguKonfirmasi.jsx';
+import Favorite from './Pages/User/Favorite/FavoritePage.jsx';
+import MetodePembayaran from './Pages/User/MetodePembayaran/MetodePembayaranPage.jsx';
+import Dibatalkan from './Components/User/ProsesPemesanan/Dibatalkan/TabDibatalkan.jsx';
+import Dikirim from './Components/User/ProsesPemesanan/Dikirim/TabDikirim.jsx';
+import Diproses from './Components/User/ProsesPemesanan/Diproses/TabDiproses.jsx';
+import Ditunggu from './Components/User/ProsesPemesanan/Ditunggu/TabDitunggu.jsx';
+import Selesai from './Components/User/ProsesPemesanan/Selesai/TabSelesai.jsx';
+import SemuaPesanan from './Components/User/ProsesPemesanan/SemuaPesanan/SemuaPesanan.jsx';
 import Payment from './Pages/User/Payment/Payment.jsx';
 
 // ADMIN
@@ -28,7 +38,7 @@ import LoginAdmin from './Pages/Admin/LoginAdmin/LoginAdmin.jsx';
 import Dashboard from './Pages/Admin/Dashboard/Dashboard.jsx';
 import DaftarProduk from './Pages/Admin/DaftarProduk/DaftarProduk.jsx';
 import TransaksiAdmin from './Pages/Admin/TransaksiAdmin/TransaksiAdmin';
-
+import KartuStok from './Pages/Admin/KartuStok/KartuStok.jsx';
 
 // Redux
 import { applyMiddleware, createStore } from 'redux';
@@ -44,7 +54,18 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        {location.pathname === '/login' || location.pathname === '/register'  || location.pathname === '/homeadmin' || location.pathname === '/daftarprodukadmin' || location.pathname === '/newpassword' || location.pathname === '/loginadmin' || location.pathname === '/resetpassword' || location.pathname.includes('/transaksiadmin') ? null : <Navbar />}
+        {location.pathname === '/login' ||
+        location.pathname === '/register' ||
+        location.pathname === '/kartustok/:id' ||
+        location.pathname === '/homeadmin' ||
+        location.pathname === '/daftarprodukadmin' ||
+        location.pathname === '/newpassword' ||
+        location.pathname === '/loginadmin' ||
+        location.pathname === '/resetpassword' ||
+        location.pathname === '/newpassword/:token' ||
+        location.pathname === '/transaksiadmin/:status' ? null : (
+          <Navbar />
+        )}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -67,10 +88,32 @@ function App() {
           <Route path="/loginadmin" element={<LoginAdmin />} />
           <Route path="/homeadmin" element={<Dashboard />} />
           <Route path="/daftarprodukadmin" element={<DaftarProduk />} />
+          <Route path="/kartustok/:id" element={<KartuStok />} />
+          <Route path="/alamatpengiriman" element={<AlamatProfile />} />
+          <Route path="/menunggukonfirmasi" element={<MenungguKonfirmasi />} />
+          <Route path="/metodepembayaran" element={<MetodePembayaran />} />
+          <Route path="/favorite" element={<Favorite />} />
+          <Route path="/dibatalkan" element={<Dibatalkan />} />
+          <Route path="/dikirim" element={<Dikirim />} />
+          <Route path="/diproses" element={<Diproses />} />
+          <Route path="/ditunggu" element={<Ditunggu />} />
+          <Route path="/selesai" element={<Selesai />} />
+          <Route path="/semuapesanan" element={<SemuaPesanan />} />
           <Route path="/payment/:id" element={<Payment />} />
           <Route path="/transaksiadmin/:status" element={<TransaksiAdmin />} />
         </Routes>
-        {location.pathname === '/login' || location.pathname === '/daftarprodukadmin' || location.pathname === '/homeadmin' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/loginadmin'  || location.pathname.includes('/transaksiadmin')|| location.pathname === '/resetpassword' ? null : <Footer />}
+        {location.pathname === '/login' ||
+        location.pathname === '/daftarprodukadmin' ||
+        location.pathname === '/kartustok/:id' ||
+        location.pathname === '/homeadmin' ||
+        location.pathname === '/register' ||
+        location.pathname === '/newpassword' ||
+        location.pathname === '/loginadmin' ||
+        location.pathname === '/resetpassword' ||
+        location.pathname === '/newpassword/:token' ||
+        location.pathname === '/transaksiadmin/:status' ? null : (
+          <Footer />
+        )}
       </Provider>
     </>
   );

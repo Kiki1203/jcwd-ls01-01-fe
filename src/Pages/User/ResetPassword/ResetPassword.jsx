@@ -57,26 +57,28 @@ const ResetPassword = () => {
   };
   return (
     <div>
-      <div className="container-register">
+      <div className="container-fluid">
         <div className="row">
-          <div className="col-xs-12 col-sm-12 col-md-6">
+          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 image-register">
             <img src={gambar} alt="" />
           </div>
-          <div className="col-xs-12 col-sm-12 col-md-6 form-resetpassword">
-            <div className="mb-5">Forgot Password</div>
-            <div>Email</div>
-            <InputGroup className=" col-12 col-sm-12 col-12 mb-5">
-              <InputGroupText className="icon-email-resetpassword">
-                <img src={mLogin} alt="" />
-              </InputGroupText>
-              <Input placeholder="name@example.com" onChange={emailChange} />
-            </InputGroup>
-            <Button className="col-12 col-sm-12 col-12 mb-4" color="danger" onClick={() => onSubmit()}>
-              Send
-            </Button>
-            <Button className="col-12 col-sm-12 col-12" color="danger" outline>
-              Cancel
-            </Button>
+          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 box-form-register">
+            <div className="form-resetpassword">
+              <div className="mb-5">Forgot Password</div>
+              <div>Email</div>
+              <InputGroup className="mb-5">
+                <InputGroupText className="icon-email-resetpassword">
+                  <img src={mLogin} alt="" />
+                </InputGroupText>
+                <Input placeholder="name@example.com" onChange={emailChange} />
+              </InputGroup>
+              <Button className="col-12 col-sm-12 col-12 mb-4" color="danger" onClick={() => onSubmit()}>
+                Send
+              </Button>
+              <Button className="col-12 col-sm-12 col-12" color="danger" outline>
+                Cancel
+              </Button>
+            </div>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ const NavbarAdmin  = () => {
     const navigate = useNavigate()
     
     const btnLogOut = () => {
-        localStorage.removeItem('myTkn');
+        localStorage.removeItem('token');
         navigate("/loginadmin")
       }
 

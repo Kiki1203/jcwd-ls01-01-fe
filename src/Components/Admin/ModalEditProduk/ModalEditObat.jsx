@@ -13,9 +13,9 @@ const ModalEditObat = (id) => {
     let [modalOpen, setModalOpen] = useState(false); 
     let [modalOpen2, setModalOpen2] = useState(false); 
     let [modalOpen3, setModalOpen3] = useState(false); 
+    const [loading, setLoading] = React.useState(false);
     let [qty, setQty] = useState(1); 
     const [idProduk, setIdProduk]  = useState(id)
-    console.log('id atas', id)
     const [namaObat, setNamaObat] = React.useState("");
     const [beratObat, setBeratObat] = React.useState("");
     const [noBPOM, setNoBPOM] = React.useState("");
@@ -34,7 +34,7 @@ const ModalEditObat = (id) => {
     const [file, setFile] = useState(null);
 
     useEffect(() => {
-        let token = localStorage.getItem('myTkn')
+        let token = localStorage.getItem('token')
         const headers = {
             headers: { 
                 'Authorization': `${token}`,
@@ -43,19 +43,17 @@ const ModalEditObat = (id) => {
     
         axios.get(`${API_URL}/admin/getprodukID?id=${idProduk.id}`, headers)
         .then((res) => {
-            console.log(res.data)
             setNamaObat(res.data[0].nama_obat)
             setBeratObat(res.data[0].berat)
             setNoBPOM(res.data[0].NIE)
-            setKategori(res.data[0].golongan_obat)
+            setKategori(res.data[0].golonganObat_id)
             setTanggalKadaluarsa(res.data[0].expired)
             setLokasiSimpan(res.data[0].tempat_penyimpanan)
             setQty(res.data[0].stok)
-            setSatuan(res.data[0].satuan_obat)
+            setSatuan(res.data[0].satuanObat_id)
             setNilaiBarang(res.data[0].nilai_barang)
             setNilaiJual(res.data[0].harga)
             setGambar(res.data[0].gambar)
-            console.log('ini res.data.nama_obat', res.data[0].nama_obat)
         }).catch((err) => {
             console.log('ini err get',err)
         })
@@ -136,9 +134,10 @@ const ModalEditObat = (id) => {
           }
       }
   
-      const onBtnAddProduct = () => {
+      const onBtnEditProduct = () => {
+        setLoading(true)
           var formData = new FormData()
-          let token = localStorage.getItem('myTkn')
+          let token = localStorage.getItem('token')
           var headers = {
               headers: {
                   'Authorization': `${token}`,
@@ -149,35 +148,13 @@ const ModalEditObat = (id) => {
           let expired = tanggalKadaluarsa
           expired =expired.split('T')
           expired =expired.join(' ')
-  
-          if(beratObat.includes('.')){
-              var berat = beratObat.split('.').join('')
-          }else{
-              var berat = beratObat
-          }
-  
-          if(nilaiBarang.includes('.')){
-              var nilai = nilaiBarang.split('.').join('')
-          }else{
-              var nilai = nilaiBarang
-          }
-  
-          if(nilaiJual.includes('.')){
-              var harga = nilaiJual.split('.').join('')
-          }else{
-              var harga = nilaiJual
-          }
-  
-          console.log('ini berat', berat)
-          console.log('ini nilai barang', nilai)
-          console.log('ini hargajual', harga)
           
           var data = {
               nama_obat: namaObat,
-              berat: berat,
+              berat: beratObat,
               NIE: noBPOM,
-              harga: harga,
-              nilai_barang: nilai,
+              harga: nilaiJual,
+              nilai_barang: nilaiBarang,
               SatuanObat_id: satuan,
               GolonganObat_id: kategori,
               tempat_penyimpanan: lokasiSimpan,
@@ -185,31 +162,27 @@ const ModalEditObat = (id) => {
               expired: expired,   
           }
   
-          console.log('ini data', data)
-  
-  
           formData.append('gambar', addImageFile)
           formData.append('data', JSON.stringify(data))
-    
           axios.patch(API_URL + `/admin/editproduct?id=${idProduk.id}`, formData, headers)
           .then((res) => {
-  
               if(res.data.message === "Update Product Success"){
                   setModalOpen3(true)
                   setModalOpen(false)
                   setModalOpen2(false)
               }
-              console.log('ini res.data', res.data)
-              console.log('ini res.data.message', res.data.message)
-              console.log('ini res.data[0]', res.data.results)
+              setLoading(false)
+           
           })
           .catch((err) =>{
-              Swal.fire({
-                  title: 'Error!',
-                  text: err.response.data.message,
-                  icon: 'error',
-                  confirmButtonText: 'Okay!'
-              })
+            Swal.fire({
+                title: 'Error!',
+                text: err.response.data.message,
+                icon: 'error',
+                confirmButtonText: 'Okay!'
+            })
+             console.log('err edit', err)
+              setLoading(false)
           })
       }
      
@@ -245,22 +218,25 @@ const ModalEditObat = (id) => {
   
     return (
         <>
-        <div onClick={() => klikOpenMOdal()} >Edit Obat</div>
-        <Modal  isOpen={!modalOpen}>
+        <div onClick={() => setModalOpen(true)} >Edit Obat</div>
+        <Modal   toggle={() => setModalOpen(true)} isOpen={modalOpen}>
              <ModalHeader>
                  <span className="modal-title-add-obat">Edit Obat</span>
                  <FontAwesomeIcon icon={faXmark} className="button-close-modal-admin"  onClick={() => setModalOpen(false)}/>
              </ModalHeader>
              <ModalBody>
                  <div className='box-tab-modal-admin'>
-                     <div className='button-no-1'>1</div>
-                     <div className='tulisan-detail-obat-modal'>Detail Obat</div>
-                     <FontAwesomeIcon icon={faAngleRight} className='logo-slash'  />
-                     <div className='button-no-2'>2</div>
-                     <div className='tulisan-detail-dan-kuantitas'>Detail Kuantitas & Harga</div>
+                     <div className=" d-flex mx-4">
+                        <div className='button-no-1'>1</div>
+                        <div className='tulisan-detail-obat-modal'>Detail Obat</div>
+                        <FontAwesomeIcon icon={faAngleRight} className='logo-slash'  />
+                        <div className='button-no-2'>2</div>
+                        <div className='tulisan-detail-dan-kuantitas'>Detail Kuantitas & Harga</div>
+                     </div>
                  </div>
                  <div className='box-isi-modal-add-product'>
-                     <div className='box-inside-all-info-product'>
+                    <div className='box-isi-modal-add-product-two'>
+                    <div className='box-inside-all-info-product'>
                          <div className='nama-obat-info'>Nama Obat</div>  
                          <input type="text" className='form-control inputan-obat-info' placeholder='Masukkan nama obat'  onChange={namaObatChange} defaultValue={namaObat}/>                  
                      </div>
@@ -287,7 +263,7 @@ const ModalEditObat = (id) => {
                              <option value="3">Medical Device & Consumable</option>
                              <option value="4">Lain-lain</option>
                          </select>
-                         <div className='input-group-text logo-input-group-text-2' ><FontAwesomeIcon icon={faAngleDown} /></div>
+                         <div className='input-group-text' id="logo-input-group-text-2" ><FontAwesomeIcon icon={faAngleDown} /></div>
                      </div>
                      <div className='box-inside-all-info-product mt-3'>
                          <div className='nama-obat-info-2'>Tgl. Kadaluarsa</div>  
@@ -306,9 +282,10 @@ const ModalEditObat = (id) => {
                              <option value="Gudang 1">Gudang 1</option>
                              <option value="Gudang 2">Gudang 2</option>
                          </select>
-                         <div className='input-group-text logo-input-group-text-3' ><FontAwesomeIcon icon={faAngleDown} /></div>
+                         <div className='input-group-text' id="logo-input-group-text-3" ><FontAwesomeIcon icon={faAngleDown} /></div>
                      </div>
                  </div>
+                    </div>
                  </div>
                  <button className="btn-lanjutkan mt-3" type="button" onClick={() => btnLanjutkan()}>Lanjutkan</button>
              </ModalBody>
@@ -323,14 +300,17 @@ const ModalEditObat = (id) => {
              </ModalHeader>
              <ModalBody>
                  <div className='box-tab-modal-admin' style={{marginLeft: '-10px'}}>
+                     <div className='d-flex mx-4'>
                      <div className='button-no-2'>1</div>
                      <div className='tulisan-detail-dan-kuantitas '>Detail Obat</div>
                      <FontAwesomeIcon icon={faAngleRight} className='logo-slash'  />
                      <div className='button-no-1'  style={{marginLeft: '10px'}}>2</div>
                      <div className='tulisan-detail-obat-modal'>Detail Kuantitas & Harga</div>
+                     </div>
                  </div>
                  <div className='box-isi-modal-add-product'>
-                     <div className='box-inside-all-info-product'>
+                  <div  className='box-isi-modal-add-product-two'>
+                  <div className='box-inside-all-info-product'>
                          <div className='nama-obat-info'>Kuantitas</div>  
                          <div className='inputan-obat-info-4' style={{marginLeft: '-5px'}}>
                              <button className='input-group-text-logo-kuantitas' disabled={qty <= 1 ? true : false}  onClick={() => handleDec()} ><FontAwesomeIcon icon={faMinus} /></button>
@@ -360,7 +340,7 @@ const ModalEditObat = (id) => {
                              <option value="8">Pack</option>
                              <option value="9">Kaleng</option>
                          </select>
-                         <div className='input-group-text logo-input-group-text-2' ><FontAwesomeIcon icon={faAngleDown} /></div>                 
+                         <div className='input-group-text' id="logo-input-group-text-4" ><FontAwesomeIcon icon={faAngleDown} /></div>                 
                      </div>
                      <div className='box-inside-all-info-product mt-3'>
                          <div className='nama-obat-info'>Nilai Barang (Rp)</div>  
@@ -386,17 +366,27 @@ const ModalEditObat = (id) => {
                                  
                          </div>
                      </div>
-                     <input className="button-edit-foto-produk" type="file" label={addImageFileName} onChange={onAddImageFileChange} />
+                     <input id="button-edit-foto-produk" type="file" label={addImageFileName} onChange={onAddImageFileChange} />
                      {/* <form method="PATCH" action="/upload" encType='multipart/form-data'>
                          <input type="file" name='photo' accept="image/*" id="image-input" style={{display: 'none'}} onChange={(e) => onImagesValidation(e)} />
                          </form>
                          <label htmlFor='image-input' id="choose-file-produk">Choose image</label> */}
                  </div>
+                  </div>
                  </div>
-                <div classname="box-button-modal-2" style={{marginTop: '30px'}}>
+                <div className="mb-3" style={{marginTop: '30px'}}>
                      <button className="btn-kembali-before" type="button"  onClick={() => btnKembali()}>Kembali</button>
-                     <button className="btn-simpan-save"  type="button" onClick={() => onBtnAddProduct ()}>Simpan</button>
+                     <button className="btn-simpan-save"  disabled={loading} type="button" onClick={() => onBtnEditProduct ()}>
+                     {
+                        loading?
+                            'Loading'
+                        :
+                            'Simpan'
+                    }
+                     </button>
                 </div>
+
+               
              </ModalBody>
          </Modal>
  
@@ -405,13 +395,13 @@ const ModalEditObat = (id) => {
          
          <Modal  toggle={() => setModalOpen3(false)} isOpen={modalOpen3}>
              <ModalBody>
-                 <div className="button-close-modal-admin-sukses">
-                  <FontAwesomeIcon icon={faXmark}  style={{cursor: 'pointer'}}  onClick={() => setModalOpen3(false)}/>
+             <div className="button-close-modal-admin-sukses">
+                  <FontAwesomeIcon icon={faXmark}  style={{cursor: 'pointer', marginLeft: "100px"}}  onClick={() => setModalOpen3(false)}/>
                   </div>
                   <div className='box-modal-admin-sukses'>
                      <div className='gambar-sukses-add-produk mt-4'> <img  src={default1} alt='Image Preview' id='adminImgSukses' /></div>
                       <div className='box-khusus-tulisan'>
-                           <div className='tulisan-sukses-add-produk'>Obat Berhasil Ditambahkan!</div>
+                           <div className='tulisan-sukses-add-produk' style={{marginLeft: "30px"}} >Obat Berhasil Diedit!</div>
                            <div className='tulisan-sukses-add-produk-2'>Jumlah stok diperbarui secara otomatis</div>
                       </div>
                   </div>

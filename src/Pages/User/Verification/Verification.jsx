@@ -17,9 +17,7 @@ const Toast = Swal.mixin({
 });
 
 const Verification = () => {
-//   useEffect(() => {
-//       Verification()
-//   }, [])
+  const [verified, setVerified] = useState(false);
 
   const onResendEmail = () => {
     let token = localStorage.getItem('myTkn');
@@ -49,7 +47,7 @@ const Verification = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container-verification'>
         <div className="d-lg-none d-md-none d-block box-navbar-verify">
             <div className="logo-to-homepage"><FontAwesomeIcon icon={faAngleLeft} /></div>
             <div className="tulisan-verification">Verification</div>

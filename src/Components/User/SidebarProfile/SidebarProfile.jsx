@@ -51,25 +51,25 @@ const SidebarProfile  = () => {
                       <div className='sidebar-profile'>Profile</div>
                     </div>
                   </Link>
-                  <Link to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+                  <Link to='/semuapesanan' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                   <div className='box-baris-3'>
                       <FontAwesomeIcon icon={faReceipt} id='sidebar-logo' />
                       <div className='sidebar-proses-pemesanan'>Proses Pemesanan</div>
                     </div>
                   </Link>
-                  <Link to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+                  <Link to='/metodepembayaran' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                     <div className='box-baris-4'>
                       <FontAwesomeIcon icon={faMoneyBills} id='sidebar-logo' />
                       <div className='sidebar-metode-pembayaran'>Metode Pembayaran</div>
                     </div>
                   </Link>
-                  <Link to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+                  <Link to='/alamatpengiriman' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                   <div className='box-baris-5'>
                       <FontAwesomeIcon icon={faLocationDot} id='sidebar-logo' />
                       <div className='sidebar-alamat-pengiriman'>Alamat Pengiriman</div>
                     </div>
                   </Link>
-                  <Link to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+                  <Link to='/favortie' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                   <div className='box-baris-6'>
                       <FontAwesomeIcon icon={faHeart} id='sidebar-logo' />
                       <div className='sidebar-favorite'>Favorite</div>
@@ -93,27 +93,27 @@ const SidebarProfile  = () => {
                 <div className="tulisan-edit-profile">Edit Profile</div>
               </div>
             </Link>
-           <Link  to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+           <Link  to='/semuapesanan' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
             <div className="button-proses-pemesanan-profile">
                 <FontAwesomeIcon icon={faReceipt}  style={{marginLeft: "25px"}} />
                 <div className="tulisan-proses-profile">Proses Pemesanan</div>
               </div>
            </Link>
-            <Link  to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+            <Link  to='/favorite' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
             <div className="button-favorite-profile">
               <FontAwesomeIcon icon={faHeart} className="logo-favorite" />
               <div className="tulisan-favorite-profile">Favorite</div>
             </div>
             </Link>
             <div className="tab-list">
-              <Link to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+              <Link to='/metodepembayaran' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                 <div className="tab-list-1">
                   <FontAwesomeIcon icon={faMoneyBills} className="logo-metode-bayar" />
                   <div className="metode-pembayaran-profile">Metode Pembayaran</div>
                   <FontAwesomeIcon icon={faAngleRight} style={{marginLeft: "330px", fontSize: '12px'}} />
                 </div>
               </Link>
-             <Link to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+             <Link to='/alamatpengiriman' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
               <div className="tab-list-2">
                   <FontAwesomeIcon icon={faLocationDot} className="logo-alamat-kirim" />
                   <div className="alamat-pengiriman-profile">Alamat Pengiriman</div>
