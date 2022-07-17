@@ -14,7 +14,7 @@ const Payment = () => {
     const [products, setproducts] = useState([])
     const [showAllProducts, setShowAllProducts] = useState(false)
     const [loading, setLoading] = useState(true)
-    const [openModal, setOpenModal] = useState(true)
+    const [openModal, setOpenModal] = useState(false)
     const params = useParams()
     const transactionId = params.id
     const token = localStorage.getItem('myTkn')

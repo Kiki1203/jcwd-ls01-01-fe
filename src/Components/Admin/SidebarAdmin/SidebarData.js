@@ -35,29 +35,29 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Semua Pesanan',
-        path: '/',
+        path: '/transaksiadmin/semua-pesanan',
         className: 'sub-nav'
       },
       {
         title: 'Pesanan Baru',
-        path: '/',
+        path: '/transaksiadmin/pesanan-baru',
         className: 'sub-nav'
       },
       {
         title: 'Siap Dikirim',
-        path: '/',
+        path: '/transaksiadmin/siap-dikirim',
       },
       {
         title: 'Dalam Pengiriman',
-        path: '/',
+        path: '/transaksiadmin/dalam-pengiriman',
       },
       {
         title: 'Selesai',
-        path: '/',
+        path: '/transaksiadmin/selesai',
       },
       {
         title: 'Dibatalkan',
-        path: '/',
+        path: '/transaksiadmin/dibatalkan',
       }
     ]
   },

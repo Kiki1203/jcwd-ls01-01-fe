@@ -27,6 +27,7 @@ import Payment from './Pages/User/Payment/Payment.jsx';
 import LoginAdmin from './Pages/Admin/LoginAdmin/LoginAdmin.jsx';
 import Dashboard from './Pages/Admin/Dashboard/Dashboard.jsx';
 import DaftarProduk from './Pages/Admin/DaftarProduk/DaftarProduk.jsx';
+import TransaksiAdmin from './Pages/Admin/TransaksiAdmin/TransaksiAdmin';
 
 
 // Redux
@@ -43,7 +44,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        {location.pathname === '/login' || location.pathname === '/register'  || location.pathname === '/homeadmin' || location.pathname === '/daftarprodukadmin' || location.pathname === '/newpassword' || location.pathname === '/loginadmin' || location.pathname === '/resetpassword' ? null : <Navbar />}
+        {location.pathname === '/login' || location.pathname === '/register'  || location.pathname === '/homeadmin' || location.pathname === '/daftarprodukadmin' || location.pathname === '/newpassword' || location.pathname === '/loginadmin' || location.pathname === '/resetpassword' || location.pathname.includes('/transaksiadmin') ? null : <Navbar />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -67,8 +68,9 @@ function App() {
           <Route path="/homeadmin" element={<Dashboard />} />
           <Route path="/daftarprodukadmin" element={<DaftarProduk />} />
           <Route path="/payment/:id" element={<Payment />} />
+          <Route path="/transaksiadmin/:status" element={<TransaksiAdmin />} />
         </Routes>
-        {location.pathname === '/login' || location.pathname === '/daftarprodukadmin' || location.pathname === '/homeadmin' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/loginadmin'  || location.pathname === '/resetpassword' ? null : <Footer />}
+        {location.pathname === '/login' || location.pathname === '/daftarprodukadmin' || location.pathname === '/homeadmin' || location.pathname === '/register' || location.pathname === '/newpassword' || location.pathname === '/loginadmin'  || location.pathname.includes('/transaksiadmin')|| location.pathname === '/resetpassword' ? null : <Footer />}
       </Provider>
     </>
   );

@@ -115,8 +115,8 @@ const Checkout = () => {
                 </div>
                 <div className={`options-container`} style={{display:!kurirOpen && 'none'}}>
                   {
-                    placeholderKurir.map(kurir => {
-                      return <div className='kurir-option' onClick={() => {
+                    placeholderKurir.map((kurir, index) => {
+                      return <div className='kurir-option' key={index} onClick={() => {
                         setSelectedKurir(kurir)
                         setKurirOpen(false)}}>
                         <div>

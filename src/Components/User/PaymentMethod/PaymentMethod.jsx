@@ -64,7 +64,7 @@ const PaymentMethod = ({total, setOpenModal, selected, setSelected, products, ad
 
     await axios.post(`${API_URL}/transaction/addnewtransaction`, {dataTransaksi: dataTransaksi, products: products}, { headers: {authorization: token}})
     .then((res) => {
-      // console.log('res addTransaction', res)
+      navigate(`/payment/${transactionId}`)
     }).catch((err) => {
       Swal.fire({
         title: 'Error!',
@@ -79,7 +79,6 @@ const PaymentMethod = ({total, setOpenModal, selected, setSelected, products, ad
     addTransaction()   
     // delete selected products from cart
     // alert success / error
-    navigate(`/payment/${transactionId}`)
   }
 
   return (
@@ -107,8 +106,8 @@ const PaymentMethod = ({total, setOpenModal, selected, setSelected, products, ad
             <p style={{color:'#213360', fontSize:'13px', fontWeight:'700', margin:'5px 0px'}}>Perhatian:</p>
             <ul>
               {
-                selected.cara_bayar_modal.split(',').map((item) => {
-                  return <li style={{color:'#4F618E', fontSize:'12px', margin:'0 10px 5px -18px'}}>{item}</li>
+                selected.cara_bayar_modal.split(',').map((item, index) => {
+                  return <li key={index} style={{color:'#4F618E', fontSize:'12px', margin:'0 10px 5px -18px'}}>{item}</li>
                 })
               }
             </ul>
