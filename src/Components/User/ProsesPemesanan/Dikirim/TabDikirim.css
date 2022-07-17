@@ -376,6 +376,12 @@
 
 
 @media only screen and (max-width: 600px) {
+  .container-dikirim{
+    min-width: 90vw;
+    padding: 0px 0px 0px 0px;
+    min-height: 90vh !important;
+  }
+
   .position-all-box{
     position: absolute;
     left: -10px;
@@ -590,16 +596,14 @@
 
   .button-dikirim{
     display: flex;
-    top: -60px;
+    top: -15px !important;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    position: relative;
+    position: absolute;
     width: 110px;
     height: 28px;
-    left: 180px;
-    bottom: 12px;
+    left: 150px !important;
     background: #E0004D;
     border-radius: 5px;
     font-family: 'Public Sans';
@@ -612,6 +616,7 @@
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+    border: 1px solid #E0004D
   }
 
   .garis-dikirim-2-resep{

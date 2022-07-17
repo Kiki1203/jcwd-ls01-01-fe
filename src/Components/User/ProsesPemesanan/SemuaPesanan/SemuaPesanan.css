@@ -381,6 +381,8 @@
     align-items: center;
     color: #E0004D;
   }
+
+
   
   .belum-bayar-semua{
     position: relative;
@@ -429,7 +431,18 @@
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
+  .container-semua-pesanan{
+    min-width: 90vw;
+    padding: 0px 0px 0px 0px;
+    min-height: 91vh !important;
+  }
+
+  .pagination-semua{
+    position: absolute;
+    top: 700px;
+    left: 20px;
+  }
 
   .timer-resep-box-semua{
     position: absolute;
@@ -443,6 +456,7 @@
     position: absolute;
     left: -10px;
     top: -30px;
+    height: 50vh !important;
   }
 
   .box-semua-pesanan{
@@ -490,20 +504,22 @@
   .notifikasi-semua-pesanan{
     box-sizing: border-box;
     position: relative;
-    width: 130px;
+    width: 150px;
     height: 17px;
-    left: 155px;
+    left: 150px;
     top: -5px;
     background: rgba(255, 222, 107, 0.3);
     border: 1px solid #FFDE6B;
     border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .status-semua-pesanan{
     position: relative;
-    width: 126.64px;
-    height: 7px;
-    left: 20px;
+    width: 300px;
+    left: 0px;
     top: 5px;
     font-family: 'Public Sans';
     font-style: normal;
@@ -514,6 +530,8 @@
     align-items: center;
     text-align: center;
     color: #CBAF4E;
+    margin-left: 10px;
+    margin-top: -10px;
   }
   
   .garis-semua-pesanan-1{
@@ -535,7 +553,7 @@
   
   .nama-obat-semua-pesanan{
     position: relative;
-    width: 158px;
+    width: 100px;
     height: 20px;
     left: 94px;
     top: -30px;
@@ -543,23 +561,23 @@
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 18px;
+    line-height: 16px;
     display: flex;
     align-items: center;
     color: #213360
   }
 
   .harga-obat-semua-pesanan{
-    position: relative;
-    width: 67px;
+    position: absolute;
+    width: 80px;
     height: 20px;
-    left: 240px;
-    top: -50px;
+    left: 225px;
+    top: 40px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 10px;
+    line-height: 16px;
     display: flex;
     align-items: center;
     text-align: right;
@@ -571,7 +589,7 @@
     width: 158px;
     height: 20px;
     left: 94px;
-    top: -50px;
+    top: -25px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -587,7 +605,7 @@
     width: 100px;
     height: 18px;
     left: 93.54px;
-    top: -40px;
+    top: -20px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -607,12 +625,7 @@
   }
 
   .garis-semua-2{
-    position: relative;
-    width: 285px;
-    height: 0px;
-    left: 0px;
-    top: -40px;
-    border: 1.5px solid #F5F6F9;
+   display: none;
   }
 
 
@@ -639,7 +652,7 @@
     width: 96px;
     height: 28px;
     left: 20px;
-    top: -30px;
+    top: -10px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -653,7 +666,7 @@
 
   .button-bayar-sekarang-semua{
     display: flex;
-    top: -60px;
+    top: -40px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -685,6 +698,7 @@
     top: -33px;
     border: 1.5px solid #F5F6F9;
   }
+
 
   .belum-bayar-semua-resep{
     position: relative;
@@ -727,5 +741,38 @@
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+  }
+
+  .box-chat-cs-semua-resep{
+    position: relative;
+    width: 212px;
+    height: 24px;
+    left: 0px;
+    top: -30px;
+    cursor: pointer;
+  }
+  
+  .logo-cs-semua-resep{
+    position: relative;
+    width: 16px;
+    height: 16px;
+    left: 0px;
+    top: -3px;
+  }
+  
+  .keterangan-chat-semua-resep{
+    position: relative;
+    width: 176px;
+    height: 24px;
+    left: 30px;
+    top: -15px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    color: #E0004D;
   }
 }

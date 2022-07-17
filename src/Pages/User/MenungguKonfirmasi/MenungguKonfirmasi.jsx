@@ -10,6 +10,7 @@ import moment from 'moment';
 const MenungguKonfirmasi  = () => {
     const [data, setData] = useState([]);
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         let token = localStorage.getItem('myTkn')
@@ -28,6 +29,28 @@ const MenungguKonfirmasi  = () => {
         })
     }, [])
 
+    const onBtnDeleteProduct = (id) => {
+        let token = localStorage.getItem('myTkn')
+        const headers = {
+            headers: { 
+                'Authorization': `${token}`,
+            }
+        }
+        setLoading(true)
+       
+        axios.delete(API_URL + `/product/deleteresep?id=${id}`, headers)
+        .then((res) => {
+        console.log(res)
+        setLoading(false)
+        setData(res.data)
+        })
+        .catch((err) =>{
+        console.log(err)
+            setLoading(false)
+        })
+      }
+     
+
     const printData = (props) => {
         return data.map((value, index) => {
             return (
@@ -36,10 +59,13 @@ const MenungguKonfirmasi  = () => {
                        <div className="inside-box-menunggu-konfirmasi">
                        <div className="detail-resep-judul">Detail Resep</div>
                         <div className="garis-dalam-detail-resep"></div>
-                        <div className="gambar-resep-obat"></div>
+                        <div>
+                        <img src={`${API_URL + '/'}${value.gambar_resep}`} alt='Image Preview' className="gambar-resep-obat" />
+
+                        </div>
                         <div className="box-nomor-resep-1">
                             <div className="tulisan-nomor-resep">Nomor Resep</div>
-                            <div className="tulisan-isi-nomor-resep">{value.id}</div>
+                            <div className="tulisan-isi-nomor-resep">{value.no_pemesanan}</div>
                             <div className="tulisan-tanggal-pengajuan">Tanggal Pengajuan:</div>
                             <div className="tulisan-isi-tanggal">{moment(value.tgl_pemesanan).format('LLL')}</div>
                         </div>
@@ -48,7 +74,14 @@ const MenungguKonfirmasi  = () => {
                         <div className='timer-logo-menunggu-konfirmasi'>Timer</div>
                         <div className="garis-dalam-detail-resep-2"></div>
                         <div className="box-batalkan-pengajuan d-flex">
-                            <div className="tulisan-batalkan-pengajuan">Batalkan Pengajuan</div>
+                            <button className="tulisan-batalkan-pengajuan" disabled={loading} onClick={() => onBtnDeleteProduct(value.transaksi_id)}>
+                                {
+                                    loading ?
+                                    'Loading...'
+                                    :
+                                    'Batalkan Pengajuan'
+                                }
+                            </button>
                             <div className="garis-dalam-detail-resep-3"></div>
                             <div className="chat-logo-menunggu-konfirmasi"><img src={Chat} alt="" width="24px" height="24px"/></div>
                             <div className='chat-cs-menunggu-konfirmasi'>Chat Customer Service</div>

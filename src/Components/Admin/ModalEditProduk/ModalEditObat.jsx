@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import default1 from '../../../Assets/SuccessAP.svg';
 import { faAngleRight, faXmark, faAngleDown, faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
 
-const ModalEditObat = (id) => {
+const ModalEditObat = ({setOpenModal, selected, setSelected, id}) => {
     let [modalOpen, setModalOpen] = useState(false); 
     let [modalOpen2, setModalOpen2] = useState(false); 
     let [modalOpen3, setModalOpen3] = useState(false); 
@@ -32,6 +32,7 @@ const ModalEditObat = (id) => {
     const [previewImage, setpreviewImage] =  React.useState(null);
     const [imageURL, setImageURL] = useState('')
     const [file, setFile] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('')
 
     useEffect(() => {
         let token = localStorage.getItem('token')
@@ -41,7 +42,7 @@ const ModalEditObat = (id) => {
             }
         }
     
-        axios.get(`${API_URL}/admin/getprodukID?id=${idProduk.id}`, headers)
+        axios.get(`${API_URL}/admin/getprodukID?id=${idProduk}`, headers)
         .then((res) => {
             setNamaObat(res.data[0].nama_obat)
             setBeratObat(res.data[0].berat)
@@ -54,27 +55,14 @@ const ModalEditObat = (id) => {
             setNilaiBarang(res.data[0].nilai_barang)
             setNilaiJual(res.data[0].harga)
             setGambar(res.data[0].gambar)
+
         }).catch((err) => {
             console.log('ini err get',err)
         })
         }, [])
 
-    const onImagesValidation = (e) => {
-        try {
-            let file = [...e.target.files]
-            setFile(file[0])
-            const reader = new FileReader()
-            //   reader.readAsDataURL(e.target.files[0])
-              reader.onload = () => {
-                  if(reader.readyState === 2){
-                      setpreviewImage(reader.result)
-                  }
-              }
-            reader.readAsDataURL(file[0])
-        } catch (error) {
-            console.log(error.message)
-        }
-    }
+     
+    
 
   
       let namaObatChange = (event) => {
@@ -115,13 +103,42 @@ const ModalEditObat = (id) => {
       let nilaiJualChange = (event) => {
           setNilaiJual(event.target.value)
       }
+
+      const onImagesValidation = (e) => {
+        try {
+            let file = [...e.target.files]
+            setFile(file[0])
+            if(file.length > 1) throw { message: 'Hanya Bisa Uploud 1 Image Saja' }
+            if(file[0].size > 4000000) throw { message: 'File Tidak Boleh Lebih Dari 5 Mb' }
+            if(!file[0].type.includes('image'))  throw { message: 'Jenis File Tidak Mendukung'}
+            const reader = new FileReader()
+              reader.readAsDataURL(e.target.files[0])
+              reader.onload = () => {
+                  if(reader.readyState === 2){
+                      setpreviewImage(reader.result)
+                  }
+              }
+            reader.readAsDataURL(file[0])
+            setErrorMessage('')
+        } catch (error) {
+            setErrorMessage(error.message)
+        }
+    }
   
       const onAddImageFileChange = (e) => {
+
           if(e.target.files[0]) {
+            if(e.target.files[0].length > 1){
+                setErrorMessage('Hanya Bisa Uploud 1 Image Saja')
+            }else if(e.target.files[0].length > 4000000){
+                setErrorMessage('File Tidak Boleh Lebih dari 5 Mb')
+            }else if(!e.target.files[0].length.includes('image')){
+                setErrorMessage('File Tidak Mendukung')
+            }
               setAddImageFileName(e.target.files[0].name)
               setAddImageFile(e.target.files[0])
               const reader = new FileReader()
-              reader.readAsDataURL(e.target.files[0])
+            //   reader.readAsDataURL(e.target.files[0])
               reader.onload = () => {
                   if(reader.readyState === 2){
                       setpreviewImage(reader.result)
@@ -162,14 +179,12 @@ const ModalEditObat = (id) => {
               expired: expired,   
           }
   
-          formData.append('gambar', addImageFile)
+          formData.append('gambar', file)
           formData.append('data', JSON.stringify(data))
-          axios.patch(API_URL + `/admin/editproduct?id=${idProduk.id}`, formData, headers)
+          axios.patch(API_URL + `/admin/editproduct?id=${idProduk}`, formData, headers)
           .then((res) => {
               if(res.data.message === "Update Product Success"){
-                  setModalOpen3(true)
-                  setModalOpen(false)
-                  setModalOpen2(false)
+                setSelected(3)
               }
               setLoading(false)
            
@@ -214,202 +229,207 @@ const ModalEditObat = (id) => {
             setModalOpen(true)
         }
        
+        
+    }
+
+    const backData = () => {
+        setSelected(null)
+        setOpenModal(false)
     }
   
+    
     return (
-        <>
-        <div onClick={() => setModalOpen(true)} >Edit Obat</div>
-        <Modal   toggle={() => setModalOpen(true)} isOpen={modalOpen}>
-             <ModalHeader>
-                 <span className="modal-title-add-obat">Edit Obat</span>
-                 <FontAwesomeIcon icon={faXmark} className="button-close-modal-admin"  onClick={() => setModalOpen(false)}/>
-             </ModalHeader>
-             <ModalBody>
-                 <div className='box-tab-modal-admin'>
-                     <div className=" d-flex mx-4">
-                        <div className='button-no-1'>1</div>
-                        <div className='tulisan-detail-obat-modal'>Detail Obat</div>
-                        <FontAwesomeIcon icon={faAngleRight} className='logo-slash'  />
-                        <div className='button-no-2'>2</div>
-                        <div className='tulisan-detail-dan-kuantitas'>Detail Kuantitas & Harga</div>
+        <div className='modal-background fixed-top' onClick={() => setOpenModal(false)}>
+          <div className='modal-container-add' onClick={e => e.stopPropagation()}>
+            {
+                selected  === 3 ?
+                <>
+                 <FontAwesomeIcon icon={faXmark} className='close-icon-add' style={{marginRight: '30px', marginTop: '10px'}} onClick={() => backData()} />
+                </>
+                :
+                <>
+               <FontAwesomeIcon icon={faXmark} className='close-icon-add' onClick={() => setOpenModal(false)} />
+                <p className='modal-title-add' style={{marginBottom:'15px'}}>Edit Obat</p>
+                </>
+            }
+            <div>
+                {
+                    selected === 3 ? 
+                    <>
+                    < div className='box-navbar-modal-edit-2' style={{marginTop: '30px'}}>
+                        <div className='mt-4' style={{marginLeft: '20px'}}> <img  src={default1} alt='Image Preview' id='adminImgSukses' /></div>
+                         <div className='box-khusus-tulisan' style={{marginLeft: '70px'}}>
+                          <div className='tulisan-sukses-add-produk' style={{marginLeft: '20px'}}>Obat Berhasil Diedit!</div>
+                          <div className='tulisan-sukses-add-produk-2'>Jumlah stok diperbarui secara otomatis</div>
                      </div>
-                 </div>
-                 <div className='box-isi-modal-add-product'>
-                    <div className='box-isi-modal-add-product-two'>
-                    <div className='box-inside-all-info-product'>
-                         <div className='nama-obat-info'>Nama Obat</div>  
-                         <input type="text" className='form-control inputan-obat-info' placeholder='Masukkan nama obat'  onChange={namaObatChange} defaultValue={namaObat}/>                  
-                     </div>
-                     <div>
-                     <div className='box-inside-all-info-product mt-3'>
-                         <div className='nama-obat-info'>Berat</div>  
-                         <input type="number" min="0" className='form-control inputan-obat-info' placeholder='Masukkan berat obat (gram)'  onChange={beratObatChange} defaultValue={beratObat}/>                  
-                     </div>
-                     <div className='box-inside-all-info-product mt-3'>
-                         <div className='nama-obat-info'>No.BPOM</div>  
-                         <input type="text" className='form-control inputan-obat-info' placeholder='Masukkan no. BPOM'  onChange={noBPOMChange} defaultValue={noBPOM}/>                  
-                     </div>
-                     <div className='box-inside-all-info-product mt-3'>
-                         <div className='nama-obat-info'>Kategori</div>  
-                         <select 
-                         id="inputObatKategori" 
-                         name="kategoriObat"
-                         onChange={kategoriChange} defaultValue={kategori}
-                         className="form-control  inputan-obat-info-2"  placeholder="Kategori"
-                         >
-                             <option value="">Pilih Kategori</option>
-                             <option value="1">Obat Keras</option>
-                             <option value="2">Obat Bebas Terbatas</option>
-                             <option value="3">Medical Device & Consumable</option>
-                             <option value="4">Lain-lain</option>
-                         </select>
-                         <div className='input-group-text' id="logo-input-group-text-2" ><FontAwesomeIcon icon={faAngleDown} /></div>
-                     </div>
-                     <div className='box-inside-all-info-product mt-3'>
-                         <div className='nama-obat-info-2'>Tgl. Kadaluarsa</div>  
-                         <input type="datetime-local"  onChange={tanggalKadaluarsaChange} defaultValue={tanggalKadaluarsa}
-                          placeholder="Tanggal Lahir" className="form-control inputan-obat-info"/>
-                     </div>
-                     <div className='box-inside-all-info-product mt-3'>
-                         <div className='nama-obat-info-2'>Lokasi Penyimpanan</div>  
-                         <select 
-                         id="inputObatLokasi" 
-                         name="LokasiObat"
-                         onChange={lokasiSimpanChange} defaultValue={lokasiSimpan}
-                         className="form-control  inputan-obat-info-3 "  placeholder="Lokasi"
-                         >
-                             <option value="">Pilih Tempat</option>
-                             <option value="Gudang 1">Gudang 1</option>
-                             <option value="Gudang 2">Gudang 2</option>
-                         </select>
-                         <div className='input-group-text' id="logo-input-group-text-3" ><FontAwesomeIcon icon={faAngleDown} /></div>
-                     </div>
-                 </div>
                     </div>
-                 </div>
-                 <button className="btn-lanjutkan mt-3" type="button" onClick={() => btnLanjutkan()}>Lanjutkan</button>
-             </ModalBody>
-         </Modal>
-   
-         {/* MODAL 2 */}
- 
-         <Modal toggle={() => setModalOpen2(false)} isOpen={modalOpen2}>
-             <ModalHeader>
-                 <span className="modal-title-add-obat">Edit Obat</span>
-                 <FontAwesomeIcon icon={faXmark} className="button-close-modal-admin"  onClick={() => setModalOpen2(false)}/>
-             </ModalHeader>
-             <ModalBody>
-                 <div className='box-tab-modal-admin' style={{marginLeft: '-10px'}}>
-                     <div className='d-flex mx-4'>
-                     <div className='button-no-2'>1</div>
-                     <div className='tulisan-detail-dan-kuantitas '>Detail Obat</div>
-                     <FontAwesomeIcon icon={faAngleRight} className='logo-slash'  />
-                     <div className='button-no-1'  style={{marginLeft: '10px'}}>2</div>
-                     <div className='tulisan-detail-obat-modal'>Detail Kuantitas & Harga</div>
-                     </div>
-                 </div>
-                 <div className='box-isi-modal-add-product'>
-                  <div  className='box-isi-modal-add-product-two'>
-                  <div className='box-inside-all-info-product'>
-                         <div className='nama-obat-info'>Kuantitas</div>  
-                         <div className='inputan-obat-info-4' style={{marginLeft: '-5px'}}>
-                             <button className='input-group-text-logo-kuantitas' disabled={qty <= 1 ? true : false}  onClick={() => handleDec()} ><FontAwesomeIcon icon={faMinus} /></button>
-                             <div className='form-control border-0 rounded-0 input-kuantitas-obat' style={{marginLeft: '-5px'}} defaultValue={qty}>
-                             {qty}
-                             </div>
-                             <button className='input-group-text-logo-kuantitas' style={{marginTop: '-1.4px', marginLeft:'2px'}}  onClick={() => handleInc()}><FontAwesomeIcon icon={faPlus} /></button>
-                         </div>                          
-                     </div>
-                     <div>
-                     <div className='box-inside-all-info-product mt-3'>
-                         <div className='nama-obat-info'>Satuan</div>  
-                         <select 
-                         id="inputObatSatuan" 
-                         name="satuanObat"
-                         onChange={satuanChange} defaultValue={satuan}
-                         className="form-control  inputan-obat-info-2"  placeholder="Satuan"
-                         >
-                             <option value="">Pilih Satuan</option>
-                             <option value="1">Strip</option>
-                             <option value="2">Botol</option>
-                             <option value="3">Tube</option>
-                             <option value="4">Box</option>
-                             <option value="5">Sachet</option>
-                             <option value="6">Piece</option>
-                             <option value="7">Kit</option>
-                             <option value="8">Pack</option>
-                             <option value="9">Kaleng</option>
-                         </select>
-                         <div className='input-group-text' id="logo-input-group-text-4" ><FontAwesomeIcon icon={faAngleDown} /></div>                 
-                     </div>
-                     <div className='box-inside-all-info-product mt-3'>
-                         <div className='nama-obat-info'>Nilai Barang (Rp)</div>  
-                         <input type="number" min="0" className='form-control inputan-obat-info' placeholder='Masukkan Nilai Barang'  onChange={nilaiBarangChange} defaultValue={nilaiBarang}/>
-                     </div>
-                     <div className='box-inside-all-info-product mt-3'>
-                         <div className='nama-obat-info'>Nilai Jual (Rp)</div>  
-                         <input type="number" min="0" className='form-control inputan-obat-info' placeholder='Masukkan Nilai Jual'  onChange={nilaiJualChange} defaultValue={nilaiJual}/>                  
-                     </div>
-                     <div className='box-inside-all-info-product mt-3'>
-                         <div className='nama-obat-info'>Foto Obat</div>    
-                         <div>
-                         {
-                               previewImage? 
-                               <img src={previewImage} alt='Image Preview' id='adminImgUploud' /> 
-                               : 
-                               gambar?
-                               <img src={`${API_URL + '/'}${gambar}`} alt='Image Preview' id='adminImgUploud' />
-                               :
-                               <img  src={NoImage} alt='Image Preview'  id='adminImgUploud2' />
-                           
-                           } 
-                                 
-                         </div>
-                     </div>
-                     <input id="button-edit-foto-produk" type="file" label={addImageFileName} onChange={onAddImageFileChange} />
-                     {/* <form method="PATCH" action="/upload" encType='multipart/form-data'>
-                         <input type="file" name='photo' accept="image/*" id="image-input" style={{display: 'none'}} onChange={(e) => onImagesValidation(e)} />
-                         </form>
-                         <label htmlFor='image-input' id="choose-file-produk">Choose image</label> */}
-                 </div>
-                  </div>
-                 </div>
-                <div className="mb-3" style={{marginTop: '30px'}}>
-                     <button className="btn-kembali-before" type="button"  onClick={() => btnKembali()}>Kembali</button>
-                     <button className="btn-simpan-save"  disabled={loading} type="button" onClick={() => onBtnEditProduct ()}>
-                     {
-                        loading?
-                            'Loading'
-                        :
-                            'Simpan'
-                    }
-                     </button>
-                </div>
+                    </>
+                    :
+                    <>
+                      {
+                        selected === 1 ?
+                        <>
+                         <div className='box-navbar-modal-edit'>
+                            <div className='button-no-2' style={{marginLeft: '-5px'}}>1</div>
+                            <div className='tulisan-detail-dan-kuantitas'>Detail Obat</div>
+                            <FontAwesomeIcon icon={faAngleRight} className='logo-slash mx-2'  />
+                            <div className='button-no-1'>2</div>
+                            <div  className='tulisan-detail-obat-modal'>Detail Kuantitas & Harga</div>
+                        </div>
+                        <div className='box-navbar-modal-edit-2'>
+                            <div className='d-flex'>
+                                <div className='nama-obat-info-edit'>Kuantitas</div>  
+                                <div className='inputan-obat-info-edit-2'>
+                                    <button id="qty-add-button-left"  disabled={qty <= 1 ? true : false} onClick={() => setQty(qty - 1)}>
+                                        <FontAwesomeIcon icon={faMinus} className="qty-add-icon" />
+                                        </button>
+                                        <input
+                                        type="number"
+                                        value={qty}
+                                        id="qty-add-number"
+                                        onChange={(e) => {
+                                            if (e.target.value.length !== 0) {
+                                            setQty(e.target.valueAsNumber);
+                                            }
+                                        }}
+                                        />
+                                        <button id="qty-add-button-right" 
+                                        onClick={() => setQty(qty + 1)}>
+                                        <FontAwesomeIcon icon={faPlus} className="qty-add-icon" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div className='d-flex mt-2'>
+                            <div className='nama-obat-info-edit'>Satuan</div>  
+                            <select 
+                            id="inputObatSatuan" 
+                            name="satuanObat"
+                            onChange={satuanChange} defaultValue={satuan}
+                            className="form-control inputan-obat-info-edit"  placeholder="Satuan"
+                            >
+                                <option value="">Pilih Satuan</option>
+                                <option value="1">Strip</option>
+                                <option value="2">Botol</option>
+                                <option value="3">Tube</option>
+                                <option value="4">Box</option>
+                                <option value="5">Sachet</option>
+                                <option value="6">Piece</option>
+                                <option value="7">Kit</option>
+                                <option value="8">Pack</option>
+                                <option value="9">Kaleng</option>
+                            </select>
+                            <div className="input-group-text logo-input-group-text-5" ><FontAwesomeIcon icon={faAngleDown} /></div>  
+                        </div>
+                            <div className='d-flex mt-2'>
+                                <div className='nama-obat-info-edit'>Nilai Barang (Rp)</div>  
+                                <input type="number" min="0" className='form-control inputan-obat-info-edit' placeholder='Masukkan Nilai Barang'  onChange={nilaiBarangChange} defaultValue={nilaiBarang}/>
+                            </div>
+                            <div className='d-flex mt-2'>
+                                <div className='nama-obat-info-edit'>Nilai Jual (Rp)</div>  
+                                <input type="number" min="0" className='form-control inputan-obat-info-edit' placeholder='Masukkan Nilai Jual'  onChange={nilaiJualChange} defaultValue={nilaiJual}/>  
+                            </div>
+                            <div className='d-flex mt-2'>
+                                <div className='nama-obat-info-edit'>Foto Obat</div>  
+                                <div  className='inputan-obat-info-edit-3'>
+                                    {
+                                        previewImage? 
+                                        <img src={previewImage} alt='Image Preview'  id="file-edit" className='adminImgUploud2' /> 
+                                        : 
+                                        gambar?
+                                        <img src={`${API_URL + '/'}${gambar}`} alt='Image Preview' id='adminImgUploud' />
+                                        :
+                                        <img  src={NoImage} alt='Image Preview'  id='adminImgUploud2' />
+                                    } 
+                                </div>
+                            </div>
+                            <div className='nama-obat-info-2'>
+                                <input id="button-edit-foto-produk" type="file" onChange={(e) => onImagesValidation(e)} /> 
+                            </div>  
+                        </div>
+                        <div className='error-msg'>
+                            {
+                                errorMessage === "Cannot read properties of undefined (reading 'size')" || errorMessage === "Failed to execute 'readAsDataURL' on 'FileReader': The object is already busy reading Blobs."?
+                                <></>
+                                :
+                                <p style={{margin: '10px', color: '#E0004D;', fontSize:'14px'}}>{errorMessage}</p>
+                            }
+                        </div>
 
-               
-             </ModalBody>
-         </Modal>
- 
-         {/* MODAL 3 */}
- 
-         
-         <Modal  toggle={() => setModalOpen3(false)} isOpen={modalOpen3}>
-             <ModalBody>
-             <div className="button-close-modal-admin-sukses">
-                  <FontAwesomeIcon icon={faXmark}  style={{cursor: 'pointer', marginLeft: "100px"}}  onClick={() => setModalOpen3(false)}/>
-                  </div>
-                  <div className='box-modal-admin-sukses'>
-                     <div className='gambar-sukses-add-produk mt-4'> <img  src={default1} alt='Image Preview' id='adminImgSukses' /></div>
-                      <div className='box-khusus-tulisan'>
-                           <div className='tulisan-sukses-add-produk' style={{marginLeft: "30px"}} >Obat Berhasil Diedit!</div>
-                           <div className='tulisan-sukses-add-produk-2'>Jumlah stok diperbarui secara otomatis</div>
-                      </div>
-                  </div>
-             </ModalBody>
-         </Modal>
-         
-     </>
-    );
+                        <div className='d-flex' style={{marginTop: '-17px'}}>
+                            <button className='pilih-metode-add-2 mx-2 w-50' onClick={() => setSelected(null)} >Kembali</button>
+                            <button className='pilih-metode-add-2 w-50' disabled={loading} onClick={() => onBtnEditProduct ()}> Simpan </button>
+                        </div>
+                        </>
+                        :
+                        <>
+                        <div className='box-navbar-modal-edit'>
+                            <div className='button-no-1'>1</div>
+                            <div className='tulisan-detail-obat-modal'>Detail Obat</div>
+                            <FontAwesomeIcon icon={faAngleRight} className='logo-slash'  />
+                            <div className='button-no-2'>2</div>
+                            <div className='tulisan-detail-dan-kuantitas'>Detail Kuantitas & Harga</div>
+                        </div>
+                        <div className='box-navbar-modal-edit-2'>
+                            <div className='d-flex'>
+                                <div className='nama-obat-info-edit'>Nama Obat</div>  
+                                <input type="text" className='form-control inputan-obat-info-edit' placeholder='Masukkan nama obat'  onChange={namaObatChange} defaultValue={namaObat}/>                  
+                            </div>
+                            <div className='d-flex mt-2'>
+                                <div className='nama-obat-info-edit'>Berat</div>  
+                                <input type="number" min="0" className='form-control inputan-obat-info-edit' placeholder='Masukkan berat obat (gram)'  onChange={beratObatChange} defaultValue={beratObat}/>               
+                            </div>
+                            <div className='d-flex mt-2'>
+                                <div className='nama-obat-info-edit'>No.BPOM</div>  
+                                <input type="text" className='form-control inputan-obat-info-edit' placeholder='Masukkan no. BPOM'  onChange={noBPOMChange} defaultValue={noBPOM}/>                  
+                            </div>
+                            <div className='d-flex mt-2'>
+                                <div className='nama-obat-info-edit'>Kategori</div>  
+                                <select 
+                                id="inputObatKategori" 
+                                name="kategoriObat"
+                                onChange={kategoriChange} defaultValue={kategori}
+                                className="form-control inputan-obat-info-edit"  placeholder="Kategori"
+                                >
+                                    <option value="">Pilih Kategori</option>
+                                    <option value="1">Obat Keras</option>
+                                    <option value="2">Obat Bebas Terbatas</option>
+                                    <option value="3">Medical Device & Consumable</option>
+                                    <option value="4">Lain-lain</option>
+                                </select>
+                                <div className='input-group-text logo-input-group-text-edit-2' ><FontAwesomeIcon icon={faAngleDown} /></div>
+                            </div>
+                            <div className='d-flex mt-2'>
+                                <div className='nama-obat-info-edit' >Tgl. Kadaluarsa</div>  
+                                <input type="datetime-local"  onChange={tanggalKadaluarsaChange} defaultValue={tanggalKadaluarsa}
+                                placeholder="Tanggal Lahir" className="form-control inputan-obat-info-edit"/>
+                            </div>
+                            <div className='d-flex mt-2'>
+                                <div className='nama-obat-info-edit' >Lokasi Simpan</div>  
+                                <select 
+                                id="inputObatLokasi" 
+                                name="LokasiObat"
+                                onChange={lokasiSimpanChange} defaultValue={lokasiSimpan}
+                                className="form-control inputan-obat-info-edit "  placeholder="Lokasi"
+                                >
+                                    <option value="">Pilih Tempat</option>
+                                    <option value="Gudang 1">Gudang 1</option>
+                                    <option value="Gudang 2">Gudang 2</option>
+                                </select>
+                                <div className='input-group-text logo-input-group-text-3-edit'><FontAwesomeIcon icon={faAngleDown} /></div>
+                            </div>
+                          
+                        </div>
+                        <button className='pilih-metode-add w-50' style={{marginTop: '10px'}} onClick={() => setSelected(1)} >Lanjutkan</button>
+                        </>
+                        } 
+                    </>
+                
+                }
+          
+            </div>
+          </div>
+      </div>
+      );
 };
 
 export default ModalEditObat;

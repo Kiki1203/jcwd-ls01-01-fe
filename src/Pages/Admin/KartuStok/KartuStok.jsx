@@ -7,11 +7,10 @@ import TableData from './TableData';
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight,  faFileExcel} from '@fortawesome/free-solid-svg-icons';
+import LoadingSpinner from "./LoadingSpinner";
 
 const KartuStok  = () => {
-    let [dropdownOpen, setDropdownOpen] = useState(false); 
     const navigate = useNavigate()
-    const [pageNumber, setPageNumber] = useState(1)
     const [totalProduk, setTotalProduk] = useState(0)
     const [data, setData] = useState([])
     const [jumlahList, setJumlahList] = useState(0);
@@ -22,10 +21,18 @@ const KartuStok  = () => {
     const [pageNumberLimit, setpageNumberLimit] = useState(5);
     const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
     const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+    const [kategori, setKategori] = useState("");
+    const [tahun, setTahun] = useState("");
+    const [bulan, setBulan] = useState("");
+    const [dataSearch, setDataSearch] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('')
+    const [loading, setLoading] = React.useState(false);
+
 
     let params = useParams();
 
     useEffect(() => {
+        setLoading(true)
         let token = localStorage.getItem('token')
         const headers = {
             headers: { 
@@ -40,11 +47,60 @@ const KartuStok  = () => {
             setNamaObat(res.data.namaObat[0].nama_obat)
             setTotalProduk(res.data.pagination.totalRow[0].TotalData)
             setJumlahList(res.data.data.length)
+            setLoading(false)
         }).catch((err) => {
             console.log('ini err get',err)
+            setLoading(false)
         })
     }, [currentPage])
 
+    let kategoriChange = (event) => {
+        setKategori(event.target.value)
+    }
+
+    let tahunChange = (event) => {
+        setTahun(event.target.value)
+    }
+
+    let bulanChange = (event) => {
+        setBulan(event.target.value)
+    }
+
+    useEffect(() => {
+        setLoading(true)
+        var bulan2 = parseInt(bulan)
+        var tahun2 = parseInt(tahun)
+        var kategori2 = kategori
+       
+        axios.get(`${API_URL}/admin/searchstok/${params.id}?kategori=${kategori2}&tahun=${tahun2}&bulan=${bulan2}`)
+        .then((res) => {
+            console.log('res.data.data', res.data)
+            setLoading(false)
+            setDataSearch(res.data.result)
+        }).catch((err) => {
+            console.log('ini err get',err)
+            setLoading(false)
+        })
+    }, [bulan, tahun, kategori])
+
+
+
+    const printData2 = (props) => {
+        return dataSearch.map((value, index) => {
+            return (
+                <tr key={value.id}>
+                    <td>{index + 1}</td>
+                    <td>{moment(value.created_at).format('LL')}</td>
+                    <td>{value.aktivitas}</td>
+                    <td>{value.username}</td>
+                    <td>{value.keluar}</td>
+                    <td>{value.masuk}</td>
+                    <td>{value.sisa}</td>
+                    <td>{moment(value.expired).format('LL')}</td>
+                </tr>
+            )
+        })
+    }
 
     const printData = (props) => {
         return data.map((value, index) => {
@@ -63,6 +119,8 @@ const KartuStok  = () => {
         })
     }
 
+
+  
     const handleClick = (event) => {
         setcurrentPage(Number(event.target.id));
       };
@@ -133,11 +191,11 @@ const KartuStok  = () => {
                     <div className="dropdown-inside-kartu-stok-box-1">
                     <select 
                         id="inputBulan" 
-                    
+                        onChange={bulanChange} defaultValue={bulan}
                         name="kartuBulan"
                         className="form-control"  placeholder="Bulan"
                         >
-                            <option value="">Bulan</option>
+                            <option>Bulan</option>
                             <option value="1" >Januari</option>
                             <option value="2">Februari</option>
                             <option value="3">Maret</option>
@@ -158,11 +216,11 @@ const KartuStok  = () => {
                     <div className="dropdown-inside-kartu-stok-box-2">
                     <select 
                         id="inputTahun" 
-                    
+                        onChange={tahunChange} defaultValue={tahun}
                         name="kartuTahun"
                         className="form-control"  placeholder="Tahun"
                         >
-                            <option value="">Tahun</option>
+                            <option >Tahun</option>
                             <option value="2021" >2021</option>
                             <option value="2022">2022</option>
                             <option value="2023">2023</option>
@@ -173,12 +231,12 @@ const KartuStok  = () => {
                 <select 
                         id="inputObatKategori" 
                         name="kategoriObat"
-                      
+                        onChange={kategoriChange} defaultValue={kategori}
                         className="form-control"  placeholder="Kategori"
                         >
-                            <option value="">Kategori</option>
-                            <option value="1">Penerimaan Barang</option>
-                            <option value="2">Penjualan Barang</option>
+                            <option >Kategori</option>
+                            <option value="Penerimaan Barang">Penerimaan Barang</option>
+                            <option value="Penjualan Barang">Penjualan Barang</option>
                         </select>
 
                 </div>
@@ -186,8 +244,19 @@ const KartuStok  = () => {
                 <div className="garis-kartu-stok"></div>
                 <div className="box-tabel-kartu-produk">
                     <div className="inside-box-kartu-produk">
-                    <TableData cetak={printData()}>
-                    {printData()}
+                    <TableData>
+                    {
+                        loading ?
+                        <LoadingSpinner />
+                        :
+                        <>
+                        {
+                            dataSearch.length > 0 ? 
+                            <>{printData2()}</>
+                            :
+                            <>{printData()}</>
+                        }</>
+                    }
                     </TableData>
  
                     </div>

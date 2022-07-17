@@ -1,4 +1,10 @@
 @media only screen and (max-width: 1400px) {
+
+    .container-confirmation{
+        min-height: 100vh;
+    min-width: 90vw;
+    padding: 50px 150px 50px 150px;
+    }
    
     .box-confirmation-page{
         position: absolute;
@@ -97,14 +103,10 @@
         text-align: center;
         color: #E0004D;
     }
-
-  
-
   
 }
-  
-  
-@media only screen and (max-width: 600px) {
+
+@media only screen and (max-width: 850px) {
 
     .box-navbar-confirmation{
         position: absolute;
@@ -115,10 +117,30 @@
         background: #FFFFFF;
         box-shadow: 0px 2px 3px 2px rgba(96, 33, 53, 0.02), 0px 4px 12px 4px rgba(155, 0, 59, 0.08);
     }
+
+    .container-confirmation{
+        min-width: 90vw !important;
+        padding: 0px 0px 0px 0px;
+        min-height: 64.3vh !important;
+    }
+   
+    .box-confirmation-page{
+        position: absolute;
+        width: 200px  !important;
+        height: 400px;
+        left: 300px;
+        top: 170px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      
+    }
+
   
     .logo-to-homepage{
         position: absolute;
-        left: 30px;
+        left: 50px;
         top: 52px; 
         font-family: 'Public Sans';
         font-style: normal;
@@ -128,14 +150,15 @@
         display: flex;
         align-items: center;        
         color: #213360;
+       
     }
 
-    .tulisan-verification{
+    .tulisan-confirmation{
         position: absolute;
         width: 169px;
         height: 22px;
-        left: 48px;
-        top: 51px;
+        left: 70px;
+        top: 48px;
         font-family: 'Public Sans';
         font-style: normal;
         font-weight: 700;
@@ -144,6 +167,7 @@
         display: flex;
         align-items: center;
         color: #213360;
+      
     }
     
   .logo-confirmation-page{
@@ -152,73 +176,261 @@
         height: 250px;
         left: 60px;
         top: 140px;
+       
     }
 
-    .tulisan-oops{
-        position: absolute;
-        width: 239px;
-        height: 42px;
-        left: 120px;
-        top: 390px;    
+    .logo-confirmation-page{
+        position:relative;
+        width:300px;
+        height: 300px;
+        left: 0px;
+        top: 70px;
+      
+    }
+
+    .logo-verify-page-2{
+        position:relative;
+        width:350px;
+        height: 350px;
+        left: 0px;
+        top: 0px;
+       
+    }
+
+    .tulisan-welcome{
+        position: relative;
+        width: 300px;
+        height: 62px;
+        left: 0px;
+        top: 70px;
         font-family: 'Public Sans';
         font-style: normal;
         font-weight: 700;
-        font-size: 24px;
-        line-height: 28px;
-        display: flex;
+        font-size: 20px;
+        line-height: 38px;
+        display: flex; 
+        justify-content: center;
         align-items: center;
         text-align: center;
         color: #213360;
+        
     }
 
-    .tulisan-not-allowed{
-        position: absolute;
+    .tulisan-welcome-2{
+        position: relative;
         width: 300px;
-        height: 120px;
-        left: 35px;
+        height: 62px;
+        left: 0px;
+        top: -20px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 26px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #213360;
+       
+    }
+
+    .tulisan-redirect{
+        position: absolute;
+        width: 150px;
+        height: 50px;
+        left: 40px;
         top: 410px;
         font-family: 'Public Sans';
         font-style: normal;
         font-weight: 400;
-        font-size: 14px;
-        line-height: 16px;
+        font-size: 18px;
+        line-height: 24px;
         display: flex;
         align-items: center;
         text-align: center;
-        color: #213360;
+        color: #E0004D;
     }
 
-    .button-resend-email{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 0px;
-        gap: 10px;
-        position: absolute;
-        position: absolute;
-        width: 160px;
-        height: 48px;
-        left: 105px;
-        top: 520px;
-        background: #E0004D;
-        border-radius: 8px;
+    .tulisan-redirect-2{
+        position: relative;
+        width: 250px;
+        height: 50px;
+        left: 0px;
+        top: -18px;
         font-family: 'Public Sans';
         font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
+        font-weight: 400;
+        font-size: 14px;
         line-height: 20px;
         display: flex;
         align-items: center;
         text-align: center;
-        color: #FFFFFF;
-        cursor: pointer;
+        color: #E0004D;
+    }
+}
+  
+  
+@media only screen and (max-width: 500px) {
+
+    .box-navbar-confirmation{
+        position: absolute;
+        width: 375px;
+        height: 92px;
+        left: 0px;
+        top: 0px;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 3px 2px rgba(96, 33, 53, 0.02), 0px 4px 12px 4px rgba(155, 0, 59, 0.08);
     }
 
-    .button-resend-email:hover{
-        color:#E0004D;
-        background: #FFFFFF;
-        border: 1px solid #E0004D;
-        cursor: pointer;
+    .container-confirmation{
+        min-width: 90vw !important;
+        padding: 0px 0px 0px 0px;
+        min-height: 91vh !important;
+    }
+   
+    .box-confirmation-page{
+        position: absolute;
+        width: 200px  !important;
+        height: 400px;
+        left: 80px;
+        top: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      
+    }
+
+  
+    .logo-to-homepage{
+        position: absolute;
+        left: 50px;
+        top: 52px; 
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        display: flex;
+        align-items: center;        
+        color: #213360;
+       
+    }
+
+    .tulisan-confirmation{
+        position: absolute;
+        width: 169px;
+        height: 22px;
+        left: 70px;
+        top: 48px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        display: flex;
+        align-items: center;
+        color: #213360;
+      
+    }
+    
+  .logo-confirmation-page{
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        left: 60px;
+        top: 140px;
+       
+    }
+
+    .logo-confirmation-page{
+        position:relative;
+        width:300px;
+        height: 300px;
+        left: 0px;
+        top: 70px;
+      
+    }
+
+    .logo-verify-page-2{
+        position:relative;
+        width:350px;
+        height: 350px;
+        left: 0px;
+        top: 0px;
+       
+    }
+
+    .tulisan-welcome{
+        position: relative;
+        width: 300px;
+        height: 62px;
+        left: 0px;
+        top: 70px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 38px;
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #213360;
+        
+    }
+
+    .tulisan-welcome-2{
+        position: relative;
+        width: 300px;
+        height: 62px;
+        left: 0px;
+        top: -20px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 26px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #213360;
+       
+    }
+
+    .tulisan-redirect{
+        position: absolute;
+        width: 150px;
+        height: 50px;
+        left: 40px;
+        top: 410px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #E0004D;
+    }
+
+    .tulisan-redirect-2{
+        position: relative;
+        width: 250px;
+        height: 50px;
+        left: 0px;
+        top: -18px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #E0004D;
     }
 }

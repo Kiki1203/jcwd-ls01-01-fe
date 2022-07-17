@@ -4,13 +4,14 @@ import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import default1 from '../../../Assets/default.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { faUser, faReceipt, faMoneyBills, faLocationDot, faHeart, faEnvelope, faPenToSquare, faAngleRight, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 const SidebarProfile  = () => {
 
   const [nama, setNama] = React.useState("");
   const [profilepic, setProfilepic] = React.useState("");
+  const navigate = useNavigate()
 
   useEffect(() => {
       let token = localStorage.getItem('myTkn')
@@ -28,6 +29,11 @@ const SidebarProfile  = () => {
           console.log('ini err get',err)
       })
       }, [])
+
+      const btnLogOut = () => {
+        localStorage.removeItem('myTkn');
+         navigate("/")
+      }
 
     return(
         <div id="container-sb">
@@ -57,19 +63,19 @@ const SidebarProfile  = () => {
                       <div className='sidebar-proses-pemesanan'>Proses Pemesanan</div>
                     </div>
                   </Link>
-                  <Link to='/metodepembayaran' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
-                    <div className='box-baris-4'>
+                 <div  style={{ color: "#213360" }}>
+                 <div className='box-baris-4'>
                       <FontAwesomeIcon icon={faMoneyBills} id='sidebar-logo' />
                       <div className='sidebar-metode-pembayaran'>Metode Pembayaran</div>
                     </div>
-                  </Link>
+                 </div>
                   <Link to='/alamatpengiriman' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                   <div className='box-baris-5'>
                       <FontAwesomeIcon icon={faLocationDot} id='sidebar-logo' />
                       <div className='sidebar-alamat-pengiriman'>Alamat Pengiriman</div>
                     </div>
                   </Link>
-                  <Link to='/favortie' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+                  <Link to='/favorite' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                   <div className='box-baris-6'>
                       <FontAwesomeIcon icon={faHeart} id='sidebar-logo' />
                       <div className='sidebar-favorite'>Favorite</div>
@@ -106,13 +112,13 @@ const SidebarProfile  = () => {
             </div>
             </Link>
             <div className="tab-list">
-              <Link to='/metodepembayaran' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
-                <div className="tab-list-1">
+                <div style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+                <div className="tab-list-1" >
                   <FontAwesomeIcon icon={faMoneyBills} className="logo-metode-bayar" />
                   <div className="metode-pembayaran-profile">Metode Pembayaran</div>
                   <FontAwesomeIcon icon={faAngleRight} style={{marginLeft: "330px", fontSize: '12px'}} />
                 </div>
-              </Link>
+                </div>
              <Link to='/alamatpengiriman' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
               <div className="tab-list-2">
                   <FontAwesomeIcon icon={faLocationDot} className="logo-alamat-kirim" />
@@ -120,16 +126,14 @@ const SidebarProfile  = () => {
                   <FontAwesomeIcon icon={faAngleRight}  style={{marginLeft: "330px", fontSize: '12px'}}  />
                 </div>
              </Link>
-             <Link to='/' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
-             <div className="tab-list-3">
+             <div className="tab-list-3"  style={{ color: "#213360" }}>
               <FontAwesomeIcon icon={faEnvelope} className="logo-pesan-bantuan" />
                 <div className="pesan-bantuan-profile">Pesan Bantuan</div>
                 <FontAwesomeIcon icon={faAngleRight}  style={{marginLeft: "330px", fontSize: '12px'}}  />
               </div>
-             </Link>
-              <div className="tab-list-4">
+              <div className="tab-list-4"  style={{ color: "#213360" }}>
                 <FontAwesomeIcon icon={faArrowRightFromBracket} className="logo-log-out" />
-                <div className="log-out-profile">Log Out</div>
+                <div className="log-out-profile" onClick={() => btnLogOut()}>Log Out</div>
                 <FontAwesomeIcon icon={faAngleRight}  style={{marginLeft: "330px", fontSize: '12px'}}  />
               </div>
             </div>

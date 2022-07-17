@@ -691,3 +691,139 @@
   top: 220px;
   border: 1.5px solid #F8F8F8;
 }
+
+@media only screen and (max-width: 500px) {
+  .container-template-proses{
+    min-height: 80vh;
+    min-width: 70vw;
+    padding: 0px;
+    
+  }
+
+    
+  .logo-tab-mobile{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    position: absolute;
+    left: 291px;
+    top: 50px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 18px;
+  }
+  
+
+  .template-tab{
+    display: none;
+  }
+  
+  .judul-1{
+    display: none;
+  }
+  
+  .tab-semua{
+    display: none;
+  }
+  
+  .tab-semua:hover{
+    display: none;
+  }
+  
+  .tab-menunggu{
+    display: none;
+  }
+  
+  .tab-menunggu:hover{
+    display: none;
+  }
+  
+  .tab-diproses{
+    display: none;
+  }
+  
+  .tab-diproses:hover{
+    display: none;
+  }
+  
+  .tab-dikirim{
+    display: none;
+  }
+  
+  .tab-dikirim:hover{
+    display: none;
+  }
+  
+  .tab-selesai{
+    display: none;
+  }
+  
+  .tab-selesai:hover{
+    display: none;
+  }
+  
+  .tab-dibatalkan{
+    display: none;
+  }
+  
+  .tab-dibatalkan:hover{
+    display: none;
+  }
+  
+  .garis-batas-tab{
+    display: none;
+  }
+  
+  .judul-filter-jenis-obat{
+    display: none;
+  }
+  
+  .box-filter{
+    display: none;
+  }
+  
+  .button-semua-obat{
+    display: none;
+  }
+  
+  .button-semua-obat:hover{
+    display: none;
+  }
+  
+  .button-obat-resep{
+    display: none;
+  }
+  
+  .button-obat-resep:hover{
+    display: none;
+  }
+  
+  .button-obat-bebas{
+    display: none;
+  }
+  
+  .button-obat-bebas:hover{
+    display: none;
+  }
+  
+  .urutkan-filter{
+    display: none;
+  }
+  
+  .dropdown-01{
+    display: none;
+  }
+
+  .isi-dropdown-01{
+    display: none;
+  }
+  
+  .dropdown-01:hover{
+   display: none;
+  
+  }
+
+}
