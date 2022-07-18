@@ -239,27 +239,18 @@
 @media only screen and (max-width: 850px) {
   .box-inside-profile-info{
     position: absolute;
-    width: 800px;
+    width: 500px ;
     height: 400px;
-    left: 400px;
-    top: 280px;
+    left: 50px ;
+    top: 330px ;
   }
-
-  .garis-batas-tab-profile{
-    position: absolute;
-    width: 740px;
-    height: 0px;
-    left: 40px;
-    top: 116px;
-    border: 1.5px solid #F5F6F9;
-  }
-
+  
   .keterangan-verifikasi-desk{
     position: absolute;
     width: 229px;
     height: 24px;
-    left: 430px;
-    top: 170px;
+    left: 120px !important;
+    top: 300px !important;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -269,7 +260,16 @@
     align-items: center;
     color: #008076;
   }
-
+  
+  .garis-batas-tab-profile{
+    position: absolute;
+    width: 300px;
+    height: 0px;
+    left: 40px;
+    top: 116px;
+    border: 1.5px solid #F5F6F9;
+  }
+  
   #userImgSet{
     width: 250px;
     height: 250px;
@@ -277,7 +277,7 @@
     border-radius: 50%;
     object-fit: cover;
   }
-
+  
   .foto-profile{
     position: absolute;
     width: 250px;
@@ -288,16 +288,15 @@
     background: #ffff;
     border: 1.5px solid #F5F6F9;
   }
-
+  
   .bungkus-info-profile{
     position: absolute;
     width: 300px;
     height: 250px;
     left: 350px;
     top: 70px;
-
   }
-
+  
   .personal-data{
     position: absolute;
     width: 229px;
@@ -312,8 +311,9 @@
     display: flex;
     align-items: center;
     color: #213360;
+    
   }
-
+  
   .nama-profile{
     position: absolute;
     width: 123px;
@@ -330,10 +330,10 @@
     text-align: center;
     color: #213360;
   }
-
+  
   .full-name-profile{
     position: absolute;
-    width: 306px;
+    width: 200px ;
     height: 20px;
     left: 130px;
     top: 0px;
@@ -344,7 +344,7 @@
     line-height: 27px;
     color: #0A0A0A;
   }
-
+  
   .nomer-profile{
     position: absolute;
     width: 123px;
@@ -361,11 +361,11 @@
     text-align: center;
     color: #213360; 
   }
-
-
+  
+  
   .nominal-nomor-profile{
     position: absolute;
-    width: 306px;
+    width: 200px ;
     height: 20px;
     left: 130px;
     top: 48px;
@@ -376,7 +376,7 @@
     line-height: 27px;
     color: #0A0A0A;
   }
-
+  
   .email-profile{
     position: absolute;
     width: 123px;
@@ -393,8 +393,8 @@
     text-align: center;
     color: #213360; 
   }
-
-
+  
+  
   .isi-email-profile{
     position: absolute;
     width: 200px;
@@ -402,7 +402,7 @@
     left: 130px;
     top: 97px;
   }
-
+  
   .tulisan-data-email{
     position: relative;
     font-weight: 500;
@@ -410,7 +410,7 @@
     font-style: normal;
     color: #0A0A0A;
   }
-
+  
   .gender-profile{
     position: absolute;
     width: 123px;
@@ -427,11 +427,11 @@
     text-align: center;
     color: #213360; 
   }
-
-
+  
+  
   .isi-gender-profile{
     position: absolute;
-    width: 306px;
+    width: 200px ;
     height: 20px;
     left: 130px;
     top: 146px;
@@ -442,7 +442,7 @@
     line-height: 27px;
     color: #0A0A0A;
   }
-
+  
   .usia-profile{
     position: absolute;
     width: 123px;
@@ -459,11 +459,11 @@
     text-align: center;
     color: #213360; 
   }
-
-
+  
+  
   .isi-usia-profile{
     position: absolute;
-    width: 306px;
+    width: 200px ;
     height: 20px;
     left: 130px;
     top: 197px;
@@ -474,11 +474,14 @@
     line-height: 27px;
     color: #0A0A0A;
   }
+  
+ 
 
 }
 
 
 @media only screen and (max-width: 500px) {
+
   .box-inside-profile-info{
     position: absolute;
     width: 370px;
@@ -508,7 +511,6 @@
     display: flex;
     align-items: center;
     color: #009B90;
-  
   }
 
   .bungkus-info-profile{
@@ -525,19 +527,19 @@
 
   .foto-profile{
     position: absolute;
-    width: 100px;
-    height: 100px;
-    left: 140px;
+    width: 120px;
+    height: 120px;
+    left: 130px;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 111px;
+    top: 95px;
     background: #C4C4C4;
   }
 
   #userImgSet{
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     left: 100px;
     border-radius: 50%;
     object-fit: cover;
@@ -585,6 +587,7 @@
     font-size: 16px;
     line-height: 27px;
     color: #0A0A0A;
+    margin-top: 10px;
   }
 
 
@@ -596,8 +599,6 @@
     display: none;
   }
 
- 
-
   .isi-usia-profile-mobile{
     font-family: 'Poppins';
     font-style: normal;
@@ -605,6 +606,7 @@
     font-size: 16px;
     line-height: 27px;
     color: #0A0A0A;
+    margin-top: 10px;
   }
 
   .nominal-nomor-profile{
@@ -614,7 +616,7 @@
     display: flex;
     justify-content: center;
     left: 130px;
-    top: 195px;
+    top: 210px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -628,7 +630,7 @@
     width: 200px;
     height: 20px;
     left: 80px;
-    top: 212px;
+    top: 230px;
     display: flex;
     justify-content: center;
     font-family: 'Public Sans';
@@ -643,8 +645,8 @@
     position: absolute;
     width: 100px;
     height: 20px;
-    left:  135px;
-    top: 145px;
+    left:  136px;
+    top: 150px;
     display: flex;
     justify-content: center;
     font-family: 'Public Sans';

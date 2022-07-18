@@ -56,12 +56,12 @@ const SidebarProfile2  = () => {
                       <div className='sidebar-proses-pemesanan'>Proses Pemesanan</div>
                     </div>
                   </Link>
-                  <Link to='/metodepembayaran' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
-                    <div className='box-baris-4'>
+                 <div  style={{ color: "#213360" }}>
+                 <div className='box-baris-4'>
                       <FontAwesomeIcon icon={faMoneyBills} id='sidebar-logo' />
                       <div className='sidebar-metode-pembayaran'>Metode Pembayaran</div>
                     </div>
-                  </Link>
+                 </div>
                   <Link to='/alamatpengiriman' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                   <div className='box-baris-5'>
                       <FontAwesomeIcon icon={faLocationDot} id='sidebar-logo' />

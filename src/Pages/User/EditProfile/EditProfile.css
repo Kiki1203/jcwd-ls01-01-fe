@@ -8,6 +8,23 @@
   border-radius: 50%;
 }
 
+.box-notifikasi-error{
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 17px;
+  left: 400px;
+  top: 560px;
+  color: #008076;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #choose-file-edit-profile{
   position: absolute;
   color: #FFFFFF;
@@ -235,18 +252,52 @@
     position: absolute;
     width: 200px;
     height: 200px;
-    left: 450px;
+    left: 100px;
     top: 300px;
     background: #C4C4C4;
     border-radius: 50%;
   }
-
+  
+  .box-notifikasi-error{
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 17px;
+    left: 70px;
+    top: 560px;
+    color: #008076;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #choose-file-edit-profile{
+    position: absolute;
+    color: #FFFFFF;
+    background: #E0004D;
+    border: 1px solid #E0004D;
+    cursor: pointer;
+    padding: 6px 12px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 17px;
+    border-radius: 8px;
+    top: 530px !important;
+    left: 150px !important;
+  }
+  
   .keterangan-verifikasi{
     position: absolute;
     width: 229px;
     height: 24px;
-    left: 430px;
-    top: 170px;
+    left: 100px;
+    top: 185px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -257,15 +308,15 @@
     color: #008076;
   }
   
-
+  
   #userImgEdit{
     width: 200px;
     height: 200px;
-    left: 450px;
+    left: 100px;
     border-radius: 50%;
     object-fit: cover;
   }
-
+  
   .button-edit-foto{
     display: flex;
     flex-direction: row;
@@ -274,7 +325,7 @@
     position: absolute;
     width: 200px;
     height: 26px;
-    left: 450px;
+    left: 100px;
     top: 530px;
     background: #cfd4e1;
     border-radius: none;
@@ -287,20 +338,20 @@
     color: #213360;
     cursor: pointer;
   }
-
+  
   .button-edit-foto:hover{
     cursor: pointer;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 45, 0.08), 0px 4px 12px 4px rgba(155, 0, 28, 0.28);
   }
-
+  
   .baris-edit-profile-1{
     position: absolute;
-    width: 327px;
+    width: 300px;
     height: 65px;
-    left: 700px;
+    left: 350px;
     top: 279px;
   }
-
+  
   .input-edit-profile-1{
     box-sizing: border-box;
     position: absolute;
@@ -318,16 +369,16 @@
     line-height: 18px;
     color: #213360;
   }
-
+  
   .baris-edit-profile-2{
     position: absolute;
-    width: 327px;
+    width: 300px;
     height: 65px;
-    left: 700px;
+    left: 350px;
     top: 350px;
-
+  
   }
-
+  
   .input-edit-profile-2{
     box-sizing: border-box;
     position: absolute;
@@ -345,7 +396,7 @@
     line-height: 18px;
     color: #213360;
   }
-
+  
   #label-edit-profile{
     font-family: 'Public Sans';
     font-style: normal;
@@ -353,16 +404,16 @@
     font-size: 12px;
     bottom: 20px;
   }
-
+  
   .baris-edit-profile-3{
     position: absolute;
     width: 327px;
     height: 65px;
-    left: 700px;
+    left: 350px;
     top: 420px;
-
+  
   }
-
+  
   .input-edit-profile-3{
     box-sizing: border-box;
     position: absolute;
@@ -381,17 +432,17 @@
     color: #213360;
     
   }
-
+  
   .baris-edit-profile-4{
     position: absolute;
     width: 327px;
     height: 65px;
-    left: 700px;
+    left: 350px;
     top: 490px;
-
+  
   }
-
-
+  
+  
   .input-edit-profile-4{
     box-sizing: border-box;
     position: absolute;
@@ -410,8 +461,8 @@
     color: #213360;
     cursor: pointer;
   }
-
-
+  
+  
   .button-simpan-edit-profile{
     display: flex;
     flex-direction: row;
@@ -421,7 +472,7 @@
     position: absolute;
     width: 330px;
     height: 46px;
-    left: 700px;
+    left: 350px;
     top: 580px;
     background: #E0004D;
     border-radius: 8px;
@@ -433,12 +484,16 @@
     line-height: 20px;
     text-align: center;
     color: #FFFFFF;
-
+  
   }
-
+  
   .button-simpan-edit-profile:hover{
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 45, 0.08), 0px 4px 12px 4px rgba(155, 0, 28, 0.28);
-
+  }
+  
+  .button-simpan-edit-profile:disabled{
+    background: #B4B9C7;
+    color: #FFFFFF;
   }
 
 }
@@ -665,6 +720,39 @@
 
   .button-simpan-edit-profile:hover{
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 45, 0.08), 0px 4px 12px 4px rgba(155, 0, 28, 0.28);
+
+  }
+
+  #choose-file-edit-profile{
+    position: absolute;
+    color: #FFFFFF;
+    background: #E0004D;
+    border: 1px solid #E0004D;
+    cursor: pointer;
+    padding: 6px 12px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 17px;
+    border-radius: 8px;
+    top: 250px !important;
+    left: 125px !important;
+  }
+
+  .box-notifikasi-error{
+    position: absolute;
+    color: #008076;
+    width: 330px;
+    height: 30px;
+    top: 280px !important;
+    left: 30px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 8px;
+    line-height: 17px;
+    text-align: center;
 
   }
 }

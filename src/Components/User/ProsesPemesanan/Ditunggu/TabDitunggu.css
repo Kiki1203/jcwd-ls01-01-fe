@@ -372,8 +372,14 @@
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
+  .container-ditunggu{
+    min-width: 90vw;
+    padding: 0px 0px 0px 0px;
+    min-height: 90vh !important;
    
+  }
+
   .timer-resep-box-menunggu{
     position: absolute;
     width: 96.84px;
@@ -435,18 +441,22 @@
     position: relative;
     width: 130px;
     height: 17px;
-    left: 155px;
+    left: 150px;
     top: -5px;
     background: rgba(255, 222, 107, 0.3);
     border: 1px solid #FFDE6B;
     border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid blue
   }
   
   .status-menunggu-pesanan{
     position: relative;
     width: 126.64px;
     height: 7px;
-    left: 20px;
+    left: 0px !important;
     top: 5px;
     font-family: 'Public Sans';
     font-style: normal;
@@ -457,6 +467,7 @@
     align-items: center;
     text-align: center;
     color: #CBAF4E;
+    border: 1px solid blue
   }
   
   .garis-menunggu-pesanan-1{
@@ -466,6 +477,7 @@
     left: 0px;
     top: 10px;
     border: 1.5px solid #F5F6F9;
+
   }
   
   .foto-menunggu-pesanan{

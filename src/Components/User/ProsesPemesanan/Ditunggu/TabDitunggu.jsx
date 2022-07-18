@@ -70,22 +70,80 @@ const TabDitunggu  = () => {
                           <div className="tanggal-semua-pesanan">{moment(value.tanggal_transaksi).format('LLL')}</div>
                             <div className="notifikasi-semua-pesanan"><div className="status-semua-pesanan">{value.status_transaksi}</div></div>
                             <div className="garis-semua-pesanan-1"></div>
-                            <div className="foto-semua-pesanan">
+                            {
+                              value.dataPertama.length === 0 ?
+                              <>
+                             {
+                                  value.resultResep.length === 0  ?
+                                  <>
+                                  <div className="foto-semua-pesanan">
+                                    <img src={`${API_URL + '/'}${value.resultRiwayatResep[0].gambar}`} alt='Image Preview' className="foto-produk-semua" />
+                                  </div>
+                                  <div className="nama-obat-semua-pesanan">Nomor Resep</div>
+                                  <div className="harga-obat-semua-pesanan">TIMER</div>
+                                  <div  className="jumlah-obat-semua-pesanan" style={{marginTop: '-10px'}}>{value.resultRiwayatResep[0].no_pemesanan}</div>
+                                  <div className="button-tampilkan-detail-semua" >Perbesar gambar</div>
+                                  <div className="d-lg-none d-md-none d-block">
+                                  <div className="garis-semua-resep"></div>
+                                  <div className="box-chat-cs-semua-resep" style={{marginTop: '30px'}}>
+                                      <div className="logo-cs-semua-resep"><img src={Chat} alt="" width="24px" height="24px"/></div>
+                                      <div className="keterangan-chat-semua-resep">Chat Customer Service</div>
+                                    </div>
+                                  </div>
+                                  </>
+                                  :
+                                  <>
+                                    <div className="foto-semua-pesanan">
+                                    <img src={`${API_URL + '/'}${value.resultResep[0].gambar_resep}`} alt='Image Preview' className="foto-produk-semua" />
+                                  </div>
+                                  <div className="nama-obat-semua-pesanan">Nomor Resep</div>
+                                  <div className="harga-obat-semua-pesanan">TIMER</div>
+                                  <div  className="jumlah-obat-semua-pesanan"  style={{marginTop: '-10px'}}>{value.resultResep[0].no_pemesanan}</div>
+                                  <div className="button-tampilkan-detail-semua" >Perbesar gambar</div>
+                                  <div className="d-lg-none d-md-none d-block">
+                                      <div className="garis-semua-resep"></div>
+                                      <div className="box-chat-cs-semua-resep" style={{marginTop: '30px'}}>
+                                          <div className="logo-cs-semua-resep"><img src={Chat} alt="" width="24px" height="24px"/></div>
+                                          <div className="keterangan-chat-semua-resep">Chat Customer Service</div>
+                                        </div>
+                                      </div>
+                                  </>
+                                }
+                              </>
+                              :
+                              <>
+                              <div className="foto-semua-pesanan">
                               <img src={`${API_URL + '/'}${value.dataPertama[0].gambar_produk}`} alt='Image Preview' className="foto-produk-semua" />
                             </div>
                             <div className="nama-obat-semua-pesanan">{value.dataPertama[0].nama_produk}</div>
                             <div className="harga-obat-semua-pesanan">{`Rp ${value.dataPertama[0].harga_produk.toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</div>
                             <div className="jumlah-obat-semua-pesanan">{value.dataPertama[0].quantity} {value.dataPertama[0].satuan_produk}</div>
                             <div className="button-tampilkan-detail-semua"  onClick={() => klikModalEdit(value.id)}>Tampilkan Detail</div>
-                            <div className="keterangan-sub-total-semua">Sub Total</div>
-                            <div className="total-yang-dibayarkan">{`Rp ${value.total_pembayaran.toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</div>
+                              </>
+                            }
+                            {
+                              value.total_pembayaran ? 
+                              <>
+                              <div className="keterangan-sub-total-semua">Sub Total</div>
+                              <div className="total-yang-dibayarkan">{`Rp ${value.total_pembayaran.toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</div>
+                              </>
+                              :
+                              <></>
+                            }
                             <div className="garis-semua-2"></div>
                             <div className="box-chat-cs-semua">
                               <div className="logo-cs-semua"><img src={Chat} alt="" width="24px" height="24px"/></div>
                               <div className="keterangan-chat-semua">Chat Customer Service</div>
                             </div>
-                            <div className="belum-bayar-semua">Bayar Sebelum {moment(value.waktu_ganti_status).format('LLL')}</div>
-                            <div className="button-bayar-sekarang-semua" onClick={() => navigate(`/payment/${value.id}`)}>Bayar Sekarang</div>
+                            {
+                               value.status_transaksi === "Menunggu Konfirmasi Resep" ?
+                               <></>
+                               :
+                               <>
+                                <div className="belum-bayar-semua">Bayar Sebelum {moment(value.waktu_ganti_status).format('LLL')}</div>
+                                <div className="button-bayar-sekarang-semua" onClick={() => navigate(`/payment/${value.id}`)}>Bayar Sekarang</div>
+                               </>
+                            }
                       </div>
                     </div>
                 </>
@@ -157,21 +215,6 @@ if (minPageNumberLimit >= 1) {
     return(
         <div className="container-semua-pesanan">
           <TemplateProsesPemesanan/>
-           {/* CONTOH JIKA BUKAN RESEP */}
-
-           {/* keterangan, waktu mapping janlup ditambahin mx-4 my-4 dan format render sebegai berikut:
-           <div className="container">
-              <TemplateProsesPemesanan/>
-              <div className='position-all-box'>
-              {this.printProducts()}
-              <button className="ml-5" id='btn-pagination'>1</button>
-              </div>
-              <div>
-             
-              </div>
-          </div>
-           */}
-           
           <div className='position-all-box'>
             {
               loading ? 
@@ -182,7 +225,7 @@ if (minPageNumberLimit >= 1) {
               </>
             }
              <div className="mt-4">
-              <div className='d-flex'>
+              <div className='pagination-semua d-flex'>
                             <ul className="pageNumbers">
                                 <li>
                                 <button
@@ -210,32 +253,6 @@ if (minPageNumberLimit >= 1) {
                         </div>
             </div>
           </div>
-
-           {/* CONTOH JIKA RESEP */}
-          {/* <div className='position-all-box'>
-            <div className="box-semua-pesanan">
-              <div className="inside-box-semua-pesanan">
-                <div className="tanggal-semua-pesanan">Jumat, 5 April 2022, 15:45</div>
-                <div className="notifikasi-semua-pesanan"><div className="status-semua-pesanan">Menunggu Konfirmasi</div></div>
-                <div className="garis-semua-pesanan-1"></div>
-                <div className="foto-semua-pesanan">
-                  <img src="" alt="" className="foto-produk-semua"/>
-                </div>
-                <div className="nama-obat-semua-pesanan">Nomor Resep</div>
-                <div>TIMER</div>
-                <div className="jumlah-obat-semua-pesanan">#123abc456def</div>
-                <div className="button-tampilkan-detail-semua">Tampilkan Detail</div>
-                <div className="garis-semua-2-resep"></div>
-                  <div className="box-chat-cs-semua-resep">
-                    <div className="logo-cs-semua"><img src={Chat} alt="" width="24px" height="24px"/></div>
-                    <div className="keterangan-chat-semua">Chat Customer Service</div>
-                  </div>
-                <div className="belum-bayar-semua-resep">Bayar Sebelum 6 April 2022, 15:45</div>
-                <div className="button-bayar-sekarang-semua-resep">Bayar Sekarang</div>
-              </div>
-            </div>
-            <button className="ml-5" id='btn-pagination'>1</button>
-          </div> */}
         </div>
     )
 }

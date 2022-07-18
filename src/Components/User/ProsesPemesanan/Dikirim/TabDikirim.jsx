@@ -34,11 +34,11 @@ const TabDikirim  = () => {
               'Authorization': `${token}`,
           }
       }
-      axios.get(`${API_URL}/transaction/getdikirimpesanan?page=${currentPage}&limit=${itemsPerPage}`, headers)
+      axios.get(`${API_URL}/transaction/getdikirimpesanan?`, headers)
       .then((res) => {
           console.log('res.data semua pesanan', res.data)
           setLoading(false)
-          setTotalData(res.data[0].total[0].total)
+          setTotalData(res.data.length)
           setData(res.data)
           setLoading(false)
           // setProdukPertama(res.data.dataPertama)
@@ -53,6 +53,31 @@ const TabDikirim  = () => {
     setOpenModal(true)
 }
 
+const btnPesananDiterima = (id) => {
+  let token = localStorage.getItem('myTkn')
+  const headers = {
+      headers: { 
+          'Authorization': `${token}`,
+      }
+  }
+  setLoading(true)
+ 
+  axios.patch(API_URL + `/transaction/pesananditerima?id=${id}`, headers)
+  .then((res) => {
+  console.log(res)
+  setLoading(false)
+  // setData(res.data)
+  })
+  .catch((err) =>{
+  console.log(err)
+      setLoading(false)
+  })
+}
+
+
+
+
+
   const printData = (props) => {
     return data.map((value, index) => {
         return (
@@ -62,6 +87,7 @@ const TabDikirim  = () => {
                           openModal && <Tampilkan setOpenModal={setOpenModal}  id={idProduk}/>
                   }
                     <div className="inside-box-semua-pesanan">
+                    
                           <div className="tanggal-semua-pesanan">{moment(value.tanggal_transaksi).format('LLL')}</div>
                           <div className="notifikasi-dikirim-pesanan"><div className="status-dikirim-pesanan">Sedang {value.status_transaksi}</div></div>
                             <div className="garis-semua-pesanan-1"></div>
@@ -79,7 +105,14 @@ const TabDikirim  = () => {
                               <div className="logo-cs-semua"><img src={Chat} alt="" width="24px" height="24px"/></div>
                               <div className="keterangan-chat-semua">Chat Customer Service</div>
                             </div>
-                            <div className="button-dikirim">Pesanan Diterima</div>
+                            <button className="button-dikirim" disable={loading}  onClick={() => btnPesananDiterima(value.id)}>
+                              {
+                                loading?
+                                'Loading...'
+                                :
+                                'Pesanan Diterima'
+                              }
+                            </button>
                       </div>
                     </div>
          </>
@@ -93,7 +126,7 @@ const handleClick = (event) => {
 };
 
 const pages = [];
-for (let i = 1; i <= Math.ceil(totalData / itemsPerPage); i++) {
+for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
 pages.push(i);
 }
 
@@ -148,21 +181,6 @@ if (minPageNumberLimit >= 1) {
     return(
         <div className="container-semua-pesanan">
           <TemplateProsesPemesanan/>
-           {/* CONTOH JIKA BUKAN RESEP */}
-
-           {/* keterangan, waktu mapping janlup ditambahin mx-4 my-4 dan format render sebegai berikut:
-           <div className="container">
-              <TemplateProsesPemesanan/>
-              <div className='position-all-box'>
-              {this.printProducts()}
-              <button className="ml-5" id='btn-pagination'>1</button>
-              </div>
-              <div>
-             
-              </div>
-          </div>
-           */}
-           
           <div className='position-all-box'>
             {
               loading ? 
@@ -173,7 +191,7 @@ if (minPageNumberLimit >= 1) {
               </>
             }
              <div className="mt-4">
-              <div className='d-flex'>
+              <div className='pagination-semua d-flex'>
                             <ul className="pageNumbers">
                                 <li>
                                 <button
@@ -201,32 +219,6 @@ if (minPageNumberLimit >= 1) {
                         </div>
             </div>
           </div>
-
-           {/* CONTOH JIKA RESEP */}
-          {/* <div className='position-all-box'>
-            <div className="box-semua-pesanan">
-              <div className="inside-box-semua-pesanan">
-                <div className="tanggal-semua-pesanan">Jumat, 5 April 2022, 15:45</div>
-                <div className="notifikasi-semua-pesanan"><div className="status-semua-pesanan">Menunggu Konfirmasi</div></div>
-                <div className="garis-semua-pesanan-1"></div>
-                <div className="foto-semua-pesanan">
-                  <img src="" alt="" className="foto-produk-semua"/>
-                </div>
-                <div className="nama-obat-semua-pesanan">Nomor Resep</div>
-                <div>TIMER</div>
-                <div className="jumlah-obat-semua-pesanan">#123abc456def</div>
-                <div className="button-tampilkan-detail-semua">Tampilkan Detail</div>
-                <div className="garis-semua-2-resep"></div>
-                  <div className="box-chat-cs-semua-resep">
-                    <div className="logo-cs-semua"><img src={Chat} alt="" width="24px" height="24px"/></div>
-                    <div className="keterangan-chat-semua">Chat Customer Service</div>
-                  </div>
-                <div className="belum-bayar-semua-resep">Bayar Sebelum 6 April 2022, 15:45</div>
-                <div className="button-bayar-sekarang-semua-resep">Bayar Sekarang</div>
-              </div>
-            </div>
-            <button className="ml-5" id='btn-pagination'>1</button>
-          </div> */}
         </div>
     )
 }

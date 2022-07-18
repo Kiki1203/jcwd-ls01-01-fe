@@ -816,3 +816,28 @@
     flex-grow: 0;
 }
 
+
+#button-tambah-obat-produk{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 8px;
+    position: absolute;
+    left: 710px;
+    top: 30px;
+    cursor: pointer;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    background: #E0004D;
+    border: 1px solid #E0004D;
+    border-radius: 8px;
+}
