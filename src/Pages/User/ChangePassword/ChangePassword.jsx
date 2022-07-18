@@ -1,14 +1,16 @@
 import React, { useState, CSSProperties } from 'react';
 import './ChangePassword.css';
 import TemplateProfile from '../../../Components/User/TemplateProfile/TemplateProfile.jsx';
-import SidebarProfile2 from '../../../Components/User/SidebarProfile/SidebarProfile2.jsx';
 import ChangePasswords from '../../../Assets/ChangePassword.svg';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import Swal from 'sweetalert2';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { InputGroup, Input, Button } from 'reactstrap';
-import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { faUser, faReceipt, faAngleLeft, faMoneyBills, faLocationDot, faHeart, faEnvelope, faPenToSquare, faAngleRight, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+
 const override: CSSProperties = {
   display: 'block',
   margin: '0 auto',
@@ -89,14 +91,36 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="container">
+    <div>
       <TemplateProfile />
-      <SidebarProfile2 />
-      <div className="keterangan-verifikasi-desk">Akun Terverifikasi</div>
-      <div className="foto-change-password">
+     <div className="container-change-password">
+     <div className="d-lg-none d-md-none d-block d-flex mt-4">
+                    <div>
+                        <Link to='/' style={{ textDecoration:"none", color: "black", cursor: 'pointer', fontSize: "12px", marginTop: "30px", marginLeft:"10px" }}>
+                            <FontAwesomeIcon icon={faAngleLeft} />
+                        </Link>
+                    </div>
+                    <div className="mx-4 keterangan-verifikasi-desk" >Akun Terverifikasi</div>
+                </div>
+                <div className="d-lg-block d-md-block d-none">
+                <div className="mx-4 mt-4 keterangan-verifikasi-desk">Akun Terverifikasi</div>
+                </div>
+                    <div className=" mt-4 d-lg-block d-md-block d-none">
+                       <div className="d-flex ">
+                       <div className="mx-3 tab-profile">Profile</div> 
+                        <div className="mx-3 tab-profile">Edit Profile</div>
+                        <div className="mx-3 tab-profile">Change Password</div>
+                       </div>
+                    </div>
+               <div  className="d-lg-block d-md-block d-none">
+               <hr style={{marginTop:'-3px'}}/>
+               </div>
+        <div className="box-c-1">
+          <div className="foto-change-password">
         <img src={ChangePasswords} alt="" />
       </div>
-      <div className="baris-change-password-1">
+          <div className="box-c-2">
+          <div className="baris-change-password-1">
         <div>Old Password</div>
         <InputGroup className="mb-3">
           <Input type="text" onChange={oldPasswordChange} />
@@ -117,18 +141,19 @@ const ChangePassword = () => {
           <Button className="icon-email-newpassword">@</Button>
         </InputGroup>
       </div>
-      <button type="submit" className=" btn btn-outline-danger button-batalkan-change-password" onClick={() => navigate('/')}>
-        Batal
-      </button>
       {loading ? (
         <button disable type="submit" className=" btn btn-secondary button-simpan-change-password">
           <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={15} />
         </button>
       ) : (
-        <button type="submit" className=" btn btn-danger button-simpan-change-password" onClick={() => onSubmit()}>
+        <button type="submit" className=" btn btn-danger mt-4 button-simpan-change-password" onClick={() => onSubmit()}>
           Simpan{' '}
         </button>
       )}
+          </div>
+
+        </div>
+     </div>
     </div>
   );
 };

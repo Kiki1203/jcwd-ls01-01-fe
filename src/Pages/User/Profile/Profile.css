@@ -1,660 +1,213 @@
-.box-inside-profile-info{
+.container-profile{
   position: absolute;
-  width: 800px;
-  height: 400px;
-  left: 400px;
-  top: 280px;
+  width: 650px;
+  height: 500px;
+  top: 160px;
+  left: 480px
 }
 
-.keterangan-verifikasi-desk{
-  position: absolute;
-  width: 229px;
-  height: 24px;
-  left: 440px;
-  top: 170px;
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  display: flex;
-  align-items: center;
-  color: #008076;
-}
-
-.garis-batas-tab-profile{
-  position: absolute;
-  width: 740px;
-  height: 0px;
-  left: 40px;
-  top: 116px;
+.foto-profile{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #ffff;
   border: 1.5px solid #F5F6F9;
+  margin-top: 40px;
+  margin-left: 30px;
 }
+
 
 #userImgSet{
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   left: 0px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.foto-profile{
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  left: 60px;
-  top: 40px;
-  border-radius: 50%;
-  background: #ffff;
-  border: 1.5px solid #F5F6F9;
-}
-
-.bungkus-info-profile{
-  position: absolute;
+.box-data-diri{
   width: 300px;
-  height: 250px;
-  left: 350px;
-  top: 70px;
-
+  height: 310px;
+  margin-left: 50px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 .personal-data{
-  position: absolute;
-  width: 229px;
-  height: 24px;
-  left: 350px;
-  top: 20px;
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  display: flex;
-  align-items: center;
   color: #213360;
 }
 
 .nama-profile{
-  position: absolute;
   width: 123px;
   height: 20px;
-  left: 0px;
-  top: 3px;
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 20px;
-  display: flex;
-  align-items: center;
-  text-align: center;
+  color: #213360;
+  margin-top: 20px;
+}
+
+.nama-profile-2{
+  width: 123px;
+  height: 20px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  margin-top: 20px;
   color: #213360;
 }
 
-.full-name-profile{
-  position: absolute;
-  width: 306px;
-  height: 20px;
-  left: 130px;
-  top: 0px;
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 27px;
-  color: #0A0A0A;
-}
-
-.nomer-profile{
-  position: absolute;
-  width: 123px;
-  height: 20px;
-  left: 0px;
-  top: 50px;
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 20px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #213360; 
-}
-
-
-.nominal-nomor-profile{
-  position: absolute;
-  width: 306px;
-  height: 20px;
-  left: 130px;
-  top: 48px;
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 27px;
-  color: #0A0A0A;
-}
-
-.email-profile{
-  position: absolute;
-  width: 123px;
-  height: 20px;
-  left: 0px;
-  top: 100px;
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 20px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #213360; 
-}
-
-
-.isi-email-profile{
-  position: absolute;
-  width: 200px;
-  height: 50px;
-  left: 130px;
-  top: 97px;
-}
-
-.tulisan-data-email{
-  position: relative;
-  font-weight: 500;
-  font-family: 'Public Sans';
-  font-style: normal;
-  color: #0A0A0A;
-}
-
-.gender-profile{
-  position: absolute;
-  width: 123px;
-  height: 20px;
-  left: 0px;
-  top: 150px;
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 20px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #213360; 
-}
-
-
-.isi-gender-profile{
-  position: absolute;
-  width: 306px;
-  height: 20px;
-  left: 130px;
-  top: 146px;
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 27px;
-  color: #0A0A0A;
-}
-
-.usia-profile{
-  position: absolute;
-  width: 123px;
-  height: 20px;
-  left: 0px;
-  top: 200px;
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 20px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #213360; 
-}
-
-
-.isi-usia-profile{
-  position: absolute;
-  width: 306px;
-  height: 20px;
-  left: 130px;
-  top: 197px;
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 27px;
-  color: #0A0A0A;
+.container-inside{
+    display: flex;
 }
 
 @media only screen and (max-width: 850px) {
-  .box-inside-profile-info{
+  .container-profile{
     position: absolute;
-    width: 500px ;
+    width: 500px;
     height: 400px;
-    left: 50px ;
-    top: 330px ;
-  }
-  
-  .keterangan-verifikasi-desk{
-    position: absolute;
-    width: 229px;
-    height: 24px;
-    left: 120px !important;
-    top: 300px !important;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    color: #008076;
-  }
-  
-  .garis-batas-tab-profile{
-    position: absolute;
-    width: 300px;
-    height: 0px;
-    left: 40px;
-    top: 116px;
-    border: 1.5px solid #F5F6F9;
-  }
-  
-  #userImgSet{
-    width: 250px;
-    height: 250px;
-    left: 0px;
-    border-radius: 50%;
-    object-fit: cover;
+    top: 160px;
+    left: 180px
   }
   
   .foto-profile{
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    left: 60px;
-    top: 40px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     background: #ffff;
     border: 1.5px solid #F5F6F9;
+    margin-top: 40px;
+    margin-left: 30px;
   }
   
-  .bungkus-info-profile{
-    position: absolute;
+  
+  #userImgSet{
+    width: 200px;
+    height: 200px;
+    left: 0px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .box-data-diri{
     width: 300px;
-    height: 250px;
-    left: 350px;
-    top: 70px;
+    height: 310px;
+    margin-left: 50px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
   }
   
   .personal-data{
-    position: absolute;
-    width: 229px;
-    height: 24px;
-    left: 350px;
-    top: 20px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
-    display: flex;
-    align-items: center;
     color: #213360;
-    
   }
   
   .nama-profile{
-    position: absolute;
     width: 123px;
     height: 20px;
-    left: 0px;
-    top: 3px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 20px;
-    display: flex;
-    align-items: center;
-    text-align: center;
     color: #213360;
+    margin-top: 10px;
   }
   
-  .full-name-profile{
-    position: absolute;
-    width: 200px ;
-    height: 20px;
-    left: 130px;
-    top: 0px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-    color: #0A0A0A;
-  }
-  
-  .nomer-profile{
-    position: absolute;
+  .nama-profile-2{
     width: 123px;
     height: 20px;
-    left: 0px;
-    top: 50px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 20px;
+    color: #213360;
+    margin-top: 10px;
+  }
+  .container-inside{
     display: flex;
-    align-items: center;
-    text-align: center;
-    color: #213360; 
   }
-  
-  
-  .nominal-nomor-profile{
-    position: absolute;
-    width: 200px ;
-    height: 20px;
-    left: 130px;
-    top: 48px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-    color: #0A0A0A;
-  }
-  
-  .email-profile{
-    position: absolute;
-    width: 123px;
-    height: 20px;
-    left: 0px;
-    top: 100px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #213360; 
-  }
-  
-  
-  .isi-email-profile{
-    position: absolute;
-    width: 200px;
-    height: 50px;
-    left: 130px;
-    top: 97px;
-  }
-  
-  .tulisan-data-email{
-    position: relative;
-    font-weight: 500;
-    font-family: 'Public Sans';
-    font-style: normal;
-    color: #0A0A0A;
-  }
-  
-  .gender-profile{
-    position: absolute;
-    width: 123px;
-    height: 20px;
-    left: 0px;
-    top: 150px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #213360; 
-  }
-  
-  
-  .isi-gender-profile{
-    position: absolute;
-    width: 200px ;
-    height: 20px;
-    left: 130px;
-    top: 146px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-    color: #0A0A0A;
-  }
-  
-  .usia-profile{
-    position: absolute;
-    width: 123px;
-    height: 20px;
-    left: 0px;
-    top: 200px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #213360; 
-  }
-  
-  
-  .isi-usia-profile{
-    position: absolute;
-    width: 200px ;
-    height: 20px;
-    left: 130px;
-    top: 197px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-    color: #0A0A0A;
-  }
-  
- 
-
 }
 
-
 @media only screen and (max-width: 500px) {
-
-  .box-inside-profile-info{
+  .container-profile{
     position: absolute;
-    width: 370px;
-    height: 330px;
-    left: 0px;
+    width: 300px;
+    height: 280px;
     top: 0px;
-  }
-
-  #pinggiran-atas-profile-2{
-    position: absolute;
-    font-size: 12px;
-    left: 25px;
-    top: 45px;
-  }
-
-  .keterangan-verifikasi{
-    position: absolute;
-    width: 262px;
-    height: 22px;
-    left: 48px;
-    top: 40px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    display: flex;
-    align-items: center;
-    color: #009B90;
-  }
-
-  .bungkus-info-profile{
-    position: absolute;
-    width: 30px;
-    height: 50px;
     left: 0px;
-    top: 70px;
   }
 
-  .tab-versi-dekstop{
-    display: none;
-  }
-
-  .foto-profile{
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    left: 130px;
+  .container-inside{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    top: 95px;
-    background: #C4C4C4;
+    justify-content: center;
   }
-
+  
+  .foto-profile{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #ffff;
+    border: 1.5px solid #F5F6F9;
+    margin-top: 30px;
+    margin-left: 50px;
+  }
+  
+  
   #userImgSet{
-    width: 120px;
-    height: 120px;
-    left: 100px;
+    width: 100px;
+    height: 100px;
+    left: 0px;
     border-radius: 50%;
     object-fit: cover;
   }
-
+  
+  .box-data-diri{
+    width: 150px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
   .personal-data{
     display: none;
   }
-
+  
   .nama-profile{
     display: none;
-  }
-
-  .nomer-profile{
-    display: none;
-  }
-
-  .email-profile{
-    display: none;
-  }
-
-  .gender-profile{
-    display: none;
-  }
-
-  .usia-profile{
-    display: none;
-  }
-
-  .box-mobile-pd{
-    position: absolute;
-    width: 164px;
-    height: 27px; 
-    left: 100px;
-    display: flex;
-    justify-content: center;
-    top: 240px;
-  }
-
-
-  .full-name-profile-mobile{
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 27px;
-    color: #0A0A0A;
-    margin-top: 10px;
-  }
-
-
-  .full-name-profile{
-  display: none;
-  }
-
-  .isi-usia-profile{
-    display: none;
-  }
-
-  .isi-usia-profile-mobile{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 27px;
-    color: #0A0A0A;
-    margin-top: 10px;
-  }
-
-  .nominal-nomor-profile{
-    position: absolute;
-    width: 100px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    left: 130px;
-    top: 210px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    color: #ABAFB3;
-  }
-
-  .isi-email-profile{
-    position: absolute;
-    width: 200px;
-    height: 20px;
-    left: 80px;
-    top: 230px;
-    display: flex;
-    justify-content: center;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    color: #ABAFB3;
-  }
-
-  .isi-gender-profile{
-    position: absolute;
-    width: 100px;
-    height: 20px;
-    left:  136px;
-    top: 150px;
-    display: flex;
-    justify-content: center;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    color: #ABAFB3;
+    margin-top: 0px;
   }
   
+  .nama-profile-2{
+    width: 123px;
+    height: 20px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #213360;
+    margin-top: 0px;
+  }
 }

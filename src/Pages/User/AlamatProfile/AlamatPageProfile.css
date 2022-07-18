@@ -1,21 +1,15 @@
 @media only screen and (max-width: 1400px) {
 
-  .container-alamat-pengiriman{
-    min-height: 130vh;
-    min-width: 90vw;
-    padding: 50px 150px 50px 150px;
-  }
+ .container-alamat-page{
+   position: absolute;
+  width: 700px;
+  height: 530px;
+  left: 470px;
+  top: 149px;
+  border: 1px solid black
+ }
   
-    .box-alamat-lengkap{
-      position: absolute;
-      width: 800px;
-      height: 530px;
-      left: 400px;
-      top: 149px;
-      background: #FFFFFF;
-      box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
-      border-radius: 8px;
-    }
+   
   
     .judul-alamat-pengiriman{
       position: absolute;
@@ -35,7 +29,7 @@
   
     .garis-alamat{
       position: absolute;
-      width: 800px;
+      width: 700px;
       height: 0px;
       left: 0px;
       top: 100px;
@@ -218,9 +212,142 @@
     }
   
   }
+
+  @media only screen and (max-width: 850px) {
+    .container-alamat-page{
+      position: absolute;
+     width: 500px;
+     height: 530px;
+     left: 150px;
+     top: 125px;
+     border: 1px solid black
+    }
+
+     .garis-alamat{
+      position: absolute;
+      width: 500px;
+      height: 0px;
+      left: 0px;
+      top: 80px;
+      border: 1.5px solid #F5F6F9;
+    }
+
+    .box-alamat-utama{
+      position: absolute;
+      width: 400px;
+      height: 147px;
+      left: 70px;
+      top: 100px;
+      background: #FFFFFF;
+      box-shadow: -1px -1px 5px 4px rgba(54, 0, 14, 0.01), 2px 2px 2px rgba(96, 33, 54, 0.04), 4px 4px 4px 6px rgba(155, 0, 52, 0.04);
+      border-radius: 8px;
+    }
+
+    .button-edit-alamat{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 80px;
+      height: 30px;
+      position: absolute;
+      left: 300px;
+      right: 16.28%;
+      top: 100px;
+      bottom: 69.86%;
+      background: rgb(247, 218, 218);
+      border-radius: 8px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #E0004D;
+      cursor: pointer;
+    }
+  
+    .button-edit-alamat:hover{
+      box-shadow: 0px 2px 3px 2px rgba(96, 33, 43, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.28);
+    }
   
   
-  @media only screen and (max-width: 600px) {
+    .button-tambah-alamat{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      position: absolute;
+      width: 157px;
+      height: 32px;
+      left: 40px;
+      top: 450px;
+      background: #E0004D;
+      cursor: pointer;
+      border-radius: 8px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: center;
+      color: #FFFFFF;
+    }
+  
+    .button-tambah-alamat:hover{
+      box-shadow: 0px 2px 3px 2px rgba(96, 33, 43, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.28);
+    }
+
+    .button-next-alamat{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      left: 220px;
+      top: 450px;
+      background: #E0004D;
+      cursor: pointer;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: center;
+      color: #FFFFFF;
+
+    }
+
+       /* TAMBAHAN AJA */
+  
+       .box-alamat-selanjutnya{
+        position: absolute;
+        width: 400px;
+        height: 147px;
+        left: 70px;
+        top:280px;
+        background: #FFFFFF;
+        box-shadow: -1px -1px 5px 4px rgba(54, 0, 14, 0.01), 2px 2px 2px rgba(96, 33, 54, 0.04), 4px 4px 4px 6px rgba(155, 0, 52, 0.04);
+        border-radius: 8px; 
+      }
+  
+  }
+  
+  
+  
+  @media only screen and (max-width: 500px) {
+    .container-alamat-page{
+      position: absolute;
+     width: 300px;
+     height: 530px;
+     left: 0px;
+     top: 0px;
+     border: 1px solid black
+    }
   
     .box-alamat-lengkap{
       position: relative;

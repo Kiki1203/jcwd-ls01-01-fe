@@ -376,7 +376,7 @@ const ModalTambahObat = ({setOpenModal, selected, setSelected}) => {
                         </div>
                         <div className='d-flex mt-2'>
                             <div className='nama-obat-info' >Tgl. Kadaluarsa</div>  
-                            <input type="datetime-local"  onChange={tanggalKadaluarsaChange} defaultValue={tanggalKadaluarsa}
+                            <input type="date"  onChange={tanggalKadaluarsaChange} defaultValue={tanggalKadaluarsa}
                             placeholder="Tanggal Lahir" className="form-control inputan-obat-info"/>
                         </div>
                         <div className='d-flex mt-2'>

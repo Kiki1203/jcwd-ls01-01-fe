@@ -42,29 +42,14 @@ const Login = () => {
       if(res.data.error === false){
         localStorage.setItem('myTkn', res.data.token)
         if(res.data.token){
-          if(res.data.verified == 0){
+          if(res.data.verified === 0){
             setMyTkn(res.data.token)
             navigate("/verification")
-          }
-
-          if(res.data.verified == 1){
+          }else if(res.data.verified === 1){
             setMyTkn(res.data.token)
             navigate("/")
           }
         }
-        // if(res.data.token || res.data.verified === 0  ){
-        //   setMyTkn(res.data.token)
-        //   setVerified(false)
-        //   setLoading(false)
-        //   navigate("/verification")
-        // }
-        
-        // if(res.data.token || res.data.verified === 1){
-          // setMyTkn(res.data.token)
-          // setVerified(true)
-          // setLoading(false)
-          // navigate("/")
-        // }
       }
     }).catch((err) => {
       setLoading(false)
