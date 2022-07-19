@@ -23,7 +23,7 @@ import ChangePassword from './Pages/User/ChangePassword/ChangePassword.jsx';
 import EditProfile from './Pages/User/EditProfile/EditProfile.jsx';
 import AlamatProfile from './Pages/User/AlamatProfile/AlamatPageProfile.jsx';
 import MenungguKonfirmasi from './Pages/User/MenungguKonfirmasi/MenungguKonfirmasi.jsx';
-import Favorite from './Pages/User/Favorite/FavoritePage.jsx';
+
 
 import Dibatalkan from './Components/User/ProsesPemesanan/Dibatalkan/TabDibatalkan.jsx';
 import Dikirim from './Components/User/ProsesPemesanan/Dikirim/TabDikirim.jsx';
@@ -90,7 +90,7 @@ function App() {
           <Route path="/alamatpengiriman" element={<AlamatProfile />} />
           <Route path="/menunggukonfirmasi" element={<MenungguKonfirmasi />} />
         
-          <Route path="/favorite" element={<Favorite />} />
+         
           <Route path="/dibatalkan" element={<Dibatalkan />} />
           <Route path="/dikirim" element={<Dikirim />} />
           <Route path="/diproses" element={<Diproses />} />

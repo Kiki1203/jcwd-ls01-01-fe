@@ -32,40 +32,27 @@ import { useNavigate, Navigate } from "react-router-dom";
 
 
 const Home = () => {
+  const [loading, setLoading] = React.useState(false);
   const [produkDiskon, setProdukDiskon] = useState([])
   const [produkTerbaru, setProdukTerbaru] = useState([])
-  const [verified, setVerified] = useState(false)
+  const [verified, setVerified] = useState('')
   const [token, setToken] = useState('')
   const navigate = useNavigate()
-
   useEffect(() => {
-    let token = localStorage.getItem('myTkn')
-    const headers = {
-        headers: { 
-            'Authorization': `${token}`,
-        }
-    }
-    axios.get(`${API_URL}/user/gettokenuser`, headers)
-    .then((res) => {
-        console.log('token', res.data)
-        setToken(res.data[0].token)
-    }).catch((err) => {
-        console.log('ini err get',err)
-    })
-}, [])
-
-  useEffect(() => {
+    setLoading(true)
     axios.get(`${API_URL}/product/homeproduk`)
     .then((res) => {
-
+      setLoading(false)
         setProdukDiskon(res.data.produkDiskon)
         setProdukTerbaru(res.data.produkTerbaru)
     }).catch((err) => {
         console.log('ini err get',err)
+        setLoading(false)
     })
 }, [])
 
 useEffect(() => {
+  setLoading(true)
   let token = localStorage.getItem('myTkn')
   const headers = {
       headers: { 
@@ -74,19 +61,14 @@ useEffect(() => {
   }
   axios.get(`${API_URL}/user/checkuserverify`, headers)
   .then((res) => {
+    setLoading(false)
       console.log('verified',res.data)
       console.log(res.data.verified)
-  
-
-      if(res.data.verified == 0){
-        setVerified(false)
-      }else if(res.data.verified == 1){
-        setVerified(true)
-      }
-    
-  
+      setVerified(res.data.verified)
+      setToken(res.data.token)
   }).catch((err) => {
       console.log('ini err get',err)
+      setLoading(false)
   })
 }, [])
 
@@ -176,23 +158,29 @@ const printData2 = (props) => {
   })
 }
 
-// if(localStorage.getItem('token') === token && localStorage.getItem('myTkn') === token ){
-//   return(
-//       <Navigate to='/' />
-//   )
-// }
-
 if(localStorage.getItem('token') ){
   return(
       <Navigate to='/homeadmin' />
   )
-}
-
+}else if(verified === 0){
+  return(
+    <Navigate to='/verification' />
+)
+}else{
   return (
     <div>
-      <div className='gradient'></div>
       <div id="container-home">
-        <div className='inside-container-home'>
+        {
+          loading ?
+          <>
+            <div className="box-loading-profile">
+            'Loading ...'
+            </div>
+          </>
+          :
+          <>
+            <div>
+            <div className='inside-container-home'>
           <div className='box-jumbotron1'></div>
           <div className='head-image'>
           <div className='selamat-datang-home'>Selamat Datang Di</div>
@@ -335,9 +323,16 @@ if(localStorage.getItem('token') ){
             <img src={shoope} alt="" className="col-1" />
           </div>
         </div>
+            </div>
+          </>
+        }
+       
       </div>
     </div>
   );
+}
+
+  
 };
 
 export default Home;

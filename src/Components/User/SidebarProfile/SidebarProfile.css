@@ -1,800 +1,258 @@
-/* BAGIAN SIDEBAR */
-
-
-.sidebar-profile-box{
-    position: absolute;
-    width: 280px;
-    height: 530px;
-    left: 60px;
-    top: 149px;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
-    border-radius: 8px;
+@media only screen and (max-width: 500px) {
+  .wrapper {
+    margin-top: 150px;
+    margin-bottom: 60px;
   }
-
- 
-  .box-baris-1{
+  .wrapper:before,
+  .wrapper:after{
+    content: ' ';
+    display: table;
+    clear: both;
+  }
+  
+  
+  .tab-mobile-profile{
+    margin-top: -100px;
+  }
+  
+  
+  .tab-mobile-profile-2{
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 48px;
-    position: absolute;
-    width: 207px;
-    height: 24px;
-    left: 40px;
-    top: 28px;
+    justify-content: space-around;
+  } 
+  
+  .button-edit-profile{
+    width: 57px;
+    height: 50px;
+    padding-left: 10px;
+    cursor: pointer;
   }
   
-  .sidebar-pp-box{
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    left: 10px;
-    top: 10px;
-    background: #C4C4C4;
-    border-radius: 50%;
-  }
-
-  #userImgSide{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+  .button-edit-profile:hover{
+    cursor: pointer;
+    color: #E0004D;
   }
   
-  
-  .sidebar-name-box{
-    position: absolute;
+  .tulisan-edit-profile{
     width: 100px;
-    height: 20px;
-    left: 70px;
-    top: 20px;
-    font-family: 'Public Sans';
+    height: 15px;
+    margin-left: -30px;
+    font-family: 'Poppins';
     font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-    color: #213360;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 150%;
+    text-align: center;
   }
   
-  .garis-profile{
-    position: absolute;
-    width: 280px;
-    height: 0px;
-    left: 1px;
-    top: 100px;
-    border: 1.5px solid #F5F6F9;
+  .button-proses-pemesanan-profile{
+    width: 80px;
+    height: 50px;
+    left: 160px;
+    top: 350px;
+    cursor: pointer;
   }
   
-  .box-baris-2{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 48px;
-    position: absolute;
-    width: 207px;
-    height: 24px;
-    left: 40px;
-    top: 130px;
-    cursor: pointer;
-  }
-
-  .box-baris-2:hover{
-    color: #E0004D;
-    cursor: pointer;
-  }
-
-  
-  .sidebar-profile{
-    width: 100px;
-    height: 20px;
-    left: 70px;
-    top: 30px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-
-  }
-
-  .box-baris-3{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 48px;
-    position: absolute;
-    width: 207px;
-    height: 24px;
-    left: 40px;
-    top: 186px;
-    cursor: pointer;
-  }
-
-  .box-baris-3:hover{
+  .button-proses-pemesanan-profile:hover{
     cursor: pointer;
     color: #E0004D;
   }
   
-  
-  .sidebar-proses-pemesanan{
-    width: 150px;
-    height: 20px;
-    left: 70px;
-    top: 30px;
-    font-family: 'Public Sans';
+  .tulisan-proses-profile{
+    width: 130px;
+    height: 15px;
+    margin-left: -40px;
+    font-family: 'Poppins';
     font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 150%;
+    text-align: center;
   }
   
-  .box-baris-4{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 40px;
-    position: absolute;
-    width: 230px;
-    height: 24px;
-    left: 40px;
-    top: 244px;
-    cursor: pointer;
+  .button-favorite-profile{
+    width: 57px;
+    height: 79px;
+    left: 290px;
+    top: 350px;    
   }
-
-  .box-baris-4:hover{
+  
+  .button-favorite-profile:hover{
+    cursor: pointer;
     color: #E0004D;
-    cursor: pointer;
   }
   
-  .sidebar-metode-pembayaran{
-    width: 150px;
-    height: 20px;
-    left: 0px;
-    top: 30px;
-    font-family: 'Public Sans';
+  .tulisan-favorite-profile{
+    width: 130px;
+    height: 15px;
+    margin-left: -55px;
+    font-family: 'Poppins';
     font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 150%;
+    text-align: center;
   }
   
-  .box-baris-5{
+  .tab-list{
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 48px;
-    position: absolute;
-    width: 207px;
-    height: 24px;
-    left: 40px;
-    top: 304px; 
-    cursor: pointer;
-  }
-
-  .box-baris-5:hover{
-    color: #E0004D;
-    cursor: pointer;
-  }
-  
-  
-  .sidebar-alamat-pengiriman{
-    width: 150px;
-    height: 20px;
-    left: 70px;
-    top: 30px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    display: flex;
+    justify-content: center;
     align-items: center;
-  }
-  
-  .box-baris-6{
+    padding: 13px 40px;
+    gap: 10px;
+    width: 370px;
+    height: 280px;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 48px;
-    position: absolute;
-    width: 207px;
-    height: 24px;
-    left: 40px;
-    top: 368px; 
-    cursor: pointer;
-  }
-
-  .box-baris-6:hover{
-    color: #E0004D;
-    cursor: pointer;
-  }
-  
-  .sidebar-favorite{
-    width: 150px;
-    height: 20px;
-    left: 70px;
-    top: 30px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  #box-baris-7{
-    display: flex;
-    flex-direction: row;
-    gap: 48px;
-    position: absolute;
-    width: 219px;
-    height: 24px;
-    left: 40px;
-    top: 432px;
-    cursor: pointer;
-  }
-
-  #box-baris-7:hover{
-    color:#E0004D;
-    cursor: pointer;
-  }
-  
-  /* .sidebar-logo{
-    font-size: 26px;
-    left: 10px;
-    top: 28px;
-    color: #213360;
-  } */
-  
-  .sidebar-pesan-bantuan{
-    width: 150px;
-    height: 20px;
-    left: 70px;
-    top: 33px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-  }
-
-  @media only screen and (max-width: 850px) {
-    .sidebar-profile-box{
-    position: absolute;
-    width: 280px;
-    height: 530px;
-    left: 60px;
-    top: 149px;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
-    border-radius: 8px;
-    border: 5px solid blue;
+    flex-direction: column;
    
   }
   
-  .box-baris-1{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 48px;
-    position: absolute;
-    width: 207px;
-    height: 24px;
-    left: 40px;
-    top: 28px;
+  .tab-list-1{
+    width: 360px;
+    height: 50px;
+    cursor: pointer;
+    border-bottom: 1.5px solid #F5F6F9;
+   
   }
   
-  .sidebar-pp-box{
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    left: 10px;
-    top: 10px;
-    background: #C4C4C4;
-    border-radius: 50%;
+  .tab-list-1:hover{
+    color: #E0004D;
+    cursor: pointer;
   }
   
-  .sidebar-name-box{
-    position: absolute;
-    width: 100px;
-    height: 20px;
-    left: 70px;
-    top: 20px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 700;
+  .logo-metode-bayar{
+    margin-left: 30px;
     font-size: 16px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-    color: #213360;
+    margin-top: 5px;
   }
   
-  .garis-profile{
-    position: absolute;
-    width: 280px;
-    height: 0px;
-    left: 1px;
-    top: 100px;
-    border: 1.5px solid #F5F6F9;
+  .logo-2{
+    margin-left: 330px;
+    font-size: 16px;
+    margin-bottom: 100px;
+    margin-top: -20px;
   }
   
-  .box-baris-2{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 48px;
-    position: absolute;
-    width: 207px;
-    height: 24px;
-    left: 40px;
-    top: 130px;
-    cursor: pointer;
+  .logo-3{
+    margin-left: 330px;
+    font-size: 16px;
+    margin-bottom: 100px;
+    margin-top: -20px;
   }
-
-  .box-baris-2:hover{
-    color: #E0004D;
-    cursor: pointer;
-  }
-
   
-  .sidebar-profile{
-    width: 100px;
-    height: 20px;
-    left: 70px;
-    top: 30px;
-    font-family: 'Public Sans';
+  .logo-4{
+    margin-left: 330px;
+    font-size: 16px;
+    margin-bottom: 100px;
+    margin-top: -20px;
+  }
+  
+  .logo-5{
+    margin-left: 330px;
+    font-size: 16px;
+    margin-bottom: 100px;
+    margin-top: -20px;
+  }
+  
+  .metode-pembayaran-profile{
+    margin-left: 30px;
+    font-family: 'Poppins';
     font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-
-  }
-
-  .box-baris-3{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 48px;
-    position: absolute;
-    width: 207px;
-    height: 24px;
-    left: 40px;
-    top: 186px;
-    cursor: pointer;
-  }
-
-  .box-baris-3:hover{
-    cursor: pointer;
-    color: #E0004D;
+    font-weight: 500;
+    font-size: 16px;
+    
   }
   
-  
-  .sidebar-proses-pemesanan{
-    width: 150px;
-    height: 20px;
-    left: 70px;
-    top: 30px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .box-baris-4{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 40px;
-    position: absolute;
-    width: 230px;
-    height: 24px;
-    left: 40px;
-    top: 244px;
-    cursor: pointer;
-  }
-
-  .box-baris-4:hover{
-    color: #E0004D;
-    cursor: pointer;
-  }
-  
-  .sidebar-metode-pembayaran{
-    width: 150px;
-    height: 20px;
+  .tab-list-2{
+    width: 360px;
+    height: 50px;
     left: 0px;
-    top: 30px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
+    top: 75px;
+    cursor: pointer;
+    border-bottom: 1.5px solid #F5F6F9;
   }
   
-  .box-baris-5{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 48px;
-    position: absolute;
-    width: 207px;
-    height: 24px;
-    left: 40px;
-    top: 304px; 
+  .tab-list-2:hover{
     cursor: pointer;
-  }
-
-  .box-baris-5:hover{
     color: #E0004D;
-    cursor: pointer;
   }
   
+  .logo-alamat-kirim{
+    margin-left: 30px;
+    font-size: 16px;
   
-  .sidebar-alamat-pengiriman{
-    width: 150px;
-    height: 20px;
-    left: 70px;
-    top: 30px;
-    font-family: 'Public Sans';
+  }
+  
+  .alamat-pengiriman-profile{
+    
+    margin-left: 30px;
+    font-family: 'Poppins';
     font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
   }
   
-  .box-baris-6{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 48px;
-    position: absolute;
-    width: 207px;
-    height: 24px;
-    left: 40px;
-    top: 368px; 
-    cursor: pointer;
+  .tab-list-3{
+    
+    width: 360px;
+    height: 50px;
+    left: 0px;
+    top: 150px;
+    border-bottom: 1.5px solid #F5F6F9;
+    cursor: pointer;    
   }
-
-  .box-baris-6:hover{
+  
+  .tab-list-3:hover{
+    cursor: pointer;
     color: #E0004D;
-    cursor: pointer;
   }
   
-  .sidebar-favorite{
-    width: 150px;
-    height: 20px;
-    left: 70px;
-    top: 30px;
-    font-family: 'Public Sans';
+  .logo-pesan-bantuan{
+    
+    margin-left: 30px;
+    font-size: 16px;
+  }
+  
+  .pesan-bantuan-profile{
+    
+    margin-left: 30px;
+    font-family: 'Poppins';
     font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
   }
   
-  #box-baris-7{
-    display: flex;
-    flex-direction: row;
-    gap: 48px;
-    position: absolute;
-    width: 219px;
-    height: 24px;
-    left: 40px;
-    top: 432px;
+  .tab-list-4{
+    
+    width: 360px;
+    height: 50px;
+    left: 0px;
+    top: 225px;
+    cursor: pointer;    
+  }
+  
+  .tab-list-4:hover{
     cursor: pointer;
-  }
-
-  #box-baris-7:hover{
-    color:#E0004D;
-    cursor: pointer;
+    color: #E0004D;
   }
   
-  /* .sidebar-logo{
-    font-size: 26px;
-    left: 10px;
-    top: 28px;
-    color: #213360;
-  } */
+  .logo-log-out{
+    
+    margin-left: 30px;
+    font-size: 16px;
+  }
   
-  .sidebar-pesan-bantuan{
-    width: 150px;
-    height: 20px;
-    left: 70px;
-    top: 33px;
-    font-family: 'Public Sans';
+  .log-out-profile{
+    
+    margin-left: 30px;
+    font-family: 'Poppins';
     font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  }
-  
-  
-  @media only screen and (max-width: 500px)  {
-    
-    
-    .button-edit-profile{
-      position: absolute;
-      width: 57px;
-      height: 50px;
-      padding-left: 10px;
-      left: 50px;
-      top: 350px;
-      cursor: pointer;
-    }
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+  }  
+}
 
-    .button-edit-profile:hover{
-      cursor: pointer;
-      color: #E0004D;
-    }
-  
-    .tulisan-edit-profile{
-      position: absolute;
-      width: 100px;
-      height: 15px;
-      left: -25px;
-      top: 30px;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 10px;
-      line-height: 150%;
-      text-align: center;
-    }
-  
-    .button-proses-pemesanan-profile{
-      position: absolute;
-      width: 80px;
-      height: 50px;
-      left: 160px;
-      top: 350px;
-      cursor: pointer;
-    }
-  
-    .button-proses-pemesanan-profile:hover{
-      cursor: pointer;
-      color: #E0004D;
-    }
-  
-    .tulisan-proses-profile{
-      position: absolute;
-      width: 130px;
-      height: 15px;
-      left: -30px;
-      top: 30px;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 10px;
-      line-height: 150%;
-      text-align: center;
-    }
-  
-    .button-favorite-profile{
-      position: absolute;
-      width: 57px;
-      height: 79px;
-      left: 290px;
-      top: 350px;    
-    }
-  
-    .button-favorite-profile:hover{
-      cursor: pointer;
-      color: #E0004D;
-    }
-  
-    .tulisan-favorite-profile{
-      position: absolute;
-      width: 130px;
-      height: 15px;
-      left: -55px;
-      top: 30px;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 10px;
-      line-height: 150%;
-      text-align: center;
-    }
-  
-    .tab-list{
-      top: 450px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      padding: 13px 40px;
-      gap: 10px;
-      position: absolute;
-      width: 370px;
-      height: 280px;
-      left: 0px;
-      overflow-x: hidden;
-    }
-  
-    .tab-list-1{
-      position: absolute;
-      width: 360px;
-      height: 50px;
-      left: 0px;
-      top: 0px;
-      cursor: pointer;
-      border-bottom: 1.5px solid #F5F6F9;
-      
-    }
-  
-    .tab-list-1:hover{
-      color: #E0004D;
-      cursor: pointer;
-    }
-  
-    .logo-metode-bayar{
-      position: absolute;
-      left: 30px;
-      font-size: 16px;
-      top: 5px;
-      
-    }
-  
-    .metode-pembayaran-profile{
-      position: absolute;
-      left: 30%;
-      right: 24.27%;
-      top: 0px;
-      bottom: 17.36%;
-      width: 180px;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 150%;
-    }
-  
-    .tab-list-2{
-      position: absolute;
-      width: 360px;
-      height: 50px;
-      left: 0px;
-      top: 75px;
-      cursor: pointer;
-      border-bottom: 1.5px solid #F5F6F9;
-    }
-  
-    .tab-list-2:hover{
-      cursor: pointer;
-      color: #E0004D;
-    }
-  
-    .logo-alamat-kirim{
-      position: absolute;
-      left: 40px;
-      top: 0px;
-      left: 30px;
-      font-size: 16px;
-    
-    }
-  
-    .alamat-pengiriman-profile{
-      position: absolute;
-      left: 30%;
-      right: 25.87%;
-      top: 0px;
-      bottom: 33.25%;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 150%;
-    }
-  
-    .tab-list-3{
-      position: absolute;
-      width: 360px;
-      height: 50px;
-      left: 0px;
-      top: 150px;
-      border-bottom: 1.5px solid #F5F6F9;
-      cursor: pointer;    
-    }
-  
-    .tab-list-3:hover{
-      cursor: pointer;
-      color: #E0004D;
-    }
-  
-    .logo-pesan-bantuan{
-      position: absolute;
-      left: 40px;
-      top: 0px;
-      left: 30px;
-      font-size: 16px;
-    }
-  
-    .pesan-bantuan-profile{
-      position: absolute;
-      left: 30%;
-      right: 24.27%;
-      top: 0px;
-      bottom: 23.77%;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 150%;
-    }
-  
-    .tab-list-4{
-      position: absolute;
-      width: 360px;
-      height: 50px;
-      left: 0px;
-      top: 225px;
-      cursor: pointer;    
-    }
-  
-    .tab-list-4:hover{
-      cursor: pointer;
-      color: #E0004D;
-    }
-  
-    .logo-log-out{
-      position: absolute;
-      left: 40px;
-      top: 0px;
-      left: 30px;
-      font-size: 16px;
-    }
-  
-    .log-out-profile{
-      position: absolute;
-      left: 30%;
-      right: 24.27%;
-      top: 0px;
-      bottom: 17.36%;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 150%;
-    }  
-  }
-
-  

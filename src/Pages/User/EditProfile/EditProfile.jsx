@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './EditProfile.css';
-import SidebarProfile2 from "../../../Components/User/SidebarProfile/SidebarProfile2.jsx";
+
 import TemplateProfile from "../../../Components/User/TemplateProfile/TemplateProfile.jsx";
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
@@ -118,10 +118,10 @@ function EditProfile() {
             }
 
           
-            let borndate = tanggallahir
-            borndate = borndate.split('T')
-            borndate = borndate.join(' ') 
-            console.log('ini borndate', borndate)
+            // let borndate = tanggallahir
+            // borndate = borndate.split('T')
+            // borndate = borndate.join(' ') 
+            // console.log('ini borndate', borndate)
 
             let tahun = tanggallahir
             tahun = tahun.split('')
@@ -132,7 +132,7 @@ function EditProfile() {
                 nama: nama,
                 username: username,
                 gender: gender,
-                tanggal_lahir: borndate,
+                tanggal_lahir: tanggallahir,
                 umur: tahun
             }
     
@@ -180,7 +180,7 @@ function EditProfile() {
         <div className="container">
         <TemplateProfile/>
         <div className="d-lg-block d-md-none d-block">
-        <SidebarProfile2/>
+       
         </div>
         <div>
             <div className="d-lg-none d-md-none d-block"><Link to="/profile" style={{ textDecoration:"none", color: "black", cursor: 'pointer' }}><FontAwesomeIcon icon={faAngleLeft} className="pinggiran-atas-profile" /></Link></div>
@@ -251,7 +251,7 @@ function EditProfile() {
              Birthday
             </label>
             <div className="input-group">
-                <input type="datetime-local"
+                <input type="date"
                 defaultValue={tanggallahir}  onChange={tanggalChange}
                  placeholder="Tanggal Lahir" className="form-control rounded-0 border-left-0 border-right-0 mytetring-input" required />
                 <div className="input-group-prepend">

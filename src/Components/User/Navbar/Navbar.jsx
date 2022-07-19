@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
+import SearchBubble from '../SearchBubble/SearchBubble';
 // import { useSelector } from 'react-redux';
 // import { onCheckUserLogin, onUserLogout } from '../../../Redux/Actions/userAction';
 
@@ -15,6 +16,22 @@ const Navbar = () => {
   const [username, setUsername] = useState([]);
   const [verified, setVerified] = useState([])
   const navigate = useNavigate()
+  const [bubbleOpen, setBubbleOpen] = useState(false)
+  const [search, setSearch] = useState('')
+  const [products, setProducts] = useState([])
+  const [total, setTotal] = useState(0)
+
+  useEffect(() => {
+    if(search.length){
+      axios.get(`${API_URL}/product/searchproducts?entry=${search}`, {headers: {'Access-Control-Allow-Origin': '*'}})
+      .then((res) => {
+          setProducts(res.data.products)
+          setTotal(res.data.total)
+      }).catch((err) => {
+          console.log('Error di search:', err)
+      })
+    }
+  }, [search])
 
   useEffect(() => {
   if(localStorage.getItem('token')){
@@ -59,6 +76,9 @@ const Navbar = () => {
   if (localStorage.getItem('myTkn')){
     return (
       <div id="navbar" className="d-lg-block d-md-block d-none">
+         {
+        bubbleOpen && <SearchBubble searchQuery={search} products={products} setBubbleOpen={setBubbleOpen} total={total} />
+      }
         <div className="box-navbar-logo">
        {
          verified === 0 ?
@@ -74,10 +94,29 @@ const Navbar = () => {
        }
         </div>
         <div className="box-navbar-search-2">
-          <form>
+          {
+            verified === 0 ?
+            <>
+             <form>
               <input className="form-control input-home-2"  type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"   />
               <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home-2'/>
             </form>
+            </>
+            :
+            <>
+             <form>
+              <input className="form-control input-home-2" 
+              onChange={(e) => {
+                setSearch(e.target.value)
+                e.target.value ? setBubbleOpen(true)
+                : setBubbleOpen(false)
+              }}
+               type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"   />
+              <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home-2'/>
+            </form>
+            </>
+          }
+         
         </div>
         <div className="box-navbar-dropdown">
            
@@ -85,8 +124,8 @@ const Navbar = () => {
             verified === 0 ?
             <>
             <FontAwesomeIcon icon={faBell} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}}/>
-        <FontAwesomeIcon icon={faCartShopping} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}}/>
-        <FontAwesomeIcon icon={faArrowRightFromBracket}  onClick={() => btnLogOut2()} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}} />
+            <FontAwesomeIcon icon={faCartShopping} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}}/>
+            <FontAwesomeIcon icon={faArrowRightFromBracket}  onClick={() => btnLogOut2()} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}} />
             </>
             :
            <>
@@ -98,8 +137,8 @@ const Navbar = () => {
             <Dropdown isOpen={dropdownOpen}
                 toggle={() => setDropdownOpen(!dropdownOpen)}>
                 <DropdownToggle id="dropdown-navbar" className="rounded-0">
-                <FontAwesomeIcon icon={faUser} />
-                <div>{username}</div>
+                <FontAwesomeIcon icon={faUser} className="mx-2" />
+                <div className="navbar-hi-user">Hi, {username}</div>
                 </DropdownToggle>
                 <DropdownMenu>
                     <DropdownItem>
