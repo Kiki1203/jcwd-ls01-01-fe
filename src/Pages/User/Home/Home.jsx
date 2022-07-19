@@ -158,15 +158,7 @@ const printData2 = (props) => {
   })
 }
 
-if(localStorage.getItem('token') ){
-  return(
-      <Navigate to='/homeadmin' />
-  )
-}else if(verified === 0){
-  return(
-    <Navigate to='/verification' />
-)
-}else{
+const homePage = () => {
   return (
     <div>
       <div id="container-home">
@@ -200,7 +192,7 @@ if(localStorage.getItem('token') ){
           <div className='tulisan-tak-antre'>Tak perlu antre & obat langsung dikirimkan ke lokasi anda! Foto tidak boleh lebih dari 10 MB</div>
         </div>
         <button className='btn-unggah-resep' onClick={() => navigate('/uploadresep')}>Unggah Resep</button>
-
+  
         </div>
         <div className='inside-container-home-3'>
           <div className='home-kategori'>Kategori</div>
@@ -263,7 +255,7 @@ if(localStorage.getItem('token') ){
             <div className='kebutuhan'>Kebutuhan Untuk Sehari-hari</div>
             <div className='lengkapi-kebutuhan'>Lengkapi kebutuhan gizi & asupan setiap saat</div>
           </div>
-
+  
         </div>
         <div className='inside-container-home-6'>
           <div className='box-tulisan-6'>
@@ -302,7 +294,7 @@ if(localStorage.getItem('token') ){
                   <div className='tulisan-7-2'>Tak perlu khawatir menunggu, Kami kirim  langsung secepatnya ke alamat Anda</div>
                 </div>
               </div>
-
+  
          </div>
         </div>
         <div className="d-flex">
@@ -331,6 +323,37 @@ if(localStorage.getItem('token') ){
     </div>
   );
 }
+
+
+
+if(localStorage.getItem('myTkn')){
+  if(verified === 0){
+    return(
+      <Navigate to='/verification' />
+    )
+  }else{
+    return(
+      <>{homePage()}</>
+    )
+  }
+}else{
+  if(localStorage.getItem('token') === token){
+    if(verified === 0){
+      return(
+        <Navigate to='/verification' />
+      )
+    }else{
+      return(
+        <>{homePage()}</>
+      )  
+    }
+  }else{
+    return(
+      <Navigate to='/homeadmin' />
+    )
+  }
+}
+
 
   
 };

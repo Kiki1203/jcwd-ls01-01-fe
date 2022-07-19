@@ -1,0 +1,1146 @@
+/* BAGIAN TAB PROFILE*/
+
+  
+  .template-tab{
+    height: 160px;
+    min-width: 50vw;
+    padding: 0px 50px 0px 50px;
+    
+    }
+    
+    .judul-1{
+      width: 229px;
+      height: 24px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+      display: flex;
+      align-items: center;
+      color: #213360;
+      margin-top: 20px;
+    }
+
+    .c-sb-2{
+        margin-top: 20px;
+    }
+    
+    .c-sb-3{
+        margin-top: 20px;
+    }
+
+    .tab-semua{
+
+      width: 80px;
+      height: 36px;
+      left: 40px;
+      top: 80px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      color: #213360;
+      cursor: pointer;
+    }
+    
+    .tab-semua:hover{
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid #E0004D;
+      color:#E0004D
+    }
+    
+    .tab-menunggu{
+
+      width: 100px;
+      height: 36px;
+      left: 160px;
+      top: 80px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      color: #213360;
+    }
+    
+    .tab-menunggu:hover{
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid #E0004D;
+      color:#E0004D
+    }
+    
+    .tab-diproses{
+
+      width: 90px;
+      height: 36px;
+      left: 310px;
+      top: 80px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      color: #213360;
+    }
+    
+    .tab-diproses:hover{
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid #E0004D;
+      color:#E0004D
+    }
+    
+    .tab-dikirim{
+
+      width: 80px;
+      height: 36px;
+      left: 450px;
+      top: 80px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      color: #213360;
+    }
+    
+    .tab-dikirim:hover{
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid #E0004D;
+      color:#E0004D
+    }
+    
+    .tab-selesai{
+
+      width: 80px;
+      height: 36px;
+      left: 570px;
+      top: 80px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      justify-content: center;
+      text-align: center;  
+      color: #213360;
+    }
+    
+    .tab-selesai:hover{
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid #E0004D;
+      color:#E0004D
+    }
+    
+    .tab-dibatalkan{
+
+      width: 100px;
+      height: 36px;
+      left: 680px;
+      top: 80px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      color: #213360;
+    }
+    
+    .tab-dibatalkan:hover{
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid #E0004D;
+      color:#E0004D
+    }
+    
+    .garis-batas-tab{
+
+      width: 780px;
+      height: 0px;
+      border: 1.5px solid #F5F6F9;
+      margin-left: -50px;
+    }
+    
+    .judul-filter-jenis-obat{
+
+      width: 105px;
+      height: 24px;
+      left: 40px;
+      top: 140px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      color: #213360;
+    }
+    
+    .box-filter{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 12px;
+
+      width: 339px;
+      height: 33px;
+      left: 127px;
+      top: 140px;
+    }
+    
+    .button-semua-obat{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 100px;
+      height: 30px;
+      border: 1.4px solid #E0004D;
+      color: #E0004D;
+      border-radius: 130px;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 17px;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .button-semua-obat:hover{
+      background: #E0004D;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+    
+    .button-obat-resep{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 100px;
+      height: 30px;
+      border: 1.4px solid #E0004D;
+      color: #E0004D;
+      border-radius: 130px;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 17px;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .button-obat-resep:hover{
+      background: #E0004D;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+    
+    .button-obat-bebas{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 100px;
+      height: 30px;
+      border: 1.4px solid #E0004D;
+      color: #E0004D;
+      border-radius: 130px;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 17px;
+      text-align: center;
+      cursor: pointer;
+    
+    }
+    
+    .button-obat-bebas:hover{
+      background: #E0004D;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+    
+    .urutkan-filter{
+
+      width: 53px;
+      height: 20px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      text-align: right;
+      color: #737A8D;
+      margin-left: 30px;
+      margin-top: 5px;
+    }
+    
+    .dropdown-01{
+        margin-left: 20px;
+      width: 130px;
+      height: 28px;
+      cursor: pointer;
+      padding-left: 5px;
+      background: #FFFFFF;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      color: #B4B9C7;
+      border: 1px solid #B4B9C7;
+      border-radius: 8px;
+    }
+  
+    .isi-dropdown-01{
+
+      width: 76px;
+      height: 20px;
+      left: 15px;
+      top: 8px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;  
+      color: #1A1E2B;
+      border: 1px solid #B4B9C7;
+      box-shadow: none;
+      border: none;
+    }
+    
+    .dropdown-01:hover{
+      color: #B4B9C7;
+      border: 1px solid #B4B9C7;
+    
+    }
+    
+
+  @media only screen and (max-width: 850px) {
+    .template-tab{
+      height: 160px;
+      width: 550px;
+      padding: 0px 0px 0px 0px;
+      }
+      
+      .judul-1{
+        width: 229px;
+        height: 24px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        color: #213360;
+        margin-top: 20px;
+        margin-left: 20px;
+      }
+  
+      .c-sb-2{
+          margin-top: 20px;
+      }
+      
+      .c-sb-3{
+          margin-top: 20px;
+      }
+  
+      .tab-semua{
+  
+        width: 80px;
+        height: 36px;
+        left: 40px;
+        top: 80px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: #213360;
+        cursor: pointer;
+      }
+      
+      .tab-semua:hover{
+        text-decoration: none;
+        cursor: pointer;
+        border-bottom: 2px solid #E0004D;
+        color:#E0004D
+      }
+      
+      .tab-menunggu{
+  
+        width: 100px;
+        height: 36px;
+        left: 160px;
+        top: 80px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: #213360;
+      }
+      
+      .tab-menunggu:hover{
+        text-decoration: none;
+        cursor: pointer;
+        border-bottom: 2px solid #E0004D;
+        color:#E0004D
+      }
+      
+      .tab-diproses{
+  
+        width: 90px;
+        height: 36px;
+        left: 310px;
+        top: 80px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: #213360;
+      }
+      
+      .tab-diproses:hover{
+        text-decoration: none;
+        cursor: pointer;
+        border-bottom: 2px solid #E0004D;
+        color:#E0004D
+      }
+      
+      .tab-dikirim{
+  
+        width: 80px;
+        height: 36px;
+        left: 450px;
+        top: 80px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: #213360;
+      }
+      
+      .tab-dikirim:hover{
+        text-decoration: none;
+        cursor: pointer;
+        border-bottom: 2px solid #E0004D;
+        color:#E0004D
+      }
+      
+      .tab-selesai{
+  
+        width: 80px;
+        height: 36px;
+        left: 570px;
+        top: 80px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        display: flex;
+        justify-content: center;
+        text-align: center;  
+        color: #213360;
+      }
+      
+      .tab-selesai:hover{
+        text-decoration: none;
+        cursor: pointer;
+        border-bottom: 2px solid #E0004D;
+        color:#E0004D
+      }
+      
+      .tab-dibatalkan{
+  
+        width: 100px;
+        height: 36px;
+        left: 680px;
+        top: 80px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: #213360;
+      }
+      
+      .tab-dibatalkan:hover{
+        text-decoration: none;
+        cursor: pointer;
+        border-bottom: 2px solid #E0004D;
+        color:#E0004D
+      }
+      
+      .garis-batas-tab{
+  
+        width: 500px;
+        height: 0px;
+        border: 1.5px solid #F5F6F9;
+        margin-left: 10px;
+      }
+      
+      .judul-filter-jenis-obat{
+        width: 105px;
+        height: 24px;
+        margin-left: 20px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        color: #213360;
+      }
+      
+      .box-filter{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        width: 300px;
+        height: 33px;
+      
+      }
+      
+      .button-semua-obat{
+        width: 80px;
+        height: 30px;
+        border: 1.4px solid #E0004D;
+        color: #E0004D;
+        border-radius: 130px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+      
+      .button-semua-obat:hover{
+        background: #E0004D;
+        color: #FFFFFF;
+        cursor: pointer;
+      }
+      
+      .button-obat-resep{
+        width: 80px;
+        height: 30px;
+        border: 1.4px solid #E0004D;
+        color: #E0004D;
+        border-radius: 130px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+      
+      .button-obat-resep:hover{
+        background: #E0004D;
+        color: #FFFFFF;
+        cursor: pointer;
+      }
+      
+      .button-obat-bebas{
+        width: 80px;
+        height: 30px;
+        border: 1.4px solid #E0004D;
+        color: #E0004D;
+        border-radius: 130px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10px;
+        text-align: center;
+        cursor: pointer;
+      
+      }
+      
+      .button-obat-bebas:hover{
+        background: #E0004D;
+        color: #FFFFFF;
+        cursor: pointer;
+      }
+      
+      .urutkan-filter{
+        width: 53px;
+        height: 20px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        text-align: right;
+        color: #737A8D;
+        margin-left: 10px;
+        margin-top: 5px;
+      }
+      
+      .dropdown-01{
+          margin-right: 20px;
+        width: 100px;
+        height: 28px;
+        cursor: pointer;
+        padding-left: 5px;
+        background: #FFFFFF;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        color: #B4B9C7;
+        border: 1px solid #B4B9C7;
+        border-radius: 8px;
+      }
+    
+      .isi-dropdown-01{
+  
+        width: 76px;
+        height: 20px;
+        font-family: 'Public Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;  
+        color: #1A1E2B;
+        border: 1px solid #B4B9C7;
+        box-shadow: none;
+        border: none;
+      }
+      
+      .dropdown-01:hover{
+        color: #B4B9C7;
+        border: 1px solid #B4B9C7;
+      
+      }
+      
+     
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .container-template-proses{
+      min-height: 80vh;
+      min-width: 70vw;
+      padding: 0px;
+      
+    }
+   
+    .tab-versi-mobile{
+      height: 80px;
+      width: 350px;
+      padding: 0px 0px 0px 0px;
+      
+      }
+    
+    /* .tab-versi-mobile{
+
+      width: 375px;
+      height: 138px;
+      left: 0px;
+      top: 0px;
+    } */
+    
+    .daftar-pemesan-mobile{
+
+      width: 169px;
+      height: 22px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+      display: flex;
+      align-items: center;
+      color: #213360;
+      margin-top: 20px;
+      margin-left: 30px;
+    }
+    
+    .logo-tab-mobile{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 12px;
+
+      width: 58px;
+      height: 24px;
+      left: 291px;
+      top: 50px;
+    }
+    
+    .tab-box-mobile{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 50px;
+      width: 370px;
+      height: 60px;
+      overflow-x: scroll;
+     
+    }
+    
+    .tab-semua-mobile{
+      width: 60px;
+      height: 40px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #B4B9C7;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+    
+    .tab-semua-mobile:hover{
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid #E0004D; 
+      color: #E0004D;
+    }
+    
+    .tab-menunggu-mobile{
+      width: 100px;
+      height: 40px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #B4B9C7;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+    
+    .tab-menunggu-mobile:hover{
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid #E0004D; 
+      color: #E0004D;
+    }
+    
+    .tab-diproses-mobile{
+      width: 70px;
+      height: 40px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #B4B9C7;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+    
+    .tab-diproses-mobile:hover{
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid #E0004D; 
+      color: #E0004D;
+    }
+    
+    .tab-dikirim-mobile{
+      width: 60px;
+      height: 40px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #B4B9C7;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+    
+    .tab-dikirim-mobile:hover{
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid #E0004D; 
+      color: #E0004D;
+    }
+    
+    .tab-selesai-mobile{
+      width: 60px;
+      height: 40px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #B4B9C7;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+    
+    .tab-selesai-mobile:hover{
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid #E0004D; 
+      color: #E0004D;
+    }
+    
+    .tab-dibatalkan-mobile{
+      width: 100px;
+      height: 40px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #B4B9C7;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+    
+    .tab-dibatalkan-mobile:hover{
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 2px solid #E0004D; 
+      color: #E0004D;
+    }
+
+    .btn-grup{
+      margin-top: 50px;
+      margin-left: 30px;
+      display: flex;
+      justify-content: space-around;
+      width: 250px;
+    }
+    
+    .button-semua-mobile{
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      width: 75px;
+      height: 28px;
+      left: 25px;
+      top: 180px;
+      border: 1px solid #E0004D;
+      border-radius: 130px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+      color: #E0004D;
+      cursor: pointer;
+    }
+    
+    .button-semua-mobile:hover{
+      background: #E0004D;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+
+
+    
+    .button-obat-resep-mobile{
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      width: 75px;
+      height: 28px;
+      left: 108px;
+      top: 180px;
+      border: 1px solid #E0004D;
+      border-radius: 130px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+      color: #E0004D;
+      cursor: pointer;
+    }
+    
+    .button-obat-resep-mobile:hover{
+      background: #E0004D;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+    
+    .button-obat-bebas-mobile{
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      width: 75px;
+      height: 28px;
+      left: 190px;
+      top: 180px;
+      border: 1px solid #E0004D;
+      border-radius: 130px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+      color: #E0004D;
+      cursor: pointer;
+    }
+    
+    .button-obat-bebas-mobile:hover{
+      background: #E0004D;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+    
+    .filter-mobile{
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      width: 36px;
+      height: 28px;
+      left: 315px;
+      top: 180px;
+      border: 1px solid #E0004D;
+      border-radius: 130px;
+      font-family: 'Public Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+      color: #E0004D;
+      cursor: pointer;
+    }
+  
+  .garis-akhir-mobile{
+    width: 327px;
+    height: 0px;
+    left: 24px;
+    top: 220px;
+    border: 1.5px solid #F8F8F8;
+  }
+
+  
+    .template-tab{
+      display: none;
+    }
+    
+    .judul-1{
+      display: none;
+    }
+    
+    .tab-semua{
+      display: none;
+    }
+    
+    .tab-semua:hover{
+      display: none;
+    }
+    
+    .tab-menunggu{
+      display: none;
+    }
+    
+    .tab-menunggu:hover{
+      display: none;
+    }
+    
+    .tab-diproses{
+      display: none;
+    }
+    
+    .tab-diproses:hover{
+      display: none;
+    }
+    
+    .tab-dikirim{
+      display: none;
+    }
+    
+    .tab-dikirim:hover{
+      display: none;
+    }
+    
+    .tab-selesai{
+      display: none;
+    }
+    
+    .tab-selesai:hover{
+      display: none;
+    }
+    
+    .tab-dibatalkan{
+      display: none;
+    }
+    
+    .tab-dibatalkan:hover{
+      display: none;
+    }
+    
+    .garis-batas-tab{
+      display: none;
+    }
+    
+    .judul-filter-jenis-obat{
+      display: none;
+    }
+    
+    .box-filter{
+      display: none;
+    }
+    
+    .button-semua-obat{
+      display: none;
+    }
+    
+    .button-semua-obat:hover{
+      display: none;
+    }
+    
+    .button-obat-resep{
+      display: none;
+    }
+    
+    .button-obat-resep:hover{
+      display: none;
+    }
+    
+    .button-obat-bebas{
+      display: none;
+    }
+    
+    .button-obat-bebas:hover{
+      display: none;
+    }
+    
+    .urutkan-filter{
+      display: none;
+    }
+    
+    .dropdown-01{
+      display: none;
+    }
+  
+    .isi-dropdown-01{
+      display: none;
+    }
+    
+    .dropdown-01:hover{
+     display: none;
+    
+    }
+  
+  }

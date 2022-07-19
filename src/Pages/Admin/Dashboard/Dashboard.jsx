@@ -9,7 +9,7 @@ import API_URL  from '../../../Helpers/API_URL.js';
 
 
 const DashboardAdmin  = () => {
-  const [token, setToken] = useState('')
+  const [tokenAdmin, setTokenAdmin] = useState('')
   useEffect(() => {
     let token = localStorage.getItem('token')
     const headers = {
@@ -19,32 +19,14 @@ const DashboardAdmin  = () => {
     }
     axios.get(`${API_URL}/admin/gettokenadmin`, headers)
     .then((res) => {
-        console.log('token', res.data)
-        setToken(res.data[0].token)
+        setTokenAdmin(res.data[0].token)
     }).catch((err) => {
         console.log('ini err get',err)
     })
-}, [])
+}, [tokenAdmin])
 
-    // if(localStorage.getItem('token') === token && localStorage.getItem('myTkn') === token ){
-    //     return(
-    //         <Navigate to='/homeadmin' />
-    //     )
-    // }
-
-    // if(localStorage.getItem('token') !== token){
-    //     return(
-    //         <Navigate to='/' />
-    //     )
-    //   }
-    
-    if(!localStorage.getItem('token')){
-        return(
-            <Navigate to='/loginadmin' />
-        )
-    }
-
-    return(
+const homePageAdmin = () => {
+    return (
         <>
         <SidebarAdmin />
           <div className="container">
@@ -124,7 +106,33 @@ const DashboardAdmin  = () => {
                   </div>
           </div>
         </>
-    )
+    );
+  }
+
+    if(localStorage.getItem('myTkn')){
+        if(localStorage.getItem('myTkn') === tokenAdmin){
+            return(
+                <>{homePageAdmin()}</>
+            )
+        }else{
+            return(
+                <Navigate to='/' />
+            )
+        }
+    }else{
+        if(localStorage.getItem('token') === tokenAdmin){
+            return(
+                <>{homePageAdmin()}</>
+            )
+        }else if(!localStorage.getItem('token')){
+            return(
+                <Navigate to='/loginadmin' />
+            )
+        }
+    }
+  
+
+    
 }
 
 export default DashboardAdmin

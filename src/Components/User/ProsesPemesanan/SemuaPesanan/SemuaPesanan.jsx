@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import './SemuaPesanan.css';
 import TemplateProsesPemesanan from "../TemplateProsesPemesanan";
+import SidebarProfile from "../../SidebarProfile/SidebarProfile";
+import Sidebar2 from "../../SidebarProsesPemesanan/Sidebar2";
 import Chat from '../../../../Assets/CHAT.svg';
 import axios from 'axios';
 import API_URL  from '../../../../Helpers/API_URL.js';
@@ -275,46 +277,65 @@ if (minPageNumberLimit >= 1) {
 
     
     return(
-        <div className="container-semua-pesanan">
-          <TemplateProsesPemesanan/>       
-          <div className='position-all-box'>
-            {
+        <div>
+          <div className="container-pp">
+            <div>
+            <div className="wrapper-pp">
+            <div className="c-pp d-flex">
+                <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-pp-1'>
+                    <SidebarProfile/>
+                </div>
+                <div  className='col-lg-1 col-none d-lg-block d-md-none d-none'>
+                    
+                </div>
+                <div className='col-lg-8 col-md-9 col-12 sidebar-pp'>
+                    <div>
+                      <Sidebar2 />
+                    </div>
+                    <div>
+                    {
               loading ? 
               'Loading...'
               :
               <>
-              {printData()}
+             <div className="box-pd"> {printData()}</div>
               </>
             }
-             <div className="mt-4">
-              <div className='pagination-semua d-flex'>
-                            <ul className="pageNumbers">
-                                <li>
-                                <button
-                                    onClick={handlePrevbtn}
-                                    disabled={currentPage == pages[0] ? true : false}
-                                >
-                                    <FontAwesomeIcon icon={faAngleLeft} className="logo-next-1" />
-                                     <FontAwesomeIcon icon={faAngleLeft} className="logo-next-2" />
-                                </button>
-                                </li>
-                                {pageDecrementBtn}
-                                {renderPageNumbers}
-                                {pageIncrementBtn}
+             <div className="mt-4 ml-4">
+               <div className='pagination-semua d-flex'>
+                  <ul className="pageNumbers">
+                      <li>
+                      <button
+                          onClick={handlePrevbtn}
+                          disabled={currentPage == pages[0] ? true : false}
+                      >
+                          <FontAwesomeIcon icon={faAngleLeft} className="logo-next-1" />
+                            <FontAwesomeIcon icon={faAngleLeft} className="logo-next-2" />
+                      </button>
+                      </li>
+                      {pageDecrementBtn}
+                      {renderPageNumbers}
+                      {pageIncrementBtn}
 
-                                <li>
-                                <button
-                                    onClick={handleNextbtn}
-                                    disabled={currentPage == pages[pages.length - 1] ? true : false}
-                                >
-                                     <FontAwesomeIcon icon={faAngleRight} className="logo-next-2"/>
-                                     <FontAwesomeIcon icon={faAngleRight} className="logo-next-1"/>
-                                </button>
-                                </li>
-                            </ul> 
-                        </div>
+                      <li>
+                      <button
+                          onClick={handleNextbtn}
+                          disabled={currentPage == pages[pages.length - 1] ? true : false}
+                      >
+                            <FontAwesomeIcon icon={faAngleRight} className="logo-next-2"/>
+                            <FontAwesomeIcon icon={faAngleRight} className="logo-next-1"/>
+                      </button>
+                      </li>
+                  </ul> 
+              </div>
             </div>
-          </div>
+                    </div>
+                    
+                </div>
+            </div>
+            </div> 
+        </div>
+        </div>
         </div>
     )
 }

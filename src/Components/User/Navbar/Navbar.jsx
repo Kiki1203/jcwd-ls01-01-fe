@@ -8,8 +8,6 @@ import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import SearchBubble from '../SearchBubble/SearchBubble';
-// import { useSelector } from 'react-redux';
-// import { onCheckUserLogin, onUserLogout } from '../../../Redux/Actions/userAction';
 
 const Navbar = () => {
   let [dropdownOpen, setDropdownOpen] = useState(false); 
@@ -20,6 +18,7 @@ const Navbar = () => {
   const [search, setSearch] = useState('')
   const [products, setProducts] = useState([])
   const [total, setTotal] = useState(0)
+  const [token, setToken] = useState('')
 
   useEffect(() => {
     if(search.length){
@@ -34,46 +33,68 @@ const Navbar = () => {
   }, [search])
 
   useEffect(() => {
-  if(localStorage.getItem('token')){
-
-  }else{
-    let token = localStorage.getItem('myTkn')
+    let tokens = localStorage.getItem('myTkn')
     const headers = {
         headers: { 
-            'Authorization': `${token}`,
+            'Authorization': `${tokens}`,
         }
     }
     axios.get(`${API_URL}/user/checkuserverify`, headers)
     .then((res) => {
-        console.log('verified',res.data)
         setVerified(res.data.verified)
         setUsername(res.data.username)
-    
+        setToken(res.data.token)
     }).catch((err) => {
-        console.log('ini err get',err)
+        console.log('ini err verified',err)
     })
-  }
-  
-}, [])
+}, [verified, token])
 
   const btnLogOut = () => {
-    localStorage.removeItem('myTkn');
-     navigate("/")
+    if(localStorage.getItem('token')){
+      if(localStorage.getItem('token') === token){
+        if(localStorage.getItem('myTkn')){
+          localStorage.removeItem('token');
+          localStorage.removeItem('myTkn');
+          navigate("/")
+        }else{
+          localStorage.removeItem('token');
+          navigate("/")
+        }
+      }
+    }else{
+      localStorage.removeItem('myTkn');
+      navigate("/")
+    }
   }
 
    const btnLogOut2 = () => {
-    localStorage.removeItem('myTkn');
-     navigate("/login")
+    if(localStorage.getItem('token')){
+      if(localStorage.getItem('token') === token){
+        if(localStorage.getItem('myTkn')){
+          localStorage.removeItem('token');
+          localStorage.removeItem('myTkn');
+          navigate("/login")
+        }else{
+          localStorage.removeItem('token');
+          navigate("/login")
+        }
+      }
+    }else{
+      localStorage.removeItem('myTkn');
+      navigate("/login")
+    }
   }
 
-  
   if(localStorage.getItem('token')){
-    return(
-      <></>
-    )
+    if(localStorage.getItem('token') !== token){
+      return (
+        <></>
+      )
+    }
   }
 
-  if (localStorage.getItem('myTkn')){
+
+  if (localStorage.getItem('myTkn') || localStorage.getItem('token') === token){
     return (
       <div id="navbar" className="d-lg-block d-md-block d-none">
          {

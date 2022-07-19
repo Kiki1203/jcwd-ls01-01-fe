@@ -259,16 +259,15 @@
 @media only screen and (max-width: 500px) {
   .container-footer-mobile{
     width: 100vw;
-    height: 8vh;
+    height: 10vh;
     background: #F6FAFB;
   }
 
   .container-inside-footer-mobile{
-    width: 80vw;
-    height: 43px;
+    background: #F6FAFB;
     display: flex;
-    margin-top: 5px;
-    margin-left: 12px;
+    padding: 5px 5px;
+    margin-left: 10px;
   }
 
   .beranda-footer{

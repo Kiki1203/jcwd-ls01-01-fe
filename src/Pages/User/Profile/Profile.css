@@ -6,6 +6,52 @@
   left: 480px
 }
 
+.c{
+  display: flex;
+}
+
+.wrapper {
+  margin-top: 150px;
+  margin-bottom: 60px;
+}
+.wrapper:before,
+.wrapper:after{
+  content: ' ';
+  display: table;
+  clear: both;
+}
+
+.container-tp{
+  min-height: 100vh;
+  min-width: 90vw;
+  padding: 0px 50px 50px 50px;
+}
+
+
+.sidebar-profile{
+  background: #FFFFFF;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+  border-radius: 8px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+
+.sidebar-new-profile-1{
+  background: #FFFFFF;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+  border-radius: 8px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+
 .foto-profile{
   width: 200px;
   height: 200px;
@@ -72,6 +118,44 @@
 }
 
 @media only screen and (max-width: 850px) {
+  .container-tp{
+    min-height: 65vh;
+    min-width: 90vw;
+    padding: 0px 50px 50px 50px;
+    border: 1px solid white;
+   
+  }
+    
+  .c{
+    display: flex;
+  }
+  .sidebar-new-profile-1{
+    background: #FFFFFF;
+    box-shadow: none;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+
+  }
+
+  .sidebar-profile{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 50px;
+
+  }
+  
+
   .container-profile{
     position: absolute;
     width: 500px;
@@ -115,6 +199,7 @@
     font-size: 20px;
     line-height: 24px;
     color: #213360;
+    margin-bottom: 20px;
   }
   
   .nama-profile{
@@ -122,9 +207,9 @@
     height: 20px;
     font-family: 'Public Sans';
     font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
     color: #213360;
     margin-top: 10px;
   }
@@ -135,8 +220,8 @@
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 18px;
     color: #213360;
     margin-top: 10px;
   }
@@ -146,12 +231,55 @@
 }
 
 @media only screen and (max-width: 500px) {
-  .container-profile{
-    position: absolute;
-    width: 300px;
-    height: 280px;
-    top: 0px;
-    left: 0px;
+
+  .wrapper {
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+  .container-tp{
+    min-height: 90vh;
+    min-width: 90vw;
+    padding: 0px;
+    border: 1px solid white;
+  }
+  .c{
+    display: flex;
+    flex-direction: column;
+    width: 370px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+
+  .sidebar-profile{
+    background: #FFFFFF;
+    box-shadow: none;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 50px;
+    margin-left: 0px;
+  }
+  
+ 
+  /* .sidebar-new-profile{
+    background: #FFFFFF;
+    box-shadow: none;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: -100px;
+    margin-left: -50px;
+  } */
+  
+  
+  .sidebar-new-profile-1{
+    display: none;
   }
 
   .container-inside{
@@ -162,19 +290,19 @@
   }
   
   .foto-profile{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     background: #ffff;
     border: 1.5px solid #F5F6F9;
     margin-top: 30px;
-    margin-left: 50px;
+    margin-left: 30px;
   }
   
   
   #userImgSet{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     left: 0px;
     border-radius: 50%;
     object-fit: cover;
@@ -189,6 +317,7 @@
     justify-content: center;
     text-align: center;
     margin-top: 10px;
+    margin-left: 30px;
   }
   
   .personal-data{
@@ -210,4 +339,257 @@
     color: #213360;
     margin-top: 0px;
   }
+
+  .sidebars-mobile{
+    width: 300px;
+    height: 300px;
+    top: 430px;
+    left: 0px;
+  }
+    
+    
+    .tab-mobile-profile-2{
+      display: flex;
+      justify-content: space-around;
+      margin-left: 0px;
+      margin-top: 10px;
+      width: 300px;
+      height: 50px;
+      margin-left: 50px;
+      margin-top: 20px;
+    } 
+    
+    .button-edit-profile{
+      width: 57px;
+      height: 50px;
+      padding-left: 10px;
+      cursor: pointer;
+    }
+    
+    .button-edit-profile:hover{
+      cursor: pointer;
+      color: #E0004D;
+    }
+    
+    .tulisan-edit-profile{
+      width: 100px;
+      height: 15px;
+      margin-left: -30px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 150%;
+      text-align: center;
+    }
+    
+    .button-proses-pemesanan-profile{
+      width: 80px;
+      height: 50px;
+      left: 160px;
+      top: 350px;
+      cursor: pointer;
+    }
+    
+    .button-proses-pemesanan-profile:hover{
+      cursor: pointer;
+      color: #E0004D;
+    }
+    
+    .tulisan-proses-profile{
+      width: 130px;
+      height: 15px;
+      margin-left: -40px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 150%;
+      text-align: center;
+    }
+    
+    .button-favorite-profile{
+      width: 57px;
+      height: 79px;
+      left: 290px;
+      top: 350px;    
+    }
+    
+    .button-favorite-profile:hover{
+      cursor: pointer;
+      color: #E0004D;
+    }
+    
+    .tulisan-favorite-profile{
+      width: 130px;
+      height: 15px;
+      margin-left: -55px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 150%;
+      text-align: center;
+    }
+    
+    .tab-list{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 40px;
+      gap: 10px;
+      width: 370px;
+      height: 280px;
+      display: flex;
+      flex-direction: column;
+     margin-left: 0px;
+     margin-top: 10px;
+    }
+    
+    .tab-list-1{
+      width: 360px;
+      height: 50px;
+      cursor: pointer;
+      border-bottom: 1.5px solid #F5F6F9;
+    }
+    
+    .tab-list-1:hover{
+      color: #E0004D;
+      cursor: pointer;
+    }
+    
+    .logo-metode-bayar{
+      margin-left: 30px;
+      font-size: 16px;
+      margin-top: 5px;
+    }
+    
+    .logo-2{
+      margin-left: 330px;
+      font-size: 16px;
+      margin-bottom: 100px;
+      margin-top: -20px;
+    }
+    
+    .logo-3{
+      margin-left: 330px;
+      font-size: 16px;
+      margin-bottom: 100px;
+      margin-top: -20px;
+    }
+    
+    .logo-4{
+      margin-left: 330px;
+      font-size: 16px;
+      margin-bottom: 100px;
+      margin-top: -20px;
+    }
+    
+    .logo-5{
+      margin-left: 330px;
+      font-size: 16px;
+      margin-bottom: 100px;
+      margin-top: -20px;
+    }
+    
+    .metode-pembayaran-profile{
+      margin-left: 30px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      
+    }
+    
+    .tab-list-2{
+      width: 360px;
+      height: 50px;
+      left: 0px;
+      top: 75px;
+      cursor: pointer;
+      border-bottom: 1.5px solid #F5F6F9;
+    }
+    
+    .tab-list-2:hover{
+      cursor: pointer;
+      color: #E0004D;
+    }
+    
+    .logo-alamat-kirim{
+      margin-left: 30px;
+      font-size: 16px;
+    
+    }
+    
+    .alamat-pengiriman-profile{
+      
+      margin-left: 30px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 150%;
+    }
+    
+    .tab-list-3{
+      
+      width: 360px;
+      height: 50px;
+      left: 0px;
+      top: 150px;
+      border-bottom: 1.5px solid #F5F6F9;
+      cursor: pointer;    
+    }
+    
+    .tab-list-3:hover{
+      cursor: pointer;
+      color: #E0004D;
+    }
+    
+    .logo-pesan-bantuan{
+      
+      margin-left: 30px;
+      font-size: 16px;
+    }
+    
+    .pesan-bantuan-profile{
+      
+      margin-left: 30px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 150%;
+    }
+    
+    .tab-list-4{
+      
+      width: 360px;
+      height: 50px;
+      left: 0px;
+      top: 225px;
+      cursor: pointer;    
+    }
+    
+    .tab-list-4:hover{
+      cursor: pointer;
+      color: #E0004D;
+    }
+    
+    .logo-log-out{
+      
+      margin-left: 30px;
+      font-size: 16px;
+    }
+    
+    .log-out-profile{
+      
+      margin-left: 30px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 150%;
+    }  
 }
