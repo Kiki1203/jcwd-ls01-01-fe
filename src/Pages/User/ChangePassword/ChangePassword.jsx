@@ -2,6 +2,7 @@ import React, { useState, CSSProperties } from 'react';
 import './ChangePassword.css';
 import TemplateProfile from '../../../Components/User/TemplateProfile/TemplateProfile.jsx';
 import ChangePasswords from '../../../Assets/ChangePassword.svg';
+import SidebarProfile from '../../../Components/User/SidebarProfile/SidebarProfile.jsx';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import Swal from 'sweetalert2';
@@ -92,68 +93,82 @@ const ChangePassword = () => {
 
   return (
     <div>
-      <TemplateProfile />
-     <div className="container-change-password">
-     <div className="d-lg-none d-md-none d-block d-flex mt-4">
-                    <div>
-                        <Link to='/' style={{ textDecoration:"none", color: "black", cursor: 'pointer', fontSize: "12px", marginTop: "30px", marginLeft:"10px" }}>
-                            <FontAwesomeIcon icon={faAngleLeft} />
-                        </Link>
+      <div className="container-cp">
+        <div>
+         <div className="wrapper-cp">
+         <div className="c-cp d-flex">
+             <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-cp-1'>
+                <SidebarProfile/>
+             </div>
+             <div  className='col-lg-1 col-none d-lg-block d-md-none d-none'>
+                 
+             </div>
+             <div  className='col-lg-8 col-md-9 col-12 sidebar-cp'>
+                <div className="d-lg-none d-md-none d-block d-flex mt-4">
+                        <div>
+                            <Link to='/' style={{ textDecoration:"none", color: "black", cursor: 'pointer', fontSize: "12px", marginTop: "30px", marginLeft:"10px" }}>
+                                <FontAwesomeIcon icon={faAngleLeft} />
+                            </Link>
+                        </div>
+                        <div className="mx-4 keterangan-verifikasi-desk" >Akun Terverifikasi</div>
                     </div>
-                    <div className="mx-4 keterangan-verifikasi-desk" >Akun Terverifikasi</div>
-                </div>
-                <div className="d-lg-block d-md-block d-none">
-                <div className="mx-4 mt-4 keterangan-verifikasi-desk">Akun Terverifikasi</div>
-                </div>
-                    <div className=" mt-4 d-lg-block d-md-block d-none">
-                       <div className="d-flex ">
-                       <div className="mx-3 tab-profile">Profile</div> 
-                        <div className="mx-3 tab-profile">Edit Profile</div>
-                        <div className="mx-3 tab-profile">Change Password</div>
-                       </div>
+                    <div className="d-lg-block d-md-block d-none">
+                    <div className="mx-4 mt-4 keterangan-verifikasi-desk">Akun Terverifikasi</div>
                     </div>
-               <div  className="d-lg-block d-md-block d-none">
-               <hr style={{marginTop:'-3px'}}/>
-               </div>
-        <div className="box-c-1">
-          <div className="foto-change-password">
-        <img src={ChangePasswords} alt="" />
-      </div>
-          <div className="box-c-2">
-          <div className="baris-change-password-1">
-        <div>Old Password</div>
-        <InputGroup className="mb-3">
-          <Input type="text" onChange={oldPasswordChange} />
-          <Button className="icon-email-newpassword">@</Button>
-        </InputGroup>
-      </div>
-      <div className="form-group baris-change-password-2">
-        <div>New Password</div>
-        <InputGroup className="mb-3">
-          <Input type="text" onChange={newPasswordChange} />
-          <Button className="icon-email-newpassword">@</Button>
-        </InputGroup>
-      </div>
-      <div className="form-group baris-change-password-3">
-        <div>Repeat New Password</div>
-        <InputGroup className="mb-5">
-          <Input type="text" value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
-          <Button className="icon-email-newpassword">@</Button>
-        </InputGroup>
-      </div>
-      {loading ? (
-        <button disable type="submit" className=" btn btn-secondary button-simpan-change-password">
-          <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={15} />
-        </button>
-      ) : (
-        <button type="submit" className=" btn btn-danger mt-4 button-simpan-change-password" onClick={() => onSubmit()}>
-          Simpan{' '}
-        </button>
-      )}
+                        <div className=" mt-4 d-lg-block d-md-block d-none">
+                          <div className="d-flex ">
+                          <div className="mx-3 tab-profile my-3" onClick={() => navigate('/profile')}>Profile</div> 
+                            <div className="mx-3 tab-profile my-3" onClick={() => navigate('/editprofile')}>Edit Profile</div>
+                            <div className="mx-3 tab-profile my-3" onClick={() => navigate('/changepassword')}>Change Password</div>
+                          </div>
+                        </div>
+                  <div  className="d-lg-block d-md-block d-none">
+                  <hr style={{marginTop:'-17px'}}/>
+                  </div>
+            <div className="box-c-1">
+              <div className="foto-change-password">
+            <img src={ChangePasswords} alt="" />
           </div>
+              <div className="box-c-2">
+              <div className="baris-change-password-1">
+            <div>Old Password</div>
+            <InputGroup className="mb-3">
+              <Input type="text" onChange={oldPasswordChange} />
+              <Button className="icon-email-newpassword">@</Button>
+            </InputGroup>
+          </div>
+          <div className="form-group baris-change-password-2">
+            <div>New Password</div>
+            <InputGroup className="mb-3">
+              <Input type="text" onChange={newPasswordChange} />
+              <Button className="icon-email-newpassword">@</Button>
+            </InputGroup>
+          </div>
+          <div className="form-group baris-change-password-3">
+            <div>Repeat New Password</div>
+            <InputGroup className="mb-5">
+              <Input type="text" value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
+              <Button className="icon-email-newpassword">@</Button>
+            </InputGroup>
+          </div>
+          {loading ? (
+            <button disable type="submit" className=" btn btn-secondary button-simpan-change-password">
+              <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={15} />
+            </button>
+          ) : (
+            <button type="submit" className=" btn btn-danger mt-4 button-simpan-change-password" onClick={() => onSubmit()}>
+              Simpan{' '}
+            </button>
+          )}
+              </div>
 
-        </div>
+            </div>
+             </div>
+         </div>
+         </div> 
      </div>
+     </div>
+   
     </div>
   );
 };
