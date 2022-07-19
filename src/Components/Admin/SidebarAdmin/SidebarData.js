@@ -39,25 +39,39 @@ export const SidebarData = [
         className: 'sub-nav'
       },
       {
-        title: 'Pesanan Baru',
-        path: '/transaksiadmin/pesanan-baru',
+        title: 'Resep Baru',
+        path: '/transaksiadmin/resep-baru',
         className: 'sub-nav'
       },
       {
-        title: 'Siap Dikirim',
-        path: '/transaksiadmin/siap-dikirim',
+        title: 'Menunggu Bukti Pembayaran',
+        path: '/transaksiadmin/menunggu-bukti-pembayaran',
+        className: 'sub-nav'
+      },
+      {
+        title: 'Cek Bukti Pembayaran',
+        path: '/transaksiadmin/cek-bukti-pembayaran',
+        className: 'sub-nav'
+      },
+      {
+        title: 'Pesanan Diproses',
+        path: '/transaksiadmin/pesanan-diproses',
+        className: 'sub-nav'
       },
       {
         title: 'Dalam Pengiriman',
         path: '/transaksiadmin/dalam-pengiriman',
+        className: 'sub-nav'
       },
       {
-        title: 'Selesai',
-        path: '/transaksiadmin/selesai',
+        title: 'Pesanan Selesai',
+        path: '/transaksiadmin/pesanan-selesai',
+        className: 'sub-nav'
       },
       {
-        title: 'Dibatalkan',
-        path: '/transaksiadmin/dibatalkan',
+        title: 'Pesanan Dibatalkan',
+        path: '/transaksiadmin/pesanan-dibatalkan',
+        className: 'sub-nav'
       }
     ]
   },
@@ -82,4 +96,4 @@ export const SidebarData = [
       }
     ]
   }
-];
+]

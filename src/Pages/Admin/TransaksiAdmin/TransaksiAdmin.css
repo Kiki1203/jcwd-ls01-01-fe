@@ -14,6 +14,7 @@
     font-size: 20px;
     color: #213360;
     margin: 0px;
+    text-transform: capitalize;
 }
 
 .button-unduh {
@@ -39,7 +40,7 @@
     padding: 6px 30px 6px 12px;
     background: #FFFFFF;
     border-radius: 5px;
-    width: 250px;
+    width: 200px;
     font-size: 14px;
     color: #213360;
     border: 1px solid #CCCCCC;
@@ -55,7 +56,6 @@
     cursor: pointer;
     position: absolute;
     right: 8px;
-    top: 18px;
 }
 
 .select-transaksi-admin {
@@ -82,13 +82,89 @@ select::-ms-expand{
 }
 
 .transaksi-kartu-per-halaman {
+    width: 50px;
+    height: 26px;
+    text-align: center;
     font-weight: 400;
     font-size: 14px;
-    padding: 2px 6px;
     border-radius: 3px;
     color: #E0004D;
     border: 1px solid #E0004D;
     outline: none;
     background: none;
     cursor: pointer;
+}
+
+.page-numbers-transaksi {
+    list-style: none;
+    display: flex;
+    width: auto;
+    height: 28px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 17px;
+    padding: 0px;
+}
+
+
+.page-numbers-transaksi li {
+    padding: 4px;
+    cursor: pointer;
+    height: 28px;
+    width: 28px;
+    color: #737A8D;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0px;
+    line-height: 20px;
+}
+
+.page-numbers-transaksi li.active {
+    color: #fff;
+    background: #E0004D;
+    box-shadow: 0px 7px 16px rgba(0, 0, 0, 0.14);
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.page-numbers-transaksi li button {
+    background-color: transparent;
+    display: flex;
+    border: none;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 17px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
+.logo-next-1{
+    color: #1A1E2B
+}
+
+.logo-next-2{
+    color: #D5D7DD;
+}
+
+.page-numbers-transaksi li button:hover {
+    background-color: white;
+    color: black;
+}
+.page-numbers-transaksi li button:focus {
+    outline: none;
+}
+
+.no-transaction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 }

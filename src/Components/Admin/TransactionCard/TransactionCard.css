@@ -1,0 +1,147 @@
+.kartu-transaksi {
+    width: 100%;
+    min-width: 800px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+    margin: 35px 0px;
+}
+
+.transaksi-16-bold {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1E2B;
+    margin: 0px;
+}
+
+.transaksi-gambar {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    object-fit: contain;
+}
+
+.transaksi-detail-kiri {
+    width: 220px;
+    border-right: 1px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 20px;
+}
+
+.transaksi-salinan-resep {
+    background-color: #E0004D;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 5px 5px;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7px;
+}
+
+.transaksi-salinan-resep:hover {
+    background-color: #cc0047;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+}
+
+.transaksi-detail-header {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1A1E2B;
+    margin: 0px;
+}
+
+.transaksi-detail-harga {
+    font-size: 12px;
+    color: gray;
+    margin: 0px;
+}
+
+.transaksi-lihat-lainnya {
+    border: none;
+    outline: none;
+    background-color: white;
+    padding: 0px;
+    font-size: 12px;
+    color: #E0004D;
+    text-align: left;
+    width: fit-content;
+}
+
+.transaksi-detail-kanan {
+    display: flex;
+    width: calc(100% - 300px);
+}
+
+.transaksi-detail-konten {
+    font-size: 14px;
+    color: #1A1E2B;
+    margin: 0px;
+}
+
+.transaksi-total-harga {
+    margin: 0px 20px;
+    background-color: #ffe9f1;
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.transaksi-button-icon {
+    border: none;
+    outline: none;
+    background-color: white;
+    gap: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #E0004D;
+}
+
+.tolak-pesanan-button {
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 10px 0px;
+    color: #E0004D;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.terima-pesanan-button {
+    background-color: #E0004D;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    width: 170px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.terima-pesanan-button:hover {
+    background-color: #cc0047;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+}
+
+.terima-pesanan-button:disabled {
+    background-color: grey;
+    color: white;
+    cursor: not-allowed;
+}
+
+.terima-pesanan-button:disabled:hover {
+    box-shadow: none;
+}
