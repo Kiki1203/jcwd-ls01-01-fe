@@ -372,6 +372,13 @@
   
   
   @media only screen and (max-width: 600px) {
+    .container-dibatalkan{
+      min-width: 90vw;
+    padding: 0px 0px 0px 0px;
+    min-height: 90vh !important;
+     
+    }
+
     .position-all-box{
       position: absolute;
       left: -10px;
@@ -447,6 +454,8 @@
       align-items: center;
       text-align: center;
       color: #E0004D;
+      margin-left: -10px;
+      margin-top: -2px;
     }
     
     .garis-dibatalkan-pesanan-1{

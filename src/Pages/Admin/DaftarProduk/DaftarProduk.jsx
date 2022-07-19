@@ -3,7 +3,6 @@ import './DaftarProduk.css';
 import SidebarAdmin from '../../../Components/Admin/SidebarAdmin/SidebarAdmin.jsx';
 import ModalTambahObat from '../../../Components/Admin/ModalAddProduk/ModalTambahObat.jsx';
 import ModalEditObat from '../../../Components/Admin/ModalEditProduk/ModalEditObat.jsx';
-import Modal1 from '../../../Components/Admin/ModalEditProduk/Modal1.jsx';
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import TableData from './TableData';
@@ -36,7 +35,7 @@ const DaftarProduk  = () => {
     const [selected, setSelected] = useState(null)
     const [selected2, setSelected2] = useState(null)
     const [idProduk, setIdProduk] = useState(0)
-    const [idRandom, setIdRandom] = useState([])
+    const [listSearch, setListSearch] = useState(0)
 
     useEffect(() => {
         setLoading(true)
@@ -59,6 +58,8 @@ const DaftarProduk  = () => {
         })
     }, [currentPage])
 
+    // FITER AND SEARCH KIKI
+
     useEffect(() => {
         setLoading(true)
         var data = parseInt(kategori)
@@ -66,8 +67,10 @@ const DaftarProduk  = () => {
        
         axios.get(`${API_URL}/admin/search?kategori=${data}&nama=${searchNama}`)
         .then((res) => {
+            console.log(res)
             setProdukFilter(res.data.result)
             setLoading(false)
+            setListSearch(res.data.total)
         }).catch((err) => {
             console.log('ini err get',err)
             setLoading(false)
@@ -84,9 +87,33 @@ const DaftarProduk  = () => {
     pages.push(i);
     }
 
+    const pages2 = [];
+    for (let i = 1; i <= Math.ceil(listSearch / itemsPerPage); i++) {
+    pages2.push(i);
+    }
+
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems2 = produkFilter.slice(indexOfFirstItem, indexOfLastItem);
+
+    const renderPageNumbers2 = pages2.map((number) => {
+        if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
+        return (
+            <li
+            key={number}
+            id={number}
+            onClick={handleClick}
+            className={currentPage == number ? "active" : null}
+            >
+            {number}
+            </li>
+        );
+        } else {
+        return null;
+        }
+    });
+
 
     const renderPageNumbers = pages.map((number) => {
         if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
@@ -126,17 +153,23 @@ const DaftarProduk  = () => {
         pageIncrementBtn = <li onClick={handleNextbtn}> &hellip; </li>;
     }
 
+    let pageIncrementBtn2 = null;
+    if (pages2.length > maxPageNumberLimit) {
+        pageIncrementBtn2 = <li onClick={handleNextbtn}> &hellip; </li>;
+    }
+
+
     let pageDecrementBtn = null;
     if (minPageNumberLimit >= 1) {
         pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
     }
+
 
     let kategoriChange = (event) => {
         setKategori(event.target.value)
     }
 
     let namaObatChange = (event) => {
-       
           setNama(event.target.value)
       }
 
@@ -144,7 +177,7 @@ const DaftarProduk  = () => {
         return produkFilter.map((value, index) => {
            
             return (
-                <tr key={value.id}>
+                <tr key={index}>
                     <td>
                     {
                         value.id > 115 ?
@@ -256,7 +289,7 @@ const DaftarProduk  = () => {
                     <td>
                         <div  className="d-flex">
                         {
-                                openModal2 && <Modal1 setOpenModal={setOpenModal2}  selected={selected2}
+                                openModal2 && <ModalEditObat setOpenModal={setOpenModal2}  selected={selected2}
                                 setSelected={setSelected2} id={idProduk}/>
                         }
                         
@@ -291,9 +324,10 @@ const DaftarProduk  = () => {
         }
         axios.delete(API_URL + `/admin/deleteproduct/${id}?page=${currentPage}&limit=${itemsPerPage}`, headers)
         .then((res) => {
+            console.log(res.data)
             console.log('get delete kiki', res.data.error)
             if(res.data.error === false){
-                let newData = data.splice(0,115)
+                let newData = res.data.data.splice(0,122)
                 setData(newData)
             }
             // setData(res.data.data)
@@ -358,11 +392,6 @@ const DaftarProduk  = () => {
  
                  </div>
                  <div id="button-tambah-obat-produk"  onClick={() => setOpenModal(true)} ><FontAwesomeIcon icon={faDownload} className="" />Tambah Obat</div>
-                 {/* <ModalTambahObat
-                     modalOpen={modalOpen}
-                     handleModal={handleModalEdit}
-                 /> */}
-                 {/* <div className="button-tambah-obat-produk"><span className="material-icons">file_download</span>Tambah Obat</div> */}
                  <div className="garis-inside-box-daftar-produk"></div>
                  <div className="box-tabel-daftar-produk">
                  <div className="inside-box-daftar-produk">
@@ -383,42 +412,78 @@ const DaftarProduk  = () => {
                  </div>
  
                  <div className="box-footer-tabel-daftar-produk">
-                     <div className="keterangan-footer-tabel-daftar-produk">Menampilkan {jumlahList} dari {totalProduk} data</div>
-                     <div className="tulisan-jumlah-baris-footer">Baris per halaman</div>
-                     <div className="button-dropdown-jumlah-baris">
-                         <select 
-                         className="form-control input-admin-daftar-3"  placeholder="Filter"
-                         >
-                             <option value="" >10</option>
-                             <option value="5">5</option>
-                         </select>  
-                     <FontAwesomeIcon icon={faAngleDown}  className='logo-input-group-text-daftar-4'/></div>
+                        {
+                        produkFilter.length !== 0   ?
+                        <>
+                         <div className="keterangan-footer-tabel-daftar-produk">Menampilkan {listSearch} dari {totalProduk} data</div>
+                        </>
+                        :
+                        <>
+                         <div className="keterangan-footer-tabel-daftar-produk">Menampilkan {jumlahList} dari {totalProduk} data</div>
+                        </>
+                       }
+                    
+                  
+
                      <div className="box-pagination-footer-produk">
                         <div className='d-flex'>
-                            <ul className="pageNumbers">
+                             {
+                                produkFilter.length !== 0   ?
+                                <>
+                                  <ul className="pageNumbers">
                                 <li>
                                 <button
                                     onClick={handlePrevbtn}
-                                    disabled={currentPage == pages[0] ? true : false}
+                                    disabled={currentPage == pages2[0] ? true : false}
                                 >
                                     <FontAwesomeIcon icon={faAngleLeft} className="logo-next-1" />
                                      <FontAwesomeIcon icon={faAngleLeft} className="logo-next-2" />
                                 </button>
-                                </li>
-                                {pageDecrementBtn}
-                                {renderPageNumbers}
-                                {pageIncrementBtn}
+                                    </li>
+                                    {pageDecrementBtn}
+                                    {renderPageNumbers2}
+                                    {pageIncrementBtn2}
 
-                                <li>
-                                <button
-                                    onClick={handleNextbtn}
-                                    disabled={currentPage == pages[pages.length - 1] ? true : false}
-                                >
-                                     <FontAwesomeIcon icon={faAngleRight} className="logo-next-2"/>
-                                     <FontAwesomeIcon icon={faAngleRight} className="logo-next-1"/>
-                                </button>
-                                </li>
-                            </ul> 
+                                    <li>
+                                    <button
+                                        onClick={handleNextbtn}
+                                        disabled={currentPage == pages2[pages2.length - 1] ? true : false}
+                                    >
+                                        <FontAwesomeIcon icon={faAngleRight} className="logo-next-2"/>
+                                        <FontAwesomeIcon icon={faAngleRight} className="logo-next-1"/>
+                                    </button>
+                                    </li>
+                                </ul> 
+                                </>
+                                :
+                                <>
+                                  <ul className="pageNumbers">
+                                    <li>
+                                    <button
+                                        onClick={handlePrevbtn}
+                                        disabled={currentPage == pages[0] ? true : false}
+                                    >
+                                        <FontAwesomeIcon icon={faAngleLeft} className="logo-next-1" />
+                                        <FontAwesomeIcon icon={faAngleLeft} className="logo-next-2" />
+                                    </button>
+                                    </li>
+                                    {pageDecrementBtn}
+                                    {renderPageNumbers}
+                                    {pageIncrementBtn}
+
+                                    <li>
+                                    <button
+                                        onClick={handleNextbtn}
+                                        disabled={currentPage == pages[pages.length - 1] ? true : false}
+                                    >
+                                        <FontAwesomeIcon icon={faAngleRight} className="logo-next-2"/>
+                                        <FontAwesomeIcon icon={faAngleRight} className="logo-next-1"/>
+                                    </button>
+                                    </li>
+                                </ul> 
+                                </>
+                            }
+                          
                         </div>
                      </div>
                  </div>

@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import './TemplateProsesPemesanan.css';
 import SidebarProfile from "../../../Components/User/SidebarProfile/SidebarProfile.jsx";
-import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
-import { Link } from 'react-router-dom';
-// import Filter from '../Gambar/Filter.png';
-// import Notif from '../Gambar/NOTIF.png';
-// import Cart from '../Gambar/CART.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLine, faBell, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { Link, useNavigate } from "react-router-dom";
 
 const TemplateProsesPemesanan  = () => {
-    let [dropdownOpen, setdropdownOpen] = useState(false);
+  const navigate = useNavigate()
+    
     
     return(
         <div className="container-template-proses">
-        <SidebarProfile/>
+          <div className="d-lg-block d-md-block d-none">
+          <SidebarProfile/> 
+          </div>  
+      
             {/* TAB VERSI DEKSTOP */}
             <div className="d-md-block d-lg-block d-none">
               <div className='template-tab'>
@@ -59,10 +61,10 @@ const TemplateProsesPemesanan  = () => {
             <div className="d-md-none d-lg-none d-block">
                 {/* TAB */}
                 <div className="tab-versi-mobile">
-                  <div className="daftar-pemesan-mobile">Daftar Pemesan</div>
-                  <div>
-                  <span className="material-icons logo-tab-mobile" >notifications</span>
-                  <span className="material-icons logo-tab-mobile" >shopping_cart</span>
+                  <div className="daftar-pemesan-mobile">Daftar Pesanan</div>
+                  <div style={{fontSize: '5px'}}>
+                  <FontAwesomeIcon icon={faBell} className="logo-tab-mobile" style={{cursor:"pointer", color:"#E0004D", marginLeft: '-50px', fontSize: '5px'}}/>
+                  <FontAwesomeIcon icon={faCartShopping} onClick={() => navigate('/cart')} className="logo-tab-mobile" style={{cursor:"pointer", color:"#E0004D",  fontSize: '5px'}}/>
                   </div>
                   <div className="tab-box-mobile">
                   <Link to="/semuapesanan" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
@@ -89,7 +91,7 @@ const TemplateProsesPemesanan  = () => {
                 <div className="button-semua-mobile">Semua</div>
                 <div className="button-obat-resep-mobile">Obat Resep</div>
                 <div className="button-obat-bebas-mobile">Obat Bebas</div>
-                <span className="material-icons filter-mobile">format_line_spacing</span>
+                {/* <span className="material-icons filter-mobile">format_line_spacing</span> */}
                 <div className="garis-akhir-mobile"></div>
             </div>
         </div>

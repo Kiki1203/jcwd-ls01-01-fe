@@ -14,7 +14,7 @@ import { Link, Navigate } from 'react-router-dom';
 
 function EditProfile() {
     const [nama, setNama] = React.useState("");
-    const [email, setEmail] = React.useState("");
+    const [username, setUsername] = React.useState("");
     const [gender, setGender] = React.useState("");
     const [tanggallahir, setTanggallahir] = React.useState("");
     const [profilepic, setProfilepic] = React.useState("");
@@ -32,9 +32,9 @@ function EditProfile() {
         try {
             let file = [...e.target.files]
             setFile(file[0])
-            if(file.length > 1) throw { message: 'You can only upload 1 image' }
-            if(file[0].size > 4000000) throw { message: 'Your file size is too big (>5mb)' }
-            if(!file[0].type.includes('image'))  throw { message: 'This file type is not supported'}
+            if(file.length > 1) throw { message: 'Hanya Bisa Upload 1 Gambar Saja' }
+            if(file[0].size > 5000000) throw { message: 'File Tidak Boleh Melebihi 5 Mb' }
+            if(!file[0].type.includes('image'))  throw { message: 'Jenis File Tidak Diizinkan'}
             const reader = new FileReader()
             //   reader.readAsDataURL(e.target.files[0])
               reader.onload = () => {
@@ -62,7 +62,7 @@ function EditProfile() {
             // console.log(res.data)
             // console.log('ini res.data.nama', res.data[0].nama)
             if(res.data[0].nama) {setNama(res.data[0].nama)}
-            if(res.data[0].email) {setEmail(res.data[0].email)}
+            if(res.data[0].username) {setUsername(res.data[0].username)}
             if(res.data[0].gender) {setGender(res.data[0].gender)}
             if(res.data[0].profile_picture) {setProfilepic(res.data[0].profile_picture)}
             if(res.data[0].tanggal_lahir) {setTanggallahir(res.data[0].tanggal_lahir)}
@@ -75,8 +75,8 @@ function EditProfile() {
             setNama(event.target.value)
         }
     
-        let emailChange = (event) => {
-            setEmail(event.target.value)
+        let usernameChange = (event) => {
+            setUsername(event.target.value)
         }
 
         let genderChange = (event) => {
@@ -87,24 +87,24 @@ function EditProfile() {
             setTanggallahir(event.target.value)
         }
 
-         const onEditImageFileChange = (e) => {
-            console.log('e.target.files[0].name', e.target.files[0].name)
-            if(e.target.files[0]) {
-                seteditImageFileName(e.target.files[0].name)
-                seteditImageFile(e.target.files[0])
-                const reader = new FileReader()
-                reader.readAsDataURL(e.target.files[0])
-                reader.onload = () => {
-                    if(reader.readyState === 2){
-                        setpreviewImage(reader.result)
-                    }
-                }
-            }
-            else {
-                seteditImageFileName('Select Image...')
-                seteditImageFile("")
-            }
-        }
+        //  const onEditImageFileChange = (e) => {
+        //     console.log('e.target.files[0].name', e.target.files[0].name)
+        //     if(e.target.files[0]) {
+        //         seteditImageFileName(e.target.files[0].name)
+        //         seteditImageFile(e.target.files[0])
+        //         const reader = new FileReader()
+        //         reader.readAsDataURL(e.target.files[0])
+        //         reader.onload = () => {
+        //             if(reader.readyState === 2){
+        //                 setpreviewImage(reader.result)
+        //             }
+        //         }
+        //     }
+        //     else {
+        //         seteditImageFileName('Select Image...')
+        //         seteditImageFile("")
+        //     }
+        // }
 
         const onBtnUpdateProfile = () => {
             setLoading(true)
@@ -130,7 +130,7 @@ function EditProfile() {
             
             var data = {
                 nama: nama,
-                email: email,
+                username: username,
                 gender: gender,
                 tanggal_lahir: borndate,
                 umur: tahun
@@ -139,19 +139,13 @@ function EditProfile() {
             formData.append('image', file)
             formData.append('data', JSON.stringify(data))
             
-            if(!data.email.includes('@')) throw { message: Swal.fire({
-                title: 'Error!',
-                text: 'Email Wrong',
-                icon: 'error',
-                confirmButtonText: 'Okay!'
-            }) }
             axios.patch(API_URL + "/user/editprofiledata", formData, headers)
             .then((res) => {
                 // console.log(res.data)
                 if(res.data[0].nama) {setNama(res.data[0].nama)}
                 else {setNama('')}
-                if(res.data[0].email) {setEmail(res.data[0].email)}
-                 else {setEmail('')}
+                if(res.data[0].username) {setUsername(res.data[0].username)}
+                 else {setUsername('')}
                 if(res.data[0].gender) {setGender(res.data[0].gender)}
                 if(res.data[0].profile_picture) {setProfilepic(res.data[0].profile_picture)}
                 else {setProfilepic('')}
@@ -185,17 +179,13 @@ function EditProfile() {
     return (
         <div className="container">
         <TemplateProfile/>
+        <div className="d-lg-block d-md-none d-block">
         <SidebarProfile2/>
+        </div>
         <div>
             <div className="d-lg-none d-md-none d-block"><Link to="/profile" style={{ textDecoration:"none", color: "black", cursor: 'pointer' }}><FontAwesomeIcon icon={faAngleLeft} className="pinggiran-atas-profile" /></Link></div>
             <div className="keterangan-verifikasi">Akun Terverifikasi
-            {
-         errorMessage && <p style={{margin: '10px', color: 'black;', fontSize:'14px'}}>{errorMessage}</p>
-         }
             </div>
-            <div className="mt-5">
-       
-        </div>
         </div>
         <div className="edit-foto-profile">
         {
@@ -215,6 +205,14 @@ function EditProfile() {
         </form>
          <label htmlFor='image-input' id="choose-file-edit-profile">Choose image</label>
         </div>
+        <div className="box-notifikasi-error">
+            {
+                 errorMessage  === "Cannot read properties of undefined (reading 'size')" ?
+                 <></>
+                 :
+                 <p style={{margin: '10px', color: 'black;', fontSize:'14px'}}>{errorMessage}</p>
+            }
+        </div>
         <div className="baris-edit-profile-1">
             <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
               Name
@@ -226,12 +224,12 @@ function EditProfile() {
         </div>
         <div className="form-group mt-2 baris-edit-profile-2">
             <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
-              Email
+              Username
             </label>
             <input type="text" 
-             onChange={emailChange} defaultValue={email}
+             onChange={usernameChange} defaultValue={username}
              name="editUserEmail"
-            className="form-control mt-2 input-edit-profile-2"  placeholder="Email Address" />
+            className="form-control mt-2 input-edit-profile-2"  placeholder="Username" />
         </div>
         <div className="form-group mt-3 baris-edit-profile-3">
             <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">

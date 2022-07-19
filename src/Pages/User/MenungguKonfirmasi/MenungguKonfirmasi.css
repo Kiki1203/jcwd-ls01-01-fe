@@ -75,7 +75,6 @@
   height: 146px;
   left: 40px;
   top: 92px;
-  border: 1px solid red;
 }
 
 .box-nomor-resep-1{
@@ -212,10 +211,12 @@
 
 .tulisan-batalkan-pengajuan{
   position: absolute;
-  width: 115px;
-  height: 17px;
-  left: 471px;
-  top: 294px;
+  width: 160px;
+  height: 15px;
+  left: 430px;
+  top: 285px;
+  padding: 15px 20px;
+  border-radius: 10px;
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 700;
@@ -223,8 +224,16 @@
   line-height: 17px;
   display: flex;
   align-items: center;
-  color: #E0004D;
+  color: #FFFFFF;
   cursor: pointer;
+  background: #E0004D;
+  border: 1px solid #E0004D;
+}
+
+.tulisan-batalkan-pengajuan:disabled{
+  background: #737A8D;
+  color: #FFFFFF;
+  border: 1px solid #737A8D;
 }
 
 .garis-dalam-detail-resep-3{
@@ -270,7 +279,7 @@
   align-items: center;
   padding: 16px 40px;
   gap: 10px;
- 
+ cursor: pointer;
   width: 405px;
   height: 52px;
   left: 0px;
@@ -296,7 +305,7 @@
   align-items: center;
   padding: 16px 40px;
   gap: 10px;
- 
+ cursor: pointer;
   width: 405px;
   height: 52px;
   left: 0px;

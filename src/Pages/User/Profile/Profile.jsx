@@ -2,6 +2,7 @@ import React, {useState, useEffect }  from "react";
 import './Profile.css';
 import SidebarProfile from "../../../Components/User/SidebarProfile/SidebarProfile.jsx";
 import TemplateProfile from "../../../Components/User/TemplateProfile/TemplateProfile.jsx";
+import TemplateProfile2 from "../../../Components/User/TemplateProfile/TemplateProfile2.jsx";
 import axios from 'axios';
 // import {connect} from 'react-redux';
 // import { onUserLogin, onCheckUserLogin } from '../../../Redux/Actions/userAction';
@@ -49,13 +50,20 @@ const Profile  = () => {
     }
     return(
         <div className="container">
+            <div className="d-lg-block d-md-none d-block">
             <TemplateProfile/>
             <SidebarProfile/>
+            </div>
+            <div className="d-lg-none d-md-block d-none">
+            <TemplateProfile2/>
+            
+            </div>
+
             <div className="d-lg-block d-md-block d-none">
             <div className="keterangan-verifikasi-desk">Akun Terverifikasi</div>
             </div>
                 <div className="box-inside-profile-info">
-                     <div className="d-lg-none d-md-none d-block">
+                     <div className="box-navbar-profile d-lg-none d-md-none d-block">
                         <div>
                             <Link to='/' style={{ textDecoration:"none", color: "black", cursor: 'pointer' }}>
                                 <FontAwesomeIcon icon={faAngleLeft} id="pinggiran-atas-profile-2" />
