@@ -133,46 +133,43 @@ const Register = () => {
     }
   };
 
-  if(localStorage.getItem('token')){
-    return(
-        <Navigate to='/homeadmin' />
-    )
+  if (localStorage.getItem('token')) {
+    return <Navigate to="/homeadmin" />;
   }
 
-  if(localStorage.getItem('myTkn')){
-    return(
-        <Navigate to='/' />
-    )
-}
+  if (localStorage.getItem('myTkn')) {
+    return <Navigate to="/" />;
+  }
 
   return (
-    <div className="container-fluid ">
+    <div className="container-fluid register-container ">
       <div className="row">
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 image-register">
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 image-register">
           <img src={gambar} alt="" />
         </div>
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 box-form-register">
+        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 box-form-register">
           <div className="form-register">
-            <div className="mb-2 mt-4">Mari Kita Mulai</div>
-            <div className="mb-3">
+            <div className="mb-2 mt-4 mkm">Mari Kita Mulai</div>
+            <div className="mb-3 spa">
               Sudah punya akun?{' '}
               <Link to="/login" style={{ textDecoration: 'none', color: 'red' }}>
                 Masuk
               </Link>
             </div>
-            <div className="d-flex">
-              <button type="button" className=" bg btn btn-light w-100 mx-3 login-other">
-                <img className="me-2" src={google} alt="" /> Daftar dengan Google
+            <div className="row justify-content-evenly ">
+              <button type="button" className="col-5 btn btn-light login-other ">
+                <img className="me-2" src={google} alt="" />
+                Google
               </button>
-              <button className="bf btn btn-primary w-100 login-other">
+              <button className="col-5 btn btn-primary  login-other">
                 <img className="me-2" src={fb} alt="" />
-                Daftar dengan Facebook
+                Facebook
               </button>
             </div>
             <br />
             <div style={{ marginTop: '-10px' }}>
               <Divider>
-                <span> atau</span>
+                <span className="spa"> atau</span>
               </Divider>
             </div>
             <br />
@@ -180,7 +177,7 @@ const Register = () => {
               <label for="exampleFormControlInput1" className="form-label">
                 Name
               </label>
-              <InputGroup>
+              <InputGroup className="mb-2">
                 <InputGroupText className="icon-email-resetpassword">
                   <img src={pLogin} alt="" />
                 </InputGroupText>
@@ -189,7 +186,7 @@ const Register = () => {
               <label for="exampleFormControlInput1" className="form-label">
                 Email Address
               </label>
-              <InputGroup>
+              <InputGroup className="mb-2">
                 <InputGroupText className="icon-email-resetpassword">
                   <img src={mLogin} alt="" />
                 </InputGroupText>
@@ -198,7 +195,7 @@ const Register = () => {
               <label for="exampleFormControlInput1" className="form-label">
                 Password
               </label>
-              <InputGroup>
+              <InputGroup className="mb-2">
                 <InputGroupText className="icon-email-resetpassword">
                   <img src={passLogin} alt="" />
                 </InputGroupText>
@@ -249,15 +246,15 @@ const Register = () => {
                 </span>
               </label>
             </div>
-            <div className="mt-3">
+            <div className="mt-5">
               {loading ? (
-                <button type="button" className="btn btn-secondary w-100 ">
+                <button type="button" className="btn btn-secondary w-100 button-au ">
                   <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={10} />
                 </button>
               ) : (
-                <button type="button" className="btn btn-danger w-100 " onClick={() => onSubmit()}>
+                <button type="button" className="btn btn-danger w-100 button-au " onClick={() => onSubmit()}>
                   {' '}
-                  Sign up
+                  Register
                 </button>
               )}
             </div>

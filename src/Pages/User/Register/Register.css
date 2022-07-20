@@ -6,9 +6,56 @@
   background: linear-gradient(155.7deg, #f5ded6 -45.88%, #fcf7f9 45.77%, #fcf1f7 117.72%);
 }
 .form-register {
-  padding: 30px 94px 20px 120px !important;
+  font-family: 'Public Sans' !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  color: #222222 !important;
+
+  padding: 10px 94px 20px 120px !important;
+}
+
+/* font */
+.mkm {
+  font-family: 'Public Sans' !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  line-height: 28px !important;
+
+  color: #222222 !important;
+}
+.spa {
+  font-family: 'Public Sans' !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+
+  color: #737a8d !important;
 }
 
 .login-other {
-  font-size: 10px !important;
+  font-family: 'Public Sans' !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  line-height: 17px !important;
+}
+.button-au {
+  font-family: 'Public Sans' !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
+
+@media (max-width: 991.98px) {
+  .image-register {
+    display: none !important;
+  }
+  .form-register {
+    padding: 30px 40px 480px 40px !important;
+  }
 }
