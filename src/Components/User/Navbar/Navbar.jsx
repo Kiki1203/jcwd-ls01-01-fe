@@ -125,7 +125,20 @@ const Navbar = () => {
             </>
             :
             <>
-             <form>
+            <div className='d-lg-none d-md-block d-none'>
+            <form>
+              <input className="form-control input-home-2" 
+              onChange={(e) => {
+                setSearch(e.target.value)
+                e.target.value ? setBubbleOpen(true)
+                : setBubbleOpen(false)
+              }}
+               type="search" placeholder="Cari Obat..." aria-label="Search"   />
+              <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home-2'/>
+            </form>
+            </div>
+            <div className='d-lg-block d-md-none d-none'>
+            <form>
               <input className="form-control input-home-2" 
               onChange={(e) => {
                 setSearch(e.target.value)
@@ -135,6 +148,7 @@ const Navbar = () => {
                type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"   />
               <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home-2'/>
             </form>
+            </div>
             </>
           }
          
@@ -150,14 +164,14 @@ const Navbar = () => {
             </>
             :
            <>
-            <FontAwesomeIcon icon={faBell} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}}/>
-            <Link to="/cart" style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}}>
+            <FontAwesomeIcon icon={faBell} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D", marginLeft: "20px",  marginTop: "15px"}}/>
+            <Link to="/cart" style={{textDecoration: "none", cursor:"pointer", color:"#E0004D", marginLeft: "20px", marginTop: "15px"}}>
             <FontAwesomeIcon icon={faCartShopping} />
             </Link>
             <div>
             <Dropdown isOpen={dropdownOpen}
                 toggle={() => setDropdownOpen(!dropdownOpen)}>
-                <DropdownToggle id="dropdown-navbar" className="rounded-0">
+                <DropdownToggle id="dropdown-navbar" className="rounded-0 border-0 mt-2">
                 <FontAwesomeIcon icon={faUser} className="mx-2" />
                 <div className="navbar-hi-user">Hi, {username}</div>
                 </DropdownToggle>

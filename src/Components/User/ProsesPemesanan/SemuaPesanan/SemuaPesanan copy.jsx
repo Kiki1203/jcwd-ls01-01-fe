@@ -10,57 +10,25 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Tampilkan from "../TampilkanDetail/Tampilkan.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
-import { RingLoader } from "react-spinners";
 
 
 // PAGE INI MENAMPILKAN SEMUA PROSES PESANAN USER
 const SemuaPesanan  = () => {
+  const navigate = useNavigate()
   const [data, setData] = useState([]);
+  const [loading, setLoading] = React.useState(false);
   const [currentPage, setcurrentPage] = useState(1);
   const [itemsPerPage, setitemsPerPage] = useState(2);
+  const [totalData, setTotalData] = useState(0);
+  const [idProduk, setIdProduk] = useState(0)
   const [pageNumberLimit, setpageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
-  const navigate = useNavigate()
-  const [loading, setLoading] = React.useState(false);
-  const [totalData, setTotalData] = useState(0);
-  const [idProduk, setIdProduk] = useState(0)
   const [showAllProducts, setShowAllProducts] = useState(false)
   const [openModal, setOpenModal] = useState(false)
-
-  const handleClick = (event) => {
-    setcurrentPage(Number(event.target.id));
-  };
-
-  const pages = [];
-  for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
-    pages.push(i);
-  }
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-
-  const renderPageNumbers = pages.map((number) => {
-    if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
-      return (
-        <li
-          key={number}
-          id={number}
-          onClick={handleClick}
-          className={currentPage == number ? "active" : null}
-        >
-          {number}
-        </li>
-      );
-    } else {
-      return null;
-    }
-  });
-
   useEffect(() => {
-    setLoading(true)
-    let token = localStorage.getItem('myTkn')
+      setLoading(true)
+      let token = localStorage.getItem('myTkn')
       const headers = {
           headers: { 
               'Authorization': `${token}`,
@@ -69,42 +37,26 @@ const SemuaPesanan  = () => {
       axios.get(`${API_URL}/transaction/getsemuapesanan?`, headers)
       .then((res) => {
           console.log('res.data semua pesanan', res.data)
+          setLoading(false)
+          setTotalData(res.data[0].total[0].total)
           setData(res.data)
           setLoading(false)
-         
+          // setProdukPertama(res.data.dataPertama)
       }).catch((err) => {
           console.log('ini err get',err)
           setLoading(false)
       })
-  }, []);
-
-  const btnPesananDiterima = (id) => {
- 
-    setLoading(true)
-   
-    axios.patch(API_URL + `/transaction/pesananditerima2?id=${id}`)
-    .then((res) => {
-    console.log(res)
-    setData(res.data)
-    setLoading(false)
-   
-    })
-    .catch((err) =>{
-    console.log(err)
-        setLoading(false)
-    })
-  }
+  }, [currentPage])
 
   const klikModalEdit = (id) => {
     setIdProduk(id)
     setOpenModal(true)
 }
-  const renderData = (data) => {
-    return (
-      <div>
-        {data.map((value, index) => {
-          return <div key={index}>
-            <div className="box-semua-pesanan">
+
+  const printData = (props) => {
+    return data.map((value, index) => {
+        return (
+          <div className="box-semua-pesanan" key={index}>
             {
                     openModal && <Tampilkan setOpenModal={setOpenModal}  id={idProduk}/>
              }
@@ -151,7 +103,7 @@ const SemuaPesanan  = () => {
                   </div>
                   <div className="nama-obat-semua-pesanan">Nomor Resep</div>
                   <div className="harga-obat-semua-pesanan">TIMER</div>
-                  <div  className="jumlah-obat-semua-pesanan "  style={{marginTop: '10px'}}>{value.resultRiwayatResep[0].no_pemesanan}</div>
+                  <div  className="jumlah-obat-semua-pesanan "  style={{marginTop: '-10px'}}>{value.resultRiwayatResep[0].no_pemesanan}</div>
                   <div className="button-tampilkan-detail-semua" >Perbesar gambar</div>
                   <div className="d-lg-none d-md-none d-block">
                   <div className="garis-semua-resep"></div>
@@ -168,7 +120,7 @@ const SemuaPesanan  = () => {
                   </div>
                   <div className="nama-obat-semua-pesanan">Nomor Resep</div>
                   <div className="harga-obat-semua-pesanan">TIMER</div>
-                  <div  className="jumlah-obat-semua-pesanan" style={{marginTop: '10px'}}>{value.result2[0].no_pemesanan}</div>
+                  <div  className="jumlah-obat-semua-pesanan" style={{marginTop: '-10px'}}>{value.result2[0].no_pemesanan}</div>
                   <div className="button-tampilkan-detail-semua" >Perbesar gambar</div>
                   <div className="d-lg-none d-md-none d-block">
                   <div className="garis-semua-resep"></div>
@@ -248,112 +200,147 @@ const SemuaPesanan  = () => {
               }
             </div>
           </div>
-          </div>;
-        })}
-      </div>
-    );
-  };
-  const handleNextbtn = () => {
-    setcurrentPage(currentPage + 1);
+        )
+    })
+}
 
-    if (currentPage + 1 > maxPageNumberLimit) {
-      setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
-      setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
-    }
-  };
+const btnPesananDiterima = (id) => {
+ 
+  setLoading(true)
+ 
+  axios.patch(API_URL + `/transaction/pesananditerima2?id=${id}`)
+  .then((res) => {
+  console.log(res)
+  setData(res.data)
+  setLoading(false)
+ 
+  })
+  .catch((err) =>{
+  console.log(err)
+      setLoading(false)
+  })
+}
 
-  const handlePrevbtn = () => {
-    setcurrentPage(currentPage - 1);
 
-    if ((currentPage - 1) % pageNumberLimit == 0) {
-      setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
-      setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
-    }
-  };
+const handleClick = (event) => {
+  setcurrentPage(Number(event.target.id));
+};
 
-  let pageIncrementBtn = null;
-  if (pages.length > maxPageNumberLimit) {
-    pageIncrementBtn = <li onClick={handleNextbtn}> &hellip; </li>;
+const pages = [];
+for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
+pages.push(i);
+}
+
+const indexOfLastItem = currentPage * itemsPerPage;
+const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
+const renderPageNumbers = pages.map((number) => {
+  if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
+  return (
+      <li
+      key={number}
+      id={number}
+      onClick={handleClick}
+      className={currentPage == number ? "active" : null}
+      >
+      {number}
+      </li>
+  );
+  } else {
+  return null;
   }
+});
 
-  let pageDecrementBtn = null;
-  if (minPageNumberLimit >= 1) {
-    pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
+const handleNextbtn = () => {
+  setcurrentPage(currentPage + 1);
+  if (currentPage + 1 > maxPageNumberLimit) {
+    setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+    setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
   }
+};
 
-  const handleLoadMore = () => {
-    setitemsPerPage(itemsPerPage + 5);
-  };
+const handlePrevbtn = () => {
+  setcurrentPage(currentPage - 1);
+  if ((currentPage - 1) % pageNumberLimit == 0) {
+    setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+    setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+  }
+};
 
-  return(
-    <div>
-      <div className="container-pp">
+let pageIncrementBtn = null;
+if (pages.length > maxPageNumberLimit) {
+  pageIncrementBtn = <li onClick={handleNextbtn}> &hellip; </li>;
+}
+
+let pageDecrementBtn = null;
+if (minPageNumberLimit >= 1) {
+  pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
+}
+
+    
+    return(
         <div>
-        <div className="wrapper-pp">
-        <div className="c-pp d-flex">
-            <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-pp-1'>
-                <SidebarProfile/>
-            </div>
-            <div  className='col-lg-1 col-none d-lg-block d-md-none d-none'>
-                
-            </div>
-            <div className='col-lg-8 col-md-9 col-12 sidebar-pp'>
-                <div>
-                  <Sidebar2 />
+          <div className="container-pp">
+            <div>
+            <div className="wrapper-pp">
+            <div className="c-pp d-flex">
+                <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-pp-1'>
+                    <SidebarProfile/>
                 </div>
-                <div>
-                {
-          loading ? 
-          <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
-          :
-          <>
-         <div className="box-pd">  {renderData(currentItems)}</div>
-          </>
-        }
-         <div className="mt-4 ml-4">
-           <div className='pagination-semua d-flex'>
-             {
-              loading ?
-              <></>
+                <div  className='col-lg-1 col-none d-lg-block d-md-none d-none'>
+                    
+                </div>
+                <div className='col-lg-8 col-md-9 col-12 sidebar-pp'>
+                    <div>
+                      <Sidebar2 />
+                    </div>
+                    <div>
+                    {
+              loading ? 
+              'Loading...'
               :
               <>
-               <ul className="pageNumbers2">
-                  <li className="mx-3">
-                  <button
-                      onClick={handlePrevbtn}
-                      disabled={currentPage == pages[0] ? true : false}
-                  >
-                     Prev
-                  </button>
-                  </li>
-                  {pageDecrementBtn}
-                  {renderPageNumbers}
-                  {pageIncrementBtn}
-
-                  <li>
-                  <button
-                      onClick={handleNextbtn}
-                      disabled={currentPage == pages[pages.length - 1] ? true : false}
-                  >
-                    Next
-                  </button>
-                  </li>
-              </ul> 
+             <div className="box-pd"> {printData(currentItems)}</div>
               </>
-             }
-          </div>
-        </div>
-                </div>
-                
-            </div>
-        </div>
-        </div> 
-    </div>
-    </div>
-    </div>
-)
+            }
+             <div className="mt-4 ml-4">
+               <div className='pagination-semua d-flex'>
+                  <ul className="pageNumbers">
+                      <li>
+                      <button
+                          onClick={handlePrevbtn}
+                          disabled={currentPage == pages[0] ? true : false}
+                      >
+                          <FontAwesomeIcon icon={faAngleLeft} className="logo-next-1" />
+                            <FontAwesomeIcon icon={faAngleLeft} className="logo-next-2" />
+                      </button>
+                      </li>
+                      {pageDecrementBtn}
+                      {renderPageNumbers}
+                      {pageIncrementBtn}
 
-  
+                      <li>
+                      <button
+                          onClick={handleNextbtn}
+                          disabled={currentPage == pages[pages.length - 1] ? true : false}
+                      >
+                            <FontAwesomeIcon icon={faAngleRight} className="logo-next-2"/>
+                            <FontAwesomeIcon icon={faAngleRight} className="logo-next-1"/>
+                      </button>
+                      </li>
+                  </ul> 
+              </div>
+            </div>
+                    </div>
+                    
+                </div>
+            </div>
+            </div> 
+        </div>
+        </div>
+        </div>
+    )
 }
 
 export default SemuaPesanan

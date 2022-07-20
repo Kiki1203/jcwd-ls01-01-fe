@@ -88,6 +88,7 @@
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+    border: 1px solid #E0004D;
   }
   
   .button-dikirim-resep:hover{
@@ -366,6 +367,7 @@
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+    border: 1px solid #E0004D;
   }
   
   .button-dikirim:hover{
@@ -682,5 +684,6 @@
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+    border: 1px solid #E0004D;
   }
 }
