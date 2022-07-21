@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import './TabSelesai.css';
-import TemplateProsesPemesanan from "../TemplateProsesPemesanan";
 import Chat from '../../../../Assets/CHAT.svg';
 import axios from 'axios';
 import API_URL  from '../../../../Helpers/API_URL.js';
@@ -11,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import SidebarProfile from "../../SidebarProfile/SidebarProfile";
 import Sidebar2 from "../../SidebarProsesPemesanan/Sidebar2";
-
+import { RingLoader } from "react-spinners";
 
 const TabSelesai  = () => {
     
@@ -165,7 +164,7 @@ return(
               <div>
               {
         loading ? 
-        'Loading...'
+        <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
         :
         <>
        <div className="box-pd"> {printData()}</div>
@@ -173,14 +172,18 @@ return(
       }
        <div className="mt-4 ml-4">
          <div className='pagination-semua d-flex'>
-            <ul className="pageNumbers">
-                <li>
+            <ul className="pageNumbers2">
+            {
+                loading ?
+                <></>
+                :
+                <>
+                  <li className="mx-3">
                 <button
                     onClick={handlePrevbtn}
                     disabled={currentPage == pages[0] ? true : false}
                 >
-                    <FontAwesomeIcon icon={faAngleLeft} className="logo-next-1" />
-                      <FontAwesomeIcon icon={faAngleLeft} className="logo-next-2" />
+                    Prev
                 </button>
                 </li>
                 {pageDecrementBtn}
@@ -192,10 +195,11 @@ return(
                     onClick={handleNextbtn}
                     disabled={currentPage == pages[pages.length - 1] ? true : false}
                 >
-                      <FontAwesomeIcon icon={faAngleRight} className="logo-next-2"/>
-                      <FontAwesomeIcon icon={faAngleRight} className="logo-next-1"/>
+                     Next
                 </button>
                 </li>
+                </>
+              }
             </ul> 
         </div>
       </div>

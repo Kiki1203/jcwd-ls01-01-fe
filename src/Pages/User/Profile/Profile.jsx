@@ -1,14 +1,13 @@
-import React, {useState, useEffect }  from "react";
+import React, {useEffect }  from "react";
 import './Profile.css';
-import TemplateProfile from "../../../Components/User/TemplateProfile/TemplateProfile.jsx";
 import SidebarProfile from "../../../Components/User/SidebarProfile/SidebarProfile.jsx";
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import default1 from '../../../Assets/default.jpg';
-import { faUser, faReceipt, faAngleLeft, faMoneyBills, faLocationDot, faHeart, faEnvelope, faPenToSquare, faAngleRight, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-
+import { faReceipt, faAngleLeft, faMoneyBills, faLocationDot, faHeart, faEnvelope, faPenToSquare, faAngleRight, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { RingLoader } from "react-spinners";
 
 const Profile  = () => {
     const [loading, setLoading] = React.useState(false);
@@ -33,7 +32,6 @@ const Profile  = () => {
         .then((res) => {
             setLoading(false)
             setVerified(res.data[0].verified)
-            console.log(res.data)
             setToken(res.data[0].token)
             if(res.data[0].nama) {setNama(res.data[0].nama)}
             if(res.data[0].email) {setEmail(res.data[0].email)}
@@ -46,23 +44,18 @@ const Profile  = () => {
             setLoading(false)
         })
         }, [token, nama, email, gender, username, profilepic, umur])
-        const btnLogOut = () => {
-    if(localStorage.getItem('token')){
-        if(localStorage.getItem('token') === token){
-        if(localStorage.getItem('myTkn')){
-            localStorage.removeItem('token');
-            localStorage.removeItem('myTkn');
-            navigate("/")
-        }else{
-            localStorage.removeItem('token');
-            navigate("/")
-        }
-        }
+
+
+const btnLogOut = () => {
+    if(localStorage.getItem('myTkn')){
+        localStorage.removeItem('myTkn');
+        navigate("/")
     }else{
+        localStorage.removeItem('token');
         localStorage.removeItem('myTkn');
         navigate("/")
     }
-    }
+}
     
     if(verified === 0){
         return(
@@ -103,15 +96,16 @@ const Profile  = () => {
                 </div>
                     <div className=" mt-4 d-lg-block d-md-block d-none">
                        <div className="d-flex ">
-                       <div className="mx-3 tab-profile my-3" onClick={() => navigate('/profile')}>Profile</div> 
-                        <div className="mx-3 tab-profile my-3" onClick={() => navigate('/editprofile')}>Edit Profile</div>
-                        <div className="mx-3 tab-profile my-3" onClick={() => navigate('/changepassword')}>Change Password</div>
+                       <div className="tab-profile" onClick={() => navigate('/profile')}>Profile</div> 
+                        <div className="tab-profile" onClick={() => navigate('/editprofile')}>Edit Profile</div>
+                        <div className="tab-profile" onClick={() => navigate('/changepassword')}>Change Password</div>
                        </div>
                     </div>
                <div  className="d-lg-block d-md-block d-none">
-               <hr style={{marginTop:'-17px'}}/>
+               <hr style={{marginTop:'0px'}}/>
                </div>
                 <div className="container-inside">
+                    
                     <div className="foto-profile"> 
                         {
                             profilepic?
@@ -209,13 +203,11 @@ const Profile  = () => {
                         <FontAwesomeIcon icon={faAngleRight} className="logo-2" />
                         </div>
                         </div>
-                    <Link to='/alamatpengiriman' style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
-                    <div className="tab-list-2" onClick={() => navigate('/alamatpengiriman')}>
+                     <div className="tab-list-2" style={{ color: "#213360" }}>
                         <FontAwesomeIcon icon={faLocationDot} className="logo-alamat-kirim" />
                         <span className="alamat-pengiriman-profile">Alamat Pengiriman</span>
                         <FontAwesomeIcon icon={faAngleRight}  className="logo-3"   />
                         </div>
-                    </Link>
                     <div className="tab-list-3"  style={{ color: "#213360" }}>
                     <FontAwesomeIcon icon={faEnvelope} className="logo-pesan-bantuan" />
                         <span className="pesan-bantuan-profile">Pesan Bantuan</span>

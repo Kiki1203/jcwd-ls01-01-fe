@@ -45,9 +45,8 @@ const Sidebar2  = () => {
                 </div>
                 <div className="urutkan-filter">Urutkan</div>
                 <select className='dropdown-01'>
-                  <option className="isi-dropdown-01">Abjad (A-Z)</option>
-                  <option className="isi-dropdown-01">Harga Termurah</option>
-                  <option className="isi-dropdown-01">Harga Termahal</option>
+                  <option className="isi-dropdown-01">Terbaru</option>
+                  <option className="isi-dropdown-01">Terlama</option>
                 </select>
               </div>
             </div>
@@ -65,7 +64,7 @@ const Sidebar2  = () => {
                   <FontAwesomeIcon icon={faCartShopping}  style={{cursor:"pointer", color:"#E0004D",  fontSize: '14px',  marginLeft: '20px', marginTop: '30px'}}/>
                   </div>
                   </div>
-                  <div classNAme="d-flex">
+                  <div className="d-flex">
                   <div className="tab-box-mobile">
                   <Link to="/semuapesanan" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
                   <div className="tab-semua-mobile">Semua</div>

@@ -1,6 +1,5 @@
 import React, { useState, CSSProperties } from 'react';
 import './ChangePassword.css';
-import TemplateProfile from '../../../Components/User/TemplateProfile/TemplateProfile.jsx';
 import ChangePasswords from '../../../Assets/ChangePassword.svg';
 import SidebarProfile from '../../../Components/User/SidebarProfile/SidebarProfile.jsx';
 import axios from 'axios';
@@ -110,20 +109,20 @@ const ChangePassword = () => {
                                 <FontAwesomeIcon icon={faAngleLeft} />
                             </Link>
                         </div>
-                        <div className="mx-4 keterangan-verifikasi-desk" >Akun Terverifikasi</div>
+                        <div className="mx-4 keterangan-verifikasi-desk" >Change Password</div>
                     </div>
                     <div className="d-lg-block d-md-block d-none">
                     <div className="mx-4 mt-4 keterangan-verifikasi-desk">Akun Terverifikasi</div>
                     </div>
                         <div className=" mt-4 d-lg-block d-md-block d-none">
                           <div className="d-flex ">
-                          <div className="mx-3 tab-profile my-3" onClick={() => navigate('/profile')}>Profile</div> 
-                            <div className="mx-3 tab-profile my-3" onClick={() => navigate('/editprofile')}>Edit Profile</div>
-                            <div className="mx-3 tab-profile my-3" onClick={() => navigate('/changepassword')}>Change Password</div>
+                          <div className="tab-profile" onClick={() => navigate('/profile')}>Profile</div> 
+                            <div className="tab-profile" onClick={() => navigate('/editprofile')}>Edit Profile</div>
+                            <div className="tab-profile" onClick={() => navigate('/changepassword')}>Change Password</div>
                           </div>
                         </div>
                   <div  className="d-lg-block d-md-block d-none">
-                  <hr style={{marginTop:'-17px'}}/>
+                  <hr style={{marginTop:'0px'}}/>
                   </div>
             <div className="box-c-1">
               <div className="foto-change-password">
