@@ -16,6 +16,7 @@ import { RingLoader } from "react-spinners";
 const TransaksiAdmin  = () => {
     const [loading, setLoading] = useState(false)
     const [errorMsg, setErrorMsg] = useState(null)
+    const [searchLoading, setSearchLoading] = useState(false)
 
     const [jumlahTransaksi, setJumlahTransaksi] = useState(0)
     const [transaksi, setTransaksi] = useState([])
@@ -25,6 +26,7 @@ const TransaksiAdmin  = () => {
     const [pageNumberLimit, setpageNumberLimit] = useState(5);
     const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
     const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
+    const [sortBy, setSortBy] = useState('terbaru')
 
     const [nomorTransaksi, setNomorTransaksi] = useState('')
     const [username, setUsername] = useState('')
@@ -44,7 +46,6 @@ const TransaksiAdmin  = () => {
         }
       ])
     const [dirtyDate, setDirtyDate] = useState(false)
-    const [sortByDate, setSortByDate] = useState('')
 
     const token = localStorage.getItem('token')
     let { status } = useParams()
@@ -52,7 +53,8 @@ const TransaksiAdmin  = () => {
     useEffect(() => {
         setLoading(true)
         setErrorMsg(null)
-        axios.get(`${API_URL}/admin/transactioncount?status=${status}&transnum=${nomorTransaksi}&username=${username}&startDate=${startDate}&endDate=${endDate}&sort=${sortByDate}`,
+        let userIds = arrUserId.join(',')
+        axios.get(`${API_URL}/admin/transactioncount?status=${status}&transnum=${nomorTransaksi}&userids=${userIds}&startDate=${startDate}&endDate=${endDate}&sort=${sortBy}`,
         {headers: {authorization: token}})
         .then(res => {
         setJumlahTransaksi(res.data[0].TotalData)
@@ -62,13 +64,14 @@ const TransaksiAdmin  = () => {
             setLoading(false)
             setErrorMsg(e.message)
         })
-    }, [status, nomorTransaksi, username, startDate, endDate, sortByDate])
+    }, [status, nomorTransaksi, arrUserId, startDate, endDate, sortBy])
 
     useEffect(() => {
         setCurrentPage(1)
         setLoading(true)
         setErrorMsg(null)
-        axios.get(`${API_URL}/admin/transactiondetail?page=${currentPage}&limit=${cardsPerPage}&status=${status}&transnum=${nomorTransaksi}&username=${username}&startDate=${startDate}&endDate=${endDate}&sort=${sortByDate}`,
+        let userIds = arrUserId.join(',')
+        axios.get(`${API_URL}/admin/transactiondetail?page=${currentPage}&limit=${cardsPerPage}&status=${status}&transnum=${nomorTransaksi}&userids=${userIds}&startDate=${startDate}&endDate=${endDate}&sort=${sortBy}`,
         {headers: {authorization: token}})
         .then(res => {
         setTransaksi(res.data)
@@ -78,25 +81,44 @@ const TransaksiAdmin  = () => {
             setLoading(false)
             setErrorMsg(e.message)
         })
-    }, [status, nomorTransaksi, username, startDate, endDate, sortByDate, cardsPerPage])
+    }, [status, nomorTransaksi, arrUserId, startDate, endDate, sortBy, cardsPerPage])
 
     useEffect(() => {
-        axios.get(`${API_URL}/admin/searchtransactionusername?user=${username}`,
-        {headers: {authorization: token}})
-        .then(res => {
-        setTransaksi(res.data)
-        setLoading(false)
-        })
-        .catch(e => {
-            setLoading(false)
-            setErrorMsg(e.message)
-        })
+        if(username){
+            setSearchLoading(true)
+            axios.get(`${API_URL}/admin/searchtransactionusername?user=${username}`,
+            {headers: {authorization: token}})
+            .then(res => {
+                setArrUsername(res.data.usernames)
+                res.data.userIds.length ? setArrUserId(res.data.userIds) : setArrUserId(['!@#$%^&'])
+                setSearchLoading(false)
+            })
+            .catch(e => {
+                setSearchLoading(false)
+            })
+        } else {setArrUserId([])}
     }, [username])
+
+    useEffect(() => {
+        if(nomorTransaksi){
+            setSearchLoading(true)
+            axios.get(`${API_URL}/admin/searchtransactionnumber?no=${nomorTransaksi}`,
+            {headers: {authorization: token}})
+            .then(res => {
+                setArrNomorTransaksi(res.data)
+                setSearchLoading(false)
+            })
+            .catch(e => {
+                setSearchLoading(false)
+            })
+        }
+    }, [nomorTransaksi])
 
     useEffect(() => {
         setLoading(true)
         setErrorMsg(null)
-        axios.get(`${API_URL}/admin/transactiondetail?page=${currentPage}&limit=${cardsPerPage}&status=${status}&transnum=${nomorTransaksi}&username=${username}&startDate=${startDate}&endDate=${endDate}&sort=${sortByDate}`,
+        let userIds = arrUserId.join(',')
+        axios.get(`${API_URL}/admin/transactiondetail?page=${currentPage}&limit=${cardsPerPage}&status=${status}&transnum=${nomorTransaksi}&userids=${userIds}&startDate=${startDate}&endDate=${endDate}&sort=${sortBy}`,
         {headers: {authorization: token}})
         .then(res => {
         setTransaksi(res.data)
@@ -199,7 +221,8 @@ const TransaksiAdmin  = () => {
                         <FontAwesomeIcon icon={faSearch}  className='icon-search-transaksi'/>
                         {openBubbleNoTransaksi && <SearchBubbleTransaksi result={arrNomorTransaksi}
                                                   setQuery={setNomorTransaksi}
-                                                  setBubbleOpen={setOpenBubbleNoTransaksi} />}
+                                                  setBubbleOpen={setOpenBubbleNoTransaksi}
+                                                  loading={searchLoading} />}
                     </div>
                     <div style={{position:'relative', display:'flex', alignItems:'center'}}>
                         <input type="text" className="search-box-transaksi"  placeholder="Cari username"
@@ -210,8 +233,9 @@ const TransaksiAdmin  = () => {
                               }}  />
                         <FontAwesomeIcon icon={faSearch}  className='icon-search-transaksi'/>
                         {openBubbleUsername && <SearchBubbleTransaksi result={arrUsername}
-                                                  setQuery={setUsername}
-                                                  setBubbleOpen={setOpenBubbleUsername} />}
+                                                setQuery={setUsername}
+                                                setBubbleOpen={setOpenBubbleUsername}
+                                                loading={searchLoading} />}
                     </div>
                     <DateRangePickerComp range={dateRange}
                                          setRange={setDateRange}
@@ -221,8 +245,8 @@ const TransaksiAdmin  = () => {
                                          setDirty={setDirtyDate}/>
                     <select className="select-transaksi-admin">
                         <option selected style={{display:'none'}}>Urutkan</option>
-                        <option>Tanggal Terbaru</option>
-                        <option>Tanggal Terlama</option>
+                        <option onClick={() => setSortBy('terbaru')}>Tanggal Terbaru</option>
+                        <option onClick={() => setSortBy('terlama')}>Tanggal Terlama</option>
                     </select>
                 </div>
                 {loading ? <div className="d-flex justify-content-center align-items-center" style={{height:'calc(100vh - 242px)'}}>
@@ -272,14 +296,16 @@ const TransaksiAdmin  = () => {
                     nomorTransaksi && <div className='filter-bullet'>
                         {`No. transaksi: "${nomorTransaksi}"`}
                         <FontAwesomeIcon icon={faXmark} className='filter-bullet-x'
-                        onClick={() => setNomorTransaksi(null)} />
+                        onClick={() => setNomorTransaksi('')} />
                     </div>
                 }
                 {
                     username && <div className='filter-bullet'>
                         {`Username: "${username}"`}
                         <FontAwesomeIcon icon={faXmark} className='filter-bullet-x'
-                        onClick={() => setUsername(null)} />
+                        onClick={() => {setUsername('')
+                                        setArrUserId([])
+                                        setArrUsername([])}} />
                     </div>
                 }
                 {
@@ -301,7 +327,7 @@ const TransaksiAdmin  = () => {
                 }
                 </div>
                 {
-                    jumlahTransaksi ?
+                    jumlahTransaksi && transaksi.length > 0 ?
                         transaksi.map((t,i) => {
                         return <TransactionCard transaksi={t} key={i} />})
                     : !loading ? <div className="no-transaction">

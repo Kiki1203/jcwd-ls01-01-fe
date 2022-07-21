@@ -71,7 +71,7 @@ const status = transaksi.statusTransaksi_id
                         </div> :
                         <div className='transaksi-detail-kiri'>
                             <p className='transaksi-detail-header'>{transaksi.produk[0].nama_produk}</p>
-                            <p className='transaksi-detail-harga'>{`${transaksi.produk[0].quantity} x ${transaksi.produk[0].harga_produk / transaksi.produk[0].quantity}`}</p>
+                            <p className='transaksi-detail-harga'>{`${transaksi.produk[0].quantity} x ${(transaksi.produk[0].harga_produk / transaksi.produk[0].quantity).toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</p>
                             {
                                 transaksi.produk.length > 1 && <button className='transaksi-lihat-lainnya'>
                                     {`Lihat ${transaksi.produk.length - 1} produk lainnya`}
@@ -118,8 +118,8 @@ const status = transaksi.statusTransaksi_id
                     <div className='d-flex' style={{gap:'30px'}}>
                         {(status == 1 || status == 2 || status == 3) && <button className='tolak-pesanan-button'>Tolak Pesanan</button>}
                         {(status == 1 || status == 2) ? <button className='terima-pesanan-button' disabled={status == 2}>Terima Pesanan</button>
-                         : status == 3 ? <button className='terima-pesanan-button'>Cek Bukti Pembayaran</button>
-                         : status == 4 ? <button className='terima-pesanan-button'>Minta Penjemputan</button>
+                         : status == 3 ? <button className='terima-pesanan-button' style={{fontSize:'12px'}}>Cek Bukti Pembayaran</button>
+                         : status == 4 ? <button className='terima-pesanan-button' style={{fontSize:'12px'}}>Minta Penjemputan</button>
                          : (status == 5 || status == 6 || status == 7) ? <button className='terima-pesanan-button'>Lihat Rincian</button> : ''}
                     </div>
                 </div>

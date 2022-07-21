@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react'
 import './SearchBubbleTransaksi.css'
+import { ClipLoader } from "react-spinners";
 
-function SearchBubbleTransaksi({result, setQuery, setBubbleOpen}) {
+function SearchBubbleTransaksi({result, setQuery, setBubbleOpen, loading}) {
     const refOne = useRef(null)
 
     useEffect(() => {
@@ -24,6 +25,9 @@ function SearchBubbleTransaksi({result, setQuery, setBubbleOpen}) {
     return (
         <div className="search-bubble-transaksi" ref={refOne}>
             {
+                loading ?  <div style={{height:'100%', width:'100%', display:'flex',
+                justifyContent:'center', alignItems:'center', padding:'40px'}}>
+                    <ClipLoader color={'#213360'} size={35} /> </div>:
                 result.length
                 ?
                 <div id='search-result-container'>
