@@ -3,7 +3,7 @@ import './Navbar.css';
 import logo from './../../../Assets/logo.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faBell, faCartShopping, faUser, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
@@ -19,6 +19,7 @@ const Navbar = () => {
   const [products, setProducts] = useState([])
   const [total, setTotal] = useState(0)
   const [token, setToken] = useState('')
+  let params = useParams();
 
   useEffect(() => {
     if(search.length){
@@ -50,39 +51,13 @@ const Navbar = () => {
 }, [verified, token])
 
   const btnLogOut = () => {
-    if(localStorage.getItem('token')){
-      if(localStorage.getItem('token') === token){
-        if(localStorage.getItem('myTkn')){
-          localStorage.removeItem('token');
-          localStorage.removeItem('myTkn');
-          navigate("/")
-        }else{
-          localStorage.removeItem('token');
-          navigate("/")
-        }
-      }
-    }else{
-      localStorage.removeItem('myTkn');
-      navigate("/")
-    }
+    localStorage.removeItem('myTkn');
+    navigate("/")
   }
 
    const btnLogOut2 = () => {
-    if(localStorage.getItem('token')){
-      if(localStorage.getItem('token') === token){
-        if(localStorage.getItem('myTkn')){
-          localStorage.removeItem('token');
-          localStorage.removeItem('myTkn');
-          navigate("/login")
-        }else{
-          localStorage.removeItem('token');
-          navigate("/login")
-        }
-      }
-    }else{
-      localStorage.removeItem('myTkn');
-      navigate("/login")
-    }
+    localStorage.removeItem('myTkn'); 
+     navigate("/login")
   }
 
   if(localStorage.getItem('token')){
@@ -92,7 +67,7 @@ const Navbar = () => {
       )
     }
   }
-
+ 
 
   if (localStorage.getItem('myTkn') || localStorage.getItem('token') === token){
     return (
@@ -158,9 +133,11 @@ const Navbar = () => {
            {
             verified === 0 ?
             <>
-            <FontAwesomeIcon icon={faBell} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}}/>
+              <div className="box-veri">
+              <FontAwesomeIcon icon={faBell} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}}/>
             <FontAwesomeIcon icon={faCartShopping} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}}/>
             <FontAwesomeIcon icon={faArrowRightFromBracket}  onClick={() => btnLogOut2()} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}} />
+              </div>
             </>
             :
            <>
@@ -193,36 +170,38 @@ const Navbar = () => {
         </div>
       </div>
     );
+  }else{
+    return (
+      <div id="navbar" className="d-lg-block d-md-block d-none">
+        <div className="box-navbar-logo">
+        <a className="navbar-brand brand" href="/">
+                <img src={logo} alt="" />
+                Apotakecare
+              </a>
+        </div>
+        <div className="box-navbar-search">
+          <form>
+              <input className="form-control input-home"  type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"   />
+              <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home'/>
+            </form>
+        </div>
+        <div className="box-navbar-button">
+        <Link to="/login" style={{ textDecoration: 'none'}}>
+            <button type="button" className="btn-masuk-home">
+              Masuk
+            </button>
+          </Link>
+          <Link to="/register" style={{ textDecoration: 'none'}}>
+            <button className="btn-daftar-home" type="submit" name="action">
+              Daftar
+            </button>
+          </Link>
+        </div>
+      </div>
+    );
   }
 
-  return (
-    <div id="navbar" className="d-lg-block d-md-block d-none">
-      <div className="box-navbar-logo">
-      <a className="navbar-brand brand" href="/">
-              <img src={logo} alt="" />
-              Apotakecare
-            </a>
-      </div>
-      <div className="box-navbar-search">
-        <form>
-            <input className="form-control input-home"  type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"   />
-            <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home'/>
-          </form>
-      </div>
-      <div className="box-navbar-button">
-      <Link to="/login" style={{ textDecoration: 'none'}}>
-          <button type="button" className="btn-masuk-home">
-            Masuk
-          </button>
-        </Link>
-        <Link to="/register" style={{ textDecoration: 'none'}}>
-          <button className="btn-daftar-home" type="submit" name="action">
-            Daftar
-          </button>
-        </Link>
-      </div>
-    </div>
-  );
+
 }
 
 export default Navbar;

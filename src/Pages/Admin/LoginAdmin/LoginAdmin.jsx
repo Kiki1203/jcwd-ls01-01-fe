@@ -33,15 +33,17 @@ const LoginAdmin = () => {
 
     Axios.post(`${API_URL}/admin/loginadmin`, data)
     .then((res) => {
+      setLoading(false)
       console.log(res.data)
       localStorage.setItem('token', res.data.token)
-      setLoading(false)
       setTokenAdmin(res.data.token)
       if(res.data.token){
         navigate("/homeadmin")
       }
+     
     }).catch((err) => {
         console.log('ini err get',err)
+        console.log('err.response.data.message', err.response.data.message)
         setError(err.response.data.message)
         setLoading(false)
     })
@@ -84,7 +86,7 @@ const loginAdmin = () => {
              </form>
              <div className='login-error-message'>
              {
-               error  == 'Account not found' ?
+               error  === "Username Tidak Ditemukan" ?
                <>{error}</>
                :
                <><div></div></>
@@ -109,7 +111,7 @@ const loginAdmin = () => {
              </form>
              <div className='login-error-message'>
                {
-               error  == 'Incorrect password'  ?
+               error  === "Password Salah"  ?
                <>{error}</>
                :
                <><div></div></>

@@ -68,26 +68,24 @@ useEffect(() => {
   axios.get(`${API_URL}/user/checkuserverify`, headers)
   .then((res) => {
     setLoading(false)
-      console.log('verified',res.data)
-      console.log(res.data.verified)
       setVerified(res.data.verified)
       setToken(res.data.token)
   }).catch((err) => {
       console.log('ini err get',err)
       setLoading(false)
   })
-}, [])
+}, [token, verified])
 
 const printData = (props) => {
   return produkDiskon.map((value, index) => {
       return (
           <div key={value.id}>
-             <div className='product-card-home-2 mx-2'>
+             <div className='product-card-home-2 mx-2' >
                 <div className='circle-home' onClick={(e) => e.stopPropagation()}>
                     <span className="hearthome"><FontAwesomeIcon icon={faHeart} /></span>
                     {/* <span className="heart" style={{fontSize:'30px', color:'#B4B9C7', marginTop:'5px'}}><FontAwesomeIcon icon={faHeart} /></span> */}
                 </div>
-                <div id="box-data-produk-home">
+                <div id="box-data-produk-home" onClick={() => navigate(`/productdetail/${value.id}`)}>
                 <img className='product-image-home' src={`${API_URL}/${value.gambar}`} alt="" />
                   <p className='product-name-home'>{value.nama_obat}</p>
                   <div className="box-diskon-produk">
@@ -130,7 +128,7 @@ const printData2 = (props) => {
            <div className='circle-home' onClick={(e) => e.stopPropagation()}>
                <span className="hearthome"><FontAwesomeIcon icon={faHeart} /></span>
            </div>
-           <div id="box-data-produk-home">
+           <div id="box-data-produk-home"  onClick={() => navigate(`/productdetail/${value.id}`)}>
            <img className='product-image-home' src={`${API_URL}/${value.gambar}`} alt="" />
              <p className='product-name-home'>{value.nama_obat}</p>
              <div className="box-diskon-produk">
@@ -219,11 +217,22 @@ const homePage = () => {
           <img src={resep2} alt="" className="jumbotron2" />
           <img src={resep3} alt="" className="jumbotron22" />
           <div className='tulisan-tak-antre'>Unggah resep doktermu disini! foto tidak melebihi 10 MB</div>
-          <FontAwesomeIcon icon={faAngleRight} onClick={() => navigate('/uploadresep')} className='btn-unggah-resep'/>
+       {
+         !localStorage.getItem('myTkn') ?
+        <FontAwesomeIcon icon={faAngleRight} onClick={() => navigate('/login')} className='btn-unggah-resep'/>
+        :
+        <FontAwesomeIcon icon={faAngleRight} onClick={() => navigate('/uploadresep')} className='btn-unggah-resep'/>
+       }
           </div>
          <div className='d-lg-block d-md-block d-none'>
          <div className='tulisan-tak-antre'>Tak perlu antre & obat langsung dikirimkan ke lokasi anda! Foto tidak boleh lebih dari 10 MB</div>
-         <button className='btn-unggah-resep' onClick={() => navigate('/uploadresep')}>Unggah Resep</button>
+         {
+          !localStorage.getItem('myTkn') ?
+          <button className='btn-unggah-resep' onClick={() => navigate('/login')}>Unggah Resep</button>
+          :
+          <button className='btn-unggah-resep' onClick={() => navigate('/uploadresep')}>Unggah Resep</button>
+         }
+        
          </div>
         </div>
       
@@ -233,31 +242,31 @@ const homePage = () => {
           <div className='home-kategori'>Kategori</div>
           <div className='box-home-kategori'>
            <div className='box-home-kategori-2'>
-             <div className='product-card-home mx-2'>
+             <div className='product-card-home mx-2' onClick={() => navigate(`/kategori/obat-obatan`)}>
                 <img src={obat} alt="" className="obat1" />
                 <div className='Obat-obatan'>Obat - Obatan</div>
               </div>
-              <div className='product-card-home mx-2'>
+              <div className='product-card-home mx-2' onClick={() => navigate(`/kategori/nutrisi`)}>
                 <img src={nutrisi} alt="" className="obat1" />
                 <div className='Obat-obatan'>Nutrisi</div>
               </div>
-              <div className='product-card-home mx-2'>
+              <div className='product-card-home mx-2' onClick={() => navigate(`/kategori/herbal`)}>
                 <img src={herbal} alt="" className="obat1" />
                 <div className='Obat-obatan'>Herbal</div>
-              </div>
-              <div className='product-card-home mx-2'>
+              </div> 
+              <div className='product-card-home mx-2' onClick={() => navigate(`/kategori/vitamin-suplemen`)}>
                 <img src={vitamins} alt="" className="obat1" />
                 <div className='Obat-obatan'>Vitamin & Suplemen</div>
               </div>
-              <div className='product-card-home mx-2'>
+              <div className='product-card-home mx-2' onClick={() => navigate(`/kategori/alat-kesehatan`)}>
                 <img src={alatKesehatan} alt="" className="obat1" />
                 <div className='Obat-obatan'>Alat Kesehatan</div>
               </div>
-              <div className='product-card-home mx-2'>
+              <div className='product-card-home mx-2' onClick={() => navigate(`/kategori/perawatan-tubuh`)}>
                 <img src={perawatanTubuh} alt="" className="obat1" />
                 <div className='Obat-obatan'>Perawatan Tubuh</div>
               </div>
-              <div className='product-card-home mx-2'>
+              <div className='product-card-home mx-2' onClick={() => navigate(`/kategori/ibu-anak`)}>
                 <img src={ibuAnak} alt="" className="obat1" />
                 <div className='Obat-obatan'>Ibu & Anak</div>
               </div>  
@@ -392,8 +401,8 @@ if(localStorage.getItem('myTkn')){
     }
   }else{
     return(
-      <Navigate to='/homeadmin' />
-    )
+      <>{homePage()}</>
+    ) 
   }
 }
 

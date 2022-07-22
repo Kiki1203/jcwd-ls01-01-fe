@@ -11,7 +11,7 @@ import Tampilkan from "../TampilkanDetail/Tampilkan.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import { RingLoader } from "react-spinners";
-
+import FooterMobile from "../../Footer/FooterMobile.jsx"
 
 // PAGE INI MENAMPILKAN SEMUA PROSES PESANAN USER
 const SemuaPesanan  = () => {
@@ -27,6 +27,47 @@ const SemuaPesanan  = () => {
   const [idProduk, setIdProduk] = useState(0)
   const [showAllProducts, setShowAllProducts] = useState(false)
   const [openModal, setOpenModal] = useState(false)
+  const [verified, setVerified] = useState('')
+  const [token, setToken] = useState('')
+
+  useEffect(() => {
+    setLoading(true)
+    let tokens = localStorage.getItem('myTkn')
+    const headers = {
+        headers: { 
+            'Authorization': `${tokens}`,
+        }
+    }
+    axios.get(`${API_URL}/user/checkuserverify`, headers)
+    .then((res) => {
+      setLoading(false)
+        setVerified(res.data.verified)
+        setToken(res.data.token)
+    }).catch((err) => {
+        console.log('ini err get',err)
+        setLoading(false)
+    })
+  }, [token, verified])
+
+  useEffect(() => {
+    setLoading(true)
+    let tokens = localStorage.getItem('myTkn')
+      const headers = {
+          headers: { 
+              'Authorization': `${tokens}`,
+          }
+      }
+      axios.get(`${API_URL}/transaction/getsemuapesanan?`, headers)
+      .then((res) => {
+          setData(res.data)
+          setLoading(false)
+         
+      }).catch((err) => {
+          console.log('ini err get',err)
+          setLoading(false)
+      })
+  }, []);
+
 
   const handleClick = (event) => {
     setcurrentPage(Number(event.target.id));
@@ -58,36 +99,14 @@ const SemuaPesanan  = () => {
     }
   });
 
-  useEffect(() => {
-    setLoading(true)
-    let token = localStorage.getItem('myTkn')
-      const headers = {
-          headers: { 
-              'Authorization': `${token}`,
-          }
-      }
-      axios.get(`${API_URL}/transaction/getsemuapesanan?`, headers)
-      .then((res) => {
-          console.log('res.data semua pesanan', res.data)
-          setData(res.data)
-          setLoading(false)
-         
-      }).catch((err) => {
-          console.log('ini err get',err)
-          setLoading(false)
-      })
-  }, []);
-
-  const btnPesananDiterima = (id) => {
  
+  const btnPesananDiterima = (id) => {
     setLoading(true)
-   
     axios.patch(API_URL + `/transaction/pesananditerima2?id=${id}`)
     .then((res) => {
     console.log(res)
     setData(res.data)
     setLoading(false)
-   
     })
     .catch((err) =>{
     console.log(err)
@@ -281,78 +300,104 @@ const SemuaPesanan  = () => {
     pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
   }
 
-  const handleLoadMore = () => {
-    setitemsPerPage(itemsPerPage + 5);
-  };
-
-  return(
-    <div>
-      <div className="container-pp">
-        <div>
-        <div className="wrapper-pp">
-        <div className="c-pp d-flex">
-            <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-pp-1'>
-                <SidebarProfile/>
+  const semuaPesanan = () => {
+    return(
+      <div>
+        <div className="container-pp">
+          <div>
+          <div className="wrapper-pp">
+          <div className="c-pp d-flex">
+              <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-pp-1'>
+                  <SidebarProfile/>
+              </div>
+              <div  className='col-lg-1 col-none d-lg-block d-md-none d-none'>
+                  
+              </div>
+              <div className='col-lg-8 col-md-9 col-12 sidebar-pp'>
+                  <div>
+                    <Sidebar2 />
+                  </div>
+                  <div>
+                  {
+            loading ? 
+            <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
+            :
+            <>
+           <div className="box-pd">  {renderData(currentItems)}</div>
+            </>
+          }
+           <div className="mt-4 ml-4">
+             <div className='pagination-semua d-flex'>
+               {
+                loading ?
+                <></>
+                :
+                <>
+                 <ul className="pageNumbers2">
+                    <li className="mx-3">
+                    <button
+                        onClick={handlePrevbtn}
+                        disabled={currentPage == pages[0] ? true : false}
+                    >
+                       Prev
+                    </button>
+                    </li>
+                    {pageDecrementBtn}
+                    {renderPageNumbers}
+                    {pageIncrementBtn}
+  
+                    <li>
+                    <button
+                        onClick={handleNextbtn}
+                        disabled={currentPage == pages[pages.length - 1] ? true : false}
+                    >
+                      Next
+                    </button>
+                    </li>
+                </ul> 
+                </>
+               }
             </div>
-            <div  className='col-lg-1 col-none d-lg-block d-md-none d-none'>
-                
-            </div>
-            <div className='col-lg-8 col-md-9 col-12 sidebar-pp'>
-                <div>
-                  <Sidebar2 />
-                </div>
-                <div>
-                {
-          loading ? 
-          <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
-          :
-          <>
-         <div className="box-pd">  {renderData(currentItems)}</div>
-          </>
-        }
-         <div className="mt-4 ml-4">
-           <div className='pagination-semua d-flex'>
-             {
-              loading ?
-              <></>
-              :
-              <>
-               <ul className="pageNumbers2">
-                  <li className="mx-3">
-                  <button
-                      onClick={handlePrevbtn}
-                      disabled={currentPage == pages[0] ? true : false}
-                  >
-                     Prev
-                  </button>
-                  </li>
-                  {pageDecrementBtn}
-                  {renderPageNumbers}
-                  {pageIncrementBtn}
-
-                  <li>
-                  <button
-                      onClick={handleNextbtn}
-                      disabled={currentPage == pages[pages.length - 1] ? true : false}
-                  >
-                    Next
-                  </button>
-                  </li>
-              </ul> 
-              </>
-             }
+            <FooterMobile/>
           </div>
-        </div>
-                </div>
-                
-            </div>
-        </div>
-        </div> 
-    </div>
-    </div>
-    </div>
-)
+                  </div>
+                  
+              </div>
+          </div>
+          </div> 
+      </div>
+      </div>
+      </div>
+  )
+  }
 
+if(localStorage.getItem('myTkn')){
+        if(verified === 0){
+          return(
+            <Navigate to='/verification' />
+          )
+        }else{
+          return(
+            <>{semuaPesanan()}</>
+          )
+        }
+      }else{
+        if(localStorage.getItem('token') === token){
+          if(verified === 0){
+            return(
+              <Navigate to='/verification' />
+            )
+          }else{
+            return(
+              <>{semuaPesanan()}</>
+            )  
+          }
+        }else{
+          return(
+            <Navigate to='/' />
+          ) 
+        }
+}
   
 }
 

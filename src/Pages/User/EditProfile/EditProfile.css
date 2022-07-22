@@ -266,7 +266,25 @@
   .c2{
     display: flex;
   }
+
+  .container-inside-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    width: 95vw;
+
+  }
   
+  .sidebars-mobile-2{
+    width: 30vw;
+    height: 400px;
+    top: 30px;
+    left: 0px;
+    padding-top: 0px;
+    border: 1px solid blue
+  }
+
   .container-ep{
     min-height: 64.3vh;
     min-width: 90vw;
@@ -301,8 +319,8 @@
   .box-baris-ep{
     width: 300px;
     height: 300px;
-    margin-left: -100px;
-    margin-top: 20px;
+    margin-left: -50px;
+    margin-top: 0px;
   }
 
 .box-ep-1{
@@ -321,7 +339,7 @@
     height: 150px;
     background: #C4C4C4;
     border-radius: 50%;
-    margin-left: 20px;
+    margin-left: 40px;
     margin-top: 50px;
   }
   
@@ -352,7 +370,7 @@
     font-size: 12px;
     line-height: 17px;
     border-radius: 8px;
-    margin-left: 40px;
+    margin-left: 60px;
   }
   
   .keterangan-verifikasi{
@@ -530,8 +548,8 @@
   }
 
   .container-ep{
-    min-height: 90vh;
-    min-width: 90vw;
+    height: 100vh;
+    width: 100vw;
     padding: 0px;
     border: 1px solid white;
   }
@@ -539,7 +557,6 @@
   .c1{
     display: flex;
     flex-direction: column;
-    width: 370px;
     margin-top: -148px;
     margin-left: 0px;
   }
@@ -547,9 +564,10 @@
   .c2{
     display: flex;
     flex-direction: column;
-    width: 370px;
     margin-top: 0px;
     margin-left: 0px;
+    margin-bottom: 120px;
+    
   }
   
   .sidebar-ep{
@@ -561,25 +579,34 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
-    margin-left: 50px;
     margin-left: 0px;
+    margin-top: 0px;
+   
   }
-  
+
+  .sidebars-mobile-2{
+    width: 95vw;
+    height: 453px;
+    top: 430px;
+    left: 0px;
+    padding-top: 10px;
+  }
   
   .sidebar-ep-1{
    display: none;
   }
 
   .box-baris-ep{
-    width: 300px;
-    height: 300px;
-    margin-left: 30px;
-    margin-top: 20px;
+    margin-left: 50px;
+    margin-top: -50px;
+   
   }
 
   .box-ep-1{
     display: flex;
     flex-direction: column;
+    width: 80vw;
+    height: 50vh;
   }
   
   .box-ep-2{
@@ -587,6 +614,7 @@
     height: 300px;
     margin-left: 30px;
     margin-top: -5px;
+   
   }
 
   .edit-foto-profile{
@@ -594,7 +622,9 @@
     height: 130px;
     background: #C4C4C4;
     border-radius: 50%;
-    margin-left: 100px;
+    margin-left: 150px;
+    margin-top: 150px;
+   
   }
 
   .pinggiran-atas-profile{
@@ -629,10 +659,9 @@
 
   .button-edit-foto{
     gap: 10px;
-    left: 75px;
-    top: 250px;
     width: 200px;
     height: 26px;
+    margin-left: -50px;
     background: #cfd4e1;
     border-radius: 8px;
     font-family: 'Public Sans';
@@ -653,9 +682,10 @@
 
 
   .baris-edit-profile-1{
-    width: 300px;
+    width: 75vw;
     height: 67px;
     margin-top: -20px;
+   
   }
 
   #label-edit-profile{
@@ -678,7 +708,7 @@
   }
 
   .baris-edit-profile-2{
-    width: 300px;
+    width: 75vw;
     height: 67px;
     margin-top: 10px;
   }
@@ -696,7 +726,7 @@
   }
 
   .baris-edit-profile-3{
-    width: 300px;
+    width: 75vw;
     height: 67px;
     margin-top: 10px;
   }
@@ -715,7 +745,7 @@
   }
 
   .baris-edit-profile-4{
-    width: 300px;
+    width: 75vw;
     height: 67px;
     margin-top: 10px;
   }
@@ -730,7 +760,7 @@
     line-height: 18px;
     color: #213360;
     margin-left: 50px;
-    margin-top: 15px;
+    margin-top: 20px;
   }
 
 
@@ -753,7 +783,7 @@
     justify-content: center;
     align-items: center;
     gap: 0px;
-    width: 300px;
+    width: 75vw;
     height: 46px;
     background: #E0004D;
     border-radius: 8px;
@@ -765,7 +795,7 @@
     line-height: 20px;
     text-align: center;
     color: #FFFFFF;
-    margin-top: -25px;
+    margin-top: -20px;
   }
 
   .button-simpan-edit-profile:hover{
@@ -785,16 +815,17 @@
     font-size: 12px;
     line-height: 17px;
     border-radius: 8px;
-    margin-left: 120px;
-    margin-top: 10px;
+    margin-left: 160px;
+    margin-top: 20px;
+    margin-bottom: 100px;
   }
 
   .box-notifikasi-error{
-
+    position: absolute;
     color: #008076;
     width: 330px;
     height: 30px;
-    top: 280px !important;
+    top: 340px !important;
     left: 30px;
     font-family: 'Public Sans';
     font-style: normal;
@@ -802,6 +833,9 @@
     font-size: 8px;
     line-height: 17px;
     text-align: center;
+    margin-top: 5px;
 
   }
+
+  
 }

@@ -10,6 +10,14 @@
   box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
 }
 
+.box-veri{
+  width: 150px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 30px
+}
+
 .navbar-hi-user{
   font-family: 'Public Sans';
   font-style: normal !important;
@@ -333,10 +341,12 @@
 
 @media only screen and (max-width: 500px) {
 
+ 
+
   .navbar-mobile{
     position: absolute;
     width: 100vw;
-    height: 92px;
+    height: 95px;
     left: 0px;
     top: 0px;
     background: #FFFFFF;

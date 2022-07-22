@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import './Sidebar2.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLine, faBell, faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from "react-router-dom";
+import { faBell, faCartShopping, faAngleLeft, faFilter } from '@fortawesome/free-solid-svg-icons';
+import { Link} from "react-router-dom";
 
 const Sidebar2  = () => {  
  
@@ -56,12 +56,18 @@ const Sidebar2  = () => {
             {/* VERSI MOBILE */}
             <div className="d-md-none d-lg-none d-block">
                 {/* TAB */}
-                <div className="tab-versi-mobile">
+                <div className="tab-versi-mobile navbar-sb">
                   <div className="d-flex">
-                  <div className="daftar-pemesan-mobile">Daftar Pesanan</div>
+                  <div>
+                        <Link to='/' style={{ textDecoration:"none", color: "black", cursor: 'pointer', fontSize: "12px", marginTop: "30px", marginLeft:"10px" }}>
+                            <FontAwesomeIcon icon={faAngleLeft} style={{marginTop: '43px', marginLeft:"10px"}} />
+                        </Link>
+                    </div>
+                  <div className="daftar-pemesan-mobile">Daftar Pemesanan</div>
+                  
                   <div style={{fontSize: '5px'}}>
-                  <FontAwesomeIcon icon={faBell}  style={{cursor:"pointer", color:"#E0004D", marginLeft: '80px', fontSize: '14px', marginTop: '30px'}}/>
-                  <FontAwesomeIcon icon={faCartShopping}  style={{cursor:"pointer", color:"#E0004D",  fontSize: '14px',  marginLeft: '20px', marginTop: '30px'}}/>
+                  <FontAwesomeIcon icon={faBell}  style={{cursor:"pointer", color:"#E0004D", marginLeft: '60px', fontSize: '14px', marginTop: '43px'}}/>
+                  <FontAwesomeIcon icon={faCartShopping}  style={{cursor:"pointer", color:"#E0004D",  fontSize: '14px',  marginLeft: '20px', marginTop: '43px'}}/>
                   </div>
                   </div>
                   <div className="d-flex">
@@ -88,12 +94,16 @@ const Sidebar2  = () => {
                   </div>
                   </div>
                 </div>
-                <div className=" d-flex btn-grup">
-                <div className="button-semua-mobile">Semua</div>
-                <div className="button-obat-resep-mobile">Obat Resep</div>
-                <div className="button-obat-bebas-mobile">Obat Bebas</div>
+                <div className=" d-flex btn-grup-1">
+                  <div  className=" d-flex btn-grup">
+                    <div className="button-semua-mobile">Semua</div>
+                    <div className="button-obat-resep-mobile">Obat Resep</div>
+                    <div className="button-obat-bebas-mobile">Obat Bebas</div>
+                  </div>
+                  <div className="filter-mobile">  <FontAwesomeIcon icon={faFilter}  style={{cursor:"pointer", color:"#E0004D",  fontSize: '12px'}}/></div>
                 </div>
-                {/* <span className="material-icons filter-mobile">format_line_spacing</span> */}
+               
+             
                 <div className="garis-akhir-mobile"></div>
             </div>
      </div>
