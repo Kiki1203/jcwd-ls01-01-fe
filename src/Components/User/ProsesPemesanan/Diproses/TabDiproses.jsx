@@ -11,6 +11,7 @@ import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import SidebarProfile from "../../SidebarProfile/SidebarProfile";
 import Sidebar2 from "../../SidebarProsesPemesanan/Sidebar2";
 import { RingLoader } from "react-spinners";
+import FooterMobile from "../../Footer/FooterMobile.jsx"
 const TabDiproses  = () => {
     
     
@@ -26,6 +27,28 @@ const TabDiproses  = () => {
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
   const [showAllProducts, setShowAllProducts] = useState(false)
   const [openModal, setOpenModal] = useState(false)
+  const [verified, setVerified] = useState('')
+  const [token, setToken] = useState('')
+
+  useEffect(() => {
+    setLoading(true)
+    let tokens = localStorage.getItem('myTkn')
+    const headers = {
+        headers: { 
+            'Authorization': `${tokens}`,
+        }
+    }
+    axios.get(`${API_URL}/user/checkuserverify`, headers)
+    .then((res) => {
+      setLoading(false)
+        setVerified(res.data.verified)
+        setToken(res.data.token)
+    }).catch((err) => {
+        console.log('ini err get',err)
+        setLoading(false)
+    })
+  }, [token, verified])
+
   useEffect(() => {
       setLoading(true)
       let token = localStorage.getItem('myTkn')
@@ -146,73 +169,106 @@ if (minPageNumberLimit >= 1) {
   pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
 }
 
-return(
-  <div>
-    <div className="container-pp">
-      <div>
-      <div className="wrapper-pp">
-      <div className="c-pp d-flex">
-          <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-pp-1'>
-              <SidebarProfile/>
-          </div>
-          <div  className='col-lg-1 col-none d-lg-block d-md-none d-none'>
-              
-          </div>
-          <div className='col-lg-8 col-md-9 col-12 sidebar-pp'>
-              <div>
-                <Sidebar2 />
-              </div>
-              <div>
+const diprosesPesanan = () => {
+  return(
+    <div>
+      <div className="container-pp">
+        <div>
+        <div className="wrapper-pp">
+        <div className="c-pp d-flex">
+            <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-pp-1'>
+                <SidebarProfile/>
+            </div>
+            <div  className='col-lg-1 col-none d-lg-block d-md-none d-none'>
+                
+            </div>
+            <div className='col-lg-8 col-md-9 col-12 sidebar-pp'>
+                <div>
+                  <Sidebar2 />
+                </div>
+                <div>
+                {
+          loading ? 
+          <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
+          :
+          <>
+         <div className="box-pd"> {printData()}</div>
+          </>
+        }
+         <div className="mt-4 ml-4">
+           <div className='pagination-semua d-flex'>
+              <ul className="pageNumbers2">
               {
-        loading ? 
-        <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
-        :
-        <>
-       <div className="box-pd"> {printData()}</div>
-        </>
-      }
-       <div className="mt-4 ml-4">
-         <div className='pagination-semua d-flex'>
-            <ul className="pageNumbers2">
-            {
-                loading ?
-                <></>
-                :
-                <>
-                  <li className="mx-3">
-                <button
-                    onClick={handlePrevbtn}
-                    disabled={currentPage == pages[0] ? true : false}
-                >
-                    Prev
-                </button>
-                </li>
-                {pageDecrementBtn}
-                {renderPageNumbers}
-                {pageIncrementBtn}
-
-                <li>
-                <button
-                    onClick={handleNextbtn}
-                    disabled={currentPage == pages[pages.length - 1] ? true : false}
-                >
-                     Next
-                </button>
-                </li>
-                </>
-              }
-            </ul> 
-        </div>
-      </div>
-              </div>
-              
+                  loading ?
+                  <></>
+                  :
+                  <>
+                    <li className="mx-3">
+                  <button
+                      onClick={handlePrevbtn}
+                      disabled={currentPage == pages[0] ? true : false}
+                  >
+                      Prev
+                  </button>
+                  </li>
+                  {pageDecrementBtn}
+                  {renderPageNumbers}
+                  {pageIncrementBtn}
+  
+                  <li>
+                  <button
+                      onClick={handleNextbtn}
+                      disabled={currentPage == pages[pages.length - 1] ? true : false}
+                  >
+                       Next
+                  </button>
+                  </li>
+                  </>
+                }
+              </ul> 
           </div>
-      </div>
-      </div> 
-  </div>
-  </div>
-  </div>
-)
+          <FooterMobile/>
+        </div>
+                </div>
+                
+            </div>
+        </div>
+        </div> 
+    </div>
+    </div>
+    </div>
+  )
+  
+}
+
+if(localStorage.getItem('myTkn')){
+  if(verified === 0){
+    return(
+      <Navigate to='/verification' />
+    )
+  }else{
+    return(
+      <>{diprosesPesanan()}</>
+    )
+  }
+}else{
+  if(localStorage.getItem('token') === token){
+    if(verified === 0){
+      return(
+        <Navigate to='/verification' />
+      )
+    }else{
+      return(
+        <>{diprosesPesanan()}</>
+      )  
+    }
+  }else{
+    return(
+      <Navigate to='/' />
+    ) 
+  }
+}
+
 }
 
 export default TabDiproses

@@ -17,11 +17,12 @@ const Toast = Swal.mixin({
 });
 
 const Verification = () => {
-  const [verified, setVerified] = useState(false);
-
+  const [verified, setVerified] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState('')
   const onResendEmail = () => {
     let token = localStorage.getItem('myTkn');
-
+    setLoading(true)
     Axios.post(
       `${API_URL}/user/resend`,
       {},
@@ -34,6 +35,7 @@ const Verification = () => {
       }
     )
       .then((res) => {
+        setLoading(false)
         Swal.fire({
           title: 'Success!',
           text: 'Please Check Your Email to Verify',
@@ -43,8 +45,34 @@ const Verification = () => {
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false)
       });
   };
+
+  useEffect(() => {
+    setLoading(true)
+    let tokens = localStorage.getItem('myTkn')
+    const headers = {
+        headers: { 
+            'Authorization': `${tokens}`,
+        }
+    }
+    Axios.get(`${API_URL}/user/checkuserverify`, headers)
+    .then((res) => {
+      setLoading(false)
+        setVerified(res.data.verified)
+        setToken(res.data.token)
+    }).catch((err) => {
+        console.log('ini err get',err)
+        setLoading(false)
+    })
+  }, [verified])
+
+  if(verified === 1 || !localStorage.getItem('myTkn')){
+    return(
+      <Navigate to='/' />
+    )
+  }
 
   return (
     <div className='container-verification'>
@@ -54,9 +82,16 @@ const Verification = () => {
         </div>
         <div className='box-verification-page'>
             <div className="logo-verify-page"><img src={VerifyPage} alt=""/></div>
-            <div className="tulisan-oops">Oops...sorry, </div>
-            <div className="tulisan-not-allowed">You are not allowed to access the homepage, don't forget to verify your account first via email or by clicking the button below:</div>
-            <div className="button-resend-email" onClick={() => onResendEmail()}>Resend Email Verification</div>
+            <div className="tulisan-oops">Oops...Maaf, </div>
+            <div className="tulisan-not-allowed">Anda tidak diizinkan mengakses homepage, jangan lupa untuk menverifikasi akun anda, atau klik tombol di bawah ini:</div>
+            <button className="button-resend-email" disabled={loading} onClick={() => onResendEmail()}>
+              {
+                loading ?
+                'Loading..'
+                :
+                'Resend Email Verification'
+              }
+            </button>
         </div>
    </div>
   );

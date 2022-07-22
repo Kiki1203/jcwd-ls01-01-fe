@@ -85,6 +85,20 @@
         text-align: center;
         color: #FFFFFF;
         cursor: pointer;
+        border: 1px solid #E0004D
+    }
+
+    .button-resend-email:disabled{
+        border: 1px solid #B4B9C7;
+        background: #B4B9C7;
+        color: #FFFFFF;
+    }
+
+    .button-resend-email:disabled:hover{
+        color:#B4B9C7;
+        background: #FFFFFF;
+        border: 1px solid #B4B9C7;
+        cursor: pointer;
     }
 
     .button-resend-email:hover{
@@ -226,8 +240,20 @@
         text-align: center;
         color: #FFFFFF;
         cursor: pointer;
+        border: 1px solid #E0004D;
+    }
+    .button-resend-email:disabled{
+        border: 1px solid #B4B9C7;
+        background: #B4B9C7;
+        color: #FFFFFF;
     }
 
+    .button-resend-email:disabled:hover{
+        color:#B4B9C7;
+        background: #FFFFFF;
+        border: 1px solid #B4B9C7;
+        cursor: pointer;
+    }
     .button-resend-email:hover{
         color:#E0004D;
         background: #FFFFFF;
@@ -366,6 +392,19 @@
         align-items: center;
         text-align: center;
         color: #FFFFFF;
+        cursor: pointer;
+         border: 1px solid #FFFFFF;
+    }
+    .button-resend-email:disabled{
+        border: 1px solid #B4B9C7;
+        background: #B4B9C7;
+        color: #FFFFFF;
+    }
+
+    .button-resend-email:disabled:hover{
+        color:#B4B9C7;
+        background: #FFFFFF;
+        border: 1px solid #B4B9C7;
         cursor: pointer;
     }
 
