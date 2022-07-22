@@ -36,6 +36,21 @@ const DaftarProduk  = () => {
     const [selected2, setSelected2] = useState(null)
     const [idProduk, setIdProduk] = useState(0)
     const [listSearch, setListSearch] = useState(0)
+    const [tokenAdmin, setTokenAdmin] = useState('')
+    useEffect(() => {
+      let token = localStorage.getItem('token')
+      const headers = {
+          headers: { 
+              'Authorization': `${token}`,
+          }
+      }
+      axios.get(`${API_URL}/admin/gettokenadmin`, headers)
+      .then((res) => {
+          setTokenAdmin(res.data[0].token)
+      }).catch((err) => {
+          console.log('ini err get',err)
+      })
+  }, [tokenAdmin])
 
     useEffect(() => {
         setLoading(true)
@@ -330,8 +345,7 @@ const DaftarProduk  = () => {
                 let newData = res.data.data.splice(0,122)
                 setData(newData)
             }
-            // setData(res.data.data)
-            // setProducts(products);
+        
         })
         .catch((err) =>{
            console.log(err)
@@ -345,154 +359,181 @@ const DaftarProduk  = () => {
         setOpenModal2(true)
     }
 
-    if(!localStorage.getItem('token')){
+    const daftarProduk = () => {
         return(
-            <Navigate to='/loginadmin' />
-        )
-      }
-
-
-    return(
-        <>
-        <SidebarAdmin />
-         <div className="container">
-             <div className="box-daftar-produk-admin">
-             <div className="tulisan-dalam-daftar-produk-1">Daftar Obat
-             {
-                    openModal && <ModalTambahObat setOpenModal={setOpenModal}  selected={selected}
-                    setSelected={setSelected}/>
-             }
-             
-             </div>
-            
-             <div className="button-unduh-pdf-produk"><FontAwesomeIcon icon={faDownload} className="" />Unduh PDF</div>
-             <div className="button-unduh-excel-produk"><FontAwesomeIcon icon={faFileExcel} className="" />Excel</div>
-             <div className="inside-box-daftar-produk-admin">
-                 <div className="filter-cari-nama-obat-dalam-produk">
-                 <input type="text" className="form-control input-admin-daftar-1"   onChange={namaObatChange} defaultValue={nama}  placeholder="Cari Nama Obat" />
-                  <FontAwesomeIcon icon={faSearch}  className='logo-input-group-text-daftar' />
-                 </div>
-                 <div className="filter-dropdown-dalam-produk">
-                 <select 
-                 id="inputFillter" 
-                 name="editAdminFilter"
-                onChange={kategoriChange} defaultValue={kategori}
+            <>
+            <SidebarAdmin />
+             <div className="container">
+                 <div className="box-daftar-produk-admin">
+                 <div className="tulisan-dalam-daftar-produk-1">Daftar Obat
+                 {
+                        openModal && <ModalTambahObat setOpenModal={setOpenModal}  selected={selected}
+                        setSelected={setSelected}/>
+                 }
                  
-                 className="form-control border-0  input-admin-daftar-2"  placeholder="Filter"
-                 >
-                     <option value="" >Filter</option>
-                     <option value="1">Obat Keras</option>
-                     <option value="2">Obat Bebas Terbatas</option>
-                     <option value="3">Medical Device & Consumable</option>
-                     <option value="4">Lain-lain</option>
-                 </select>
-                 <div  className='logo-input-group-text-daftar-2'>
-                     <FontAwesomeIcon icon={faAngleDown}  className='logo-input-group-text-daftar-3'/>
                  </div>
- 
-                 </div>
-                 <div id="button-tambah-obat-produk"  onClick={() => setOpenModal(true)} ><FontAwesomeIcon icon={faDownload} className="" />Tambah Obat</div>
-                 <div className="garis-inside-box-daftar-produk"></div>
-                 <div className="box-tabel-daftar-produk">
-                 <div className="inside-box-daftar-produk">
-                    {
-                        loading ?
-                        <LoadingSpinner />
-                        :
-                        <TableData>
-                       {
-                        produkFilter.length !== 0   ?
-                        <>{printFilterKiki()}</>
-                        :
-                        <>{printDataAisyah()}</>
-                       }
-                    </TableData>
-                    }
-                   
-                 </div>
- 
-                 <div className="box-footer-tabel-daftar-produk">
+                
+                 <div className="button-unduh-pdf-produk"><FontAwesomeIcon icon={faDownload} className="" />Unduh PDF</div>
+                 <div className="button-unduh-excel-produk"><FontAwesomeIcon icon={faFileExcel} className="" />Excel</div>
+                 <div className="inside-box-daftar-produk-admin">
+                     <div className="filter-cari-nama-obat-dalam-produk">
+                     <input type="text" className="form-control input-admin-daftar-1"   onChange={namaObatChange} defaultValue={nama}  placeholder="Cari Nama Obat" />
+                      <FontAwesomeIcon icon={faSearch}  className='logo-input-group-text-daftar' />
+                     </div>
+                     <div className="filter-dropdown-dalam-produk">
+                     <select 
+                     id="inputFillter" 
+                     name="editAdminFilter"
+                    onChange={kategoriChange} defaultValue={kategori}
+                     
+                     className="form-control border-0  input-admin-daftar-2"  placeholder="Filter"
+                     >
+                         <option value="" >Filter</option>
+                         <option value="1">Obat Keras</option>
+                         <option value="2">Obat Bebas Terbatas</option>
+                         <option value="3">Medical Device & Consumable</option>
+                         <option value="4">Lain-lain</option>
+                     </select>
+                     <div  className='logo-input-group-text-daftar-2'>
+                         <FontAwesomeIcon icon={faAngleDown}  className='logo-input-group-text-daftar-3'/>
+                     </div>
+     
+                     </div>
+                     <div id="button-tambah-obat-produk"  onClick={() => setOpenModal(true)} ><FontAwesomeIcon icon={faDownload} className="" />Tambah Obat</div>
+                     <div className="garis-inside-box-daftar-produk"></div>
+                     <div className="box-tabel-daftar-produk">
+                     <div className="inside-box-daftar-produk">
                         {
-                        produkFilter.length !== 0   ?
-                        <>
-                         <div className="keterangan-footer-tabel-daftar-produk">Menampilkan {listSearch} dari {totalProduk} data</div>
-                        </>
-                        :
-                        <>
-                         <div className="keterangan-footer-tabel-daftar-produk">Menampilkan {jumlahList} dari {totalProduk} data</div>
-                        </>
-                       }
-                    
-                  
-
-                     <div className="box-pagination-footer-produk">
-                        <div className='d-flex'>
-                             {
-                                produkFilter.length !== 0   ?
-                                <>
-                                  <ul className="pageNumbers">
-                                <li>
-                                <button
-                                    onClick={handlePrevbtn}
-                                    disabled={currentPage == pages2[0] ? true : false}
-                                >
-                                    <FontAwesomeIcon icon={faAngleLeft} className="logo-next-1" />
-                                     <FontAwesomeIcon icon={faAngleLeft} className="logo-next-2" />
-                                </button>
-                                    </li>
-                                    {pageDecrementBtn}
-                                    {renderPageNumbers2}
-                                    {pageIncrementBtn2}
-
-                                    <li>
-                                    <button
-                                        onClick={handleNextbtn}
-                                        disabled={currentPage == pages2[pages2.length - 1] ? true : false}
-                                    >
-                                        <FontAwesomeIcon icon={faAngleRight} className="logo-next-2"/>
-                                        <FontAwesomeIcon icon={faAngleRight} className="logo-next-1"/>
-                                    </button>
-                                    </li>
-                                </ul> 
-                                </>
-                                :
-                                <>
-                                  <ul className="pageNumbers">
+                            loading ?
+                            <LoadingSpinner />
+                            :
+                            <TableData>
+                           {
+                            produkFilter.length !== 0   ?
+                            <>{printFilterKiki()}</>
+                            :
+                            <>{printDataAisyah()}</>
+                           }
+                        </TableData>
+                        }
+                       
+                     </div>
+     
+                     <div className="box-footer-tabel-daftar-produk">
+                            {
+                            produkFilter.length !== 0   ?
+                            <>
+                             <div className="keterangan-footer-tabel-daftar-produk">Menampilkan {listSearch} dari {totalProduk} data</div>
+                            </>
+                            :
+                            <>
+                             <div className="keterangan-footer-tabel-daftar-produk">Menampilkan {jumlahList} dari {totalProduk} data</div>
+                            </>
+                           }
+                        
+                      
+    
+                         <div className="box-pagination-footer-produk">
+                            <div className='d-flex'>
+                                 {
+                                    produkFilter.length !== 0   ?
+                                    <>
+                                      <ul className="pageNumbers">
                                     <li>
                                     <button
                                         onClick={handlePrevbtn}
-                                        disabled={currentPage == pages[0] ? true : false}
+                                        disabled={currentPage == pages2[0] ? true : false}
                                     >
                                         <FontAwesomeIcon icon={faAngleLeft} className="logo-next-1" />
-                                        <FontAwesomeIcon icon={faAngleLeft} className="logo-next-2" />
+                                         <FontAwesomeIcon icon={faAngleLeft} className="logo-next-2" />
                                     </button>
-                                    </li>
-                                    {pageDecrementBtn}
-                                    {renderPageNumbers}
-                                    {pageIncrementBtn}
-
-                                    <li>
-                                    <button
-                                        onClick={handleNextbtn}
-                                        disabled={currentPage == pages[pages.length - 1] ? true : false}
-                                    >
-                                        <FontAwesomeIcon icon={faAngleRight} className="logo-next-2"/>
-                                        <FontAwesomeIcon icon={faAngleRight} className="logo-next-1"/>
-                                    </button>
-                                    </li>
-                                </ul> 
-                                </>
-                            }
-                          
-                        </div>
+                                        </li>
+                                        {pageDecrementBtn}
+                                        {renderPageNumbers2}
+                                        {pageIncrementBtn2}
+    
+                                        <li>
+                                        <button
+                                            onClick={handleNextbtn}
+                                            disabled={currentPage == pages2[pages2.length - 1] ? true : false}
+                                        >
+                                            <FontAwesomeIcon icon={faAngleRight} className="logo-next-2"/>
+                                            <FontAwesomeIcon icon={faAngleRight} className="logo-next-1"/>
+                                        </button>
+                                        </li>
+                                    </ul> 
+                                    </>
+                                    :
+                                    <>
+                                      <ul className="pageNumbers">
+                                        <li>
+                                        <button
+                                            onClick={handlePrevbtn}
+                                            disabled={currentPage == pages[0] ? true : false}
+                                        >
+                                            <FontAwesomeIcon icon={faAngleLeft} className="logo-next-1" />
+                                            <FontAwesomeIcon icon={faAngleLeft} className="logo-next-2" />
+                                        </button>
+                                        </li>
+                                        {pageDecrementBtn}
+                                        {renderPageNumbers}
+                                        {pageIncrementBtn}
+    
+                                        <li>
+                                        <button
+                                            onClick={handleNextbtn}
+                                            disabled={currentPage == pages[pages.length - 1] ? true : false}
+                                        >
+                                            <FontAwesomeIcon icon={faAngleRight} className="logo-next-2"/>
+                                            <FontAwesomeIcon icon={faAngleRight} className="logo-next-1"/>
+                                        </button>
+                                        </li>
+                                    </ul> 
+                                    </>
+                                }
+                              
+                            </div>
+                         </div>
+                     </div>
                      </div>
                  </div>
                  </div>
              </div>
-             </div>
-         </div>
-        </>
-    )
+            </>
+        )
+    }
+
+    if(localStorage.getItem('myTkn')){
+        if(localStorage.getItem('myTkn') === tokenAdmin){
+            return(
+                <>{daftarProduk()}</>
+            )
+        }else{
+            return(
+                <Navigate to='/' />
+            )
+        }
+    }else{
+        if(localStorage.getItem('token') === tokenAdmin){
+            return(
+                <>{daftarProduk()}</>
+            )
+        }else if(!localStorage.getItem('token')){
+            return(
+                <Navigate to='/loginadmin' />
+            )
+        }
+    }
+  
+
+    // if(!localStorage.getItem('token')){
+    //     return(
+    //         <Navigate to='/loginadmin' />
+    //     )
+    //   }
+
+
+   
 }
 
 export default DaftarProduk

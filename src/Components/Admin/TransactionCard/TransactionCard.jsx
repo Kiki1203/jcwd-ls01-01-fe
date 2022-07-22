@@ -2,11 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faAngleDown, faCommentDots, faClipboardList } from '@fortawesome/free-solid-svg-icons';
 import './TransactionCard.css'
+import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
+import ConfirmPaymentModal from '../ConfirmPaymentModal/ConfirmPaymentModal';
+import TransactionModal from '../TransactionModal/TransactionModal';
+import ModalResep from '../ModalResep/ModalResep';
 
-function TransactionCard({transaksi}) {
-const [formattedDate, setFormattedDate] = useState('')
-const status = transaksi.statusTransaksi_id
+function TransactionCard({transaksi, setRerender}) {
+    const [loading, setLoading] = useState(false)
+    const [formattedDate, setFormattedDate] = useState('')
+    const [kirim, setKirim] = useState(false)
+    const [tolak, setTolak] = useState(false)
+    const [mdlTransaksi, setMdlTransaksi] = useState(false)
+    const [mdlConfirm, setMdlConfirm] = useState(false)
+    const [mdlResep, setMdlResep] = useState(false)
+    const status = transaksi.statusTransaksi_id
+    const token = localStorage.getItem('token')
 
     useEffect(() => {
         setFormattedDate(
@@ -24,10 +35,16 @@ const status = transaksi.statusTransaksi_id
         transaksi.created_at.substr(5,2) == '10' ? 'Okt' :
         transaksi.created_at.substr(5,2) == '11' ? 'Nov' :
         'Des')
-        + ', ' + transaksi.created_at.substr(0,4)
-        + ' ' + transaksi.created_at.substr(11,5) + ' WIB'
+        + ' ' + transaksi.created_at.substr(0,4)
+        + ', ' + transaksi.created_at.substr(11,5) + ' WIB'
         )
     }, [transaksi])
+
+    useEffect(() => {
+        if(kirim || tolak){
+            setMdlTransaksi(true)
+        }
+    }, [kirim, tolak])
 
     const totalQtyFunc = () => {
         let total = 0
@@ -37,8 +54,48 @@ const status = transaksi.statusTransaksi_id
         return total
     }
 
+    const onKirim = () => {
+        setLoading(true)
+        axios.patch(API_URL + '/admin/continuetransaction', {id: transaksi.id}, {headers: {authorization: token}})
+        .then((res) => {
+            setKirim(true)
+            setLoading(false)
+        })
+        .catch((err) =>{
+            setLoading(false)
+        })
+    }
+
+    const onTolak = () => {
+        setLoading(true)
+        axios.patch(API_URL + '/admin/canceltransaction', {id: transaksi.id}, {headers: {authorization: token}})
+        .then((res) => {
+            setTolak(true)
+            setLoading(false)  
+        })
+        .catch((err) =>{
+            setLoading(false)
+        })
+    }
+
     return (
         <div className='kartu-transaksi'>
+            {
+                mdlConfirm && <ConfirmPaymentModal transaksi={transaksi}
+                                     setOpenModal={setMdlConfirm}
+                                     setRerender={setRerender} />
+            }
+            {
+                mdlTransaksi && <TransactionModal jenis={kirim ? 'kirim' : tolak ? 'tolak' : ''}
+                                     setOpenModal={setMdlConfirm}
+                                     setRerender={setRerender} />
+            }
+            {
+                mdlResep && <ModalResep transaksi={transaksi}
+                                     formattedDate={formattedDate}
+                                     setOpenModal={setMdlResep}
+                                     setRerender={setRerender} />
+            }
             <div className='d-flex align-items-center' style={{gap:'10px', padding:'20px 30px'}}>
                 <label className='transaksi-16-bold'>
                     <input type="checkbox" className='me-2' />
@@ -63,11 +120,12 @@ const status = transaksi.statusTransaksi_id
             <hr style={{margin:'0px'}} />
             <div>
                 <div className='d-flex' style={{padding:'15px 30px'}}>
-                    <img src={`${API_URL}/${transaksi.gambarResep ? transaksi.gambarResep : transaksi.produk[0].gambar_produk}`} alt="" className='transaksi-gambar'/>
+                    <img src={`${API_URL}/${transaksi.gambarResep ? transaksi.gambarResep : transaksi.produk.length ? transaksi.produk[0].gambar_produk : ''}`} alt="" className='transaksi-gambar'/>
                     {
-                        status == 1 ? <div className='transaksi-detail-kiri'>
+                        status == 1 || transaksi.produk.length === 0 ? <div className='transaksi-detail-kiri'>
                             <p className='transaksi-detail-header'>Resep Dokter</p>
-                            <button className='transaksi-salinan-resep'>Buat Salinan Resep</button>
+                            <button className='transaksi-salinan-resep' disabled={status == 7}
+                                onClick={() => setMdlResep(true)}>Buat Salinan Resep</button>
                         </div> :
                         <div className='transaksi-detail-kiri'>
                             <p className='transaksi-detail-header'>{transaksi.produk[0].nama_produk}</p>
@@ -87,16 +145,16 @@ const status = transaksi.statusTransaksi_id
                         </div>
                         <div style={{width:'50%'}}>
                             <p className='transaksi-detail-header'>Alamat</p>
-                            <p className='transaksi-detail-konten'>{status == 1 ? '-' : `${transaksi.alamat}, ${transaksi.kabupaten_kota}, ${transaksi.provinsi}`}</p>
+                            <p className='transaksi-detail-konten'>{transaksi.no_pemesanan.includes('RSP') ? '-' : `${transaksi.alamat}, ${transaksi.kabupaten_kota}, ${transaksi.provinsi}`}</p>
                         </div>
                         <div style={{width:'25%', padding:'0px 30px'}}>
                             <p className='transaksi-detail-header'>Kurir</p>
-                            <p className='transaksi-detail-konten'>{status == 1 ? '-' : transaksi.kurir}</p>
+                            <p className='transaksi-detail-konten'>{transaksi.no_pemesanan.includes('RSP') ? '-' : transaksi.kurir}</p>
                         </div>
                     </div>
                 </div>
                 {
-                    status != 1 && <div className='transaksi-total-harga'>
+                    transaksi.produk.length > 0 && <div className='transaksi-total-harga'>
                         <div className='d-flex align-items-center' style={{gap:'7px'}}>
                             <p className='transaksi-16-bold'>Total Harga</p>
                             <p className='transaksi-detail-konten'>{`(${totalQtyFunc()} produk)`}</p>
@@ -116,10 +174,18 @@ const status = transaksi.statusTransaksi_id
                         </button>
                     </div>
                     <div className='d-flex' style={{gap:'30px'}}>
-                        {(status == 1 || status == 2 || status == 3) && <button className='tolak-pesanan-button'>Tolak Pesanan</button>}
-                        {(status == 1 || status == 2) ? <button className='terima-pesanan-button' disabled={status == 2}>Terima Pesanan</button>
-                         : status == 3 ? <button className='terima-pesanan-button' style={{fontSize:'12px'}}>Cek Bukti Pembayaran</button>
-                         : status == 4 ? <button className='terima-pesanan-button' style={{fontSize:'12px'}}>Minta Penjemputan</button>
+                        {(status == 1 || status == 2 || status == 3) &&
+                            <button className='tolak-pesanan-button'
+                             onClick={() => onTolak()}>Tolak Pesanan</button>}
+                        {(status == 1 || status == 2) ? <button className='terima-pesanan-button'
+                            disabled={status == 2}
+                            onClick={() => setMdlResep(true)}>Terima Pesanan</button>
+                         : status == 3 ? <button className='terima-pesanan-button' 
+                           onClick={() => setMdlConfirm(true)}
+                           style={{fontSize:'12px'}}>Cek Bukti Pembayaran</button>
+                         : status == 4 ?<button className='terima-pesanan-button'
+                                         style={{fontSize:'12px'}}
+                                         onClick={() => onKirim()}>Kirim Pesanan</button>
                          : (status == 5 || status == 6 || status == 7) ? <button className='terima-pesanan-button'>Lihat Rincian</button> : ''}
                     </div>
                 </div>

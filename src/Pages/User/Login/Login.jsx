@@ -18,7 +18,7 @@ const Login = () => {
   const [disable, setDisable] = useState(false);
   const [verified, setVerified] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [myTkn, setMyTkn] = useState([]);
+  const [myTkn, setMyTkn] = useState('');
 
 
   const navigate = useNavigate()
@@ -42,29 +42,14 @@ const Login = () => {
       if(res.data.error === false){
         localStorage.setItem('myTkn', res.data.token)
         if(res.data.token){
-          if(res.data.verified == 0){
+          if(res.data.verified === 0){
             setMyTkn(res.data.token)
             navigate("/verification")
-          }
-
-          if(res.data.verified == 1){
+          }else if(res.data.verified === 1){
             setMyTkn(res.data.token)
             navigate("/")
           }
         }
-        // if(res.data.token || res.data.verified === 0  ){
-        //   setMyTkn(res.data.token)
-        //   setVerified(false)
-        //   setLoading(false)
-        //   navigate("/verification")
-        // }
-        
-        // if(res.data.token || res.data.verified === 1){
-          // setMyTkn(res.data.token)
-          // setVerified(true)
-          // setLoading(false)
-          // navigate("/")
-        // }
       }
     }).catch((err) => {
       setLoading(false)
@@ -72,101 +57,133 @@ const Login = () => {
     })
   };
 
-  if(localStorage.getItem('token')){
-    return(
-        <Navigate to='/homeadmin' />
-    )
-  }
-
-  if(localStorage.getItem('myTkn')){
-    return(
-        <Navigate to='/' />
-    )
-}
-
-  return (
-    <div className="container-login">
-      <div className="d-flex">
-        <div className="box-image-login">
-          <img src={gambar} alt="" className="image-login"/>
-        </div>
-        <div className="form-login">
-        <div className='tab-button-admin-login' style={{marginLeft: "600px"}}>
-          <Link to="/login" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
-            <div className='tab-1-admin-login'>USER</div>
-          </Link>
-          <Link to="/loginadmin" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
-            <div className='tab-2-admin-login'>ADMIN</div>
-          </Link>
-        </div>
-          <div className="mb-4 mt-5">Masuk</div>
-          <label for="exampleFormControlInput1" className="form-label">
-            Username or Email
-          </label>
-          <InputGroup className="">
-            <InputGroupText className="icon-email-resetpassword">
-              <img src={pLogin} alt="" />
-            </InputGroupText>
-            <Input placeholder="" onChange={(e) => setAccount(e.target.value)} />
-          </InputGroup>
-          <label for="exampleFormControlInput1" className="form-label">
-            Password
-          </label>
-          <InputGroup className="">
-            <InputGroupText className="icon-email-resetpassword">
-              <img src={passLogin} alt="" />
-            </InputGroupText>
-            <Input placeholder="" onChange={(e) => setPassword(e.target.value)} />
-            <Button className="icon-email-newpassword">@</Button>
-          </InputGroup>
-          <div className="d-flex justify-content-between mt-3">
-            <div>
-              <div className="mb-4">
-                <input type="checkbox" value="" id="flexCheckDefault" />
-                <label for="flexCheckDefault">Ingat Saya</label>
+  const loginUser = () =>{
+    return (
+      <div className="container-login">
+        <div className="d-flex">
+          <div className="box-image-login">
+            <img src={gambar} alt="" className="image-login"/>
+          </div>
+          <div className="form-login">
+          <div className='tab-button-admin-login' style={{marginLeft: "600px"}}>
+            <Link to="/login" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+              <div className='tab-1-admin-login'>USER</div>
+            </Link>
+            <Link to="/loginadmin" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+              <div className='tab-2-admin-login'>ADMIN</div>
+            </Link>
+          </div>
+            <div className="mb-4 mt-5">Masuk</div>
+            <label for="exampleFormControlInput1" className="form-label">
+              Username or Email
+            </label>
+            <InputGroup className="">
+              <InputGroupText className="icon-email-resetpassword">
+                <img src={pLogin} alt="" />
+              </InputGroupText>
+              <Input placeholder="" onChange={(e) => setAccount(e.target.value)} />
+            </InputGroup>
+            <label for="exampleFormControlInput1" className="form-label">
+              Password
+            </label>
+            <InputGroup className="">
+              <InputGroupText className="icon-email-resetpassword">
+                <img src={passLogin} alt="" />
+              </InputGroupText>
+              <Input placeholder="" onChange={(e) => setPassword(e.target.value)} />
+              <Button className="icon-email-newpassword">@</Button>
+            </InputGroup>
+            <div className="d-flex justify-content-between mt-3">
+              <div>
+                <div className="mb-4">
+                  <input type="checkbox" value="" id="flexCheckDefault" />
+                  <label for="flexCheckDefault">Ingat Saya</label>
+                </div>
+              </div>
+              <div>
+                Lupa Kata
+                <span>
+                  {' '}
+                  <Link to="/resetpassword" style={{ textDecoration: 'none', color: 'red' }}>
+                    Sandi?
+                  </Link>
+                </span>{' '}
               </div>
             </div>
-            <div>
-              Lupa Kata
-              <span>
-                {' '}
-                <Link to="/resetpassword" style={{ textDecoration: 'none', color: 'red' }}>
-                  Sandi?
-                </Link>
-              </span>{' '}
+            <div className="mb-3">
+              <button type="button" disable={loading} className="btn btn-danger w-100" disabled={disable ? true : false} onClick={onSubmit}>
+               {
+                loading ?
+                'Loading...'
+                :
+                'Masuk'
+               }
+              </button>
             </div>
-          </div>
-          <div className="mb-3">
-            <button type="button" disable={loading} className="btn btn-danger w-100" disabled={disable ? true : false} onClick={onSubmit}>
-             {
-              loading ?
-              'Loading...'
-              :
-              'Masuk'
-             }
-            </button>
-          </div>
-          <div>{error}</div>
-          <br />
-          <Divider>Atau masuk dengan</Divider>
-          <br />
-          <div className="mb-5  ">
-            <button className=" btn btn-outline-danger w-100" disabled={disable ? true : false}>
-              <img className="me-2" src={google} alt="" /> Daftar dengan Google Masuk dengan Google
-            </button>
-          </div>
-          <div>
-            Belum Punya Akun?{' '}
-            <span>
-              <Link to="/register" style={{ textDecoration: 'none', color: 'red' }}>
-                Daftar
-              </Link>
-            </span>
+            <div>{error}</div>
+            <br />
+            <Divider>Atau masuk dengan</Divider>
+            <br />
+            <div className="mb-5  ">
+              <button className=" btn btn-outline-danger w-100" disabled={disable ? true : false}>
+                <img className="me-2" src={google} alt="" /> Daftar dengan Google Masuk dengan Google
+              </button>
+            </div>
+            <div>
+              Belum Punya Akun?{' '}
+              <span>
+                <Link to="/register" style={{ textDecoration: 'none', color: 'red' }}>
+                  Daftar
+                </Link>
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  if(localStorage.getItem('myTkn')){
+    if(verified === 0){
+      return(
+        <Navigate to='/verification' />
+      )
+    }else{
+      return(
+        <Navigate to='/' />
+      )
+    }
+  }else{
+    if(localStorage.getItem('token') === myTkn){
+      if(verified === 0){
+        return(
+          <Navigate to='/verification' />
+        )
+      }else{
+        return(
+         <Navigate to='/' />
+        )  
+      }
+    }else{
+      return(
+        <>{loginUser()}</>
+      )
+    }
+}
+
+//   if(localStorage.getItem('token')){
+//     return(
+//         <Navigate to='/homeadmin' />
+//     )
+//   }
+
+//   if(localStorage.getItem('myTkn')){
+//     return(
+//         <Navigate to='/' />
+//     )
+// }
+
+  
 
  
 };

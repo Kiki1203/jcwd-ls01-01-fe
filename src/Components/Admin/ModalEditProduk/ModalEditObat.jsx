@@ -400,7 +400,7 @@ const ModalEditObat = ({setOpenModal, selected, setSelected, id}) => {
                             </div>
                             <div className='d-flex mt-2'>
                                 <div className='nama-obat-info-edit' >Tgl. Kadaluarsa</div>  
-                                <input type="datetime-local"  onChange={tanggalKadaluarsaChange} defaultValue={tanggalKadaluarsa}
+                                <input type="date"  onChange={tanggalKadaluarsaChange} defaultValue={tanggalKadaluarsa}
                                 placeholder="Tanggal Lahir" className="form-control inputan-obat-info-edit"/>
                             </div>
                             <div className='d-flex mt-2'>

@@ -17,6 +17,7 @@ const TransaksiAdmin  = () => {
     const [loading, setLoading] = useState(false)
     const [errorMsg, setErrorMsg] = useState(null)
     const [searchLoading, setSearchLoading] = useState(false)
+    const [rerender, setRerender] = useState(false)
 
     const [jumlahTransaksi, setJumlahTransaksi] = useState(0)
     const [transaksi, setTransaksi] = useState([])
@@ -64,7 +65,7 @@ const TransaksiAdmin  = () => {
             setLoading(false)
             setErrorMsg(e.message)
         })
-    }, [status, nomorTransaksi, arrUserId, startDate, endDate, sortBy])
+    }, [status, nomorTransaksi, arrUserId, startDate, endDate, rerender])
 
     useEffect(() => {
         setCurrentPage(1)
@@ -115,6 +116,7 @@ const TransaksiAdmin  = () => {
     }, [nomorTransaksi])
 
     useEffect(() => {
+        setRerender(false)
         setLoading(true)
         setErrorMsg(null)
         let userIds = arrUserId.join(',')
@@ -128,7 +130,7 @@ const TransaksiAdmin  = () => {
             setLoading(false)
             setErrorMsg(e.message)
         })
-    }, [currentPage])
+    }, [currentPage, rerender])
 
     useEffect(() => {
         let pagesArr = []
@@ -329,7 +331,7 @@ const TransaksiAdmin  = () => {
                 {
                     jumlahTransaksi && transaksi.length > 0 ?
                         transaksi.map((t,i) => {
-                        return <TransactionCard transaksi={t} key={i} />})
+                        return <TransactionCard transaksi={t} key={i} setRerender={setRerender} />})
                     : !loading ? <div className="no-transaction">
                         <img src={NoTransaction} alt="" style={{width:'400px'}} />
                         <p style={{fontSize:'20px', color:'#213360', fontWeight:'600', marginTop:'10px'}}>

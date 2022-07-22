@@ -364,8 +364,23 @@
   }
 }
 
+@media only screen and (max-width: 850px) {
+  .notifikasi-selesai-pesanan{
+    box-sizing: border-box;
+    position: relative;
+    width: 156px;
+    height: 26px;
+    top: -20px;
+    left: 280px;
+    background: rgba(133, 255, 167, 0.3);
+    border: 1px solid #87DF9F;
+    border-radius: 2px;
+  }
+  
+}
 
-@media only screen and (max-width: 600px) {
+
+@media only screen and (max-width: 500px) {
    .container-selesai{
     min-width: 90vw;
     padding: 0px 0px 0px 0px;

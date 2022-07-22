@@ -1,4 +1,104 @@
+.pageNumbers2 {
+  list-style: none;
+  display: flex;
+  width: 263.16px;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 17px;
+  margin-left: -30px;
+}
+
+.pageNumbers2 li {
+  padding: 4px;
+  cursor: pointer;
+  height: 28px;
+  width: 28px;
+  color: #737A8D;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.pageNumbers2 li.active {
+  color: #fff;
+  background: #E0004D;
+  box-shadow: 0px 7px 16px rgba(0, 0, 0, 0.14);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.pageNumbers2 li button {
+  background-color: transparent;
+  display: flex;
+  border: none;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 17px;
+  cursor: pointer;
+}
+
+.logo-next-1{
+  color: #1A1E2B
+}
+
+.logo-next-2{
+  color: #D5D7DD;
+}
+
+.pageNumbers2 li button:hover {
+  background-color: white;
+  color: black;
+}
+.pageNumbers2 li button:focus {
+  outline: none;
+}
+
+
 @media only screen and (max-width: 1400px) {
+ 
+.wrapper-pp {
+  margin-top: 150px;
+  margin-bottom: 60px;
+}
+.wrapper-pp:before,
+.wrapper-pp:after{
+  content: ' ';
+  display: table;
+  clear: both;
+}
+
+.container-pp{
+  min-height: 100vh;
+  min-width: 90vw;
+  padding: 0px 50px 50px 50px;
+}
+
+.sidebar-pp{
+  background: #FFFFFF;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+  border-radius: 8px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+
+.box-pd{
+  margin-top: -20px;
+}
+
+
 
   .container-semua-pesanan{
     min-height: 200vh;
@@ -115,6 +215,7 @@
     box-shadow: -1px -1px 5px 4px rgba(54, 0, 5, 0.01), 2px 2px 2px rgba(96, 33, 33, 0.04), 4px 4px 4px 6px rgba(155, 0, 34, 0.04);
     border-radius: 8px;
     margin-top: 30px;
+    margin-left: 30px;
   }
 
   .inside-box-semua-pesanan{
@@ -428,10 +529,506 @@
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.28);
     cursor: pointer;
   }
+
+}
+
+@media only screen and (max-width: 850px) {
+  .container-pp{
+    min-height: 64.3vh;
+    min-width: 90vw;
+    padding: 0px 50px 50px 50px;
+    border: 3px solid white
+  }
+  
+  .sidebar-pp{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 50px;
+  }
+  
+
+  .container-semua-pesanan{
+    min-height: 200vh;
+      min-width: 90vw;
+      padding: 50px 150px 50px 150px;
+     
+  }
+  .timer-resep-box-semua{
+    position: absolute;
+    width: 133px;
+    height: 28px;
+    left: 500px;
+    top: 70px;
+  }
+
+
+  #btn-pagination{
+    color: #E0004D;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    background: none;
+    border: 1px solid #E0004D;
+  }
+
+  
+  #btn-pagination:hover{
+    background: #E0004D;
+    color: #fff;
+    border: 1px solid transparent;
+  }
+ 
+  .garis-semua-2-resep{
+    position: relative;
+    width: 500px;
+    height: 0px;
+    left: 0px;
+    top: -10px;
+    border: 1.5px solid #F5F6F9;
+
+  }
+  
+  .box-chat-cs-semua-resep{
+    position: relative;
+    width: 212px;
+    height: 24px;
+    left: 0px;
+    top: 20px;
+    cursor: pointer;
+  }
+
+  .belum-bayar-semua-resep{
+    position: relative;
+    width: 110px;
+    height: 32px;
+    left: 380px;
+    top: -10px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #4F618E;
+  }
+  
+  .button-bayar-sekarang-semua-resep{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    width: 130px;
+    height: 30px;
+    left: 520px;
+    top: -40px;
+    background: #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  
+  .button-bayar-sekarang-semua-resep:hover{
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.28);
+    cursor: pointer;
+  }
+
+  .position-all-box{
+    height: 130vh;
+    width: 57vw;
+    margin-left: 20px;
+  }
+
+  .foto-produk-semua{
+    width: 100%;
+    height:  66.23px;
+    object-fit: cover;
+  }
+
+  .box-semua-pesanan{
+    width: 490px;
+    height: 302px;
+    background: #FFFFFF;
+    box-shadow: -1px -1px 5px 4px rgba(54, 0, 5, 0.01), 2px 2px 2px rgba(96, 33, 33, 0.04), 4px 4px 4px 6px rgba(155, 0, 34, 0.04);
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+
+  .inside-box-semua-pesanan{
+    position: relative;
+    width: 420px;
+    height: 246px;
+    left: 40px;
+    top: 28px;
+    
+  }
+
+  .tanggal-semua-pesanan{
+    position: relative;
+    width: 144px;
+    height: 18px;
+    top: 5px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    color: #4F618E;
+  }
+  
+  .notifikasi-semua-pesanan{
+    box-sizing: border-box;
+    position: relative;
+    width: 210px;
+    height: 26px;
+    top: -20px;
+    left: 220px;
+    background: rgba(255, 222, 107, 0.3);
+    border: 1px solid #FFDE6B;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .status-semua-pesanan{
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #CBAF4E;
+  }
+  
+  .garis-semua-pesanan-1{
+    position: relative;
+    width: 420px;
+    height: 0px;
+    left: 0px;
+    top: 0px;
+    border: 1.5px solid #F5F6F9;
+  }
+  
+  .foto-semua-pesanan{
+    position: relative;
+    width: 91px;
+    height: 66.23px;
+    left: 10px;
+    top: 20px;
+  }
+  
+  .nama-obat-semua-pesanan{
+    position: relative;
+    width: 200px;
+    height: 24px;
+    left: 148px;
+    top: -50px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+  }
+
+  .button-selesai-resep{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    width: 130px;
+    height: 30px;
+    left: 300px;
+    top: -50px;
+    background: #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+
+  .button-selesai-resep:hover{
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.28);
+    cursor: pointer;
+  }
+
+  .button-dikirim{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    width: 130px;
+    height: 30px;
+    left: 300px;
+    top: -50px;
+    background: #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    bordeR: 1px solid #E0004D
+  }
+  
+  .button-dikirim:hover{
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.28);
+    cursor: pointer;
+  }
+  
+  .harga-obat-semua-pesanan{
+    position: relative;
+    width: 90.22px;
+    height: 20px;
+    left: 330px;
+    top: -70px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #213360;
+  }
+  
+  .jumlah-obat-semua-pesanan{
+    position: relative;
+    width: 150px;
+    height: 18px;
+    left: 148px;
+    top: -60px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+  }
+  
+  .button-tampilkan-detail-semua{
+    position: relative;
+    width: 146px;
+    height: 18px;
+    left: 148px;
+    top: -50px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    color: #E0004D;
+    cursor: pointer;
+  }
+  
+  .keterangan-sub-total-semua{
+    position: relative;
+    width: 299px;
+    height: 28px;
+    left: 148px;
+    top: -30px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #213360;
+  }
+  
+  .total-yang-dibayarkan{
+    position: relative;
+    width: 182px;
+    height: 28px;
+    left: 320px;
+    top: -50px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #213360;
+  }
+  
+  .garis-semua-2{
+    position: relative;
+    width: 420px;
+    height: 0px;
+    left: 0px;
+    top: -40px;
+    border: 1.5px solid #F5F6F9;
+  }
+  
+  .box-chat-cs-semua{
+    position: relative;
+    width: 212px;
+    height: 24px;
+    left: 0px;
+    top: -20px;
+    cursor: pointer;
+  }
+  
+  .logo-cs-semua{
+    position: relative;
+    width: 24px;
+    height: 24px;
+    left: 0px;
+    top: -3px;
+  }
+  
+  .keterangan-chat-semua{
+    position: relative;
+    width: 176px;
+    height: 24px;
+    left: 30px;
+    top: -25px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    color: #E0004D;
+  }
+
+
+  
+  .belum-bayar-semua{
+    position: relative;
+    width: 110px;
+    height: 32px;
+    left: 180px;
+    top: -50px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #4F618E;
+  }
+  
+  .button-bayar-sekarang-semua{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    width: 130px;
+    height: 30px;
+    left: 300px;
+    top: -80px;
+    background: #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  
+  .button-bayar-sekarang-semua:hover{
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.28);
+    cursor: pointer;
+  }
 }
 
 
+
 @media only screen and (max-width: 500px) {
+
+  .wrapper-pp {
+    margin-top: 0px;
+    margin-bottom: 21px;
+  }
+
+  .container-pp{
+    min-height: 90vh;
+    min-width: 90vw;
+    padding: 0px;
+    border: 1px solid white;
+  }
+  
+  .c-pp{
+    display: flex;
+    flex-direction: column;
+    width: 370px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  
+  
+  .sidebar-pp{
+    background: #FFFFFF;
+    box-shadow: none;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 50px;
+    margin-left: 0px;
+   
+  }
+  
+  
+  .sidebarp-pp-1{
+   display: none;
+  }
+
   .container-semua-pesanan{
     min-width: 90vw;
     padding: 0px 0px 0px 0px;
@@ -439,9 +1036,7 @@
   }
 
   .pagination-semua{
-    position: absolute;
-    top: 700px;
-    left: 20px;
+    margin-top: -120px;
   }
 
   .timer-resep-box-semua{
@@ -457,17 +1052,19 @@
     left: -10px;
     top: -30px;
     height: 50vh !important;
+    
   }
 
   .box-semua-pesanan{
     position: relative;
     width: 327px;
     height: 183px;
-    left: 20px;
-    top: 250px;
+    left: 10px;
+    top: 0px;
     background: #FFFFFF;
     box-shadow: 0px 1px 2px 2px rgba(96, 33, 33, 0.02), 0px 4px 8px 2px rgba(155, 0, 13, 0.08);
     border-radius: 8px;
+   
   }
 
   .foto-produk-semua{

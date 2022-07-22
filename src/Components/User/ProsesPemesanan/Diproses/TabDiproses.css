@@ -365,8 +365,23 @@
   }
 }
 
+@media only screen and (max-width: 850px) {
+  .notifikasi-diproses-pesanan{
+    box-sizing: border-box;
+    position: relative;
+    width: 156px;
+    height: 26px;
+    top: -20px;
+    left: 280px;
+    background: rgba(255, 222, 107, 0.3);
+    border: 1px solid #FFDE6B;
+    border-radius: 2px;
+  }
 
-@media only screen and (max-width: 600px) {
+}
+
+
+@media only screen and (max-width: 500px) {
   .container-diproses{
     min-width: 90vw;
     padding: 0px 0px 0px 0px;

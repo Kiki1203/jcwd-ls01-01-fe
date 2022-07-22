@@ -2,10 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import './Home.css';
+import NavbarMobile from "../../../Components/User/Navbar/NavbarMobile.jsx";
+import FooterMobile from "../../../Components/User/Footer/FooterMobile.jsx"
 import bca from './../../../Assets/Bca.svg';
 import mandiri from './../../../Assets/Mandiri.svg';
 import permata from './../../../Assets/Permata.svg';
 import ovo from './../../../Assets/Ovo.svg';
+import home1 from './../../../Assets/home1.svg';
+import home2 from './../../../Assets/home2.svg';
+import resep2 from './../../../Assets/resep2.svg';
+import resep3 from './../../../Assets/resep3.svg';
 import gopay from './../../../Assets/Gopay.svg';
 import shoope from './../../../Assets/Shoope.svg';
 import jumbotron1 from './../../../Assets/Jumbotron1.svg';
@@ -27,45 +33,32 @@ import hemat from './../../../Assets/Hemat.svg';
 import kirim from './../../../Assets/Kirim.svg';
 import logo from './../../../Assets/LogoFull.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, Navigate } from "react-router-dom";
 
 
 const Home = () => {
+  const [loading, setLoading] = React.useState(false);
   const [produkDiskon, setProdukDiskon] = useState([])
   const [produkTerbaru, setProdukTerbaru] = useState([])
-  const [verified, setVerified] = useState(false)
+  const [verified, setVerified] = useState('')
   const [token, setToken] = useState('')
   const navigate = useNavigate()
-
   useEffect(() => {
-    let token = localStorage.getItem('myTkn')
-    const headers = {
-        headers: { 
-            'Authorization': `${token}`,
-        }
-    }
-    axios.get(`${API_URL}/user/gettokenuser`, headers)
-    .then((res) => {
-        console.log('token', res.data)
-        setToken(res.data[0].token)
-    }).catch((err) => {
-        console.log('ini err get',err)
-    })
-}, [])
-
-  useEffect(() => {
+    setLoading(true)
     axios.get(`${API_URL}/product/homeproduk`)
     .then((res) => {
-
+      setLoading(false)
         setProdukDiskon(res.data.produkDiskon)
         setProdukTerbaru(res.data.produkTerbaru)
     }).catch((err) => {
         console.log('ini err get',err)
+        setLoading(false)
     })
 }, [])
 
 useEffect(() => {
+  setLoading(true)
   let token = localStorage.getItem('myTkn')
   const headers = {
       headers: { 
@@ -74,19 +67,14 @@ useEffect(() => {
   }
   axios.get(`${API_URL}/user/checkuserverify`, headers)
   .then((res) => {
+    setLoading(false)
       console.log('verified',res.data)
       console.log(res.data.verified)
-  
-
-      if(res.data.verified == 0){
-        setVerified(false)
-      }else if(res.data.verified == 1){
-        setVerified(true)
-      }
-    
-  
+      setVerified(res.data.verified)
+      setToken(res.data.token)
   }).catch((err) => {
       console.log('ini err get',err)
+      setLoading(false)
   })
 }, [])
 
@@ -96,7 +84,8 @@ const printData = (props) => {
           <div key={value.id}>
              <div className='product-card-home-2 mx-2'>
                 <div className='circle-home' onClick={(e) => e.stopPropagation()}>
-                    <span style={{fontSize:'30px', color:'#B4B9C7', marginTop:'5px'}}><FontAwesomeIcon icon={faHeart} /></span>
+                    <span className="hearthome"><FontAwesomeIcon icon={faHeart} /></span>
+                    {/* <span className="heart" style={{fontSize:'30px', color:'#B4B9C7', marginTop:'5px'}}><FontAwesomeIcon icon={faHeart} /></span> */}
                 </div>
                 <div id="box-data-produk-home">
                 <img className='product-image-home' src={`${API_URL}/${value.gambar}`} alt="" />
@@ -106,7 +95,7 @@ const printData = (props) => {
                     <div className="harga-diskon-home">{value.harga.toLocaleString('de-DE', { minimumFractionDigits: 0})}</div>
 
                   </div>
-                  <div style={{display:'flex'}}>
+                  <div id="box-harga-home" style={{display:'flex'}}>
                         <span className='product-price-home'>Rp</span>
                         <span className='product-price-home'>{value.diskon.toLocaleString('de-DE', { minimumFractionDigits: 0})}</span>
                         <span className='product-unit-home'>/</span>
@@ -139,7 +128,7 @@ const printData2 = (props) => {
         <div key={value.id}>
         <div className='product-card-home-4 mx-2'>
            <div className='circle-home' onClick={(e) => e.stopPropagation()}>
-               <span style={{fontSize:'30px', color:'#B4B9C7', marginTop:'5px'}}><FontAwesomeIcon icon={faHeart} /></span>
+               <span className="hearthome"><FontAwesomeIcon icon={faHeart} /></span>
            </div>
            <div id="box-data-produk-home">
            <img className='product-image-home' src={`${API_URL}/${value.gambar}`} alt="" />
@@ -149,7 +138,7 @@ const printData2 = (props) => {
                <div className="harga-diskon-home">{value.harga.toLocaleString('de-DE', { minimumFractionDigits: 0})}</div>
 
              </div>
-             <div style={{display:'flex'}}>
+             <div id="box-harga-home" style={{display:'flex'}}>
                    <span className='product-price-home'>Rp</span>
                    <span className='product-price-home'>{value.diskon.toLocaleString('de-DE', { minimumFractionDigits: 0})}</span>
                    <span className='product-unit-home'>/</span>
@@ -176,43 +165,69 @@ const printData2 = (props) => {
   })
 }
 
-// if(localStorage.getItem('token') === token && localStorage.getItem('myTkn') === token ){
-//   return(
-//       <Navigate to='/' />
-//   )
-// }
-
-if(localStorage.getItem('token') ){
-  return(
-      <Navigate to='/homeadmin' />
-  )
-}
-
+const homePage = () => {
   return (
     <div>
-      <div className='gradient'></div>
+      <div className="d-lg-none d-md-none d-block">
+        <NavbarMobile/>
+      </div>
       <div id="container-home">
-        <div className='inside-container-home'>
+        {
+          loading ?
+          <>
+            <div className="box-loading-profile">
+            'Loading ...'
+            </div>
+          </>
+          :
+          <>
+            <div>
+            <div className='inside-container-home'>
           <div className='box-jumbotron1'></div>
           <div className='head-image'>
-          <div className='selamat-datang-home'>Selamat Datang Di</div>
-          <div className='box-apotakecare'>
+            <div className='d-lg-block d-md-block d-none'>
+                <div className='selamat-datang-home'>Selamat Datang Di</div>
+                <div className='box-apotakecare'>
+                  <img src={logo} alt=""  />
+                  <div className='tulisan-apotakecare'>Apotakecare</div>
+                </div>
+                <img src={jumbotron1} alt="" className="jumbotron1" />
+                <div className='keterangan-persen-asli'>100% Asli, Produk BPOM, Uang Dijamin Kembali</div>
+                  <div className='apotake-terpercaya'>APOTEK ONLINE TERPERCAYA</div>
+            </div>
+           <div className='d-lg-none d-md-none d-block'>
+           <div className='box-apotakecare'>
             <img src={logo} alt=""  />
             <div className='tulisan-apotakecare'>Apotakecare</div>
           </div>
-            <div className='keterangan-persen-asli'>100% Asli, Produk BPOM, Uang Dijamin Kembali</div>
+           <img src={home1} alt="" className="jumbotron1" />
+           <img src={home2} alt="" className="jumbotron11" />
+           <div className='keterangan-persen-asli'>100% Asli, Produk BPOM, Uang Dijamin Kembali</div>
             <div className='apotake-terpercaya'>APOTEK ONLINE TERPERCAYA</div>
-            <img src={jumbotron1} alt="" className="jumbotron1" />
+          
+           </div>
           </div>
         </div>
         <div className='inside-container-home-2'>
-        <img src={jumbotron2} alt="" className="jumbotron2" />
+       <div  className='d-lg-block d-md-block d-none'>
+       <img src={jumbotron2} alt="" className="jumbotron2" />
+       </div>
         <div className='box-unggah-resep'>
+        
           <div className='tulisan-perlu-resep'>Punya Resep Doktor?</div>
-          <div className='tulisan-tak-antre'>Tak perlu antre & obat langsung dikirimkan ke lokasi anda! Foto tidak boleh lebih dari 10 MB</div>
+          <div className='d-lg-none d-md-none d-block'>
+          <img src={resep2} alt="" className="jumbotron2" />
+          <img src={resep3} alt="" className="jumbotron22" />
+          <div className='tulisan-tak-antre'>Unggah resep doktermu disini! foto tidak melebihi 10 MB</div>
+          <FontAwesomeIcon icon={faAngleRight} onClick={() => navigate('/uploadresep')} className='btn-unggah-resep'/>
+          </div>
+         <div className='d-lg-block d-md-block d-none'>
+         <div className='tulisan-tak-antre'>Tak perlu antre & obat langsung dikirimkan ke lokasi anda! Foto tidak boleh lebih dari 10 MB</div>
+         <button className='btn-unggah-resep' onClick={() => navigate('/uploadresep')}>Unggah Resep</button>
+         </div>
         </div>
-        <button className='btn-unggah-resep' onClick={() => navigate('/uploadresep')}>Unggah Resep</button>
-
+      
+  
         </div>
         <div className='inside-container-home-3'>
           <div className='home-kategori'>Kategori</div>
@@ -258,7 +273,9 @@ if(localStorage.getItem('token') ){
             <img src={manusia1} alt="" className="manusia1" />
           </div>
           <div className='box-isi-card-home'>
+            <div className='box-isi-card-home-2'>
             {printData()}
+            </div>
           </div>
           </div>
         </div>
@@ -275,7 +292,7 @@ if(localStorage.getItem('token') ){
             <div className='kebutuhan'>Kebutuhan Untuk Sehari-hari</div>
             <div className='lengkapi-kebutuhan'>Lengkapi kebutuhan gizi & asupan setiap saat</div>
           </div>
-
+  
         </div>
         <div className='inside-container-home-6'>
           <div className='box-tulisan-6'>
@@ -284,7 +301,9 @@ if(localStorage.getItem('token') ){
             <div className='tulisan-6-2'>Lihat Semua</div>
             </div>
             <div className="box-3-jumbotron">
+                <div className="box-3-jumbotron-2">
                 {printData2()}
+                </div>
    
             </div>
           </div>
@@ -314,7 +333,7 @@ if(localStorage.getItem('token') ){
                   <div className='tulisan-7-2'>Tak perlu khawatir menunggu, Kami kirim  langsung secepatnya ke alamat Anda</div>
                 </div>
               </div>
-
+  
          </div>
         </div>
         <div className="d-flex">
@@ -323,7 +342,7 @@ if(localStorage.getItem('token') ){
           <img src="" alt="" />
         </div>
       </div>
-      <div id="container-jumbotron-payment">
+      <div id="container-jumbotron-payment" className="d-lg-block d-md-block d-none">
         <div>
           <div>Metode Pembayaran</div>
           <div className="d-flex justify-content-center">
@@ -335,9 +354,51 @@ if(localStorage.getItem('token') ){
             <img src={shoope} alt="" className="col-1" />
           </div>
         </div>
+            </div>
+          </>
+        }
+          <div className="d-lg-none d-md-none d-block" id="container-jumbotron-payment">
+        <FooterMobile/>
       </div>
+       
+      </div >
+    
     </div>
   );
+}
+
+
+
+if(localStorage.getItem('myTkn')){
+  if(verified === 0){
+    return(
+      <Navigate to='/verification' />
+    )
+  }else{
+    return(
+      <>{homePage()}</>
+    )
+  }
+}else{
+  if(localStorage.getItem('token') === token){
+    if(verified === 0){
+      return(
+        <Navigate to='/verification' />
+      )
+    }else{
+      return(
+        <>{homePage()}</>
+      )  
+    }
+  }else{
+    return(
+      <Navigate to='/homeadmin' />
+    )
+  }
+}
+
+
+  
 };
 
 export default Home;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import './TabDitunggu.css';
-import TemplateProsesPemesanan from "../TemplateProsesPemesanan";
 import Chat from '../../../../Assets/CHAT.svg';
 import axios from 'axios';
 import API_URL  from '../../../../Helpers/API_URL.js';
@@ -9,7 +8,9 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Tampilkan from "../TampilkanDetail/Tampilkan.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
-
+import SidebarProfile from "../../SidebarProfile/SidebarProfile";
+import Sidebar2 from "../../SidebarProsesPemesanan/Sidebar2";
+import { RingLoader } from "react-spinners";
 
 const TabDitunggu  = () => {
     
@@ -212,49 +213,74 @@ if (minPageNumberLimit >= 1) {
 }
 
     
-    return(
-        <div className="container-semua-pesanan">
-          <TemplateProsesPemesanan/>
-          <div className='position-all-box'>
-            {
-              loading ? 
-              'Loading...'
-              :
-              <>
-              {printData()}
-              </>
-            }
-             <div className="mt-4">
-              <div className='pagination-semua d-flex'>
-                            <ul className="pageNumbers">
-                                <li>
-                                <button
-                                    onClick={handlePrevbtn}
-                                    disabled={currentPage == pages[0] ? true : false}
-                                >
-                                    <FontAwesomeIcon icon={faAngleLeft} className="logo-next-1" />
-                                     <FontAwesomeIcon icon={faAngleLeft} className="logo-next-2" />
-                                </button>
-                                </li>
-                                {pageDecrementBtn}
-                                {renderPageNumbers}
-                                {pageIncrementBtn}
-
-                                <li>
-                                <button
-                                    onClick={handleNextbtn}
-                                    disabled={currentPage == pages[pages.length - 1] ? true : false}
-                                >
-                                     <FontAwesomeIcon icon={faAngleRight} className="logo-next-2"/>
-                                     <FontAwesomeIcon icon={faAngleRight} className="logo-next-1"/>
-                                </button>
-                                </li>
-                            </ul> 
-                        </div>
-            </div>
+    
+return(
+  <div>
+    <div className="container-pp">
+      <div>
+      <div className="wrapper-pp">
+      <div className="c-pp d-flex">
+          <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-pp-1'>
+              <SidebarProfile/>
           </div>
+          <div  className='col-lg-1 col-none d-lg-block d-md-none d-none'>
+              
+          </div>
+          <div className='col-lg-8 col-md-9 col-12 sidebar-pp'>
+              <div>
+                <Sidebar2 />
+              </div>
+              <div>
+              {
+        loading ? 
+        <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
+        :
+        <>
+       <div className="box-pd"> {printData()}</div>
+        </>
+      }
+       <div className="mt-4 ml-4">
+         <div className='pagination-semua d-flex'>
+            <ul className="pageNumbers2">
+            {
+                loading ?
+                <></>
+                :
+                <>
+                  <li className="mx-3">
+                <button
+                    onClick={handlePrevbtn}
+                    disabled={currentPage == pages[0] ? true : false}
+                >
+                    Prev
+                </button>
+                </li>
+                {pageDecrementBtn}
+                {renderPageNumbers}
+                {pageIncrementBtn}
+
+                <li>
+                <button
+                    onClick={handleNextbtn}
+                    disabled={currentPage == pages[pages.length - 1] ? true : false}
+                >
+                     Next
+                </button>
+                </li>
+                </>
+              }
+            </ul> 
         </div>
-    )
+      </div>
+              </div>
+              
+          </div>
+      </div>
+      </div> 
+  </div>
+  </div>
+  </div>
+)
 }
 
 export default TabDitunggu

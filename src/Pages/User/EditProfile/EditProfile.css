@@ -1,15 +1,57 @@
 .edit-foto-profile{
-  position: absolute;
   width: 200px;
   height: 200px;
-  left: 450px;
-  top: 300px;
+  margin-left: 45px;
+    margin-top: 80px;
   background: #C4C4C4;
   border-radius: 50%;
 }
 
+.wrapper-ep {
+  margin-top: 150px;
+  margin-bottom: 60px;
+}
+.wrapper-ep:before,
+.wrapper-ep:after{
+  content: ' ';
+  display: table;
+  clear: both;
+}
+
+.container-ep{
+  min-height: 100vh;
+  min-width: 90vw;
+  padding: 0px 50px 50px 50px;
+}
+
+.sidebar-ep{
+  background: #FFFFFF;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+  border-radius: 8px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+
+.sidebar-ep-1{
+  background: #FFFFFF;
+  box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+  border-radius: 8px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.box-ep-1{
+  display: flex;
+}
+
 .box-notifikasi-error{
-  position: absolute;
   width: 300px;
   height: 50px;
   font-family: 'Public Sans';
@@ -26,10 +68,9 @@
 }
 
 #choose-file-edit-profile{
-  position: absolute;
   color: #FFFFFF;
-  background: #E0004D;
-  border: 1px solid #E0004D;
+  background: #213360;
+  border: 1px solid #213360;
   cursor: pointer;
   padding: 6px 12px;
   font-family: 'Public Sans';
@@ -38,12 +79,12 @@
   font-size: 12px;
   line-height: 17px;
   border-radius: 8px;
-  top: 530px !important;
-  left: 500px;
+  margin-top: 30px;
+  margin-left: 85px;
+  
 }
 
 .keterangan-verifikasi{
-  position: absolute;
   width: 229px;
   height: 24px;
   left: 440px;
@@ -62,7 +103,6 @@
 #userImgEdit{
   width: 200px;
   height: 200px;
-  left: 450px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -72,7 +112,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: absolute;
   width: 200px;
   height: 26px;
   left: 450px;
@@ -94,24 +133,26 @@
   box-shadow: 0px 2px 3px 2px rgba(96, 33, 45, 0.08), 0px 4px 12px 4px rgba(155, 0, 28, 0.28);
 }
 
+
+#label-edit-profile{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+}
+
 .baris-edit-profile-1{
-  position: absolute;
   width: 327px;
   height: 65px;
-  left: 700px;
-  top: 279px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
 .input-edit-profile-1{
   box-sizing: border-box;
-  position: absolute;
-  width: 327px;
-  height: 44px;
-  left: 0px;
-  top: 20px;
   border: 1px solid #B4B9C7;
   border-radius: 8px;
-  position: absolute;
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 400;
@@ -121,24 +162,15 @@
 }
 
 .baris-edit-profile-2{
-  position: absolute;
   width: 327px;
   height: 65px;
-  left: 700px;
-  top: 350px;
-
+  margin-top: 10px;
 }
 
 .input-edit-profile-2{
   box-sizing: border-box;
-  position: absolute;
-  width: 327px;
-  height: 44px;
-  left: 0px;
-  top: 20px;
   border: 1px solid #B4B9C7;
   border-radius: 8px;
-  position: absolute;
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 400;
@@ -147,69 +179,43 @@
   color: #213360;
 }
 
-#label-edit-profile{
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  bottom: 20px;
-}
 
 .baris-edit-profile-3{
-  position: absolute;
   width: 327px;
   height: 65px;
-  left: 700px;
-  top: 420px;
-
+  margin-top: 10px;
 }
 
 .input-edit-profile-3{
   box-sizing: border-box;
-  position: absolute;
-  width: 327px;
-  height: 44px;
-  left: 0px;
-  top: 20px;
-  border: 1px solid #B4B9C7;
-  border-radius: 8px;
-  position: absolute;
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
-  color: #213360;
+    border: 1px solid #B4B9C7;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #213360;
   
 }
 
 .baris-edit-profile-4{
-  position: absolute;
   width: 327px;
   height: 65px;
-  left: 700px;
-  top: 490px;
-
+  margin-top: 10px;
 }
 
 
 .input-edit-profile-4{
   box-sizing: border-box;
-  position: absolute;
-  width: 327px;
-  height: 44px;
-  left: 0px;
-  top: 20px;
   border: 1px solid #B4B9C7;
   border-radius: 8px;
-  position: absolute;
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
   color: #213360;
-  cursor: pointer;
 }
 
 
@@ -219,11 +225,8 @@
   justify-content: center;
   align-items: center;
   gap: 0px;
-  position: absolute;
   width: 330px;
   height: 46px;
-  left: 700px;
-  top: 580px;
   background: #E0004D;
   border-radius: 8px;
   border: none;
@@ -234,7 +237,7 @@
   line-height: 20px;
   text-align: center;
   color: #FFFFFF;
-
+  margin-top: 20px;
 }
 
 .button-simpan-edit-profile:hover{
@@ -244,22 +247,86 @@
 .button-simpan-edit-profile:disabled{
   background: #B4B9C7;
   color: #FFFFFF;
+  box-shadow: none;
+}
+.c1{
+  display: flex;
+}
+
+.c2{
+  display: flex;
 }
 
 @media only screen and (max-width: 850px) {
 
+  .c1{
+    display: flex;
+  }
+  
+  .c2{
+    display: flex;
+  }
+  
+  .container-ep{
+    min-height: 64.3vh;
+    min-width: 90vw;
+    padding: 0px 50px 50px 50px;
+    border: 3px solid white
+  }
+  
+  .sidebar-ep{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 50px;
+  }
+  
+  
+  .sidebar-ep-1{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .box-baris-ep{
+    width: 300px;
+    height: 300px;
+    margin-left: -100px;
+    margin-top: 20px;
+  }
+
+.box-ep-1{
+  display: flex;
+}
+
+.box-ep-2{
+  width: 300px;
+  height: 300px;
+  margin-left: -100px;
+ 
+}
+
   .edit-foto-profile{
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    left: 100px;
-    top: 300px;
+    width: 150px;
+    height: 150px;
     background: #C4C4C4;
     border-radius: 50%;
+    margin-left: 20px;
+    margin-top: 50px;
   }
   
   .box-notifikasi-error{
-    position: absolute;
+
     width: 300px;
     height: 50px;
     font-family: 'Public Sans';
@@ -267,8 +334,6 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 17px;
-    left: 70px;
-    top: 560px;
     color: #008076;
     display: flex;
     justify-content: center;
@@ -276,10 +341,9 @@
   }
   
   #choose-file-edit-profile{
-    position: absolute;
     color: #FFFFFF;
-    background: #E0004D;
-    border: 1px solid #E0004D;
+    background: #213360;
+    border: 1px solid #213360;
     cursor: pointer;
     padding: 6px 12px;
     font-family: 'Public Sans';
@@ -288,12 +352,11 @@
     font-size: 12px;
     line-height: 17px;
     border-radius: 8px;
-    top: 530px !important;
-    left: 150px !important;
+    margin-left: 40px;
   }
   
   .keterangan-verifikasi{
-    position: absolute;
+
     width: 229px;
     height: 24px;
     left: 100px;
@@ -310,9 +373,8 @@
   
   
   #userImgEdit{
-    width: 200px;
-    height: 200px;
-    left: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
   }
@@ -322,7 +384,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    position: absolute;
+
     width: 200px;
     height: 26px;
     left: 100px;
@@ -345,23 +407,15 @@
   }
   
   .baris-edit-profile-1{
-    position: absolute;
-    width: 300px;
+    width: 250px;
     height: 65px;
-    left: 350px;
-    top: 279px;
+    margin-top: 0px;
   }
   
   .input-edit-profile-1{
     box-sizing: border-box;
-    position: absolute;
-    width: 327px;
-    height: 44px;
-    left: 0px;
-    top: 20px;
     border: 1px solid #B4B9C7;
     border-radius: 8px;
-    position: absolute;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -371,24 +425,15 @@
   }
   
   .baris-edit-profile-2{
-    position: absolute;
-    width: 300px;
+    width: 250px;
     height: 65px;
-    left: 350px;
-    top: 350px;
-  
+    margin-top: 0px;
   }
   
   .input-edit-profile-2{
     box-sizing: border-box;
-    position: absolute;
-    width: 327px;
-    height: 44px;
-    left: 0px;
-    top: 20px;
     border: 1px solid #B4B9C7;
     border-radius: 8px;
-    position: absolute;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -406,60 +451,41 @@
   }
   
   .baris-edit-profile-3{
-    position: absolute;
-    width: 327px;
+    width: 250px;
     height: 65px;
-    left: 350px;
-    top: 420px;
-  
+    margin-top: 0px;
   }
   
   .input-edit-profile-3{
     box-sizing: border-box;
-    position: absolute;
-    width: 327px;
-    height: 44px;
-    left: 0px;
-    top: 20px;
     border: 1px solid #B4B9C7;
     border-radius: 8px;
-    position: absolute;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 18px;
     color: #213360;
-    
   }
   
   .baris-edit-profile-4{
-    position: absolute;
-    width: 327px;
+
+    width: 250px;
     height: 65px;
-    left: 350px;
-    top: 490px;
-  
+    margin-top: 0px;
   }
   
   
   .input-edit-profile-4{
     box-sizing: border-box;
-    position: absolute;
-    width: 327px;
-    height: 44px;
-    left: 0px;
-    top: 20px;
     border: 1px solid #B4B9C7;
     border-radius: 8px;
-    position: absolute;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 18px;
     color: #213360;
-    cursor: pointer;
   }
   
   
@@ -468,12 +494,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 0px;
-    position: absolute;
-    width: 330px;
+    width: 250px;
     height: 46px;
-    left: 350px;
-    top: 580px;
     background: #E0004D;
     border-radius: 8px;
     border: none;
@@ -484,6 +506,7 @@
     line-height: 20px;
     text-align: center;
     color: #FFFFFF;
+    margin-top: 20px;
   
   }
   
@@ -500,25 +523,88 @@
 
 
 @media only screen and (max-width: 500px) {
+
+  .wrapper2 {
+    margin-top: 0px;
+    margin-bottom: 21px;
+  }
+
+  .container-ep{
+    min-height: 90vh;
+    min-width: 90vw;
+    padding: 0px;
+    border: 1px solid white;
+  }
+  
+  .c1{
+    display: flex;
+    flex-direction: column;
+    width: 370px;
+    margin-top: -148px;
+    margin-left: 0px;
+  }
+  
+  .c2{
+    display: flex;
+    flex-direction: column;
+    width: 370px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  
+  .sidebar-ep{
+    background: #FFFFFF;
+    box-shadow: none;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 50px;
+    margin-left: 0px;
+  }
+  
+  
+  .sidebar-ep-1{
+   display: none;
+  }
+
+  .box-baris-ep{
+    width: 300px;
+    height: 300px;
+    margin-left: 30px;
+    margin-top: 20px;
+  }
+
+  .box-ep-1{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .box-ep-2{
+    width: 300px;
+    height: 300px;
+    margin-left: 30px;
+    margin-top: -5px;
+  }
+
   .edit-foto-profile{
-    position: absolute;
-    width: 136px;
+    width: 130px;
     height: 130px;
-    left: 116px;
-    top: 100px;
     background: #C4C4C4;
     border-radius: 50%;
+    margin-left: 100px;
   }
 
   .pinggiran-atas-profile{
-    position: absolute;
+
     font-size: 12px;
     left: 25px;
     top: 45px;
   }
 
   .keterangan-verifikasi{
-    position: absolute;
     width: 262px;
     height: 22px;
     left: 48px;
@@ -543,7 +629,6 @@
 
   .button-edit-foto{
     gap: 10px;
-    position: absolute;
     left: 75px;
     top: 250px;
     width: 200px;
@@ -558,6 +643,7 @@
     text-align: center;
     color: #213360;
     cursor: pointer;
+    margin-top: 10px;
   }
 
   .button-edit-foto:hover{
@@ -567,11 +653,9 @@
 
 
   .baris-edit-profile-1{
-    position: absolute;
-    width: 327px;
-    height: 80px;
-    left: 24px;
-    top: 300px;   
+    width: 300px;
+    height: 67px;
+    margin-top: -20px;
   }
 
   #label-edit-profile{
@@ -579,17 +663,10 @@
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    top: 0px;
-    left: 0px;
   }
 
   .input-edit-profile-1{
     box-sizing: border-box;
-    position: absolute;
-    width: 327px;
-    height: 44px;
-    left: 0px;
-    top: 25px;
     border: 1px solid #B4B9C7;
     border-radius: 8px;
     font-family: 'Public Sans';
@@ -601,20 +678,13 @@
   }
 
   .baris-edit-profile-2{
-    position: absolute;
-    width: 327px;
-    height: 80px;
-    left: 24px;
-    top: 380px;   
+    width: 300px;
+    height: 67px;
+    margin-top: 10px;
   }
 
   .input-edit-profile-2{
     box-sizing: border-box;
-    position: absolute;
-    width: 327px;
-    height: 44px;
-    left: 0px;
-    top: 25px;
     border: 1px solid #B4B9C7;
     border-radius: 8px;
     font-family: 'Public Sans';
@@ -626,23 +696,15 @@
   }
 
   .baris-edit-profile-3{
-    position: absolute;
-    width: 327px;
-    height: 80px;
-    left: 24px;
-    top: 458px;   
+    width: 300px;
+    height: 67px;
+    margin-top: 10px;
   }
 
   .input-edit-profile-3{
     box-sizing: border-box;
-    position: absolute;
-    width: 327px;
-    height: 44px;
-    left: 0px;
-    top: 25px;
     border: 1px solid #B4B9C7;
     border-radius: 8px;
-    position: absolute;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -653,36 +715,27 @@
   }
 
   .baris-edit-profile-4{
-    position: absolute;
-    width: 327px;
-    height: 80px;
-    left: 24px;
-    top: 538px;   
+    width: 300px;
+    height: 67px;
+    margin-top: 10px;
   }
 
   #wanna-change-password{
-    position: absolute;
     width: 221px;
     height: 53px;
-    left: 80px;
-    top: 650px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 18px;
     color: #213360;
-
+    margin-left: 50px;
+    margin-top: 15px;
   }
 
 
   .input-edit-profile-4{
     box-sizing: border-box;
-    position: absolute;
-    width: 327px;
-    height: 44px;
-    left: 25px;
-    top: 0px;
     border: 1px solid #B4B9C7;
     border-radius: 8px;
     font-family: 'Public Sans';
@@ -700,11 +753,8 @@
     justify-content: center;
     align-items: center;
     gap: 0px;
-    position: absolute;
-    width: 330px;
+    width: 300px;
     height: 46px;
-    left: 25px;
-    top: 660px;
     background: #E0004D;
     border-radius: 8px;
     border: none;
@@ -715,7 +765,7 @@
     line-height: 20px;
     text-align: center;
     color: #FFFFFF;
-
+    margin-top: -25px;
   }
 
   .button-simpan-edit-profile:hover{
@@ -724,10 +774,9 @@
   }
 
   #choose-file-edit-profile{
-    position: absolute;
     color: #FFFFFF;
-    background: #E0004D;
-    border: 1px solid #E0004D;
+    background: #213360;
+    border: 1px solid #213360;
     cursor: pointer;
     padding: 6px 12px;
     font-family: 'Public Sans';
@@ -736,12 +785,12 @@
     font-size: 12px;
     line-height: 17px;
     border-radius: 8px;
-    top: 250px !important;
-    left: 125px !important;
+    margin-left: 120px;
+    margin-top: 10px;
   }
 
   .box-notifikasi-error{
-    position: absolute;
+
     color: #008076;
     width: 330px;
     height: 30px;

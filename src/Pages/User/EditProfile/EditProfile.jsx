@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import './EditProfile.css';
-import SidebarProfile2 from "../../../Components/User/SidebarProfile/SidebarProfile2.jsx";
-import TemplateProfile from "../../../Components/User/TemplateProfile/TemplateProfile.jsx";
+import SidebarProfile from "../../../Components/User/SidebarProfile/SidebarProfile.jsx";
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import Swal from 'sweetalert2';
 import default1 from '../../../Assets/default.jpg';
-import Footer from "../../../Components/User/Footer/Footer.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 
 function EditProfile() {
@@ -21,12 +19,10 @@ function EditProfile() {
     const [editImageFileName, seteditImageFileName] = React.useState('Select Image...');
     const [editImageFile, seteditImageFile] =  React.useState(undefined);
     const [previewImage, setpreviewImage] =  React.useState(null);
-    const [listProfile, setlistrofile] = React.useState([]);
-    const [selectedEditProfile, setselectedEditProfile] = React.useState(0);
     const [file, setFile] = useState(null);
     const [loading, setLoading] = React.useState(false);
     const [errorMessage, setErrorMessage] = useState('')
-    console.log('errorMessage', errorMessage)
+    const navigate = useNavigate()
 
     const onImagesValidation = (e) => {
         try {
@@ -36,7 +32,6 @@ function EditProfile() {
             if(file[0].size > 5000000) throw { message: 'File Tidak Boleh Melebihi 5 Mb' }
             if(!file[0].type.includes('image'))  throw { message: 'Jenis File Tidak Diizinkan'}
             const reader = new FileReader()
-            //   reader.readAsDataURL(e.target.files[0])
               reader.onload = () => {
                   if(reader.readyState === 2){
                       setpreviewImage(reader.result)
@@ -59,8 +54,6 @@ function EditProfile() {
         }
         axios.get(`${API_URL}/user/datauser`, headers)
         .then((res) => {
-            // console.log(res.data)
-            // console.log('ini res.data.nama', res.data[0].nama)
             if(res.data[0].nama) {setNama(res.data[0].nama)}
             if(res.data[0].username) {setUsername(res.data[0].username)}
             if(res.data[0].gender) {setGender(res.data[0].gender)}
@@ -87,24 +80,6 @@ function EditProfile() {
             setTanggallahir(event.target.value)
         }
 
-        //  const onEditImageFileChange = (e) => {
-        //     console.log('e.target.files[0].name', e.target.files[0].name)
-        //     if(e.target.files[0]) {
-        //         seteditImageFileName(e.target.files[0].name)
-        //         seteditImageFile(e.target.files[0])
-        //         const reader = new FileReader()
-        //         reader.readAsDataURL(e.target.files[0])
-        //         reader.onload = () => {
-        //             if(reader.readyState === 2){
-        //                 setpreviewImage(reader.result)
-        //             }
-        //         }
-        //     }
-        //     else {
-        //         seteditImageFileName('Select Image...')
-        //         seteditImageFile("")
-        //     }
-        // }
 
         const onBtnUpdateProfile = () => {
             setLoading(true)
@@ -117,11 +92,6 @@ function EditProfile() {
                 }
             }
 
-          
-            let borndate = tanggallahir
-            borndate = borndate.split('T')
-            borndate = borndate.join(' ') 
-            console.log('ini borndate', borndate)
 
             let tahun = tanggallahir
             tahun = tahun.split('')
@@ -132,7 +102,7 @@ function EditProfile() {
                 nama: nama,
                 username: username,
                 gender: gender,
-                tanggal_lahir: borndate,
+                tanggal_lahir: tanggallahir,
                 umur: tahun
             }
     
@@ -177,98 +147,132 @@ function EditProfile() {
     }
 
     return (
-        <div className="container">
-        <TemplateProfile/>
-        <div className="d-lg-block d-md-none d-block">
-        <SidebarProfile2/>
-        </div>
+    <div>
+        <div className="container-ep">
         <div>
-            <div className="d-lg-none d-md-none d-block"><Link to="/profile" style={{ textDecoration:"none", color: "black", cursor: 'pointer' }}><FontAwesomeIcon icon={faAngleLeft} className="pinggiran-atas-profile" /></Link></div>
-            <div className="keterangan-verifikasi">Akun Terverifikasi
-            </div>
-        </div>
-        <div className="edit-foto-profile">
-        {
-            previewImage? 
-            <img src={previewImage} alt='Image Preview' id='userImgEdit' /> 
-            : 
-            profilepic?
-            <img src={`${API_URL + '/'}${profilepic}`} alt='Image Preview' id='userImgEdit' />
-            :
-            <img  src={default1} alt='Image Preview' id='userImgEdit' />
-        }
-        </div>
-        <div>
-        {/* <input className="button-edit-foto" type="file" label={editImageFileName} onChange={onEditImageFileChange} /> */}
-        <form method="POST" action="/upload" encType='multipart/form-data'>
-        <input type="file" name='photo' accept="image/*" id="image-input" style={{display: 'none'}} onChange={(e) => onImagesValidation(e)} />
-        </form>
-         <label htmlFor='image-input' id="choose-file-edit-profile">Choose image</label>
-        </div>
-        <div className="box-notifikasi-error">
-            {
-                 errorMessage  === "Cannot read properties of undefined (reading 'size')" ?
-                 <></>
-                 :
-                 <p style={{margin: '10px', color: 'black;', fontSize:'14px'}}>{errorMessage}</p>
-            }
-        </div>
-        <div className="baris-edit-profile-1">
-            <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
-              Name
-            </label>
-            <input type="text" 
-            onChange={namaChange} defaultValue={nama}
-            name="editUserName"
-            className="form-control mt-2 input-edit-profile-1" placeholder="Enter Your Name" />
-        </div>
-        <div className="form-group mt-2 baris-edit-profile-2">
-            <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
-              Username
-            </label>
-            <input type="text" 
-             onChange={usernameChange} defaultValue={username}
-             name="editUserEmail"
-            className="form-control mt-2 input-edit-profile-2"  placeholder="Username" />
-        </div>
-        <div className="form-group mt-3 baris-edit-profile-3">
-            <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
-              Gender
-            </label>
-            <select 
-            id="inputGender" 
-            onChange={genderChange} defaultValue={gender}
-            name="editUserGender"
-            className="form-control mt-2 input-edit-profile-3"  placeholder="Gender"
-            >
-                <option value="" >All</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-        </div>
-        <div className="form-group mt-4 baris-edit-profile-4">
-            <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
-             Birthday
-            </label>
-            <div className="input-group">
-                <input type="datetime-local"
-                defaultValue={tanggallahir}  onChange={tanggalChange}
-                 placeholder="Tanggal Lahir" className="form-control rounded-0 border-left-0 border-right-0 mytetring-input" required />
-                <div className="input-group-prepend">
+         <div className="wrapper-ep">
+         <div className="c1 d-flex">
+             <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-ep-1'>
+                <SidebarProfile/>
+             </div>
+             <div  className='col-lg-1 col-none d-lg-block d-md-none d-none'>
+                 
+             </div>
+             <div  className='col-lg-8 col-md-9 col-12 sidebar-ep'>
+                <div>
+                <div className="d-lg-none d-md-none d-block d-flex mt-4">
+                    <div>
+                        <Link to='/profile' style={{ textDecoration:"none", color: "black", cursor: 'pointer', fontSize: "12px", marginTop: "30px", marginLeft:"10px" }}>
+                            <FontAwesomeIcon icon={faAngleLeft} />
+                        </Link>
+                    </div>
+                    <div className="mx-4 keterangan-verifikasi-desk" >Edit Profile</div>
                 </div>
-            </div>
-        </div>
-        <div className="d-lg-none d-md-none d-block" id="wanna-change-password">Wanna change password? <Link to="/changepassword" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}><span>click here</span></Link></div>
-        <button type="submit" disabled={loading} className="mt-4 button-simpan-edit-profile"onClick={() => onBtnUpdateProfile ()} >
-        {
-            loading?
-                'Loading'
-            :
-                'Simpan'
-        }
-        </button>
-       
-   
+                <div className="d-lg-block d-md-block d-none">
+                <div className="mx-4 mt-4 keterangan-verifikasi-desk">Akun Terverifikasi</div>
+                </div>
+                    <div className=" mt-4 d-lg-block d-md-block d-none">
+                       <div className="d-flex ">
+                       <div className="tab-profile" onClick={() => navigate('/profile')}>Profile</div> 
+                        <div className="tab-profile" onClick={() => navigate('/editprofile')}>Edit Profile</div>
+                        <div className="tab-profile"onClick={() => navigate('/changepassword')}>Change Password</div>
+                       </div>
+                    </div>
+                </div>
+                <div  className="d-lg-block d-md-block d-none">
+               <hr style={{marginTop:'0px'}}/>
+               </div>
+                <div className="c2">
+                <div>
+                <div className="edit-foto-profile">
+                {
+                    previewImage? 
+                    <img src={previewImage} alt='Image Preview' id='userImgEdit' /> 
+                    : 
+                    profilepic?
+                    <img src={`${API_URL + '/'}${profilepic}`} alt='Image Preview' id='userImgEdit' />
+                    :
+                    <img  src={default1} alt='Image Preview' id='userImgEdit' />
+                }
+                </div>
+                <div>
+                <form method="POST" action="/upload" encType='multipart/form-data'>
+                <input type="file" name='photo' accept="image/*" id="image-input" style={{display: 'none'}} onChange={(e) => onImagesValidation(e)} />
+                </form>
+                    <label htmlFor='image-input' id="choose-file-edit-profile">Choose image</label>
+                </div>
+                <div className="box-notifikasi-error">
+                    {
+                            errorMessage  === "Cannot read properties of undefined (reading 'size')" ?
+                            <></>
+                            :
+                            <p style={{margin: '10px', color: 'black;', fontSize:'14px'}}>{errorMessage}</p>
+                    }
+                </div>
+                </div>
+                <div className="box-baris-ep">
+                <div className="baris-edit-profile-1">
+                    <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
+                        Name
+                    </label>
+                    <input type="text" 
+                    onChange={namaChange} defaultValue={nama}
+                    name="editUserName"
+                    className="form-control  input-edit-profile-1" placeholder="Enter Your Name" />
+                </div>
+                <div className="form-group baris-edit-profile-2">
+                    <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
+                        Username
+                    </label>
+                    <input type="text" 
+                        onChange={usernameChange} defaultValue={username}
+                        name="editUserEmail"
+                    className="form-control  input-edit-profile-2"  placeholder="Username" />
+                </div>
+                <div className="form-group  baris-edit-profile-3">
+                    <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
+                        Gender
+                    </label>
+                    <select 
+                    id="inputGender" 
+                    onChange={genderChange} defaultValue={gender}
+                    name="editUserGender"
+                    className="form-control  input-edit-profile-3"  placeholder="Gender"
+                    >
+                        <option value="" >All</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div className="form-group baris-edit-profile-4">
+                    <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
+                        Birthday
+                    </label>
+                    <div className="input-group">
+                        <input type="date"
+                        defaultValue={tanggallahir}  onChange={tanggalChange}
+                            placeholder="Tanggal Lahir" className="form-control rounded-0 border-left-0 border-right-0" required />
+                        <div className="input-group-prepend">
+                        </div>
+                    </div>
+                </div>
+                <div className="d-lg-none d-md-none d-block" id="wanna-change-password">Wanna change password? <Link to="/changepassword" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}><span>click here</span></Link></div>
+                <button type="submit" disabled={loading} className="button-simpan-edit-profile"onClick={() => onBtnUpdateProfile ()} >
+                {
+                    loading?
+                        'Loading'
+                    :
+                        'Simpan'
+                }
+                </button>
+                </div>
+                </div>
+                
+             </div>
+         </div>
+         </div> 
+     </div>
+     </div>
     </div>
     );
 }

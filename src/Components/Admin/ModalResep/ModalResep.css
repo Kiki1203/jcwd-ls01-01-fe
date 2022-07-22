@@ -1,0 +1,172 @@
+.resep-top-container {
+    width:100%;
+    height:50px;
+    position:absolute;
+    left:0px;
+    top:0px;
+    display: flex;
+    padding-top: 10px;
+    padding-left: 19px;
+}
+
+.resep-mid-container {
+    width:100%;
+    height:445px;
+    position:absolute;
+    left:0px;
+    top:50px;
+    overflow-y:auto;
+    padding: 0px 19px;
+    scrollbar-color: #B4B9C7 white;
+    scrollbar-width: thin;
+}
+
+.resep-mid-container::-webkit-scrollbar {
+    width: 7px;
+}
+  
+.resep-mid-container::-webkit-scrollbar-track {
+    background: white; 
+}
+   
+.resep-mid-container::-webkit-scrollbar-thumb {
+    background: #B4B9C7; 
+}
+  
+.resep-mid-container::-webkit-scrollbar-thumb:hover {
+    background: #9a9ea9; 
+}
+
+.resep-label {
+    font-size: 14px;
+    color:#213360;
+    margin: 0px;
+}
+
+.resep-tambah-obat-container {
+    width: 100%;
+    border-top: 2px solid lightgray;
+    margin-top: 12px;
+    padding-top: 8px;
+}
+
+.resep-mini-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #213360;
+    text-decoration: 4px underline #E0004D;
+    margin: 0px;
+    text-align: center;
+}
+
+.resep-button-tambah-obat {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #E0004D;
+    outline: none;
+    padding: 5px;
+    color: #E0004D;
+    width: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+}
+
+.resep-table-container {
+    border-top: 2px solid lightgray;
+}
+
+table.resep-tabel-rincian {
+    border: 1px solid #B4B9C7;
+    background-color: #FFFFFF;
+    width: 100%;
+    text-align: center;
+}
+table.resep-tabel-rincian td, table.resep-tabel-rincian th {
+    border: 0px solid #AAAAAA;
+    padding: 6px 10px;
+}
+table.resep-tabel-rincian tbody td {
+    font-size: 12px;
+}
+table.resep-tabel-rincian tr:nth-child(even) {
+    background: #F0F4FE;
+}
+table.resep-tabel-rincian thead {
+    background: #213360;
+}
+table.resep-tabel-rincian thead th {
+    font-size: 13px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.resep-detail-edit {
+    border: 2px solid #E0004D;
+    border-radius: 5px;
+    outline: none;
+    color: #E0004D;
+    font-weight: 600;
+    padding: 0px 10px;
+    margin-right: 10px;
+}
+
+.resep-bottom-container {
+    width:100%;
+    height:65px;
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    border-top:2px solid lightgray;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 19px;
+    gap: 10px;
+}
+
+.button-konfirmasi-pembayaran {
+    background-color: #E0004D;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    color: white;
+    width: 120px;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+}
+
+.button-konfirmasi-pembayaran:hover {
+    background-color: #cc0047;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+}
+
+.button-tolak-pembayaran {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #E0004D;
+    outline: none;
+    padding: 10px;
+    color: #E0004D;
+    width: 120px;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+}
+
+.button-tolak-pembayaran:hover, .resep-button-tambah-obat:hover {
+    background-color: #ffe9f1;
+    box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
+}
+
+.confirm-payment-detail {
+    font-size: 14px;
+    color:#213360;
+    margin:0px;
+}

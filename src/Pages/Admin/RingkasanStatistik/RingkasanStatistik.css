@@ -1,0 +1,54 @@
+.container-fluid {
+  padding-top: 5vw;
+  padding-left: 26vw !important;
+  padding-right: 2vw !important;
+  background: linear-gradient(155.7deg, #f5ded6 -45.88%, #fcf7f9 45.77%, #fcf1f7 117.72%);
+}
+.box-statistik {
+  height: 1050px;
+}
+
+.box-kecil {
+  width: 148px !important;
+  background: #ffffff;
+  box-shadow: 0px 2px 3px 2px rgb(96 33 38 / 2%), 0px 4px 12px 4px rgb(155 0 41 / 8%);
+  border-radius: 10px;
+}
+.box-chart-penjualan {
+  background: #ffffff;
+  box-shadow: 0px 2px 3px 2px rgb(96 33 38 / 2%), 0px 4px 12px 4px rgb(155 0 41 / 8%);
+  border-radius: 10px;
+}
+.box-chart-pendapatan {
+  width: 450px !important;
+  background: #ffffff;
+  box-shadow: 0px 2px 3px 2px rgb(96 33 38 / 2%), 0px 4px 12px 4px rgb(155 0 41 / 8%);
+  border-radius: 10px;
+}
+.box-chart-pembatalan {
+  width: 460px !important;
+  background: #ffffff;
+  box-shadow: 0px 2px 3px 2px rgb(96 33 38 / 2%), 0px 4px 12px 4px rgb(155 0 41 / 8%);
+  border-radius: 10px;
+}
+.chart_penjualan {
+  font-family: 'Public Sans' !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 10px !important;
+  line-height: 12px !important;
+}
+.chart_pendapat {
+  font-family: 'Public Sans';
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 10px !important;
+  line-height: 12px !important;
+}
+.chart_pembatalan {
+  font-family: 'Public Sans';
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 10px !important;
+  line-height: 12px !important;
+}
