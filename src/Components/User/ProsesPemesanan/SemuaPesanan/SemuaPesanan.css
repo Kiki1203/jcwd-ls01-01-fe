@@ -988,6 +988,14 @@
 
 
 @media only screen and (max-width: 500px) {
+  .box-pd{
+    height: 60vh;
+    width: 95vw;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    border: 1px solid white;
+  }
+  
 
   .wrapper-pp {
     margin-top: 0px;
@@ -995,7 +1003,7 @@
   }
 
   .container-pp{
-    min-height: 90vh;
+    height: 90vh;
     min-width: 90vw;
     padding: 0px;
     border: 1px solid white;
@@ -1036,7 +1044,9 @@
   }
 
   .pagination-semua{
-    margin-top: -120px;
+    width: 60vw;
+    margin-top: -20px;
+    margin-left: 30px;
   }
 
   .timer-resep-box-semua{
@@ -1059,7 +1069,7 @@
     position: relative;
     width: 327px;
     height: 183px;
-    left: 10px;
+    left: 0px;
     top: 0px;
     background: #FFFFFF;
     box-shadow: 0px 1px 2px 2px rgba(96, 33, 33, 0.02), 0px 4px 8px 2px rgba(155, 0, 13, 0.08);
@@ -1345,7 +1355,7 @@
     width: 212px;
     height: 24px;
     left: 0px;
-    top: -30px;
+    top: -45px;
     cursor: pointer;
   }
   

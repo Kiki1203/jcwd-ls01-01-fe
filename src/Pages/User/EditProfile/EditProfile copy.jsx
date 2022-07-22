@@ -55,7 +55,6 @@ function EditProfile() {
         }
         axios.get(`${API_URL}/user/datauser`, headers)
         .then((res) => {
-            console.log('res', res)
             if(res.data[0].nama) {setNama(res.data[0].nama)}
             if(res.data[0].username) {setUsername(res.data[0].username)}
             if(res.data[0].gender) {setGender(res.data[0].gender)}
@@ -154,13 +153,13 @@ function EditProfile() {
         <div>
          <div className="wrapper-ep">
          <div className="c1 d-flex">
-            <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-ep-1'>
-                    <SidebarProfile/>
-            </div>
-            <div  className='col-lg-1 col-md-1 col-none d-lg-block d-md-none d-none'>
-                
-            </div>
-            <div  className='col-lg-8 col-md-9 col-12 sidebar-ep'>
+             <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-ep-1'>
+                <SidebarProfile/>
+             </div>
+             <div  className='col-lg-1 col-none d-lg-block d-md-none d-none'>
+                 
+             </div>
+             <div  className='col-lg-8 col-md-9 col-12 sidebar-ep'>
                 <div>
                 <div className="d-lg-none d-md-none d-block d-flex navbar-pro">
                     <div>
@@ -269,9 +268,9 @@ function EditProfile() {
                 </button>
                 </div>
                 </div>
-                <FooterMobile/>
+                
              </div>
-            
+             <FooterMobile/>
          </div>
          
          </div> 
