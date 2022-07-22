@@ -6,6 +6,7 @@ import VerifyPage from '../../../Assets/VerifyPage.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { useParams, Navigate } from 'react-router-dom'
+import FooterMobile from '../../../Components/User/Footer/FooterMobile.jsx'
 // SweetAlert
 import Swal from 'sweetalert2';
 const Toast = Swal.mixin({
@@ -38,7 +39,7 @@ const Verification = () => {
         setLoading(false)
         Swal.fire({
           title: 'Success!',
-          text: 'Please Check Your Email to Verify',
+          text: 'Silahkan Check Email untuk Verifikasi',
           icon: 'success',
           confirmButtonText: 'Okay!',
         });
@@ -50,7 +51,6 @@ const Verification = () => {
   };
 
   useEffect(() => {
-    setLoading(true)
     let tokens = localStorage.getItem('myTkn')
     const headers = {
         headers: { 
@@ -59,12 +59,10 @@ const Verification = () => {
     }
     Axios.get(`${API_URL}/user/checkuserverify`, headers)
     .then((res) => {
-      setLoading(false)
         setVerified(res.data.verified)
         setToken(res.data.token)
     }).catch((err) => {
         console.log('ini err get',err)
-        setLoading(false)
     })
   }, [verified])
 
@@ -75,9 +73,10 @@ const Verification = () => {
   }
 
   return (
+   <>
     <div className='container-verification'>
-        <div className="d-lg-none d-md-none d-block box-navbar-verify">
-            <div className="logo-to-homepage"><FontAwesomeIcon icon={faAngleLeft} /></div>
+        <div className="d-lg-none d-md-none d-block navbar-pro">
+            <FontAwesomeIcon icon={faAngleLeft} className="logove1" />
             <div className="tulisan-verification">Verification</div>
         </div>
         <div className='box-verification-page'>
@@ -94,6 +93,8 @@ const Verification = () => {
             </button>
         </div>
    </div>
+   <FooterMobile/>
+   </>
   );
 };
 

@@ -6,7 +6,7 @@ import ModalEditObat from '../../../Components/Admin/ModalEditProduk/ModalEditOb
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import TableData from './TableData';
-import LoadingSpinner from "./LoadingSpinner";
+import { RingLoader } from "react-spinners";
 import { Navigate, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Dropdown from "react-bootstrap/Dropdown";
@@ -405,7 +405,7 @@ const DaftarProduk  = () => {
                      <div className="inside-box-daftar-produk">
                         {
                             loading ?
-                            <LoadingSpinner />
+                            <> <div className="d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
                             :
                             <TableData>
                            {

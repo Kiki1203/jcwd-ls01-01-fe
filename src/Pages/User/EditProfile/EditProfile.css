@@ -282,7 +282,6 @@
     top: 30px;
     left: 0px;
     padding-top: 0px;
-    border: 1px solid blue
   }
 
   .container-ep{
@@ -319,8 +318,9 @@
   .box-baris-ep{
     width: 300px;
     height: 300px;
-    margin-left: -50px;
+    margin-left: -70px;
     margin-top: 0px;
+ 
   }
 
 .box-ep-1{

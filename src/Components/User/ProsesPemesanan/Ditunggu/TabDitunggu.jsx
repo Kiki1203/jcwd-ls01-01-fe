@@ -81,12 +81,7 @@ const TabDitunggu  = () => {
     return data.map((value, index) => {
         return (
          <>
-          {
-                value.status_transaksi === "Selesai" || value.status_transaksi === "Dikirim" ||  value.status_transaksi === "Dibatalkan"  || value.status_transaksi === "Diproses"?
-                <></>
-                :
-                <>
-                 <div className="box-semua-pesanan" key={index}>
+         <div className="box-semua-pesanan" key={index}>
                  {
                           openModal && <Tampilkan setOpenModal={setOpenModal}  id={idProduk}/>
                   }
@@ -122,7 +117,7 @@ const TabDitunggu  = () => {
                                   </div>
                                   <div className="nama-obat-semua-pesanan">Nomor Resep</div>
                                   <div className="harga-obat-semua-pesanan">TIMER</div>
-                                  <div  className="jumlah-obat-semua-pesanan"  style={{marginTop: '-10px'}}>{value.resultResep[0].no_pemesanan}</div>
+                                  <div  className="jumlah-obat-semua-pesanan"  style={{marginTop: '0px'}}>{value.resultResep[0].no_pemesanan}</div>
                                   <div className="button-tampilkan-detail-semua" >Perbesar gambar</div>
                                   <div className="d-lg-none d-md-none d-block">
                                       <div className="garis-semua-resep"></div>
@@ -170,9 +165,6 @@ const TabDitunggu  = () => {
                             }
                       </div>
                     </div>
-                </>
-          }
-         
          </>
         )
     })
