@@ -1,4 +1,4 @@
-import { React, useState, CSSProperties } from 'react';
+import { React, useState } from 'react';
 import Axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import Divider from '@mui/material/Divider';
@@ -14,12 +14,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { InputGroup, InputGroupText, Input, Button } from 'reactstrap';
-import BeatLoader from 'react-spinners/BeatLoader';
-const override: CSSProperties = {
-  display: 'block',
-  margin: '0 auto',
-  borderColor: 'black',
-};
+import PulseLoader from 'react-spinners/PulseLoader';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -96,12 +91,11 @@ const Register = () => {
       Axios.post(`${API_URL}/user/register`, data)
         .then((res) => {
           setLoading(true);
-          Toast.fire({
+          Swal.fire({
             title: 'Success!',
             text: res.data.message,
             icon: 'success',
             confirmButtonText: 'Okay!',
-            timer: 1500,
           });
           setUsername('');
           setEmail('');
@@ -111,22 +105,20 @@ const Register = () => {
         })
         .catch((err) => {
           setLoading(false);
-          Toast.fire({
+          Swal.fire({
             title: 'Error!',
             text: err.response.data.message,
             icon: 'error',
             confirmButtonText: 'Okay!',
-            timer: 1500,
           });
         });
     } catch (error) {
       setLoading(false);
-      Toast.fire({
+      Swal.fire({
         title: 'Error!',
         text: error.message,
         icon: 'error',
         confirmButtonText: 'Okay!',
-        timer: 1500,
       });
     } finally {
       onSubmit.setSubmitting(false);
@@ -229,10 +221,10 @@ const Register = () => {
                 )}
               </InputGroup>
             </div>
-            <div className="mt-3 ">
+            <div className="mt-3 spa">
               <input type="checkbox" value="" id="flexCheckDefault" />
               <label for="flexCheckDefault">
-                Saya setuju dengan{' '}
+                Setuju dengan{' '}
                 <span>
                   <Link to="" style={{ textDecoration: 'none', color: 'red' }}>
                     persyaratan
@@ -248,8 +240,8 @@ const Register = () => {
             </div>
             <div className="mt-5">
               {loading ? (
-                <button type="button" className="btn btn-secondary w-100 button-au ">
-                  <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={10} />
+                <button type="button" disabled className="btn btn-danger w-100 button-au ">
+                  <PulseLoader color={'#FFFFFF'} loading={loading} cssOverride={{ borderColor: 'white', margin: '0 auto' }} size={10} />
                 </button>
               ) : (
                 <button type="button" className="btn btn-danger w-100 button-au " onClick={() => onSubmit()}>

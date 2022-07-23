@@ -23,7 +23,6 @@ import ChangePassword from './Pages/User/ChangePassword/ChangePassword.jsx';
 import EditProfile from './Pages/User/EditProfile/EditProfile.jsx';
 import MenungguKonfirmasi from './Pages/User/MenungguKonfirmasi/MenungguKonfirmasi.jsx';
 
-
 import Dibatalkan from './Components/User/ProsesPemesanan/Dibatalkan/TabDibatalkan.jsx';
 import Dikirim from './Components/User/ProsesPemesanan/Dikirim/TabDikirim.jsx';
 import Diproses from './Components/User/ProsesPemesanan/Diproses/TabDiproses.jsx';
@@ -60,7 +59,7 @@ function App() {
         location.pathname === '/newpassword' ||
         location.pathname === '/loginadmin' ||
         location.pathname === '/resetpassword' ||
-        location.pathname === '/newpassword/:token' ? null : (
+        location.pathname.includes('/newpassword') ? null : (
           <Navbar />
         )}
         <Routes>
@@ -86,10 +85,9 @@ function App() {
           <Route path="/homeadmin" element={<Dashboard />} />
           <Route path="/daftarprodukadmin" element={<DaftarProduk />} />
           <Route path="/kartustok/:id" element={<KartuStok />} />
-         
+
           <Route path="/menunggukonfirmasi" element={<MenungguKonfirmasi />} />
-        
-         
+
           <Route path="/dibatalkan" element={<Dibatalkan />} />
           <Route path="/dikirim" element={<Dikirim />} />
           <Route path="/diproses" element={<Diproses />} />
@@ -106,7 +104,7 @@ function App() {
         location.pathname === '/newpassword' ||
         location.pathname === '/loginadmin' ||
         location.pathname === '/resetpassword' ||
-        location.pathname === '/newpassword/:token' ? null : (
+        location.pathname.includes('/newpassword') ? null : (
           <Footer />
         )}
       </Provider>

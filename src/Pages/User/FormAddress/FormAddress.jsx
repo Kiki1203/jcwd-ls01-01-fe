@@ -11,7 +11,7 @@ const FormAddress = () => {
   const [LabelAlamat, SetLabelAlamat] = useState('');
   const [NoHP, SetNoHP] = useState('');
   const [Alamat, SetAlamat] = useState('');
-  const [AlamatUtama, SetAlamatUtama] = useState('');
+  const [AlamatUtama, SetAlamatUtama] = useState('0');
   const [IdKota, SetIdKota] = useState('');
   const [Kota, SetKota] = useState('');
   const [IdProvinsi, SetIdProvinsi] = useState('');
@@ -203,7 +203,7 @@ const FormAddress = () => {
           <p className="mini-title-input">Kode Pos</p>
           <input type="text" className="input-alamat" disabled placeholder="Pilih kota" value={Kodepos} style={{ width: '48%' }} />
           <label className="sidebar-checkbox mt-4 mb-5 d-block">
-            <input type="checkbox" value="0" onChange={(e) => SetAlamatUtama(e.target.checked === true ? '1' : '0')} />
+            <input type="checkbox" onChange={(e) => SetAlamatUtama(e.target.checked === true ? '1' : '0')} />
             Simpan sebagai alamat utama
           </label>
           <div className="d-flex justify-content-between mb-5">
