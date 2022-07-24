@@ -13,13 +13,13 @@ const ModalTambahObat = ({setOpenModal, selected, setSelected}) => {
     let [qty, setQty] = useState(1); 
     const [namaObat, setNamaObat] = React.useState("");
     const [beratObat, setBeratObat] = React.useState("");
-    const [noBPOM, setNoBPOM] = React.useState("");
+    const [noBPOMObat, setNoBPOMObat] = React.useState("");
     const [kategori, setKategori] = React.useState("");
     const [tanggalKadaluarsa, setTanggalKadaluarsa] = React.useState("");
     const [lokasiSimpan, setLokasiSimpan] = React.useState("");
     const [kuantitas, setKuantitas] = React.useState("");
     const [satuan, setSatuan] = React.useState("");
-    const [nilaiBarang, setNilaiBarang] = React.useState("");
+    const [nilaiBarang2, setNilaiBarang2] = React.useState("");
     const [nilaiJual, setNilaiJual] = React.useState("");
     const [addImageFileName, setAddImageFileName] = React.useState('Select Image...');
     const [addImageFile, setAddImageFile] =  React.useState(undefined);
@@ -58,8 +58,8 @@ const ModalTambahObat = ({setOpenModal, selected, setSelected}) => {
           setBeratObat(event.target.value)
       }
   
-      let noBPOMChange = (event) => {
-          setNoBPOM(event.target.value)
+      let noBPOMObatChange = (event) => {
+          setNoBPOMObat(event.target.value)
       }
   
       let kategoriChange = (event) => {
@@ -81,8 +81,8 @@ const ModalTambahObat = ({setOpenModal, selected, setSelected}) => {
           setSatuan(event.target.value)
       }
   
-      let nilaiBarangChange = (event) => {
-          setNilaiBarang(event.target.value)
+      let nilaiBarangChange2 = (event) => {
+          setNilaiBarang2(event.target.value)
       }
   
       let nilaiJualChange = (event) => {
@@ -121,35 +121,14 @@ const ModalTambahObat = ({setOpenModal, selected, setSelected}) => {
           let expired = tanggalKadaluarsa
           expired =expired.split('T')
           expired =expired.join(' ')
-  
-          if(beratObat.includes('.')){
-              var berat = beratObat.split('.').join('')
-          }else{
-              var berat = beratObat
-          }
-  
-          if(nilaiBarang.includes('.')){
-              var nilai = nilaiBarang.split('.').join('')
-          }else{
-              var nilai = nilaiBarang
-          }
-  
-          if(nilaiJual.includes('.')){
-              var harga = nilaiJual.split('.').join('')
-          }else{
-              var harga = nilaiJual
-          }
-  
-          console.log('ini berat', berat)
-          console.log('ini nilai barang', nilai)
-          console.log('ini hargajual', harga)
+
           
           var data = {
               nama_obat: namaObat,
-              berat: berat,
-              NIE: noBPOM,
-              harga: harga,
-              nilai_barang: nilai,
+              berat: beratObat,
+              NIE: noBPOMObat,
+              harga: nilaiJual,
+              nilai_barang: nilaiBarang2,
               SatuanObat_id: satuan,
               GolonganObat_id: kategori,
               tempat_penyimpanan: lokasiSimpan,
@@ -165,14 +144,14 @@ const ModalTambahObat = ({setOpenModal, selected, setSelected}) => {
               if(res.data.message === "Add Product Success"){
                 setSelected(3)
                 setNamaObat("")
-                setNoBPOM("")
+                setNoBPOMObat("")
                 setKategori("")
                 setTanggalKadaluarsa("")
                 setBeratObat("")
                 setLokasiSimpan("")
                 setKuantitas("")
                 setSatuan("")
-                setNilaiBarang("")
+                setNilaiBarang2("")
                 setNilaiJual("")
               }
               setLoading(false)
@@ -290,14 +269,6 @@ const ModalTambahObat = ({setOpenModal, selected, setSelected}) => {
                              <div className="input-group-text logo-input-group-text-4" ><FontAwesomeIcon icon={faAngleDown} /></div>  
                         </div>
                         <div className='d-flex mt-2'>
-                            <div className='nama-obat-info'>Nilai Barang (Rp)</div>  
-                            <input type="number" min="0" className='form-control inputan-obat-info' placeholder='Masukkan Nilai Barang'  onChange={nilaiBarangChange} defaultValue={nilaiBarang}/>
-                        </div>
-                        <div className='d-flex mt-2'>
-                            <div className='nama-obat-info'>Nilai Jual (Rp)</div>  
-                            <input type="number" min="0" className='form-control inputan-obat-info' placeholder='Masukkan Nilai Jual'  onChange={nilaiJualChange} defaultValue={nilaiJual}/>  
-                        </div>
-                        <div className='d-flex mt-2'>
                             <div className='nama-obat-info'>Foto Obat</div>  
                             <div  className='inputan-obat-info-3'>
                                 {
@@ -313,9 +284,8 @@ const ModalTambahObat = ({setOpenModal, selected, setSelected}) => {
                                 <input type="file" name='photo' accept="image/*" id="image-input" style={{display: 'none'}} onChange={(e) => onImagesValidation(e)} />
                                 </form>
                                 <label htmlFor='image-input' className="choose-file-produk">Choose image</label>
-                        </div>  
-                    </div>
-                    <div className='error-msg'>
+                        </div>
+                        <div className='error-msg2'>
                         {
                             file ? 
                             <>
@@ -330,7 +300,19 @@ const ModalTambahObat = ({setOpenModal, selected, setSelected}) => {
                             <></>
                         }
                    
+                    </div>  
+                    <div className='d-flex mt-2'>
+                            <div className='nama-obat-info'>Nilai Barang (Rp)</div>  
+                            <input type="number" min="0"  name="nilaiBarang" className='form-control inputan-obat-info' placeholder='Masukkan Nilai Barang'  onChange={nilaiBarangChange2} defaultValue={nilaiBarang2}/>
+                        </div>
+                        <div className='d-flex mt-2'>
+                            <div className='nama-obat-info'>Nilai Jual (Rp)</div>  
+                            <input type="number" min="0" className='form-control inputan-obat-info' placeholder='Masukkan Nilai Jual'  onChange={nilaiJualChange} defaultValue={nilaiJual}/>  
+                        </div>
+                       
+                      
                     </div>
+                   
                     <div className='d-flex'>
                         <button className='pilih-metode-add-2 mx-2 w-50' onClick={() => setSelected(null)} >Kembali</button>
                         <button className='pilih-metode-add-2 w-50' disabled={loading} onClick={() => onBtnAddProduct ()}> Simpan </button>
@@ -356,7 +338,7 @@ const ModalTambahObat = ({setOpenModal, selected, setSelected}) => {
                         </div>
                         <div className='d-flex mt-2'>
                             <div className='nama-obat-info'>No.BPOM</div>  
-                            <input type="text" className='form-control inputan-obat-info' placeholder='Masukkan no. BPOM'  onChange={noBPOMChange} defaultValue={noBPOM}/>                  
+                            <input name="noBPOMObat" type="text" className='form-control inputan-obat-info' placeholder='Masukkan no.BPOM'  onChange={noBPOMObatChange} defaultValue={noBPOMObat}/>                  
                         </div>
                         <div className='d-flex mt-2'>
                             <div className='nama-obat-info'>Kategori</div>  

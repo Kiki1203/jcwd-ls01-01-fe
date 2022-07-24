@@ -86,7 +86,7 @@ const homePageAdmin = () => {
                   </div>
                   <div className="box-3-dashboard-admin">
                       <div className="judul-sisa-stok-today">Sisa Stok Hari Ini</div>
-                      <div className="nominal-sisa-stok-today">5.980</div>
+                      <div className="nominal-sisa-stok-today">1.500</div>
                       <div className="row-sisa-stok-dashboard"><FontAwesomeIcon icon={faArrowCircleRight} className="" /></div>
                       <div className="keterangan-row-sisa-stok">+1.200</div>
                       <div className="prosentase-sisa-stok-box-2"></div>
