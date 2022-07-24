@@ -63,8 +63,6 @@
 }
 
 
-@media only screen and (max-width: 1400px) {
- 
 .wrapper-pp {
   margin-top: 150px;
   margin-bottom: 60px;
@@ -530,8 +528,6 @@
     cursor: pointer;
   }
 
-}
-
 @media only screen and (max-width: 850px) {
   .container-pp{
     min-height: 64.3vh;
@@ -989,11 +985,12 @@
 
 @media only screen and (max-width: 500px) {
   .box-pd{
-    height: 60vh;
+    height: 70vh;
     width: 95vw;
     margin-top: 0px;
     margin-bottom: 50px;
     border: 1px solid white;
+    
   }
   
 
@@ -1004,9 +1001,11 @@
 
   .container-pp{
     height: 90vh;
-    min-width: 90vw;
+    width: 100vw;
     padding: 0px;
     border: 1px solid white;
+   
+   
   }
   
   .c-pp{

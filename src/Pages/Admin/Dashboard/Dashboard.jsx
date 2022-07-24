@@ -10,6 +10,16 @@ import API_URL  from '../../../Helpers/API_URL.js';
 
 const DashboardAdmin  = () => {
   const [tokenAdmin, setTokenAdmin] = useState('')
+  const [data, setData] = useState('')
+  const [stok, setStok] = useState('')
+  const [pesananBaru, setPesananBaru] = useState('')
+  const [pesananBaru2, setPesananBaru2] = useState('')
+  const [pesananBaru3, setPesananBaru3] = useState('')
+  const [siapKirim, setSiapkirim] = useState('')
+  const [sedangKirim, setSedangkirim] = useState('')
+  const [selesai, setSelesai] = useState('')
+  const [batalkan, setBatalkan] = useState('')
+
   useEffect(() => {
     let token = localStorage.getItem('token')
     const headers = {
@@ -20,12 +30,39 @@ const DashboardAdmin  = () => {
     axios.get(`${API_URL}/admin/gettokenadmin`, headers)
     .then((res) => {
         setTokenAdmin(res.data[0].token)
+      
+        
     }).catch((err) => {
         console.log('ini err get',err)
     })
 }, [tokenAdmin])
 
+useEffect(() => {
+    let token = localStorage.getItem('token')
+    const headers = {
+        headers: { 
+            'Authorization': `${token}`,
+        }
+    }
+    axios.get(`${API_URL}/admin/gethomedata`, headers)
+    .then((res) => {
+        console.log(res)
+        setStok()
+        setData(res.data.data.length)
+        setPesananBaru(res.data.pesananBaru.length)
+        setPesananBaru2(res.data.pesananBaru2.length)
+        setPesananBaru3(res.data.pesananBaru3.length)
+        setSiapkirim(res.data.siapKirim.length)
+        setSedangkirim(res.data.sedangKirim.length)
+        setSelesai(res.data.selesai.length)
+        setBatalkan(res.data.dibatalkan.length)
+    }).catch((err) => {
+        console.log('ini err get',err)
+    })
+}, [])
+
 const homePageAdmin = () => {
+    var newPesanan = pesananBaru + pesananBaru2 + pesananBaru3
     return (
         <>
         <SidebarAdmin />
@@ -42,7 +79,7 @@ const homePageAdmin = () => {
                   </div>
                   <div className="box-2-dashboard-admin">
                       <div className="judul-total-pemesanan-today">Total Pemesanan Hari Ini </div>
-                      <div  className="nominal-total-pemesanan-today">110</div>
+                      <div  className="nominal-total-pemesanan-today">{data}</div>
                       <div className="row-2-profit-dashboard"><FontAwesomeIcon icon={faArrowCircleRight} className="" /></div>
                       <div className="keterangan-row-2-profit">-60</div>
                       <div className="prosentase-profit-box-2"></div>
@@ -58,23 +95,23 @@ const homePageAdmin = () => {
                   <div className="tulisan-aktivitas-dashboard">Aktivitas yang perlu kamu ketahui untuk menjaga kepuasan pelanggan</div>
                   <div className="box-pesanan-baru-dashboard-admin">
                       <div className="judul-box-pesanan">Pesanan Baru</div>
-                      <div className="nominal-box-pesanan">7</div>
+                      <div className="nominal-box-pesanan">{newPesanan}</div>
                   </div>
                   <div className="box-siap-dikirim-dashboard-admin">
                       <div className="judul-box-siap-dikirim">Siap Dikirim</div>
-                      <div className="nominal-box-siap-dikirim">3</div>
+                      <div className="nominal-box-siap-dikirim">{siapKirim}</div>
                   </div>
                   <div className="box-sedang-dikirim-dashboard-admin">
                       <div className="judul-box-sedang-dikirim">Sedang Dikirim</div>
-                      <div className="nominal-box-sedang-dikirim">0</div>
+                      <div className="nominal-box-sedang-dikirim">{sedangKirim}</div>
                   </div>
                   <div className="box-selesai-dashboard-admin">
                       <div className="judul-box-selesai">Selesai</div>
-                      <div className="nominal-box-selesai">7</div>
+                      <div className="nominal-box-selesai">{selesai}</div>
                   </div>
                   <div className="box-dibatalkan-dashboard-admin">
                       <div className="judul-box-dibatalkan">Dibatalkan</div>
-                      <div className="nominal-box-dibatalkan">3</div>
+                      <div className="nominal-box-dibatalkan">{batalkan}</div>
                   </div>
                   <div className="box-chat-baru-dashboard-admin">
                       <div className="judul-box-chat-baru">Chat Baru</div>
@@ -84,11 +121,11 @@ const homePageAdmin = () => {
                   <div className="tulisan-cek-tanggal-kadaluarsa-dashboard">Cek tanggal kedaluwarsa untuk mengorganisir stok obat </div>
                   <div className="box-kadaluarsa-dashboard-admin">
                       <div className="keterangan-telah-expired">Telah Kedaluwarsa</div>
-                      <div className="nominal-telah-expired">17</div>
+                      <div className="nominal-telah-expired">0</div>
                       <div className="keterangan-expired-bulan-ini">Kedaluwarsa Bulan Ini</div>
                       <div className="jumlah-expired-bulan-ini">0</div>
                       <div className="keterangan-expired-3-bulan-lagi">Kedaluwarsa 3 Bulan Kedepan</div>
-                      <div className="nominal-expired-3-bulan-lagi">3</div>
+                      <div className="nominal-expired-3-bulan-lagi">0</div>
                   </div>
                   <div className="box-profit-dashboard-admin">
                       <div className="judul-dalam-box-profit">Profit</div>

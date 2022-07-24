@@ -7,6 +7,8 @@ import Welcome from "../../../Assets/Welcome.svg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { useParams, Navigate, Link } from 'react-router-dom'
+import FooterMobile from '../../../Components/User/Footer/FooterMobile.jsx'
+
 // SweetAlert
 import Swal from 'sweetalert2';
 const Toast = Swal.mixin({
@@ -58,8 +60,9 @@ if(isRedirect){
 }
 
   return (
-    <div className='container-confirmation'>
-         <div className="d-lg-none d-md-none d-block box-navbar-confirmation">
+    <>
+   <div className='container-confirmation'>
+         <div className="d-lg-none d-md-none d-block navbar-pro">
             <div className="logo-to-homepage"><FontAwesomeIcon icon={faAngleLeft} /></div>
             <div className="tulisan-confirmation">Confirmation</div>
         </div>
@@ -71,19 +74,21 @@ if(isRedirect){
                 <h1 className="tulisan-welcome">{message}</h1>
                 <br/>
                 <Link to={localStorage.getItem('myTkn') ? "/" : "/login"} style={{textDecoration: "none"}}>
-                    <h4 className="tulisan-redirect">Back to home</h4>
+                    <h4 className="tulisan-redirect">Kembali ke home</h4>
                 </Link>
                 
             </div>
                 : 
             <div className='box-confirmation-page'>
                 <div><img src={Welcome} alt="" className="logo-verify-page-2"/></div>
-                <div className="tulisan-welcome-2">Welcome to Apotakecare!</div>
-                <div className="tulisan-redirect-2">You will be redirected to Our home page. Enjoy your moment with us ~</div>
+                <div className="tulisan-welcome-2">Selamat Datang di Apotakecare!</div>
+                <div className="tulisan-redirect-2">Anda akan diarahkan menuju homepage. Nikmati setiap moment bersama kami ~</div>
             </div>
         }
         </div>
    </div>
+   <FooterMobile/>
+   </>
   );
 };
 

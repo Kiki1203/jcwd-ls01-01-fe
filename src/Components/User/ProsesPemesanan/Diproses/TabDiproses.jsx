@@ -12,6 +12,8 @@ import SidebarProfile from "../../SidebarProfile/SidebarProfile";
 import Sidebar2 from "../../SidebarProsesPemesanan/Sidebar2";
 import { RingLoader } from "react-spinners";
 import FooterMobile from "../../Footer/FooterMobile.jsx"
+import noProductIllust from '../../../../Assets/no-product.svg';
+
 const TabDiproses  = () => {
     
     
@@ -188,44 +190,67 @@ const diprosesPesanan = () => {
                 </div>
                 <div>
                 {
-          loading ? 
-          <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
-          :
-          <>
-         <div className="box-pd"> {printData()}</div>
-          </>
-        }
+                      data.length > 0 ?
+                       <>
+                       {
+                         loading ? 
+                         <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
+                         :
+                         <>
+                        <div className="box-pd"> {printData()}</div>
+                         </>
+                       }
+                      </>
+                      :
+                      <>
+                       {
+                         loading ? 
+                         <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
+                         :
+                         <div className='d-flex flex-column align-items-center' style={{width:'100%'}}>
+                         <img src={noProductIllust} alt="" style={{width:'250px', margin:'20px'}} />
+                         <p style={{color:'#213360', fontSize:'18px', fontWeight:'700', margin:'0px 0px 10px'}}>Oops, pesanan belum ada yang diproses</p>
+                         <p style={{color:'#8f939e', fontSize:'12px', margin:'0px 0px 30px'}}>Silahkan kembali berbelanja atau menunggu terlebih dahulu</p>
+                     </div>
+                       }
+                      </>
+                    }
          <div className="mt-4 ml-4">
            <div className='pagination-semua d-flex'>
-              <ul className="pageNumbers2">
-              {
-                  loading ?
-                  <></>
-                  :
-                  <>
+           <ul className="pageNumbers2">
                     <li className="mx-3">
-                  <button
-                      onClick={handlePrevbtn}
-                      disabled={currentPage == pages[0] ? true : false}
-                  >
-                      Prev
-                  </button>
-                  </li>
-                  {pageDecrementBtn}
-                  {renderPageNumbers}
-                  {pageIncrementBtn}
+                      {
+                         data.length > 0 ?
+                         <button
+                        onClick={handlePrevbtn}
+                        disabled={currentPage == pages[0] ? true : false}
+                    >
+                       Prev
+                    </button>
+                    :
+                    <></>
+                      }
+                    
+                    </li>
+                    {pageDecrementBtn}
+                    {renderPageNumbers}
+                    {pageIncrementBtn}
   
-                  <li>
-                  <button
-                      onClick={handleNextbtn}
-                      disabled={currentPage == pages[pages.length - 1] ? true : false}
-                  >
+                    <li>
+                      {
+                         data.length > 0 ?
+                         <button
+                         onClick={handleNextbtn}
+                         disabled={currentPage == pages[pages.length - 1] ? true : false}
+                     >
                        Next
-                  </button>
-                  </li>
-                  </>
-                }
-              </ul> 
+                     </button>
+                     :
+                     <></>
+                      }
+                  
+                    </li>
+                </ul> 
           </div>
           <FooterMobile/>
         </div>
@@ -236,6 +261,7 @@ const diprosesPesanan = () => {
         </div> 
     </div>
     </div>
+    
     </div>
   )
   
