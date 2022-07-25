@@ -36,6 +36,9 @@ import LoginAdmin from './Pages/Admin/LoginAdmin/LoginAdmin.jsx';
 import Dashboard from './Pages/Admin/Dashboard/Dashboard.jsx';
 import DaftarProduk from './Pages/Admin/DaftarProduk/DaftarProduk.jsx';
 import KartuStok from './Pages/Admin/KartuStok/KartuStok.jsx';
+import RingkasanStatistik from './Pages/Admin/RingkasanStatistik/RingkasanStatistik.jsx';
+import BukuKas from './Pages/Admin/BukuKas/BukuKas.jsx';
+import LabaRugi from './Pages/Admin/LabaRugi/LabaRugi.jsx';
 
 // Redux
 import { applyMiddleware, createStore } from 'redux';
@@ -85,6 +88,9 @@ function App() {
           <Route path="/homeadmin" element={<Dashboard />} />
           <Route path="/daftarprodukadmin" element={<DaftarProduk />} />
           <Route path="/kartustok/:id" element={<KartuStok />} />
+          <Route path="/ringkasanstatistik" element={<RingkasanStatistik />} />
+          <Route path="/bukukas" element={<BukuKas />} />
+          <Route path="/labarugi" element={<LabaRugi />} />
 
           <Route path="/menunggukonfirmasi" element={<MenungguKonfirmasi />} />
 
@@ -104,6 +110,9 @@ function App() {
         location.pathname === '/newpassword' ||
         location.pathname === '/loginadmin' ||
         location.pathname === '/resetpassword' ||
+        location.pathname === '/ringkasanstatistik' ||
+        location.pathname === '/bukukas' ||
+        location.pathname === '/labarugi' ||
         location.pathname.includes('/newpassword') ? null : (
           <Footer />
         )}

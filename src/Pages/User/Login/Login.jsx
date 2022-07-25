@@ -97,17 +97,27 @@ const Login = () => {
           <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 image-register">
             <img src={gambar} alt="" className="" />
           </div>
-          <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 box-form-register">
-            <div className="form-register">
-              <div className="tab-button-admin-login" style={{ marginLeft: '600px' }}>
-                <Link to="/login" style={{ textDecoration: 'none', color: '#213360', cursor: 'pointer' }}>
-                  <div className="tab-1-admin-login">USER</div>
-                </Link>
-                <Link to="/loginadmin" style={{ textDecoration: 'none', color: '#213360', cursor: 'pointer' }}>
-                  <div className="tab-2-admin-login">ADMIN</div>
-                </Link>
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 box-form-register">
+            <div className="form-login">
+              <div id="naviadmin">
+                <div className="d-flex mt-5 mb-4 " style={{ marginLeft: '268px' }}>
+                  <Link to="/login" style={{ textDecoration: 'none', color: '#213360', cursor: 'pointer' }}>
+                    <div className="tab-1-admin-login">USER</div>
+                  </Link>
+                  <Link to="/loginadmin" style={{ textDecoration: 'none', color: '#213360', cursor: 'pointer' }}>
+                    <div className="tab-2-admin-login">ADMIN</div>
+                  </Link>
+                </div>
               </div>
-              <div className="mb-4 mt-5 mkm">Masuk</div>
+              <div className="mb-2  mkm">Masuk</div>
+              <div className="mb-4 spa">
+                Belum Punya Akun?{' '}
+                <span>
+                  <Link to="/register" style={{ textDecoration: 'none', color: 'red' }}>
+                    Daftar
+                  </Link>
+                </span>
+              </div>
               <label for="exampleFormControlInput1" className="form-label">
                 Username or Email
               </label>
@@ -120,7 +130,7 @@ const Login = () => {
               <label for="exampleFormControlInput1" className="form-label">
                 Password
               </label>
-              <InputGroup className="">
+              <InputGroup className="mb-2">
                 <InputGroupText className="icon-email-resetpassword">
                   <img src={passLogin} alt="" />
                 </InputGroupText>
@@ -135,26 +145,18 @@ const Login = () => {
                   </Button>
                 )}
               </InputGroup>
-              <div className="d-flex justify-content-between mt-3">
-                <div>
-                  <div className="mb-4">
-                    <input type="checkbox" value="" id="flexCheckDefault" />
-                    <label for="flexCheckDefault">Ingat Saya</label>
-                  </div>
-                </div>
-                <div>
-                  Lupa Kata
-                  <span>
-                    {' '}
-                    <Link to="/resetpassword" style={{ textDecoration: 'none', color: 'red' }}>
-                      Sandi?
-                    </Link>
-                  </span>{' '}
-                </div>
+              <div className="text-end mb-4 spa">
+                Lupa Kata
+                <span>
+                  {' '}
+                  <Link to="/resetpassword" style={{ textDecoration: 'none', color: 'red' }}>
+                    Sandi?
+                  </Link>
+                </span>{' '}
               </div>
               <div className="mb-3">
                 {loading ? (
-                  <button type="button" disabled className="btn btn-danger w-100 button-au ">
+                  <button type="button" disabled className="btn btn-danger w-100 button-au">
                     <PulseLoader color={'#FFFFFF'} loading={loading} cssOverride={{ borderColor: 'white', margin: '0 auto' }} size={10} />
                   </button>
                 ) : (
@@ -173,14 +175,6 @@ const Login = () => {
                 <button className=" btn btn-outline-danger w-100 login-other">
                   <img className="me-2" src={google} alt="" /> Masuk dengan Google
                 </button>
-              </div>
-              <div>
-                Belum Punya Akun?{' '}
-                <span>
-                  <Link to="/register" style={{ textDecoration: 'none', color: 'red' }}>
-                    Daftar
-                  </Link>
-                </span>
               </div>
             </div>
           </div>
