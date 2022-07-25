@@ -36,8 +36,8 @@
   }
 
   .harga-obat-tampilkan{
-    width: 90.22px;
-    height: 20px;
+    width: 130px;
+    height: 30px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -47,10 +47,29 @@
     align-items: center;
     text-align: right;
     color: #213360;
+    margin-left: 10px;
+  }
+
+  .harga-obat-tampilkan-2{
+    position: absolute;
+    width: 130px;
+    height: 30px;
+    left: 360px;
+    top: 90px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #213360;
+    margin-left: 10px;
   }
 
   .nama-obat-tampilkan{
-    width: 300px;
+    width: 250px;
     height: 24px;
     left: 148px;
     top: -50px;
@@ -58,7 +77,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 20px;
     display: flex;
     align-items: center;
     color: #213360;
@@ -68,7 +87,7 @@
     width: 150px;
     height: 18px;
     left: 148px;
-    top: -70px;
+    top: 0px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -77,6 +96,8 @@
     display: flex;
     align-items: center;
     color: #213360;
+    margin-top: 8px;
+   
   }
 
   .foto-tampilkan{
@@ -92,6 +113,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .button-selesai-resep-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 130px;
+    height: 30px;
+    background: #E0004D;
+    border-radius: 8px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-left: 200px;
   }
 
   @media only screen and (max-width: 500px) {
@@ -147,7 +189,7 @@
     }
   
     .nama-obat-tampilkan{
-      width: 300px;
+      width: 250px;
       height: 24px;
       left: 148px;
       top: -50px;
@@ -159,6 +201,7 @@
       display: flex;
       align-items: center;
       color: #213360;
+      border: 1px solid blue;
     }
   
     .jumlah-obat-tampilkan{

@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import './Tampilkan.css';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 
-const Tampilkan = ({setOpenModal, id}) => {
+const Tampilkan2 = ({setOpenModal, id}) => {
     let [modalOpen, setModalOpen] = useState(false); 
     const [loading, setLoading] = React.useState(false);
     const [idProduk, setIdProduk]  = useState(id)
@@ -22,7 +22,7 @@ const Tampilkan = ({setOpenModal, id}) => {
       
         axios.get(`${API_URL}/transaction/getdetailpesanan?id=${idProduk}`)
         .then((res) => {
-            // console.log('detail pesanan atas', res.data.result)
+            console.log('detail pesanan atas', res.data.result)
             setData(res.data.result)
             setLoading(false)
            
@@ -46,6 +46,7 @@ const Tampilkan = ({setOpenModal, id}) => {
              </div>
               <div className="harga-obat-tampilkan">{`Rp ${value.harga_produk.toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</div>
               </div>
+              <div className="button-selesai-resep-2" onClick={() => navigate(`/ProductDetail/${value.Produk_id}`)}>Beli Lagi</div>
               </div>
             )
         })
@@ -65,4 +66,4 @@ const Tampilkan = ({setOpenModal, id}) => {
   );
 };
 
-export default Tampilkan;
+export default Tampilkan2;

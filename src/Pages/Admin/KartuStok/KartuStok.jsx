@@ -7,7 +7,7 @@ import TableData from './TableData';
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight,  faFileExcel} from '@fortawesome/free-solid-svg-icons';
-import LoadingSpinner from "./LoadingSpinner";
+import { RingLoader } from "react-spinners";
 
 const KartuStok  = () => {
     const navigate = useNavigate()
@@ -56,6 +56,7 @@ const KartuStok  = () => {
         axios.get(`${API_URL}/admin/paginatestok/${params.id}?page=${currentPage}&limit=${itemsPerPage}`, headers)
         .then((res) => {
             console.log('res.data.data', res.data.data)
+         
             setTotalPage(res.data.pagination.totalPage)
             setData(res.data.data)
             setNamaObat(res.data.namaObat[0].nama_obat)
@@ -91,6 +92,9 @@ const KartuStok  = () => {
             console.log('res.data.data', res.data)
             setLoading(false)
             setDataSearch(res.data.result)
+            if( res.data.result === 0){
+                setErrorMessage('Data Tidak Ditemukan')
+            }
         }).catch((err) => {
             console.log('ini err get',err)
             setLoading(false)
@@ -259,20 +263,21 @@ const KartuStok  = () => {
                     <div className="garis-kartu-stok"></div>
                     <div className="box-tabel-kartu-produk">
                         <div className="inside-box-kartu-produk">
-                        <TableData>
-                        {
-                            loading ?
-                            <LoadingSpinner />
-                            :
-                            <>
                             {
-                                dataSearch.length > 0 ? 
-                                <>{printData2()}</>
+                                loading ?
+                                <div className="d-flex justify-content-center align-items-center" style={{marginTop: "300px"}}><RingLoader color={'#E0004D'} size={150}/></div>
                                 :
-                                <>{printData()}</>
-                            }</>
-                        }
-                        </TableData>
+                                <TableData>
+                                {
+                                    dataSearch.length > 0 ? 
+                                    <>{printData2()}</>
+                                    :
+                                    <>{printData()}</>
+                                }
+                            </TableData>
+
+                            }
+                      
      
                         </div>
     

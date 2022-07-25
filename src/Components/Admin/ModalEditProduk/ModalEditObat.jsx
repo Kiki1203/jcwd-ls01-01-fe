@@ -320,15 +320,7 @@ const ModalEditObat = ({setOpenModal, selected, setSelected, id}) => {
                             </select>
                             <div className="input-group-text logo-input-group-text-5" ><FontAwesomeIcon icon={faAngleDown} /></div>  
                         </div>
-                            <div className='d-flex mt-2'>
-                                <div className='nama-obat-info-edit'>Nilai Barang (Rp)</div>  
-                                <input type="number" min="0" className='form-control inputan-obat-info-edit' placeholder='Masukkan Nilai Barang'  onChange={nilaiBarangChange} defaultValue={nilaiBarang}/>
-                            </div>
-                            <div className='d-flex mt-2'>
-                                <div className='nama-obat-info-edit'>Nilai Jual (Rp)</div>  
-                                <input type="number" min="0" className='form-control inputan-obat-info-edit' placeholder='Masukkan Nilai Jual'  onChange={nilaiJualChange} defaultValue={nilaiJual}/>  
-                            </div>
-                            <div className='d-flex mt-2'>
+                        <div className='d-flex mt-2'>
                                 <div className='nama-obat-info-edit'>Foto Obat</div>  
                                 <div  className='inputan-obat-info-edit-3'>
                                     {
@@ -345,8 +337,7 @@ const ModalEditObat = ({setOpenModal, selected, setSelected, id}) => {
                             <div className='nama-obat-info-2'>
                                 <input id="button-edit-foto-produk" type="file" onChange={(e) => onImagesValidation(e)} /> 
                             </div>  
-                        </div>
-                        <div className='error-msg'>
+                            <div className='error-msg'>
                             {
                                 errorMessage === "Cannot read properties of undefined (reading 'size')" || errorMessage === "Failed to execute 'readAsDataURL' on 'FileReader': The object is already busy reading Blobs."?
                                 <></>
@@ -354,6 +345,17 @@ const ModalEditObat = ({setOpenModal, selected, setSelected, id}) => {
                                 <p style={{margin: '10px', color: '#E0004D;', fontSize:'14px'}}>{errorMessage}</p>
                             }
                         </div>
+                            <div className='d-flex mt-2'>
+                                <div className='nama-obat-info-edit'>Nilai Barang (Rp)</div>  
+                                <input type="number" min="0" className='form-control inputan-obat-info-edit' placeholder='Masukkan Nilai Barang'  onChange={nilaiBarangChange} defaultValue={nilaiBarang}/>
+                            </div>
+                            <div className='d-flex mt-2'>
+                                <div className='nama-obat-info-edit'>Nilai Jual (Rp)</div>  
+                                <input type="number" min="0" className='form-control inputan-obat-info-edit' placeholder='Masukkan Nilai Jual'  onChange={nilaiJualChange} defaultValue={nilaiJual}/>  
+                            </div>
+                          
+                        </div>
+                      
 
                         <div className='d-flex' style={{marginTop: '-17px'}}>
                             <button className='pilih-metode-add-2 mx-2 w-50' onClick={() => setSelected(null)} >Kembali</button>

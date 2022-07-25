@@ -383,7 +383,7 @@
   }
 
   .error-msg{
-    color: #cc0047;
+    color: #4F618E;
     cursor: pointer;
     padding: 6px 12px;
     font-family: 'Public Sans';
@@ -393,8 +393,8 @@
     line-height: 17px;
     border-radius: 8px;
     position: absolute;
-    top: 315px;
-    left: 350px;
+    top: 230px;
+    left: 320px;
     width: 150px;
   }
 

@@ -196,10 +196,9 @@ const DaftarProduk  = () => {
                     <td>
                     {
                         value.id > 115 ?
-                        <>{value.id - 30}</>
+                        <>{111 + index}</>
                         :
-                        <>{value.id}</>
-                        
+                        <>{value.id}</> 
                     }
                     </td>
                     <td>{value.nama_obat}</td>
@@ -265,10 +264,9 @@ const DaftarProduk  = () => {
                     <td>
                     {
                         value.id > 115 ?
-                        <>{value.id - 30}</>
+                        <>{111 + index}</>
                         :
-                        <>{value.id}</>
-                        
+                        <>{value.id}</> 
                     }
                     </td>
                     <td>{value.nama_obat}</td>
@@ -337,15 +335,13 @@ const DaftarProduk  = () => {
                 'Content-Type': 'multipart/form-data'
             }
         }
-        axios.delete(API_URL + `/admin/deleteproduct/${id}?page=${currentPage}&limit=${itemsPerPage}`, headers)
+        axios.delete(API_URL + `/admin/deleteproduct/${id}`, headers)
         .then((res) => {
             console.log(res.data)
             console.log('get delete kiki', res.data.error)
-            if(res.data.error === false){
-                let newData = res.data.data.splice(0,122)
-                setData(newData)
-            }
-        
+            let newData = res.data.data
+            newData.splice(0,110)
+            setData(newData)
         })
         .catch((err) =>{
            console.log(err)
@@ -409,8 +405,9 @@ const DaftarProduk  = () => {
                             :
                             <TableData>
                            {
-                            produkFilter.length !== 0   ?
-                            <>{printFilterKiki()}</>
+                            produkFilter.length > 0   ?
+                            <>
+                            {printFilterKiki()}</>
                             :
                             <>{printDataAisyah()}</>
                            }
@@ -525,14 +522,6 @@ const DaftarProduk  = () => {
         }
     }
   
-
-    // if(!localStorage.getItem('token')){
-    //     return(
-    //         <Navigate to='/loginadmin' />
-    //     )
-    //   }
-
-
    
 }
 

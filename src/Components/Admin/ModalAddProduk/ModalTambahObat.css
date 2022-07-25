@@ -339,11 +339,11 @@
   line-height: 17px;
   border-radius: 8px;
   position: absolute;
-  top: 350px;
+  top: 240px;
   }
 
-  .error-msg{
-    color: #cc0047;
+  .error-msg2{
+    color: #4F618E;
     cursor: pointer;
     padding: 6px 12px;
     font-family: 'Public Sans';
@@ -351,9 +351,8 @@
     font-weight: 500;
     font-size: 8px !important;
     line-height: 17px;
-    border-radius: 8px;
     position: absolute;
-    top: 315px;
+    top: 220px;
     left: 350px;
     width: 150px;
   }

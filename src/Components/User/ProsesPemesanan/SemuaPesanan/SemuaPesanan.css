@@ -266,6 +266,34 @@
     text-align: center;
     color: #CBAF4E;
   }
+
+  .notifikasi-semua-pesanan-2{
+    box-sizing: border-box;
+    position: relative;
+    width: 210px;
+    height: 26px;
+    top: -20px;
+    left: 440px;
+    background: rgba(255, 222, 107, 0.3);
+    border: 1px solid #FFDE6B;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .status-semua-pesanan-2{
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #CBAF4E;
+  }
+  
   
   .garis-semua-pesanan-1{
     position: relative;
@@ -426,7 +454,7 @@
     position: relative;
     width: 182px;
     height: 28px;
-    left: 550px;
+    left: 540px;
     top: -50px;
     font-family: 'Public Sans';
     font-style: normal;
@@ -528,12 +556,32 @@
     cursor: pointer;
   }
 
+  .box-pagination-semua{
+    width: 500px;
+    height: 50px;
+    margin-top: 20px;
+  }
+
+  .box-pd{
+    margin-top: 10px;
+  }
+
 @media only screen and (max-width: 850px) {
   .container-pp{
     min-height: 64.3vh;
     min-width: 90vw;
     padding: 0px 50px 50px 50px;
     border: 3px solid white
+  }
+
+  .box-pagination-semua{
+    width: 500px;
+    height: 50px;
+    margin-top: 20px;
+  }
+
+  .box-pd{
+    margin-top: 10px;
   }
   
   .sidebar-pp{
@@ -717,6 +765,33 @@
     text-align: center;
     color: #CBAF4E;
   }
+
+  .notifikasi-semua-pesanan-2{
+    box-sizing: border-box;
+    position: relative;
+    width: 210px;
+    height: 26px;
+    top: -20px;
+    left: 220px;
+    background: rgba(255, 222, 107, 0.3);
+    border: 1px solid #FFDE6B;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .status-semua-pesanan-2{
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #CBAF4E;
+  }
   
   .garis-semua-pesanan-1{
     position: relative;
@@ -737,15 +812,15 @@
   
   .nama-obat-semua-pesanan{
     position: relative;
-    width: 200px;
+    width: 180px;
     height: 24px;
     left: 148px;
     top: -50px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 18px;
     display: flex;
     align-items: center;
     color: #213360;
@@ -812,7 +887,7 @@
     position: relative;
     width: 90.22px;
     height: 20px;
-    left: 330px;
+    left: 340px;
     top: -70px;
     font-family: 'Public Sans';
     font-style: normal;
@@ -878,8 +953,8 @@
     position: relative;
     width: 182px;
     height: 28px;
-    left: 320px;
-    top: -50px;
+    left: 330px;
+    top: -58px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -985,18 +1060,40 @@
 
 @media only screen and (max-width: 500px) {
   .box-pd{
-    height: 70vh;
-    width: 95vw;
-    margin-top: 0px;
-    margin-bottom: 50px;
+    /* width: 95vw; */
+    margin-top: 5px;
+    height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid white;
-    
+    /* border: 3px solid blue */
   }
   
+  .box-pagination-semua{
+    width: 95vw;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    /* border: 3px solid blue */
+  }
+
+  .box-inside-pp{
+    display: flex;
+    flex-direction: column;
+    margin-top: -15px;
+    margin-left: -5px;
+    width: 98vw;
+    height: 608px;
+    /* border: 3px solid red */
+  }
 
   .wrapper-pp {
     margin-top: 0px;
-    margin-bottom: 21px;
+    margin-bottom: 20px;
   }
 
   .container-pp{
@@ -1004,7 +1101,7 @@
     width: 100vw;
     padding: 0px;
     border: 1px solid white;
-   
+    /* border: 3px solid darkmagenta */
    
   }
   
@@ -1013,7 +1110,8 @@
     flex-direction: column;
     width: 370px;
     margin-top: 0px;
-    margin-left: 0px;
+    margin-left: -5px;
+    /* border: 3px solid darkgoldenrod */
   }
   
   
@@ -1042,11 +1140,10 @@
     min-height: 91vh !important;
   }
 
-  .pagination-semua{
+  /* .pagination-semua{
     width: 60vw;
-    margin-top: -20px;
     margin-left: 30px;
-  }
+  } */
 
   .timer-resep-box-semua{
     position: absolute;
@@ -1061,7 +1158,7 @@
     left: -10px;
     top: -30px;
     height: 50vh !important;
-    
+
   }
 
   .box-semua-pesanan{
@@ -1110,9 +1207,9 @@
   .notifikasi-semua-pesanan{
     box-sizing: border-box;
     position: relative;
-    width: 150px;
+    width: 180px;
     height: 17px;
-    left: 150px;
+    left: 120px;
     top: -5px;
     background: rgba(255, 222, 107, 0.3);
     border: 1px solid #FFDE6B;
@@ -1123,9 +1220,35 @@
   }
   
   .status-semua-pesanan{
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #CBAF4E;
+    /* margin-left: 10px;
+    margin-top: -10px; */
+  }
+
+  .notifikasi-semua-pesanan-2{
+    box-sizing: border-box;
+    position: relative;
+    width: 130px;
+    height: 17px;
+    left: 160px;
+    top: -5px;
+    background: rgba(255, 222, 107, 0.3);
+    border: 1px solid #FFDE6B;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .status-semua-pesanan-2{
     position: relative;
     width: 300px;
-    left: 0px;
+    left: 10px;
     top: 5px;
     font-family: 'Public Sans';
     font-style: normal;
@@ -1159,7 +1282,7 @@
   
   .nama-obat-semua-pesanan{
     position: relative;
-    width: 100px;
+    width: 120px;
     height: 20px;
     left: 94px;
     top: -30px;
@@ -1167,7 +1290,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 14px;
     display: flex;
     align-items: center;
     color: #213360
@@ -1178,7 +1301,7 @@
     width: 80px;
     height: 20px;
     left: 225px;
-    top: 40px;
+    top: 50px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
