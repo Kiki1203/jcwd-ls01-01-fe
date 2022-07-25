@@ -13,7 +13,7 @@ import FooterMobile from "../../../Components/User/Footer/FooterMobile.jsx"
 
 function EditProfile() {
     const [nama, setNama] = React.useState("");
-    const [username, setUsername] = React.useState("");
+    const [email, setEmail] = React.useState("");
     const [gender, setGender] = React.useState("");
     const [tanggallahir, setTanggallahir] = React.useState("");
     const [profilepic, setProfilepic] = React.useState("");
@@ -57,7 +57,7 @@ function EditProfile() {
         .then((res) => {
             console.log('res', res)
             if(res.data[0].nama) {setNama(res.data[0].nama)}
-            if(res.data[0].username) {setUsername(res.data[0].username)}
+            if(res.data[0].email) {setEmail(res.data[0].email)}
             if(res.data[0].gender) {setGender(res.data[0].gender)}
             if(res.data[0].profile_picture) {setProfilepic(res.data[0].profile_picture)}
             if(res.data[0].tanggal_lahir) {setTanggallahir(res.data[0].tanggal_lahir)}
@@ -70,8 +70,8 @@ function EditProfile() {
             setNama(event.target.value)
         }
     
-        let usernameChange = (event) => {
-            setUsername(event.target.value)
+        let emailChange = (event) => {
+            setEmail(event.target.value)
         }
 
         let genderChange = (event) => {
@@ -102,7 +102,7 @@ function EditProfile() {
             
             var data = {
                 nama: nama,
-                username: username,
+                email: email,
                 gender: gender,
                 tanggal_lahir: tanggallahir,
                 umur: tahun
@@ -116,8 +116,8 @@ function EditProfile() {
                 // console.log(res.data)
                 if(res.data[0].nama) {setNama(res.data[0].nama)}
                 else {setNama('')}
-                if(res.data[0].username) {setUsername(res.data[0].username)}
-                 else {setUsername('')}
+                if(res.data[0].email) {setEmail(res.data[0].email)}
+                 else {setEmail('')}
                 if(res.data[0].gender) {setGender(res.data[0].gender)}
                 if(res.data[0].profile_picture) {setProfilepic(res.data[0].profile_picture)}
                 else {setProfilepic('')}
@@ -222,15 +222,15 @@ function EditProfile() {
                     name="editUserName"
                     className="form-control  input-edit-profile-1" placeholder="Enter Your Name" />
                 </div>
-                <div className="form-group baris-edit-profile-2">
-                    <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
-                        Username
-                    </label>
-                    <input type="text" 
-                        onChange={usernameChange} defaultValue={username}
+                <div className="form-group mt-2 baris-edit-profile-2">
+                        <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
+                        Email
+                        </label>
+                        <input type="text" 
+                        onChange={emailChange} defaultValue={email}
                         name="editUserEmail"
-                    className="form-control  input-edit-profile-2"  placeholder="Username" />
-                </div>
+                        className="form-control input-edit-profile-2"  placeholder="Email Address" />
+                    </div>
                 <div className="form-group  baris-edit-profile-3">
                     <label for="exampleFormControlInput1" className="form-label" id="label-edit-profile">
                         Gender

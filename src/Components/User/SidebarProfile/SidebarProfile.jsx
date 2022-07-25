@@ -67,7 +67,7 @@ const SidebarProfile  = () => {
         </div>
         <br/>
         <br/>
-        <div className="d-flex sidebar-box-1"   >
+        <div className="d-flex sidebar-box-1"  onClick={() => navigate('/alamatpengiriman')}  >
             <FontAwesomeIcon icon={faLocationDot} />
             <div className='sidebar-name-box' style={{marginBottom: "3px", marginLeft: "30px"}}> Alamat Pengiriman</div>
         </div>

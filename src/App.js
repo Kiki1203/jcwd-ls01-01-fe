@@ -22,7 +22,7 @@ import UploadSuccess from './Pages/User/UploadSuccess/UploadSuccess.jsx';
 import ChangePassword from './Pages/User/ChangePassword/ChangePassword.jsx';
 import EditProfile from './Pages/User/EditProfile/EditProfile.jsx';
 import MenungguKonfirmasi from './Pages/User/MenungguKonfirmasi/MenungguKonfirmasi.jsx';
-
+import AlamatProfile from './Pages/User/AlamatProfile/AlamatPageProfile.jsx';
 import Dibatalkan from './Components/User/ProsesPemesanan/Dibatalkan/TabDibatalkan.jsx';
 import Dikirim from './Components/User/ProsesPemesanan/Dikirim/TabDikirim.jsx';
 import Diproses from './Components/User/ProsesPemesanan/Diproses/TabDiproses.jsx';
@@ -30,6 +30,7 @@ import Ditunggu from './Components/User/ProsesPemesanan/Ditunggu/TabDitunggu.jsx
 import Selesai from './Components/User/ProsesPemesanan/Selesai/TabSelesai.jsx';
 import SemuaPesanan from './Components/User/ProsesPemesanan/SemuaPesanan/SemuaPesanan.jsx';
 import Payment from './Pages/User/Payment/Payment.jsx';
+import FormEditAlamat from './Pages/User/FormEditAlamat/FormEditAlamat.jsx';
 
 // ADMIN
 import LoginAdmin from './Pages/Admin/LoginAdmin/LoginAdmin.jsx';
@@ -93,9 +94,9 @@ function App() {
           <Route path="/ringkasanstatistik" element={<RingkasanStatistik />} />
           <Route path="/bukukas" element={<BukuKas />} />
           <Route path="/labarugi" element={<LabaRugi />} />
-
+          <Route path="/alamatpengiriman" element={<AlamatProfile />} />
           <Route path="/menunggukonfirmasi" element={<MenungguKonfirmasi />} />
-
+          <Route path="/editalamat/:id" element={<FormEditAlamat/>} />
           <Route path="/dibatalkan" element={<Dibatalkan />} />
           <Route path="/dikirim" element={<Dikirim />} />
           <Route path="/diproses" element={<Diproses />} />
