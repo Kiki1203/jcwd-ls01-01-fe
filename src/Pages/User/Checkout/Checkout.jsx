@@ -191,7 +191,7 @@ const Checkout = () => {
                       </div>
                     )}
                   </div>
-                  <div className={`options-container`} style={{ display: !kurirOpen && 'none' }}>
+                  {kurirOpen && <div className={`options-container`}>
                     {arraykurir.map((kurir) => {
                       return (
                         <div
@@ -209,7 +209,7 @@ const Checkout = () => {
                         </div>
                       );
                     })}
-                  </div>
+                  </div>}
                 </div>
               </div>
               <div className="produk-keranjang-container">

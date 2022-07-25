@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import API_URL from "../../../Helpers/API_URL.js"
 import { useNavigate } from 'react-router-dom';
 
-function CartItem({product, products, setProducts, objHargaAll, setObjHargaAll, objQtyAll, setObjQtyAll, selectAll}) {
+function CartItem({product, products, setProducts, objHargaAll, setObjHargaAll, objQtyAll, setObjQtyAll, selectAll, index}) {
     const [qty, setQty] = useState(product.quantity)
     const [selected, setSelected] = useState(product.selected)
     const [error, setError] = useState(false)
@@ -25,6 +25,9 @@ function CartItem({product, products, setProducts, objHargaAll, setObjHargaAll, 
                 quantity: qty
             },{headers: {authorization: token}})
             .then(res => {
+                let temp = products
+                temp[index] = {...products[index], quantity:qty}
+                setProducts(temp)
             })
             .catch(e => {
                 setError(true)

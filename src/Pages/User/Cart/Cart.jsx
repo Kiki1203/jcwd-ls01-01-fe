@@ -189,7 +189,8 @@ function Cart(props) {
                               setObjHargaAll={setObjHargaAll}
                               objQtyAll={objQtyAll}
                               setObjQtyAll={setObjQtyAll}
-                              selectAll={selectAll} />
+                              selectAll={selectAll}
+                              index={index} />
                   </div>
                 })
               }
