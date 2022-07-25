@@ -39,9 +39,21 @@
     transform: scale(1.2)
 }
 
+.product-card-heart {
+    font-size: 30px;
+    color: #B4B9C7;
+    margin-top: 5px;
+}
+
 .product-image {
     width: 100%;
-    margin-bottom: 20px;
+}
+
+.product-card-detail {
+    max-height: 109px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .product-name-small {
@@ -50,6 +62,29 @@
     color: #213360;
     margin: 0px;
 }
+
+.nominal-diskon-produk{
+    width: 36px;
+    height: 20px;
+    font-weight: 700;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid #FF6B6B;
+    color: #FF6B6B;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  .harga-diskon-produk{
+    font-weight: 400;
+    font-size: 11px;
+    color: #B4B9C7;
+    text-decoration-line: line-through;
+    margin: 0px;
+  }
 
 .product-price-small {
     font-size: 14px;
@@ -79,4 +114,75 @@
 
 .keranjang:hover {
     background-color: #ffe9f1;
+}
+
+.butuh-resep {
+    background-color: white;
+    padding: 7px;
+    margin-top: 15px;
+    font-size: 12px;
+    font-weight: 800;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #E0004D;
+    align-self: center;
+}
+
+@media only screen and (max-width: 500px) {
+    .product-card-small {
+        height: 68vw;
+        width: 38vw;
+        border-radius: 3.8vw;
+    }
+    .circle {
+        border-radius: 50%;
+        top: 3.8vw;
+        right: 3.8vw;
+        height: 9.5vw;
+        width: 9.5vw;
+    }
+    
+    .product-card-heart {
+        font-size: 5.7vw;
+        color: #B4B9C7;
+        margin-top: 0.95vw;
+    }
+    
+    .product-name-small {
+        font-size: 2.28vw;
+        font-weight: 700;
+        color: #213360;
+        margin: 0px;
+    }
+
+    .product-price-small, .product-unit-small  {
+        font-size: 2.66vw;
+        margin-right: 0.95vw;
+    }
+    
+    .keranjang {
+        border: 2px solid #E0004D;
+        margin-top: 2.85vw;
+        border-radius: 1.9vw;
+        font-size: 2.28vw;
+        padding: 1.33vw 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .butuh-resep {
+        margin-top: 2.85vw;
+        border-radius: 1.9vw;
+        font-size: 2.28vw;
+        padding: 1.33vw 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product-card-detail {
+        height: 20.9vw;
+    }
 }

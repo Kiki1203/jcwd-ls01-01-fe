@@ -19,9 +19,9 @@ const PaymentProof = ({transactionId, setOpenModal}) => {
         try {
             let file = [...e.target.files]
             setFile(file[0])
-            if(file.length > 1) throw { message: 'You can only upload 1 image' }
-            if(file[0].size > 5000000) throw { message: 'Your file size is too big (>5mb)' }
-            if(!file[0].type.includes('image'))  throw { message: 'This file type is not supported'}
+            if(file.length > 1) throw { message: 'Hanya bisa upload 1 gambar' }
+            if(file[0].size > 5000000) throw { message: 'Ukuran file terlalu besar (>5mb)' }
+            if(!file[0].type.includes('image'))  throw { message: 'Tipe file tidak didukung'}
             const reader = new FileReader()
               reader.onload = () => {
                   if(reader.readyState === 2){
@@ -50,7 +50,7 @@ const PaymentProof = ({transactionId, setOpenModal}) => {
         axios.patch(API_URL + "/transaction/uploadpaymentproof", formData, headers)
         .then((res) => {
             setOpenModal(false)
-            navigate('/')
+            navigate('/semuapesanan')
             Swal.fire({
                 title: 'Berhasil!',
                 text: 'Bukti pembayaran Anda berhasil diunggah.',
@@ -87,7 +87,7 @@ const PaymentProof = ({transactionId, setOpenModal}) => {
                 </form>
                 <label htmlFor='image-input' className='choose-image-button'>Pilih file (maks 5mb)</label>
                 {
-                    errorMessage && <p style={{margin: '10px', color: '#E0004D;', fontSize:'14px'}}>{errorMessage}</p>
+                    errorMessage && <p style={{margin: '10px', color: '#E0004D', fontSize:'14px'}}>{errorMessage}</p>
                 }
             </div>  
         }

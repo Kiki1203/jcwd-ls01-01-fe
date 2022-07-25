@@ -16,7 +16,7 @@ const Footer = () => {
 
   return (
    <>
-    <div className="Footer d-lg-block d-md-block d-none">
+    <div className="Footer d-lg-flex d-md-flex d-none">
       <div className='box-footer-user'>
         <div className='box-1-inside-footer-user'>
           <div>
@@ -81,11 +81,10 @@ const Footer = () => {
                 <div className="judul-medsos">Instagram</div>
             </div>
           </div>
-
         </div>
       </div>
       <div className='box-5-inside-footer-user'>
-      <div className="design-footer">Powered by @Apotakecare</div>
+        <div className="design-footer">Powered by @Apotakecare</div>
       </div>   
     </div>
    </>

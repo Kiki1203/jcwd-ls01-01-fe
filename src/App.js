@@ -35,6 +35,7 @@ import Payment from './Pages/User/Payment/Payment.jsx';
 import LoginAdmin from './Pages/Admin/LoginAdmin/LoginAdmin.jsx';
 import Dashboard from './Pages/Admin/Dashboard/Dashboard.jsx';
 import DaftarProduk from './Pages/Admin/DaftarProduk/DaftarProduk.jsx';
+import TransaksiAdmin from './Pages/Admin/TransaksiAdmin/TransaksiAdmin';
 import KartuStok from './Pages/Admin/KartuStok/KartuStok.jsx';
 import RingkasanStatistik from './Pages/Admin/RingkasanStatistik/RingkasanStatistik.jsx';
 import BukuKas from './Pages/Admin/BukuKas/BukuKas.jsx';
@@ -62,6 +63,7 @@ function App() {
         location.pathname === '/newpassword' ||
         location.pathname === '/loginadmin' ||
         location.pathname === '/resetpassword' ||
+        location.pathname === '/transaksiadmin/:status' ||
         location.pathname.includes('/newpassword') ? null : (
           <Navbar />
         )}
@@ -101,6 +103,7 @@ function App() {
           <Route path="/selesai" element={<Selesai />} />
           <Route path="/semuapesanan" element={<SemuaPesanan />} />
           <Route path="/payment/:id" element={<Payment />} />
+          <Route path="/transaksiadmin/:status" element={<TransaksiAdmin />} />
         </Routes>
         {location.pathname === '/login' ||
         location.pathname === '/daftarprodukadmin' ||
@@ -113,7 +116,8 @@ function App() {
         location.pathname === '/ringkasanstatistik' ||
         location.pathname === '/bukukas' ||
         location.pathname === '/labarugi' ||
-        location.pathname.includes('/newpassword') ? null : (
+        location.pathname.includes('/newpassword') ||
+        location.pathname.includes('/transaksiadmin/') ? null : (
           <Footer />
         )}
       </Provider>

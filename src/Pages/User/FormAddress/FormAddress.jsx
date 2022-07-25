@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './FormAddress.css';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
-import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const FormAddress = () => {
@@ -23,8 +23,10 @@ const FormAddress = () => {
   const [Selectcity, setSelectcity] = useState('');
   const [Kodepos, setKodepos] = useState('');
   const [Selectedindex, setSelectedindex] = useState(null);
-  const navigate = useNavigate();
-  // List untuk placeholder, nanti di-replace pakai data dari rajaongkir
+  const { state } = useLocation();
+  const previousPath = state?.previousPath
+  const transactionId = state?.transactionId
+  const navigate = useNavigate()
 
   useEffect(() => {
     getProvince();
@@ -107,13 +109,20 @@ const FormAddress = () => {
       .post(`${API_URL}/user/addaddress`, { dataAlamat: dataAlamat }, { headers: { authorization: token } })
       .then((res) => {
         Swal.fire({
-          title: 'Succes!',
+          title: 'Sukses!',
           text: res.message,
           icon: 'success',
-          confirmButtonText: 'Okay!',
+          confirmButtonText: 'Oke!',
         });
-        // console.log('res addAdress', res)
-        navigate('/checkout/produk-bebas');
+        let destination = ''
+        if(previousPath === '/cart'){
+          destination = '/checkout/produk-bebas'
+        } else if(previousPath.includes('/checkout')){
+          destination = previousPath
+        } else if(previousPath === '/ditunggu' || previousPath === '/semuapesanan'){
+          destination = `/checkout/resep?id=${transactionId}`
+        }
+        navigate(destination)
       })
       .catch((err) => {
         Swal.fire({
@@ -210,7 +219,9 @@ const FormAddress = () => {
             Simpan sebagai alamat utama
           </label>
           <div className="d-flex justify-content-between mb-5">
-            <button className="button-bayar" style={{ width: '48%', backgroundColor: 'white', color: '#E0004D', border: '2px solid #E0004D' }} onClick={() => navigate(`/checkout/produk-bebas`)}>
+            <button className="button-bayar"
+              style={{ width: '48%', backgroundColor: 'white', color: '#E0004D', border: '2px solid #E0004D' }}
+              onClick={() => navigate(previousPath)}>
               Batalkan
             </button>
             <button

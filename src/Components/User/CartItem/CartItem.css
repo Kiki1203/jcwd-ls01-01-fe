@@ -17,6 +17,13 @@
     font-size: 12px;
     margin: 0px;
 }
+.harga-diskon-keranjang{
+    font-weight: 400;
+    font-size: 14px;
+    color: #B4B9C7;
+    text-decoration-line: line-through;
+    margin: 0px 15px;
+}
 
 .harga-produk-keranjang {
     color: #213360;

@@ -22,27 +22,29 @@ const NavbarMobile = () => {
 
   return (
     <div className="d-lg-none d-md-none d-block">
-         {
-        bubbleOpen && <SearchBubble searchQuery={search} products={products} setBubbleOpen={setBubbleOpen} total={total} />
-      }
         <div className='navbar-mobile'>
-             <form>
-              <input className="form-control input-home-2" 
-              onChange={(e) => {
-                setSearch(e.target.value)
-                e.target.value ? setBubbleOpen(true)
-                : setBubbleOpen(false)
-              }}
-               type="search" placeholder="Cari Obat, Vitamin, dan Lainnya" aria-label="Search"   />
-              <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home-2'/>
-            </form>
+             <div style={{position:'relative', width:'260px', height:'36px', marginTop:'30px'}}>
+              <form>
+                <input className="form-control input-home" 
+                onChange={(e) => {
+                  setSearch(e.target.value)
+                  e.target.value ? setBubbleOpen(true)
+                  : setBubbleOpen(false)
+                }}
+                type="search" placeholder="Cari Obat, Vitamin, dan Lainnya" aria-label="Search"   />
+                <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home'/>
+              </form>
+              {
+                bubbleOpen && <SearchBubble searchQuery={search} products={products} setBubbleOpen={setBubbleOpen} total={total} />
+              }
+             </div>
+              <div className='icon-navmob'>
+              <FontAwesomeIcon icon={faBell} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D", marginTop: "15px"}}/>
+                  <Link to="/cart" style={{textDecoration: "none", cursor:"pointer", color:"#E0004D", marginLeft:'20px', marginTop: "15px"}}>
+                  <FontAwesomeIcon icon={faCartShopping} />
+                  </Link>
+              </div>
         </div>
-         <div className='icon-navmob'>
-         <FontAwesomeIcon icon={faBell} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D", marginLeft: "20px",  marginTop: "15px"}}/>
-            <Link to="/cart" style={{textDecoration: "none", cursor:"pointer", color:"#E0004D", marginLeft: "20px", marginTop: "15px"}}>
-            <FontAwesomeIcon icon={faCartShopping} />
-            </Link>
-         </div>
     </div>
   );
 }

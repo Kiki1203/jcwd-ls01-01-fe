@@ -34,31 +34,50 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Semua Pesanan',
-        path: '/',
-        className: 'sub-nav',
+        path: '/transaksiadmin/semua-pesanan',
+        className: 'sub-nav'
       },
       {
-        title: 'Pesanan Baru',
-        path: '/',
-        className: 'sub-nav',
+        title: 'Resep Baru',
+        path: '/transaksiadmin/resep-baru',
+        className: 'sub-nav'
       },
       {
-        title: 'Siap Dikirim',
-        path: '/',
+        title: 'Menunggu Checkout',
+        path: '/transaksiadmin/menunggu-checkout',
+        className: 'sub-nav'
+      },
+      {
+        title: 'Menunggu Bukti Pembayaran',
+        path: '/transaksiadmin/menunggu-bukti-pembayaran',
+        className: 'sub-nav'
+      },
+      {
+        title: 'Cek Bukti Pembayaran',
+        path: '/transaksiadmin/cek-bukti-pembayaran',
+        className: 'sub-nav'
+      },
+      {
+        title: 'Pesanan Diproses',
+        path: '/transaksiadmin/pesanan-diproses',
+        className: 'sub-nav'
       },
       {
         title: 'Dalam Pengiriman',
-        path: '/',
+        path: '/transaksiadmin/dalam-pengiriman',
+        className: 'sub-nav'
       },
       {
-        title: 'Selesai',
-        path: '/',
+        title: 'Pesanan Selesai',
+        path: '/transaksiadmin/pesanan-selesai',
+        className: 'sub-nav'
       },
       {
-        title: 'Dibatalkan',
-        path: '/',
-      },
-    ],
+        title: 'Pesanan Dibatalkan',
+        path: '/transaksiadmin/pesanan-dibatalkan',
+        className: 'sub-nav'
+      }
+    ]
   },
   {
     title: 'Sales & Revenue',

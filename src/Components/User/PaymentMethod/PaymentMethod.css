@@ -43,6 +43,7 @@
     color: #4F618E;
     font-size: 14px;
     margin: 0px;
+    font-weight: 700;
 }
 
 .rp-total-harga {
@@ -148,14 +149,15 @@
     background-color: #E0004D;
     border-radius: 10px;
     width: 430px;
+    height: 45px;
     border: none;
     outline: none;
-    padding: 13px 20px;
     color: white;
     font-size: 14px;
     font-weight: 700;
     display: flex;
     justify-content: center;
+    align-items: center;
     position: absolute;
     bottom: 30px;
     right: 35px;

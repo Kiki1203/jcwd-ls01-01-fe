@@ -31,6 +31,14 @@ function ProductCardSmall({product}) {
         })
     }
 
+    const overflowYHidden = () => {
+        let elems = document.getElementsByTagName('html');
+
+        for (let i = 0; i < elems.length; i++) {
+            elems[i].style.overflow = "hidden";
+        }
+    }
+
     return (
         <div>
             {
@@ -38,26 +46,33 @@ function ProductCardSmall({product}) {
             }
             <div className='product-card-small' onClick={() => navigate(`/productdetail/${product.id}`)}>
                 <div className='circle' onClick={(e) => e.stopPropagation()}>
-                    <span style={{fontSize:'30px', color:'#B4B9C7', marginTop:'5px'}}><FontAwesomeIcon icon={faHeart} /></span>
+                    <span className='product-card-heart'><FontAwesomeIcon icon={faHeart} /></span>
                 </div>
                 <div>
                     <img className='product-image' src={`${API_URL}/${product.gambar}`} alt="" />
-                    <p className='product-name-small'>{product.namaObat}</p>
-                    <div style={{display:'flex'}}>
-                        <span className='product-price-small'>Rp</span>
-                    <span className='product-price-small'>{product.harga.toLocaleString('de-DE', { minimumFractionDigits: 0})}</span>
-                        <span className='product-unit-small'>/</span>
-                        <span className='product-unit-small' style={{marginLeft:'2px'}}>{product.satuanObat}</span>
+                    <div className='product-card-detail'>
+                        <p className='product-name-small'>{product.namaObat}</p>
+                        <div className="d-flex align-items-center mt-1">
+                            <div className="nominal-diskon-produk">10%</div>
+                            <p className="harga-diskon-produk">{`Rp${product.harga.toLocaleString('de-DE', { minimumFractionDigits: 0})}`}</p>
+                        </div>
+                        <div style={{display:'flex'}}>
+                            <span className='product-price-small'>Rp</span>
+                            <span className='product-price-small'>{product.diskon.toLocaleString('de-DE', { minimumFractionDigits: 0})}</span>
+                            <span className='product-unit-small'>/</span>
+                            <span className='product-unit-small' style={{marginLeft:'2px'}}>{product.satuanObat}</span>
+                        </div>
                     </div>
                 </div>
                 {
                     product.butuhResep === 'Ya'
-                    ? <button className='keranjang' onClick={(e) => e.stopPropagation()}>
+                    ? <div className='butuh-resep' onClick={(e) => e.stopPropagation()}>
                         Butuh Resep
-                    </button>
+                    </div>
                     : <button className='keranjang' onClick={(e) => {
                         e.stopPropagation()
                         addToCart()
+                        overflowYHidden()
                     }}>
                         Keranjang
                     </button>

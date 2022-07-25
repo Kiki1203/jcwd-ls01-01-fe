@@ -1,0 +1,29 @@
+.inputBox {
+    box-sizing: border-box;
+    padding: 6px 30px 6px 12px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 14px;
+    color: #213360;
+    border: 1px solid #CCCCCC;
+    outline: none;
+    cursor: pointer;
+}
+
+.inputBox::placeholder {
+    color: #6b6e76;
+}
+
+.calendarWrap {
+    position: relative;
+  }
+  
+.calendarElement {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40px;
+    border: 1px solid #ccc;
+    z-index: 999;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProductList.css'
-import ProductCard from '../../../Components/User/ProductCard/ProductCard';
+import ProductCardSmall from '../../../Components/User/ProductCardSmall/ProductCardSmall';
 import axios from 'axios';
 import API_URL from "../../../Helpers/API_URL.js"
 import { useEffect, useState } from 'react';
@@ -24,7 +24,6 @@ function ProductList(props) {
     let { kategori } = useParams()
     const [searchParams, setSearchParams] = useSearchParams()
     let searchQuery = searchParams.get('search')
-    console.log(searchQuery)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -40,6 +39,7 @@ function ProductList(props) {
 
     useEffect(() => {
         setLoading(true)
+        setPageNumber(1)
         let keluhanString = keluhan.join('-')
         if(!searchQuery) {searchQuery = ''}
         axios.get(`${API_URL}/product/totalproductsnum?search=${searchQuery}&category=${kategori}&keluhan=${keluhanString}`, {headers: {'Access-Control-Allow-Origin': '*'}})
@@ -60,7 +60,7 @@ function ProductList(props) {
         setError(false)
         let keluhanString = keluhan.join('-')
         if(!searchQuery) {searchQuery = ''}
-        axios.get(`${API_URL}/product/productcards?search=${searchQuery}&category=${kategori}&keluhan=${keluhanString}&page=${pageNumber}&limit=16&sortby=${sortBy}`,
+        axios.get(`${API_URL}/product/productcards?search=${searchQuery}&category=${kategori}&keluhan=${keluhanString}&page=${pageNumber}&limit=12&sortby=${sortBy}`,
         {headers: {'Access-Control-Allow-Origin': '*'}})
         .then(res => {
         setProducts(prev => {
@@ -69,6 +69,7 @@ function ProductList(props) {
                 namaObat: product.namaObat,
                 butuhResep: product.butuhResep,
                 harga: product.harga,
+                diskon: product.diskon,
                 gambar: product.gambar,
                 stok: product.stok,
                 satuanObat: product.satuanObat
@@ -80,12 +81,11 @@ function ProductList(props) {
             setError(true)
             setErrorMsg(e.message)
         })
-        console.log(products)
     }, [pageNumber, sortBy, kategori, keluhan, searchQuery])
 
     let paginationButtonGenerator = () => {
         let paginationButtons = []
-        for(let i=1; i<=Math.ceil(numProducts/16); i++) {
+        for(let i=1; i<=Math.ceil(numProducts/12); i++) {
             paginationButtons.push(<button
             className={`btn ${pageNumber == i ? 'btn-danger' : 'btn-outline-danger'}`}
             style={{marginRight: '5px', marginLeft: '5px'}}
@@ -105,12 +105,10 @@ function ProductList(props) {
                 setKeluhan((keluhan) => keluhan.filter((val) => val !== id))
             }
         }
-        console.log(event.target.checked)
-        console.log(keluhan)
     }
 
     return (
-        <div id='page-container'>
+        <div id='page-container' style={{padding:'50px 0px'}}>
             <div id='sidebar'>
                 <div id='kategori'>
                     <div>
@@ -258,17 +256,17 @@ function ProductList(props) {
                                 <FontAwesomeIcon icon={faXmark} className='filter-bullet-x'
                                 onClick={() => setSearchParams({})} />
                             </div>
-                            : <p style={{fontSize:'14px', color:'#737A8D', margin:'0px'}}>{numProducts} produk di {headerKategori}</p>
+                            : <p className='product-header-description'>{numProducts} produk di {headerKategori}</p>
                         }
                     
                     <div style={{display:'flex', alignItems:'center'}}>
-                        <p style={{fontSize:'14px', color:'#737A8D', margin:'0px'}}>Urutkan</p>
+                        <p className='product-header-description'>Urutkan</p>
                         <div class="custom-select">
                             <select>
-                                <option onClick={() => setSortBy('AZ')}>Nama produk (A-Z)</option>
-                                <option onClick={() => setSortBy('ZA')}>Nama produk (Z-A)</option>
-                                <option onClick={() => setSortBy('hargaTerendah')}>Harga terendah</option>
-                                <option onClick={() => setSortBy('hargaTertinggi')}>Harga tertinggi</option>
+                                <option onClick={() => setSortBy('AZ')} className='custom-select-option'>Nama produk (A-Z)</option>
+                                <option onClick={() => setSortBy('ZA')} className='custom-select-option'>Nama produk (Z-A)</option>
+                                <option onClick={() => setSortBy('hargaTerendah')} className='custom-select-option'>Harga terendah</option>
+                                <option onClick={() => setSortBy('hargaTertinggi')} className='custom-select-option'>Harga tertinggi</option>
                             </select>
                         </div>
                     </div>
@@ -279,7 +277,7 @@ function ProductList(props) {
                         ? <h1>Loading...</h1>
                         : products.length ?
                         products.map((product, index) => {
-                            return <ProductCard key={product.id} product={product} />
+                            return <ProductCardSmall key={product.id} product={product} />
                         })
                         : <div className='d-flex flex-column align-items-center' style={{width:'100%'}}>
                             <img src={noProductIllust} alt="" style={{width:'250px', margin:'20px'}} />

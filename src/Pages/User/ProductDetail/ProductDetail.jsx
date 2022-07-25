@@ -155,7 +155,7 @@ function ProductDetail(props) {
                         <FontAwesomeIcon icon={faCartShopping} style={{ marginRight: '20px', fontSize: '18px' }} />
                         Keranjang
                       </button>
-                      <button id="button-beli" disabled={qty > product.stok}>
+                      <button id="button-beli" disabled={qty > product.stok} onClick={() => navigate("/checkout/beli-langsung", { state: { productId: productId, quantity: qty } })}>
                         Beli
                       </button>
                     </>

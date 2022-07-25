@@ -13,23 +13,23 @@ const Footer = () => {
       <div className='container-footer-mobile'>
         <div className="container-inside-footer-mobile">
           <div className="beranda-footer"  onClick={() => navigate('/')}>
-          <FontAwesomeIcon icon={faHome} className="mb-2 mx-3" />
+          <FontAwesomeIcon icon={faHome}className='footer-mobile-icon' />
            Beranda
           </div>
-           <div className="beranda-footer"  onClick={() => navigate('/kategori/semua-kategori')}>
-          <FontAwesomeIcon icon={faPills} className="mb-2 mx-3"  />
+           <div className="beranda-footer" onClick={() => navigate('/kategori/semua-kategori')}>
+          <FontAwesomeIcon icon={faPills} className='footer-mobile-icon' />
            Kategori
           </div>
           <div className="beranda-footer" onClick={() => navigate('/semuapesanan')}>
-          <FontAwesomeIcon icon={faReceipt} className="mb-2 mx-4"  />
+          <FontAwesomeIcon icon={faReceipt} className='footer-mobile-icon' />
            Transaksi
           </div>
           <div className="beranda-footer">
-          <FontAwesomeIcon icon={faHeadset} className="mb-2 mx-3"  />
+          <FontAwesomeIcon icon={faHeadset} className='footer-mobile-icon' />
            Bantuan
           </div>
           <div className="beranda-footer" onClick={() => navigate('/profile')}>
-          <FontAwesomeIcon icon={faUser} className="mb-2 mx-3"  />
+          <FontAwesomeIcon icon={faUser} className='footer-mobile-icon' />
            Profile
           </div>
         </div>

@@ -1,13 +1,13 @@
 #container-home {
   min-height: calc(100vh - 92px);
   min-width: 98vw;
-  padding: 50px 150px 50px 100px;
+  padding: 50px 150px 20px 100px;
 }
 #container-jumbotron-payment {
-  padding: 30px 0px 0px 0px;
   height: 150px;
-  width: 102vw;
-  margin-left: -150px;
+  width: 100vw;
+  margin-left: -100px;
+  padding-top: 30px;
   text-align: center;
   align-items: center;
   background: #f6fafb;
@@ -758,14 +758,14 @@
 
 @media only screen and (max-width: 850px) {
   #container-home {
-    height: 224vh;
+    height: auto;
     width: 100vw;
     padding: 50px 150px 10px 20px;
   }
   #container-jumbotron-payment {
-    padding: 0px 0px 0px 0px;
+    padding: 30px 0px 0px 0px;
     height: 150px;
-    width: 98.2vw;
+    width: 100vw;
     text-align: center;
     align-items: center;
     background: #f6fafb;
@@ -1526,7 +1526,7 @@
 
 @media only screen and (max-width: 500px) {
   #container-home {
-    height: 250vh;
+    height: auto;
     width: 100vw;
     padding: 50px 150px 50px 20px;
   }
