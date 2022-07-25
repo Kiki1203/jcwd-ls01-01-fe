@@ -56,7 +56,7 @@ const Tampilkan2 = ({setOpenModal, id}) => {
     <div className='modal-background fixed-top' onClick={() => setOpenModal(false)}>
       <div className='modal-container-payment' onClick={e => e.stopPropagation()}>
         <FontAwesomeIcon icon={faXmark} className='close-icon' onClick={() => setOpenModal(false)} />
-        <p className='modal-title' style={{marginBottom:'15px'}}>Tambah Obat</p>
+        <p className='modal-title' style={{marginBottom:'15px'}}>Detail Obat</p>
         <div>
         {printData()}
         </div>

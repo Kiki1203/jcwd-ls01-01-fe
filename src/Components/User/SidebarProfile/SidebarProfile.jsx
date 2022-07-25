@@ -21,7 +21,7 @@ const SidebarProfile  = () => {
       }
       axios.get(`${API_URL}/user/datauser`, headers)
       .then((res) => {
-          if(res.data[0].nama) {setNama(res.data[0].nama)}
+          if(res.data[0].username) {setNama(res.data[0].username)}
           if(res.data[0].profile_picture) {setProfilepic(res.data[0].profile_picture)}
       }).catch((err) => {
           console.log('ini err get',err)

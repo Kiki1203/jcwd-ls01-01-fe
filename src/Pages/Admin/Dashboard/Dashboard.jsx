@@ -6,6 +6,11 @@ import { faArrowCircleRight} from '@fortawesome/free-solid-svg-icons';
 import SidebarAdmin from '../../../Components/Admin/SidebarAdmin/SidebarAdmin.jsx';
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
+import satu from '../../../Assets/satu.svg'
+import dua from '../../../Assets/dua.svg'
+import tiga from '../../../Assets/tiga.png'
+import rev1 from '../../../Assets/Rev1.svg'
+import rev2 from '../../../Assets/Rev.png'
 
 
 const DashboardAdmin  = () => {
@@ -75,21 +80,21 @@ const homePageAdmin = () => {
                       <div className="nominal-total-profit-hari-ini">Rp 10.213.500</div>
                       <div className="row-profit-dashboard"><FontAwesomeIcon icon={faArrowCircleRight} className="" /></div>
                       <div className="keterangan-row-profit">+5.700.000</div>
-                      <div className="prosentase-profit-box"></div>
+                      <div> <img src={satu} alt="" className="prosentase-profit-box" /></div>
                   </div>
                   <div className="box-2-dashboard-admin">
                       <div className="judul-total-pemesanan-today">Total Pemesanan Hari Ini </div>
                       <div  className="nominal-total-pemesanan-today">{data}</div>
                       <div className="row-2-profit-dashboard"><FontAwesomeIcon icon={faArrowCircleRight} className="" /></div>
                       <div className="keterangan-row-2-profit">-60</div>
-                      <div className="prosentase-profit-box-2"></div>
+                      <div> <img src={dua} alt="" className="prosentase-profit-box-2" /></div>
                   </div>
                   <div className="box-3-dashboard-admin">
                       <div className="judul-sisa-stok-today">Sisa Stok Hari Ini</div>
                       <div className="nominal-sisa-stok-today">1.500</div>
                       <div className="row-sisa-stok-dashboard"><FontAwesomeIcon icon={faArrowCircleRight} className="" /></div>
                       <div className="keterangan-row-sisa-stok">+1.200</div>
-                      <div className="prosentase-sisa-stok-box-2"></div>
+                      <div> <img src={tiga} alt="" className="prosentase-sisa-stok-box-2" /></div>
                   </div>
                   <div className="tulisan-penting-hari-ini">Penting Hari Ini</div>
                   <div className="tulisan-aktivitas-dashboard">Aktivitas yang perlu kamu ketahui untuk menjaga kepuasan pelanggan</div>
@@ -127,19 +132,9 @@ const homePageAdmin = () => {
                       <div className="keterangan-expired-3-bulan-lagi">Kedaluwarsa 3 Bulan Kedepan</div>
                       <div className="nominal-expired-3-bulan-lagi">0</div>
                   </div>
-                  <div className="box-profit-dashboard-admin">
-                      <div className="judul-dalam-box-profit">Profit</div>
-                      <div className="keterangan-dalam-box-profit">Data dinyatakan dalam jutaan rupiah</div>
-                      <div className="dropdown-dalam-box-profit">Dropdown</div>
-                      <div className="grafix-box-dalam-box-profit"></div>
-                  </div>
-                  <div className="box-penjualan-obat-dashboard-admin">
-                      <div className="tulisan-pejualan-obat-1">Penjualan Obat</div>
-                      <div className="garis-1-dalam-box-pejualan-obat"></div>
-                      <div className="keterangan-dalam-box-pejualan-obat">Obat Bebas</div>
-                      <div className="dropdown-dalam-box-pejualan-obat">Dropdown</div>
-                      <div className="grafix-box-dalam-box-pejualan-obat"></div>
-                  </div>
+                  <img src={rev1} alt="" className="box-profit-dashboard-admin" />
+                  <img src={rev2} alt="" className="box-penjualan-obat-dashboard-admin" />
+                  
                   </div>
           </div>
         </>

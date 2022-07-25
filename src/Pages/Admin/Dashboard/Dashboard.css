@@ -75,8 +75,8 @@
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 20px;
+    line-height: 24px;
     display: flex;
     align-items: center;
     color: #213360;
@@ -84,10 +84,10 @@
 
 .row-profit-dashboard{
     position: absolute;
-    width: 10px;
-    height: 10px;
-    left: 10px;
-    top: 89px;
+    width: 20px;
+    height: 20px;
+    left: 15px;
+    top: 85px;
     font-size: 10px;
     color: #21CDC0;
     transform: rotate(-40deg);
@@ -97,7 +97,7 @@
     position: absolute;
     width: 56px;
     height: 24px;
-    left: 40px;
+    left: 30px;
     top: 85px;
     font-family: 'Public Sans';
     font-style: normal;
@@ -115,8 +115,7 @@
     height: 65px;
     left: 190px;
     top: 29px;
-    border: 1px solid blue;
-
+ 
 }
 
 .box-2-dashboard-admin{
@@ -177,7 +176,7 @@
     width: 17px;
     height: 24px;
     left: 40px;
-    top: 83px;
+    top: 82px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -194,7 +193,7 @@
     height: 65px;
     left: 190px;
     top: 29px;
-    border: 1px solid blue;
+
 
 }
 
@@ -256,7 +255,7 @@
     width: 33px;
     height: 24px;
     left: 40px;
-    top: 82px;
+    top: 85px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -274,8 +273,7 @@
     height: 65px;
     left: 190px;
     top: 29px;
-    border: 1px solid blue;
-
+  
 }
 
 .tulisan-penting-hari-ini{
@@ -776,7 +774,7 @@
     height: 250px;
     left: 25px;
     top: 100px;
-    border: 1px solid blue;
+  
 }
 
 .box-penjualan-obat-dashboard-admin{
@@ -846,5 +844,5 @@
     height: 270px;
     left: 25px;
     top: 78px;
-    border: 1px solid blue;
+  
 }
