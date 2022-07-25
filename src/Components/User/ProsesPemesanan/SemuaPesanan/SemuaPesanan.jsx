@@ -6,7 +6,7 @@ import Chat from '../../../../Assets/CHAT.svg';
 import axios from 'axios';
 import API_URL  from '../../../../Helpers/API_URL.js';
 import moment from 'moment';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Tampilkan from "../TampilkanDetail/Tampilkan.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
@@ -30,6 +30,7 @@ const SemuaPesanan  = () => {
   const [openModal, setOpenModal] = useState(false)
   const [verified, setVerified] = useState('')
   const [token, setToken] = useState('')
+  const { pathname } = useLocation();
 
   useEffect(() => {
     setLoading(true)
@@ -76,6 +77,21 @@ const SemuaPesanan  = () => {
     setIdProduk(id)
     setOpenModal(true)
 }
+
+  const onCheckoutResep = async (id) => {
+    await axios.get(`${API_URL}/user/getaddress`, {headers: {authorization: token}})
+    .then(res => {
+      if(res.data.length > 0){
+        navigate(`/checkout/resep?id=${id}`)
+      } else {
+        navigate('/formaddress', { state: { previousPath: pathname, transactionId: id } })
+      }
+      })
+      .catch(e => {
+        console.log(e)
+      })
+    }
+  
 
   const printData = (props) => {
     return data.map((value, index) => {
@@ -237,7 +253,7 @@ const SemuaPesanan  = () => {
                         <div className="belum-bayar-semua">Bayar Sebelum {moment(value.waktu_ganti_status).format('LLL')}</div>
                         {
                            value.status_transaksi === "Menunggu Checkout" ?
-                           <div className="button-bayar-sekarang-semua" onClick={() => navigate(`/checkout/resep?id=${value.id}`)}>Checkout Sekarang</div>
+                           <div className="button-bayar-sekarang-semua" onClick={() => onCheckoutResep(value.id)}>Checkout Sekarang</div>
                            :
                            <div className="button-bayar-sekarang-semua" onClick={() => navigate(`/payment/${value.id}`)}>Bayar Sekarang</div>
                         }
