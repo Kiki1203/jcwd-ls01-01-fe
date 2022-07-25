@@ -173,7 +173,7 @@
 
 @media only screen and (max-width: 500px) {
   .navbar-mobile{
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 95px;
     left: 0px;
