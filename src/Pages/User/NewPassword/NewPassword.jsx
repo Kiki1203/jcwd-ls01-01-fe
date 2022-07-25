@@ -8,12 +8,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import gambar from './../../../Assets/login.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import BeatLoader from 'react-spinners/BeatLoader';
-const override: CSSProperties = {
-  display: 'block',
-  margin: '0 auto',
-  borderColor: 'black',
-};
+import PulseLoader from 'react-spinners/PulseLoader';
 
 const NewPassword = () => {
   let params = useParams();
@@ -95,26 +90,27 @@ const NewPassword = () => {
       .then((res) => {
         setLoading(true);
         navigate('/login');
-        Toast.fire({
+        Swal.fire({
           title: 'Success!',
           text: res.data.message,
           icon: 'success',
           confirmButtonText: 'Okay!',
-          timer: 1500,
         });
 
+        setLoading(false);
         console.log('ini res', res);
         console.log('ini res.data', res.data);
         console.log('ini res.data', res.data.message);
       })
       .catch((err) => {
-        Toast.fire({
+        setLoading(true);
+        Swal.fire({
           title: 'Error!',
           text: err.response.data.message,
           icon: 'error',
           confirmButtonText: 'Okay!',
-          timer: 1500,
         });
+
         setLoading(false);
         console.log('ini err', err);
         console.log('err.response.data.message', err.response.data.message);
@@ -124,12 +120,12 @@ const NewPassword = () => {
     <div>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 image-register">
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 image-register">
             <img src={gambar} alt="" />
           </div>
-          <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 box-form-register">
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 box-form-register">
             <div className="form-newpassword">
-              <div className="mb-5">Forgot Password</div>
+              <div className="mb-5 mkm">Password Baru</div>
               <div>New Password</div>
               <InputGroup className="mb-3">
                 <Input placeholder="" type={inVisible.type} value={password} onChange={passwordChange} />
@@ -157,15 +153,15 @@ const NewPassword = () => {
                 )}
               </InputGroup>
               {loading ? (
-                <button type="button" className="btn btn-secondary col-12 col-sm-12 col-12 mb-4 ">
-                  <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={15} />
+                <button type="button" disabled className=" mb-4 btn btn-danger w-100 button-au ">
+                  <PulseLoader color={'#FFFFFF'} loading={loading} cssOverride={{ borderColor: 'white', margin: '0 auto' }} size={10} />
                 </button>
               ) : (
-                <Button className="col-12 col-sm-12 col-12 mb-4" color="danger" onClick={() => onSubmit()}>
+                <Button className="col-12 col-sm-12 col-12 mb-4 button-au" color="danger" onClick={() => onSubmit()}>
                   Send
                 </Button>
               )}
-              <Button className="col-12 col-sm-12 col-12" color="danger" outline>
+              <Button className="col-12 col-sm-12 col-12 button-au" color="danger" outline onClick={() => navigate('/resetpassword')}>
                 Cancel
               </Button>
             </div>

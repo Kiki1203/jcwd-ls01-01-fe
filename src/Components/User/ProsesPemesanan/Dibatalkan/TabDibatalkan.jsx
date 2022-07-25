@@ -5,13 +5,14 @@ import axios from 'axios';
 import API_URL  from '../../../../Helpers/API_URL.js';
 import moment from 'moment';
 import { Navigate, useNavigate } from 'react-router-dom';
-import Tampilkan from "../TampilkanDetail/Tampilkan.jsx";
+import Tampilkan2 from "../TampilkanDetail/Tampilkan2.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import SidebarProfile from "../../SidebarProfile/SidebarProfile";
 import Sidebar2 from "../../SidebarProsesPemesanan/Sidebar2";
 import { RingLoader } from "react-spinners";
 import FooterMobile from "../../Footer/FooterMobile.jsx"
+import noProductIllust from '../../../../Assets/no-product.svg';
 
 const TabDibatalkan  = () => {
     
@@ -79,10 +80,10 @@ const TabDibatalkan  = () => {
   const printData = (props) => {
     return data.map((value, index) => {
         return (
-         <>
+          <div className="box-pd col-12">
           <div className="box-semua-pesanan" key={index}>
                   {
-                          openModal && <Tampilkan setOpenModal={setOpenModal}  id={idProduk}/>
+                          openModal && <Tampilkan2 setOpenModal={setOpenModal}  id={idProduk}/>
                   }
                     <div className="inside-box-semua-pesanan">
                           <div className="tanggal-semua-pesanan">{moment(value.tanggal_transaksi).format('LLL')}</div>
@@ -135,7 +136,7 @@ const TabDibatalkan  = () => {
                            
                       </div>
                     </div>
-         </>
+         </div>
         )
     })
 }
@@ -203,7 +204,7 @@ const dibatalkanPesanan = () => {
       <div className="container-pp">
         <div>
         <div className="wrapper-pp">
-        <div className="c-pp d-flex justify-content-between">
+        <div className="c-pp d-flex">
             <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-pp-1'>
                 <SidebarProfile/>
             </div>
@@ -214,58 +215,86 @@ const dibatalkanPesanan = () => {
                 <div>
                   <Sidebar2 />
                 </div>
-                <div>
-                {
-          loading ? 
-          <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
-          :
-          <>
-         <div className="box-pd"> {printData()}</div>
-          </>
-        }
-         <div className="mt-4 ml-4">
-           <div className='pagination-semua d-flex'>
-              <ul className="pageNumbers2">
-                {
-                  loading ?
-                  <></>
-                  :
-                  <>
-                    <li className="mx-3">
-                  <button
-                      onClick={handlePrevbtn}
-                      disabled={currentPage == pages[0] ? true : false}
-                  >
-                      Prev
-                  </button>
-                  </li>
-                  {pageDecrementBtn}
-                  {renderPageNumbers}
-                  {pageIncrementBtn}
-  
-                  <li>
-                  <button
+                <div className="box-inside-pp">
+                   {
+                    data.length > 0 ?
+                     <>
+                     {
+                       loading ? 
+                       <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
+                       :
+                       <>{printData()}</>
+                     }
+                    </>
+                    :
+                    <>
+                     {
+                       loading ? 
+                       <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
+                       :
+                       <div className='d-flex flex-column align-items-center mt-5' style={{width:'100%'}}>
+                       <img src={noProductIllust} alt="" style={{width:'250px', margin:'20px'}} />
+                       <p style={{color:'#213360', fontSize:'19px', fontWeight:'700', margin:'0px 0px 10px'}}>Oops, belum ada pesanan yang dibatalkan</p>
+                       <p style={{color:'#8f939e', fontSize:'14px', margin:'0px 0px 30px'}}>Silahkan kembali berbelanja terlebih dahulu</p>
+                   </div>
+                     }
+                    </>
+                  }
+         <div className="box-pagination-semua d-flex">
+         {
+             data.length > 1 ?
+             <ul className="pageNumbers2">
+        
+             <li className="mx-3">
+                   {
+                      data.length > 1 ?
+                      <button
+                     onClick={handlePrevbtn}
+                     disabled={currentPage == pages[0] ? true : false}
+                 >
+                    Prev
+                 </button>
+                 :
+                 <></>
+                   }
+                 
+                 </li>
+                 {pageDecrementBtn}
+                 {renderPageNumbers}
+                 {pageIncrementBtn}
+
+                 <li>
+                   {
+                      data.length > 1 ?
+                      <button
                       onClick={handleNextbtn}
                       disabled={currentPage == pages[pages.length - 1] ? true : false}
                   >
-                       Next
+                    Next
                   </button>
-                  </li>
-                  </>
-                }
-              </ul> 
-          </div>
-          <FooterMobile/>
+                  :
+                  <></>
+                   }
+               
+                 </li>
+             </ul> 
+             :
+            <></>
+          }
+        
+         
         </div>
                 </div>
                 
             </div>
+             <FooterMobile/>
         </div>
         </div> 
     </div>
     </div>
+    
     </div>
-  )
+)
   
 }
     

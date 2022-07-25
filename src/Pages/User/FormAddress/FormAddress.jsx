@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './FormAddress.css';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
@@ -12,7 +12,7 @@ const FormAddress = () => {
   const [LabelAlamat, SetLabelAlamat] = useState('');
   const [NoHP, SetNoHP] = useState('');
   const [Alamat, SetAlamat] = useState('');
-  const [AlamatUtama, SetAlamatUtama] = useState('');
+  const [AlamatUtama, SetAlamatUtama] = useState('0');
   const [IdKota, SetIdKota] = useState('');
   const [Kota, SetKota] = useState('');
   const [IdProvinsi, SetIdProvinsi] = useState('');
@@ -109,10 +109,10 @@ const FormAddress = () => {
       .post(`${API_URL}/user/addaddress`, { dataAlamat: dataAlamat }, { headers: { authorization: token } })
       .then((res) => {
         Swal.fire({
-          title: 'Succes!',
+          title: 'Sukses!',
           text: res.message,
           icon: 'success',
-          confirmButtonText: 'Okay!',
+          confirmButtonText: 'Oke!',
         });
         let destination = ''
         if(previousPath === '/cart'){
@@ -215,7 +215,7 @@ const FormAddress = () => {
           <p className="mini-title-input">Kode Pos</p>
           <input type="text" className="input-alamat" disabled placeholder="Pilih kota" value={Kodepos} style={{ width: '48%' }} />
           <label className="sidebar-checkbox mt-4 mb-5 d-block">
-            <input type="checkbox" value="0" onChange={(e) => SetAlamatUtama(e.target.checked === true ? '1' : '0')} />
+            <input type="checkbox" onChange={(e) => SetAlamatUtama(e.target.checked === true ? '1' : '0')} />
             Simpan sebagai alamat utama
           </label>
           <div className="d-flex justify-content-between mb-5">

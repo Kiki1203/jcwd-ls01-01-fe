@@ -23,7 +23,6 @@ import ChangePassword from './Pages/User/ChangePassword/ChangePassword.jsx';
 import EditProfile from './Pages/User/EditProfile/EditProfile.jsx';
 import MenungguKonfirmasi from './Pages/User/MenungguKonfirmasi/MenungguKonfirmasi.jsx';
 
-
 import Dibatalkan from './Components/User/ProsesPemesanan/Dibatalkan/TabDibatalkan.jsx';
 import Dikirim from './Components/User/ProsesPemesanan/Dikirim/TabDikirim.jsx';
 import Diproses from './Components/User/ProsesPemesanan/Diproses/TabDiproses.jsx';
@@ -38,6 +37,9 @@ import Dashboard from './Pages/Admin/Dashboard/Dashboard.jsx';
 import DaftarProduk from './Pages/Admin/DaftarProduk/DaftarProduk.jsx';
 import TransaksiAdmin from './Pages/Admin/TransaksiAdmin/TransaksiAdmin';
 import KartuStok from './Pages/Admin/KartuStok/KartuStok.jsx';
+import RingkasanStatistik from './Pages/Admin/RingkasanStatistik/RingkasanStatistik.jsx';
+import BukuKas from './Pages/Admin/BukuKas/BukuKas.jsx';
+import LabaRugi from './Pages/Admin/LabaRugi/LabaRugi.jsx';
 
 // Redux
 import { applyMiddleware, createStore } from 'redux';
@@ -61,8 +63,8 @@ function App() {
         location.pathname === '/newpassword' ||
         location.pathname === '/loginadmin' ||
         location.pathname === '/resetpassword' ||
-        location.pathname === '/newpassword/:token' ||
-        location.pathname === '/transaksiadmin/:status' ? null : (
+        location.pathname === '/transaksiadmin/:status' ||
+        location.pathname.includes('/newpassword') ? null : (
           <Navbar />
         )}
         <Routes>
@@ -88,10 +90,12 @@ function App() {
           <Route path="/homeadmin" element={<Dashboard />} />
           <Route path="/daftarprodukadmin" element={<DaftarProduk />} />
           <Route path="/kartustok/:id" element={<KartuStok />} />
-         
+          <Route path="/ringkasanstatistik" element={<RingkasanStatistik />} />
+          <Route path="/bukukas" element={<BukuKas />} />
+          <Route path="/labarugi" element={<LabaRugi />} />
+
           <Route path="/menunggukonfirmasi" element={<MenungguKonfirmasi />} />
-        
-         
+
           <Route path="/dibatalkan" element={<Dibatalkan />} />
           <Route path="/dikirim" element={<Dikirim />} />
           <Route path="/diproses" element={<Diproses />} />
@@ -109,8 +113,11 @@ function App() {
         location.pathname === '/newpassword' ||
         location.pathname === '/loginadmin' ||
         location.pathname === '/resetpassword' ||
-        location.pathname === '/newpassword/:token' ||
-        location.pathname === '/transaksiadmin/:status' ? null : (
+        location.pathname === '/ringkasanstatistik' ||
+        location.pathname === '/bukukas' ||
+        location.pathname === '/labarugi' ||
+        location.pathname.includes('/newpassword') ||
+        location.pathname.includes('/transaksiadmin/') ? null : (
           <Footer />
         )}
       </Provider>

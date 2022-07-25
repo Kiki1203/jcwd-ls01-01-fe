@@ -19,21 +19,25 @@
       display: flex;
       align-items: center;
       color: #213360;
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
     .c-sb-2{
-        margin-top: 20px;
+        margin-top: 10px;
     }
     
     .c-sb-3{
         margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
     }
 
     .tab-semua{
 
       width: 80px;
-      height: 36px;
+      height: 50px;
       left: 40px;
       top: 80px;
       font-family: 'Public Sans';
@@ -43,6 +47,7 @@
       line-height: 20px;
       display: flex;
       justify-content: center;
+      align-items: center;
       text-align: center;
       color: #213360;
       cursor: pointer;
@@ -56,9 +61,9 @@
     }
     
     .tab-menunggu{
-
+      margin-left: 20px;
       width: 100px;
-      height: 36px;
+      height: 50px;
       left: 160px;
       top: 80px;
       font-family: 'Public Sans';
@@ -69,6 +74,7 @@
       display: flex;
       justify-content: center;
       text-align: center;
+      align-items: center;
       color: #213360;
     }
     
@@ -80,9 +86,9 @@
     }
     
     .tab-diproses{
-
+      margin-left: 20px;
       width: 90px;
-      height: 36px;
+      height: 50px;
       left: 310px;
       top: 80px;
       font-family: 'Public Sans';
@@ -91,6 +97,7 @@
       font-size: 14px;
       line-height: 20px;
       display: flex;
+      align-items: center;
       justify-content: center;
       text-align: center;
       color: #213360;
@@ -104,9 +111,9 @@
     }
     
     .tab-dikirim{
-
+      margin-left: 20px;
       width: 80px;
-      height: 36px;
+      height: 50px;
       left: 450px;
       top: 80px;
       font-family: 'Public Sans';
@@ -116,6 +123,7 @@
       line-height: 20px;
       display: flex;
       justify-content: center;
+      align-items: center;
       text-align: center;
       color: #213360;
     }
@@ -130,7 +138,7 @@
     .tab-selesai{
 
       width: 80px;
-      height: 36px;
+      height: 50px;
       left: 570px;
       top: 80px;
       font-family: 'Public Sans';
@@ -141,7 +149,9 @@
       display: flex;
       justify-content: center;
       text-align: center;  
+      align-items: center;
       color: #213360;
+      margin-left: 20px;
     }
     
     .tab-selesai:hover{
@@ -152,9 +162,9 @@
     }
     
     .tab-dibatalkan{
-
+      margin-left: 20px;
       width: 100px;
-      height: 36px;
+      height: 50px;
       left: 680px;
       top: 80px;
       font-family: 'Public Sans';
@@ -165,6 +175,7 @@
       display: flex;
       justify-content: center;
       text-align: center;
+      align-items: center;
       color: #213360;
     }
     
@@ -176,7 +187,6 @@
     }
     
     .garis-batas-tab{
-
       width: 780px;
       height: 0px;
       border: 1.5px solid #F5F6F9;
@@ -184,11 +194,8 @@
     }
     
     .judul-filter-jenis-obat{
-
-      width: 105px;
+      width: 80px;
       height: 24px;
-      left: 40px;
-      top: 140px;
       font-family: 'Public Sans';
       font-style: normal;
       font-weight: 700;
@@ -197,6 +204,8 @@
       display: flex;
       align-items: center;
       color: #213360;
+      margin-right: 10px;
+      margin-left: 0px;
     }
     
     .box-filter{
@@ -204,12 +213,9 @@
       flex-direction: row;
       align-items: flex-start;
       padding: 0px;
-      gap: 12px;
-
-      width: 339px;
+      gap: 10px;
+      width: 320px;
       height: 33px;
-      left: 127px;
-      top: 140px;
     }
     
     .button-semua-obat{
@@ -301,7 +307,6 @@
     }
     
     .urutkan-filter{
-
       width: 53px;
       height: 20px;
       font-family: 'Public Sans';
@@ -314,10 +319,11 @@
       text-align: right;
       color: #737A8D;
       margin-left: 30px;
-      margin-top: 5px;
+      margin-top: 0px;
     }
     
     .dropdown-01{
+      
         margin-left: 20px;
       width: 130px;
       height: 28px;
@@ -390,6 +396,10 @@
       
       .c-sb-3{
           margin-top: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
       }
   
       .tab-semua{
@@ -408,6 +418,7 @@
         text-align: center;
         color: #213360;
         cursor: pointer;
+       
       }
       
       .tab-semua:hover{
@@ -418,7 +429,7 @@
       }
       
       .tab-menunggu{
-  
+        margin-left: -10px;
         width: 100px;
         height: 36px;
         left: 160px;
@@ -442,7 +453,7 @@
       }
       
       .tab-diproses{
-  
+        margin-left: -10px;
         width: 90px;
         height: 36px;
         left: 310px;
@@ -466,7 +477,7 @@
       }
       
       .tab-dikirim{
-  
+        margin-left: -10px;
         width: 80px;
         height: 36px;
         left: 450px;
@@ -490,7 +501,7 @@
       }
       
       .tab-selesai{
-  
+        margin-left: -10px;
         width: 80px;
         height: 36px;
         left: 570px;
@@ -514,7 +525,7 @@
       }
       
       .tab-dibatalkan{
-  
+        margin-left: -10px;
         width: 100px;
         height: 36px;
         left: 680px;
@@ -546,7 +557,7 @@
       }
       
       .judul-filter-jenis-obat{
-        width: 105px;
+        width: 70px;
         height: 24px;
         margin-left: 20px;
         font-family: 'Public Sans';
@@ -640,7 +651,7 @@
         text-align: right;
         color: #737A8D;
         margin-left: 10px;
-        margin-top: 5px;
+        margin-top: 0px;
       }
       
       .dropdown-01{
@@ -916,7 +927,7 @@
       display: flex;
       justify-content: space-around;
       width: 250px;
-      
+     
     }
 
     .btn-grup-1{
@@ -925,6 +936,7 @@
       display: flex;
       justify-content: space-between;
       width: 90vw;
+     
       
     }
     

@@ -12,6 +12,7 @@ import SidebarProfile from "../../SidebarProfile/SidebarProfile";
 import Sidebar2 from "../../SidebarProsesPemesanan/Sidebar2";
 import { RingLoader } from "react-spinners";
 import FooterMobile from "../../Footer/FooterMobile.jsx"
+import noProductIllust from '../../../../Assets/no-product.svg';
 
 const TabDitunggu  = () => {
     
@@ -80,19 +81,20 @@ const TabDitunggu  = () => {
   const printData = (props) => {
     return data.map((value, index) => {
         return (
-         <>
-          {
-                value.status_transaksi === "Selesai" || value.status_transaksi === "Dikirim" ||  value.status_transaksi === "Dibatalkan"  || value.status_transaksi === "Diproses"?
-                <></>
-                :
-                <>
-                 <div className="box-semua-pesanan" key={index}>
+          <div className="box-pd col-12">
+         <div className="box-semua-pesanan" key={index}>
                  {
                           openModal && <Tampilkan setOpenModal={setOpenModal}  id={idProduk}/>
                   }
                     <div className="inside-box-semua-pesanan">
                           <div className="tanggal-semua-pesanan">{moment(value.tanggal_transaksi).format('LLL')}</div>
-                            <div className="notifikasi-semua-pesanan"><div className="status-semua-pesanan">{value.status_transaksi}</div></div>
+                          {
+                             value.status_transaksi === "Menunggu Checkout" ?
+                             <div className="notifikasi-semua-pesanan-2"><div className="status-semua-pesanan-2">{value.status_transaksi}</div></div>
+                             :
+                             <div className="notifikasi-semua-pesanan"><div className="status-semua-pesanan">{value.status_transaksi}</div></div>
+                          }
+                           
                             <div className="garis-semua-pesanan-1"></div>
                             {
                               value.dataPertama.length === 0 ?
@@ -122,7 +124,7 @@ const TabDitunggu  = () => {
                                   </div>
                                   <div className="nama-obat-semua-pesanan">Nomor Resep</div>
                                   <div className="harga-obat-semua-pesanan">TIMER</div>
-                                  <div  className="jumlah-obat-semua-pesanan"  style={{marginTop: '-10px'}}>{value.resultResep[0].no_pemesanan}</div>
+                                  <div  className="jumlah-obat-semua-pesanan"  style={{marginTop: '0px'}}>{value.resultResep[0].no_pemesanan}</div>
                                   <div className="button-tampilkan-detail-semua" >Perbesar gambar</div>
                                   <div className="d-lg-none d-md-none d-block">
                                       <div className="garis-semua-resep"></div>
@@ -155,25 +157,39 @@ const TabDitunggu  = () => {
                               <></>
                             }
                             <div className="garis-semua-2"></div>
-                            <div className="box-chat-cs-semua">
-                              <div className="logo-cs-semua"><img src={Chat} alt="" width="24px" height="24px"/></div>
-                              <div className="keterangan-chat-semua">Chat Customer Service</div>
-                            </div>
                             {
-                               value.status_transaksi === "Menunggu Konfirmasi Resep" ?
+                              value.status_transaksi === "Menunggu Konfirmasi Pembayaran" ?
+                              <div className="d-lg-none d-md-none d-block">
+                            <div className="box-chat-cs-semua-resep" style={{marginTop: '30px'}}>
+                                    <div className="logo-cs-semua-resep"><img src={Chat} alt="" width="24px" height="24px"/></div>
+                                    <div className="keterangan-chat-semua-resep">Chat Customer Service</div>
+                                  </div>
+                            </div>
+                            :
+                            <></>
+                            }
+                            <div className="box-chat-cs-semua">
+                            <div className="logo-cs-semua"><img src={Chat} alt="" width="24px" height="24px"/></div>
+                            <div className="keterangan-chat-semua">Chat Customer Service</div>
+                          </div>
+                            {
+                               value.status_transaksi === "Menunggu Konfirmasi Resep" || value.status_transaksi === "Menunggu Konfirmasi Pembayaran" ?
                                <></>
                                :
                                <>
                                 <div className="belum-bayar-semua">Bayar Sebelum {moment(value.waktu_ganti_status).format('LLL')}</div>
-                                <div className="button-bayar-sekarang-semua" onClick={() => navigate(`/payment/${value.id}`)}>Bayar Sekarang</div>
+                                {
+                                   value.status_transaksi === "Menunggu Checkout" ?
+                                   <div className="button-bayar-sekarang-semua" onClick={() => navigate(`/checkout/resep?id=${value.id}`)}>Checkout Sekarang</div>
+                                   :
+                                   <div className="button-bayar-sekarang-semua" onClick={() => navigate(`/payment/${value.id}`)}>Bayar Sekarang</div>
+                                }
+                              
                                </>
                             }
                       </div>
                     </div>
-                </>
-          }
-         
-         </>
+         </div>
         )
     })
 }
@@ -253,58 +269,86 @@ const ditungguPesanan  = () => {
                 <div>
                   <Sidebar2 />
                 </div>
-                <div>
-                {
-          loading ? 
-          <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
-          :
-          <>
-         <div className="box-pd"> {printData()}</div>
-          </>
-        }
-         <div className="mt-4 ml-4">
-           <div className='pagination-semua d-flex'>
-              <ul className="pageNumbers2">
-              {
-                  loading ?
-                  <></>
-                  :
-                  <>
-                    <li className="mx-3">
-                  <button
-                      onClick={handlePrevbtn}
-                      disabled={currentPage == pages[0] ? true : false}
-                  >
-                      Prev
-                  </button>
-                  </li>
-                  {pageDecrementBtn}
-                  {renderPageNumbers}
-                  {pageIncrementBtn}
-  
-                  <li>
-                  <button
+                <div className="box-inside-pp">
+                   {
+                    data.length > 0 ?
+                     <>
+                     {
+                       loading ? 
+                       <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
+                       :
+                       <>{printData()}</>
+                     }
+                    </>
+                    :
+                    <>
+                     {
+                       loading ? 
+                       <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
+                       :
+                       <div className='d-flex flex-column align-items-center' style={{width:'100%'}}>
+                       <img src={noProductIllust} alt="" style={{width:'250px', margin:'20px'}} />
+                       <p style={{color:'#213360', fontSize:'20px', fontWeight:'700', margin:'0px 0px 10px'}}>Oops, pesanan belum ada yang ditunggu</p>
+                       <p style={{color:'#8f939e', fontSize:'14px', margin:'0px 0px 30px'}}>Silahkan kembali berbelanja terlebih dahulu</p>
+                   </div>
+                     }
+                    </>
+                  }
+         <div className="box-pagination-semua d-flex">
+         {
+             data.length > 1 ?
+             <ul className="pageNumbers2">
+        
+             <li className="mx-3">
+                   {
+                      data.length > 1 ?
+                      <button
+                     onClick={handlePrevbtn}
+                     disabled={currentPage == pages[0] ? true : false}
+                 >
+                    Prev
+                 </button>
+                 :
+                 <></>
+                   }
+                 
+                 </li>
+                 {pageDecrementBtn}
+                 {renderPageNumbers}
+                 {pageIncrementBtn}
+
+                 <li>
+                   {
+                      data.length > 1 ?
+                      <button
                       onClick={handleNextbtn}
                       disabled={currentPage == pages[pages.length - 1] ? true : false}
                   >
-                       Next
+                    Next
                   </button>
-                  </li>
-                  </>
-                }
-              </ul> 
-          </div>
-           <FooterMobile/>
+                  :
+                  <></>
+                   }
+               
+                 </li>
+             </ul> 
+             :
+            <></>
+          }
+        
         </div>
                 </div>
                 
             </div>
+             <FooterMobile/>
         </div>
         </div> 
     </div>
     </div>
+    
     </div>
-  )
+)
+  
 }    
 
 if(localStorage.getItem('myTkn')){

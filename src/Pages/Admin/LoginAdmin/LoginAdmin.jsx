@@ -8,7 +8,7 @@ import { faUser, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-i
 import Axios from 'axios';
 import google from './../../../Assets/googleL.svg';
 import API_URL from '../../../Helpers/API_URL.js';
-
+import Swal from 'sweetalert2';
 const LoginAdmin = () => {
  
   const [usernameOrEmail, setusernameOrEmail] = React.useState('');
@@ -42,9 +42,14 @@ const LoginAdmin = () => {
       }
      
     }).catch((err) => {
-        console.log('ini err get',err)
-        console.log('err.response.data.message', err.response.data.message)
-        setError(err.response.data.message)
+      Swal.fire({
+        title: 'Error!',
+        text: err.response.data.message,
+        icon: 'error',
+        confirmButtonText: 'Okay!',
+        timer: 1500,
+      });
+       
         setLoading(false)
     })
   };
@@ -65,40 +70,32 @@ const handleVisible = () => {
 
 const loginAdmin = () => {
   return (
-    <div className='container'>
-     <div className='box-foto-login-admin'><img src={Frame} alt="" className='AdminImgSet'/></div>
-     <div className='box-isi-login-admin'>
-       <div className='tab-button-admin-login'>
-         <Link to="/login" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
-           <div className='tab-1-admin-login'>USER</div>
-         </Link>
-         <Link to="/loginadmin" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
-           <div className='tab-2-admin-login'>ADMIN</div>
-         </Link>
-       </div>
-       <div className='box-login-admin-isi'>
-           <div className='welcome-login-admin'>Welcome to Apotakecare's Admin</div>
+    <div className='container-admin'>
+      <div className='d-flex'>
+        <div className="box-foto-login-admin">
+        <img src={Frame} alt="" className='AdminImgSet'/>
+        </div>
+        <div className="box-isi-login-admin">
+          <div className='tab-button-admin-login'>
+            <Link to="/login" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+              <div className='tab-1-admin-login'>USER</div>
+            </Link>
+            <Link to="/loginadmin" style={{ textDecoration:"none", color: "#213360", cursor: 'pointer' }}>
+              <div className='tab-2-admin-login'>ADMIN</div>
+            </Link>
+          </div>
+          <div className="box-login-admin-isi">
+          <div className='welcome-login-admin'>Login Admin</div>
            <div className='box-email-login-admin'>
              <div className='label-email-or-username-login-admin'>Email or Username</div>
              <form className="d-flex box-logo-1-admin">
                <FontAwesomeIcon icon={faUser} className="logo-1-admin" />
                <input type="text" onChange={(e) => setusernameOrEmail(e.target.value)} className="form-control input-admin-1"  placeholder="Masukkan Email Atau Username" />
              </form>
-             <div className='login-error-message'>
-             {
-               error  === "Username Tidak Ditemukan" ?
-               <>{error}</>
-               :
-               <><div></div></>
-               }  
-             </div>
-             {/* <div className="form-group">
-                 <input type="text" onChange={(e) => setusernameOrEmail(e.target.value)} className="form-control input-login-admin-1"  placeholder="Masukkan Email Atau Username" />
-             </div> */}
            </div>
            <div className='box-password-login-admin'>
            <div className='label-email-or-username-login-admin'>Password</div>
-           <form className="d-flex box-logo-1-admin">
+           <form className="d-flex box-logo-1-admin-2">
                <FontAwesomeIcon icon={faLock} className="logo-1-admin" />
                <input type={inVisible.type} onChange={(e) => setPassword(e.target.value)} className="form-control input-admin-1"  placeholder="Masukkan Password" />
                {
@@ -109,23 +106,10 @@ const loginAdmin = () => {
  
                  }
              </form>
-             <div className='login-error-message'>
-               {
-               error  === "Password Salah"  ?
-               <>{error}</>
-               :
-               <><div></div></>
-               }
-               </div>
-             {/* <div className="form-group">
-                 <input type="text" onChange={(e) => setPassword(e.target.value)} className="form-control input-login-admin-1"  placeholder="Masukkan Password" />
-             </div> */}
+            
+              
            </div>
-           <div className="form-group form-ingat-saya">
-             <input type="checkbox" className="form-check-input mx-2" id="exampleCheck-1" style={{fontSize: '14px'}}/>
-             <label className="form-check-label" for="exampleCheck1" id="keterangan-check-2">Ingat Saya</label>
-           </div>
-           <div className='lupa-kata-sandi-admin'>Lupa Kata Sandi</div>
+           
            <button className='button-masuk-admin' disabled={loading}  onClick={handleLogin}>
            {
              loading?
@@ -138,8 +122,14 @@ const loginAdmin = () => {
            <div className='atau-masuk-admin-login'>Atau Masuk Dengan</div>
            <div className='garis-2-login-admin'></div>
            <button className='login-with-google-admin'><img className="me-2" src={google} alt="" /> Masuk dengan Google</button>
-       </div>
-     </div>
+          </div>
+
+        
+
+        </div>
+
+      </div>
+    
     </div>
    );
 }

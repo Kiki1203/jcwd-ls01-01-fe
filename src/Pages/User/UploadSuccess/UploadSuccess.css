@@ -1,8 +1,3 @@
-#container-upload-success {
-  margin-top: 50px;
-  min-height: calc(100vh - 92px);
-  min-width: 100vw;
-  padding: 50px 150px 50px 150px;
-  align-items: center;
-  text-align: center;
+.container-upload-success {
+  padding: 140px 100px 50px 100px;
 }
