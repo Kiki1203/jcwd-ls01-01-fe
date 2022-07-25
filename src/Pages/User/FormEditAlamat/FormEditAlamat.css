@@ -1,0 +1,110 @@
+#form-address-container-2 {
+    width: 600px;
+   
+}
+
+#page-container-ap{
+    margin-top: 92px;
+    height: 160vh;
+    width: 90vw;
+    padding: 50px 100px;
+    display: flex;
+    justify-content: center;
+}
+
+#header-alamat-pengiriman {
+    color: #213360;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+#header-alamat-pengiriman-2 {
+    color: #213360;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.title-input{
+    color: #213360;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0px;
+}
+
+.contoh-input{
+    color: #B4B9C7;
+    font-size: 16px;
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.input-alamat{
+    width: 100%;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    padding: 6px 12px;
+    color: #213360;
+    font-size: 14px;
+    margin: 10px 0px;
+} 
+
+.mini-title-input{
+    color: #737A8D;
+    font-size: 14px;
+    margin: 10px 0px 0px;
+}
+
+.select-alamat{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    background-color: white;
+    padding: 6px 12px;
+    color: #213360;
+    margin: 10px 0px;
+    background-image: url("../../../Assets/select-arrow-down.png");
+    background-repeat: no-repeat;
+    background-size: 44px;
+    background-position: top right;
+    outline: none;
+}
+select::-ms-expand{
+    display: none;
+}
+
+.option-alamat{
+    background-color: white;
+    font-size: 14px;
+    color: #213360;
+    width: 100%;
+}
+
+.option-alamat:hover {
+    background-color: white;
+}
+
+.selected{
+    display: none;
+}
+
+@media only screen and (max-width: 850px) {
+    #page-container-ap{
+        margin-top: 92px;
+        height: 75vh;
+        width: 90vw;
+        padding: 50px 100px;
+        display: flex;
+        justify-content: center;
+    }
+    
+}
+
+@media only screen and (max-width: 500px) {
+
+}

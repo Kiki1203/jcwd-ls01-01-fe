@@ -186,7 +186,7 @@ const btnLogOut = () => {
                     <FontAwesomeIcon icon={faAngleRight} className="logo-2" />
                     </div>
                     </div>
-                 <div className="tab-list-2" style={{ color: "#213360" }}>
+                 <div className="tab-list-2" style={{ color: "#213360" }}  onClick={() => navigate('/alamatpengiriman')}>
                     <FontAwesomeIcon icon={faLocationDot} className="logo-alamat-kirim" />
                     <span className="alamat-pengiriman-profile">Alamat Pengiriman</span>
                     <FontAwesomeIcon icon={faAngleRight}  className="logo-3"   />
