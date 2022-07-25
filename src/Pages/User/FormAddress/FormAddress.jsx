@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './FormAddress.css';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const FormAddress = () => {
@@ -22,6 +23,7 @@ const FormAddress = () => {
   const [Selectcity, setSelectcity] = useState('');
   const [Kodepos, setKodepos] = useState('');
   const [Selectedindex, setSelectedindex] = useState(null);
+  const navigate = useNavigate();
   // List untuk placeholder, nanti di-replace pakai data dari rajaongkir
 
   useEffect(() => {
@@ -111,6 +113,7 @@ const FormAddress = () => {
           confirmButtonText: 'Okay!',
         });
         // console.log('res addAdress', res)
+        navigate('/checkout/produk-bebas');
       })
       .catch((err) => {
         Swal.fire({
@@ -207,7 +210,7 @@ const FormAddress = () => {
             Simpan sebagai alamat utama
           </label>
           <div className="d-flex justify-content-between mb-5">
-            <button className="button-bayar" style={{ width: '48%', backgroundColor: 'white', color: '#E0004D', border: '2px solid #E0004D' }}>
+            <button className="button-bayar" style={{ width: '48%', backgroundColor: 'white', color: '#E0004D', border: '2px solid #E0004D' }} onClick={() => navigate(`/checkout/produk-bebas`)}>
               Batalkan
             </button>
             <button

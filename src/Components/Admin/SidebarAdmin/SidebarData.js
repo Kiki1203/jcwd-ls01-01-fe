@@ -73,11 +73,11 @@ export const SidebarData = [
       },
       {
         title: 'Buku Kas',
-        path: '/',
+        path: '/bukukas',
       },
       {
         title: 'Laba dan Rugi',
-        path: '/',
+        path: '/labarugi',
       },
     ],
   },

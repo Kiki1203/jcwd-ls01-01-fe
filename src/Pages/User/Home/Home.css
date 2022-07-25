@@ -6,14 +6,14 @@
 #container-jumbotron-payment {
   padding: 30px 0px 0px 0px;
   height: 150px;
-  width: 100vw;
+  width: 102vw;
   margin-left: -150px;
   text-align: center;
   align-items: center;
   background: #f6fafb;
 }
 
-.logo-home{
+.logo-home {
   width: 40px;
   height: 40px;
 }
@@ -27,26 +27,26 @@
   background: radial-gradient(50% 50% at 50% 50%, rgba(155, 0, 47, 0.1) 0%, rgba(205, 33, 56, 0) 100%);
 } */
 
-.inside-container-home{
+.inside-container-home {
   width: 80vw;
   height: 232px;
   left: 98px;
   top: 136px;
   margin-top: 160px;
-  background: #92C3D1;
+  background: #92c3d1;
   border-radius: 16px;
 }
 
-.box-jumbotron1{
+.box-jumbotron1 {
   width: 247px;
   height: 232px;
   margin-left: 776px;
   margin-top: -73px;
-  background: linear-gradient(15.03deg, #2A426F 16.41%, #355182 95.92%);
+  background: linear-gradient(15.03deg, #2a426f 16.41%, #355182 95.92%);
   border-radius: 16px;
 }
 
-.head-image{
+.head-image {
   position: relative;
   width: 990px;
   height: 232px;
@@ -54,7 +54,7 @@
   left: 0px;
 }
 
-.jumbotron1{
+.jumbotron1 {
   width: 648px;
   height: 230px;
   margin-left: 410px;
@@ -62,7 +62,7 @@
   border-radius: 16px !important;
 }
 
-.apotake-terpercaya{
+.apotake-terpercaya {
   position: absolute;
   width: 800px !important;
   height: 42px;
@@ -75,15 +75,14 @@
   line-height: 42px;
   display: flex;
   align-items: center;
-  background: linear-gradient(180deg, #6472A8 0%, #000C36 100%);
+  background: linear-gradient(180deg, #6472a8 0%, #000c36 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-
 }
 
-.selamat-datang-home{
+.selamat-datang-home {
   position: absolute;
   width: 179px;
   height: 24px;
@@ -99,7 +98,7 @@
   color: #213360;
 }
 
-.box-apotakecare{
+.box-apotakecare {
   position: absolute;
   width: 300px;
   height: 42px;
@@ -107,7 +106,7 @@
   top: 20px;
 }
 
-.tulisan-apotakecare{
+.tulisan-apotakecare {
   position: absolute;
   font-family: 'Public Sans';
   font-style: normal;
@@ -119,7 +118,7 @@
   top: 5px;
 }
 
-.keterangan-persen-asli{
+.keterangan-persen-asli {
   position: absolute;
   width: 403px;
   height: 21px;
@@ -135,30 +134,30 @@
   color: #213360;
 }
 
-.inside-container-home-2{
+.inside-container-home-2 {
   width: 80vw;
   height: 168px;
   margin-left: 0px;
   margin-top: 50px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: -1px -1px 5px 4px rgba(54, 0, 7, 0.01), 2px 2px 2px rgba(96, 33, 62, 0.04), 4px 4px 4px 6px rgba(155, 0, 121, 0.04);
   border-radius: 16px;
   display: flex;
 }
 
-.jumbotron2{
+.jumbotron2 {
   width: 511px;
   height: 168px;
   object-fit: cover;
 }
 
-.box-unggah-resep{
+.box-unggah-resep {
   width: 352px;
   height: 168px;
   margin-left: -20px;
 }
 
-.tulisan-perlu-resep{
+.tulisan-perlu-resep {
   margin-top: 35px;
   font-family: 'Public Sans';
   font-style: normal;
@@ -170,7 +169,7 @@
   color: #213360;
 }
 
-.btn-unggah-resep{
+.btn-unggah-resep {
   position: absolute;
   font-family: 'Public Sans';
   font-style: normal;
@@ -178,19 +177,19 @@
   font-size: 14px;
   line-height: 20px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 0px;
   gap: 10px;
   width: 140px;
   height: 48px;
-  background: #E0004D;
-  border: 1px solid #E0004D;
+  background: #e0004d;
+  border: 1px solid #e0004d;
   border-radius: 8px;
   margin-top: -60px;
   margin-left: 360px;
 }
 
-.tulisan-tak-antre{
+.tulisan-tak-antre {
   width: 352px;
   margin-top: 10px;
   font-family: 'Public Sans';
@@ -203,14 +202,13 @@
   color: #525252;
 }
 
-
-.inside-container-home-3{
+.inside-container-home-3 {
   width: 80vw;
   height: 200px;
   margin-top: 30px;
 }
 
-.home-kategori{
+.home-kategori {
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 700;
@@ -221,13 +219,13 @@
   color: #213360;
 }
 
-.box-home-kategori{
+.box-home-kategori {
   width: 80vw;
   height: 130px;
   margin-top: 30px;
 }
 
-.box-home-kategori-2{
+.box-home-kategori-2 {
   display: flex;
 }
 
@@ -243,7 +241,7 @@
   align-items: center;
   position: relative;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .product-card-home:hover {
@@ -255,7 +253,7 @@
   width: 194px;
   height: 331px;
   border-radius: 20px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
   padding-bottom: 5px;
   display: flex;
@@ -264,7 +262,7 @@
   align-items: center;
   position: relative;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
   margin-top: 20px;
   left: 0px;
   top: 35px;
@@ -283,8 +281,7 @@
   left: 350px;
 } */
 
-
-.Obat-obatan{
+.Obat-obatan {
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 700;
@@ -296,18 +293,18 @@
   color: #213360;
 }
 
-.obat1{
+.obat1 {
   width: 64px;
   height: 64px;
 }
 
-.inside-container-home-4{
+.inside-container-home-4 {
   width: 80vw;
   height: 450px;
   margin-top: 30px;
 }
 
-.kejar-diskon{
+.kejar-diskon {
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 700;
@@ -315,28 +312,27 @@
   line-height: 28px;
   display: flex;
   align-items: center;
-  color: #213360
+  color: #213360;
 }
 
-.box-buruan-ikut{
+.box-buruan-ikut {
   position: absolute;
   width: 301px;
   height: 395px;
-  background: linear-gradient(150.85deg, #B0E7E8 -3.37%, #7FB4C4 103.24%);
+  background: linear-gradient(150.85deg, #b0e7e8 -3.37%, #7fb4c4 103.24%);
   border-radius: 16px;
   margin-top: 20px;
 }
 
-.kranjang{
+.kranjang {
   position: absolute;
   width: 123px;
   height: 145px;
   left: 50px;
   top: 100px;
-  
 }
 
-.manusia1{
+.manusia1 {
   position: absolute;
   width: 231px;
   height: 206px;
@@ -344,7 +340,7 @@
   top: 190px;
 }
 
-.yuk-buruan-ikut{
+.yuk-buruan-ikut {
   padding-top: 50px;
   margin-left: 40px;
   width: 159px;
@@ -357,10 +353,10 @@
   display: flex;
   align-items: center;
   text-align: center;
-  color: #2B478B;
+  color: #2b478b;
 }
 
-.inside-container-home-5{
+.inside-container-home-5 {
   width: 80vw;
   height: 220px;
   margin-top: 30px;
@@ -368,23 +364,23 @@
   justify-content: space-between;
 }
 
-.box-1-jumbotron{
+.box-1-jumbotron {
   width: 39vw;
   height: 212px;
-  background: #FFB156;
+  background: #ffb156;
   box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
   border-radius: 16px;
 }
 
-.box-2-jumbotron{
+.box-2-jumbotron {
   width: 39vw;
   height: 212px;
-  background: #92C3D1;
+  background: #92c3d1;
   box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
   border-radius: 16px;
 }
 
-.hamil{
+.hamil {
   position: absolute;
   left: 150px;
   top: 1345px;
@@ -392,7 +388,7 @@
   height: 212px;
 }
 
-.framebg{
+.framebg {
   position: absolute;
   width: 348px;
   height: 212px;
@@ -400,7 +396,7 @@
   top: 1330px;
 }
 
-.friend{
+.friend {
   position: absolute;
   width: 294px;
   height: 249px;
@@ -408,7 +404,7 @@
   top: 1330px;
 }
 
-.program-hamil{
+.program-hamil {
   margin-left: 310px;
   margin-top: 60px;
   font-family: 'Public Sans';
@@ -422,7 +418,7 @@
   color: #213360;
 }
 
-.wujudkan-rumah{
+.wujudkan-rumah {
   margin-left: 270px;
   margin-top: 5px;
   width: 230px;
@@ -438,7 +434,7 @@
   color: #213360;
 }
 
-.kebutuhan{
+.kebutuhan {
   margin-left: 270px;
   margin-top: 60px;
   width: 201px;
@@ -454,7 +450,7 @@
   color: #213360;
 }
 
-.lengkapi-kebutuhan{
+.lengkapi-kebutuhan {
   margin-left: 270px;
   margin-top: 5px;
   width: 200px;
@@ -470,29 +466,27 @@
   color: #213360;
 }
 
-.inside-container-home-6{
+.inside-container-home-6 {
   width: 80vw;
   height: 430px;
   margin-top: 30px;
- 
 }
 
-.box-3-jumbotron{
+.box-3-jumbotron {
   width: 80vw;
   height: 340px;
   display: flex;
   margin-top: 30px;
 }
 
-
-.box-tulisan-6-2{
+.box-tulisan-6-2 {
   width: 80vw;
   height: 30px;
   display: flex;
   justify-content: space-between;
 }
 
-.tulisan-6-1{
+.tulisan-6-1 {
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 700;
@@ -501,23 +495,23 @@
   color: #213360;
 }
 
-.tulisan-6-2{
+.tulisan-6-2 {
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
-  color: #E0004D;
+  color: #e0004d;
   margin-top: 5px;
 }
 
-.inside-container-home-7{
+.inside-container-home-7 {
   width: 80vw;
   height: 300px;
   margin-top: 30px;
 }
 
-.jaminan{
+.jaminan {
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 700;
@@ -529,7 +523,7 @@
   margin-top: 10px;
 }
 
-.container-box-7{
+.container-box-7 {
   width: 80vw;
   height: 200px;
   margin-top: 30px;
@@ -540,7 +534,7 @@
   width: 405px;
   height: 181px;
   border-radius: 20px;
-  background: #F6FAFB;
+  background: #f6fafb;
   box-shadow: -1px -1px 5px 4px rgba(54, 0, 25, 0.01), 2px 2px 2px rgba(96, 33, 51, 0.04), 4px 4px 4px 6px rgba(155, 0, 90, 0.04);
   padding-bottom: 5px;
   display: flex;
@@ -548,7 +542,7 @@
   align-items: center;
   position: relative;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .product-card-home-3:hover {
@@ -556,22 +550,22 @@
   box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
 }
 
-.obats{
+.obats {
   width: 64px;
   height: 64px;
 }
 
-.hemat{
+.hemat {
   width: 64px;
   height: 64px;
 }
 
-.kirim{
+.kirim {
   width: 70px;
   height: 70px;
 }
 
-.tulisan-7{
+.tulisan-7 {
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 700;
@@ -583,7 +577,7 @@
   margin-left: 10px;
 }
 
-.tulisan-7-2{
+.tulisan-7-2 {
   width: 203px;
   height: 60px;
   margin-left: 10px;
@@ -602,7 +596,7 @@
   width: 194px;
   height: 331px;
   border-radius: 20px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
   padding-bottom: 5px;
   display: flex;
@@ -611,7 +605,7 @@
   align-items: center;
   position: relative;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
   left: 0px;
 }
 
@@ -633,13 +627,12 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .circle-home:hover {
-  transform: scale(1.2)
+  transform: scale(1.2);
 }
-
 
 .product-image-home {
   width: 80%;
@@ -670,7 +663,7 @@
 
 .keranjang-home {
   background-color: white;
-  border: 3px solid #E0004D;
+  border: 3px solid #e0004d;
   /* padding: 7px 10px; */
   margin-top: 8px;
   width: 150px !important;
@@ -679,7 +672,7 @@
   font-size: 12px;
   font-weight: 800;
   width: 100%;
-  color: #E0004D;
+  color: #e0004d;
   align-self: center;
   cursor: pointer;
 }
@@ -688,7 +681,7 @@
   background-color: #ffe9f1;
 }
 
-.box-diskon-produk{
+.box-diskon-produk {
   width: 150px;
   height: 24px;
   display: flex;
@@ -698,7 +691,7 @@
   margin-bottom: 8px;
 }
 
-.nominal-diskon{
+.nominal-diskon {
   width: 36px;
   height: 24px;
   font-family: 'Public Sans';
@@ -710,12 +703,12 @@
   align-items: center;
   text-align: center;
   justify-content: center;
-  border: 1px solid #FF6B6B;
-  color: #FF6B6B;
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
   border-radius: 6px;
 }
 
-.harga-diskon-home{
+.harga-diskon-home {
   font-family: 'Public Sans';
   font-style: normal;
   font-weight: 400;
@@ -723,11 +716,11 @@
   line-height: 16px;
   display: flex;
   align-items: center;
-  color: #B4B9C7;
+  color: #b4b9c7;
   text-decoration-line: line-through;
 }
 
-.box-isi-card-home{
+.box-isi-card-home {
   position: relative;
   display: flex;
   left: 200px;
@@ -736,8 +729,7 @@
   padding: 0px 0px 0px 0px;
 }
 
-  
-.box-isi-card-home-2{
+.box-isi-card-home-2 {
   display: flex;
   padding: 0px;
   gap: 20px;
@@ -746,7 +738,7 @@
   overflow-x: none;
 }
 
-.box-3-jumbotron{
+.box-3-jumbotron {
   position: relative;
   display: flex;
   left: 0px;
@@ -755,7 +747,7 @@
   padding: 0px 0px 0px 0px;
 }
 
-.box-3-jumbotron-2{
+.box-3-jumbotron-2 {
   display: flex;
   padding: 0px;
   gap: 10px;
@@ -780,12 +772,12 @@
     margin-left: -20px;
     margin-top: -130px;
   }
-  
-  .logo-home{
+
+  .logo-home {
     width: 40px;
     height: 40px;
   }
-  
+
   /* .gradient{
     position: absolute;
     width: 50vw;
@@ -794,43 +786,43 @@
     top: -190px;
     background: radial-gradient(50% 50% at 50% 50%, rgba(155, 0, 47, 0.1) 0%, rgba(205, 33, 56, 0) 100%);
   } */
-  
-  .inside-container-home{
+
+  .inside-container-home {
     width: 80vw;
     height: 232px;
     left: 98px;
     top: 136px;
     margin-top: 160px;
-    background: #92C3D1;
+    background: #92c3d1;
     border-radius: 16px;
   }
-  
-  .box-jumbotron1{
+
+  .box-jumbotron1 {
     width: 247px;
     height: 232px;
     margin-left: 500px;
     margin-top: -73px;
-    background: linear-gradient(15.03deg, #2A426F 16.41%, #355182 95.92%);
+    background: linear-gradient(15.03deg, #2a426f 16.41%, #355182 95.92%);
     border-radius: 16px;
   }
-  
-  .head-image{
+
+  .head-image {
     position: relative;
     width: 80vw;
     height: 232px;
     top: -231px;
     left: 0px;
   }
-  
-  .jumbotron1{
+
+  .jumbotron1 {
     width: 648px;
     height: 230px;
     margin-left: 80px;
     margin-top: 0px;
     border-radius: 16px !important;
   }
-  
-  .apotake-terpercaya{
+
+  .apotake-terpercaya {
     position: absolute;
     width: 800px !important;
     height: 42px;
@@ -843,15 +835,14 @@
     line-height: 42px;
     display: flex;
     align-items: center;
-    background: linear-gradient(180deg, #6472A8 0%, #000C36 100%);
+    background: linear-gradient(180deg, #6472a8 0%, #000c36 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
-  
   }
-  
-  .selamat-datang-home{
+
+  .selamat-datang-home {
     position: absolute;
     width: 179px;
     height: 24px;
@@ -866,16 +857,16 @@
     align-items: center;
     color: #213360;
   }
-  
-  .box-apotakecare{
+
+  .box-apotakecare {
     position: absolute;
     width: 300px;
     height: 42px;
     left: 190px;
     top: 20px;
   }
-  
-  .tulisan-apotakecare{
+
+  .tulisan-apotakecare {
     position: absolute;
     font-family: 'Public Sans';
     font-style: normal;
@@ -886,8 +877,8 @@
     left: 70px;
     top: 5px;
   }
-  
-  .keterangan-persen-asli{
+
+  .keterangan-persen-asli {
     position: absolute;
     width: 403px;
     height: 21px;
@@ -902,31 +893,31 @@
     align-items: center;
     color: #213360;
   }
-  
-  .inside-container-home-2{
+
+  .inside-container-home-2 {
     width: 90vw;
     height: 168px;
     margin-left: 0px;
     margin-top: 50px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: -1px -1px 5px 4px rgba(54, 0, 7, 0.01), 2px 2px 2px rgba(96, 33, 62, 0.04), 4px 4px 4px 6px rgba(155, 0, 121, 0.04);
     border-radius: 16px;
     display: flex;
   }
-  
-  .jumbotron2{
+
+  .jumbotron2 {
     width: 511px;
     height: 168px;
     object-fit: cover;
   }
-  
-  .box-unggah-resep{
+
+  .box-unggah-resep {
     width: 352px;
     height: 168px;
     margin-left: -20px;
   }
-  
-  .tulisan-perlu-resep{
+
+  .tulisan-perlu-resep {
     margin-top: 20px;
     font-family: 'Public Sans';
     font-style: normal;
@@ -937,27 +928,27 @@
     align-items: center;
     color: #213360;
   }
-  
-  .btn-unggah-resep{
+
+  .btn-unggah-resep {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 12px;
     line-height: 16px;
     text-align: center;
-    color: #FFFFFF;
+    color: #ffffff;
     padding: 0px;
     gap: 10px;
     width: 100px;
     height: 45px;
-    background: #E0004D;
-    border: 1px solid #E0004D;
+    background: #e0004d;
+    border: 1px solid #e0004d;
     border-radius: 8px;
     margin-top: -10px;
     margin-left: 80px;
   }
-  
-  .tulisan-tak-antre{
+
+  .tulisan-tak-antre {
     width: 250px;
     margin-top: 10px;
     font-family: 'Public Sans';
@@ -969,15 +960,15 @@
     align-items: center;
     color: #525252;
   }
-  
-  .inside-container-home-3{
+
+  .inside-container-home-3 {
     height: 150px;
     width: 350px;
     padding: 0px 0px 0px 0px;
     margin-top: 30px;
   }
-  
-  .home-kategori{
+
+  .home-kategori {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -988,8 +979,7 @@
     color: #213360;
   }
 
-  
-  .box-home-kategori{
+  .box-home-kategori {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -999,11 +989,11 @@
     height: 150px;
     overflow-x: scroll;
   }
-  
-  .box-home-kategori-2{
+
+  .box-home-kategori-2 {
     display: flex;
   }
-  
+
   .product-card-home {
     width: 150px;
     height: 100px;
@@ -1016,19 +1006,19 @@
     align-items: center;
     position: relative;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
   }
-  
+
   .product-card-home:hover {
     transform: translate(0, -10px);
     box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
   }
-  
+
   .product-card-home-2 {
     width: 194px;
     height: 331px;
     border-radius: 20px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
     padding-bottom: 5px;
     display: flex;
@@ -1037,19 +1027,18 @@
     align-items: center;
     position: relative;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
     margin-top: 20px;
     left: 0px;
     top: 35px;
   }
-  
+
   .product-card-home-2:hover {
     transform: translate(0, -10px);
     box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
   }
-  
-  
-  .box-isi-card-home{
+
+  .box-isi-card-home {
     position: relative;
     display: flex;
     left: 200px;
@@ -1058,8 +1047,7 @@
     padding: 0px 0px 0px 0px;
   }
 
-    
-  .box-isi-card-home-2{
+  .box-isi-card-home-2 {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -1069,10 +1057,8 @@
     height: 380px;
     overflow-x: scroll;
   }
-  
-  
 
-  .Obat-obatan{
+  .Obat-obatan {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -1083,19 +1069,19 @@
     text-align: center;
     color: #213360;
   }
-  
-  .obat1{
+
+  .obat1 {
     width: 50px;
     height: 50px;
   }
-  
-  .inside-container-home-4{
+
+  .inside-container-home-4 {
     width: 80vw;
     height: 450px;
     margin-top: 70px;
   }
-  
-  .kejar-diskon{
+
+  .kejar-diskon {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -1106,35 +1092,34 @@
     color: #213360;
     margin-top: 30px;
   }
-  
-  .box-buruan-ikut{
+
+  .box-buruan-ikut {
     position: absolute;
     width: 100vw;
     height: 395px;
-    background: linear-gradient(150.85deg, #B0E7E8 -3.37%, #7FB4C4 103.24%);
+    background: linear-gradient(150.85deg, #b0e7e8 -3.37%, #7fb4c4 103.24%);
     border-radius: 16px;
     margin-top: 20px;
     left: -10px;
   }
-  
-  .kranjang{
+
+  .kranjang {
     position: absolute;
     width: 123px;
     height: 145px;
     left: 50px;
     top: 100px;
-    
   }
-  
-  .manusia1{
+
+  .manusia1 {
     position: absolute;
     width: 231px;
     height: 206px;
     left: 0px;
     top: 190px;
   }
-  
-  .yuk-buruan-ikut{
+
+  .yuk-buruan-ikut {
     padding-top: 50px;
     margin-left: 40px;
     width: 159px;
@@ -1147,35 +1132,35 @@
     display: flex;
     align-items: center;
     text-align: center;
-    color: #2B478B;
+    color: #2b478b;
   }
-  
-  .inside-container-home-5{
+
+  .inside-container-home-5 {
     width: 90vw;
     height: 450px;
     margin-top: 30px;
     display: flex;
     flex-direction: column;
   }
-  
-  .box-1-jumbotron{
+
+  .box-1-jumbotron {
     width: 90vw;
     height: 212px;
-    background: #FFB156;
+    background: #ffb156;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
     border-radius: 16px;
   }
-  
-  .box-2-jumbotron{
+
+  .box-2-jumbotron {
     width: 90vw;
     height: 212px;
-    background: #92C3D1;
+    background: #92c3d1;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
     border-radius: 16px;
     margin-top: 30px;
   }
-  
-  .hamil{
+
+  .hamil {
     position: absolute;
     left: 25px;
     top: 1335px;
@@ -1183,25 +1168,23 @@
     height: 220px;
   }
 
-
-  .framebg{
-  position: absolute;
-  width: 348px;
-  height: 212px;
-  left: 25px;
+  .framebg {
+    position: absolute;
+    width: 348px;
+    height: 212px;
+    left: 25px;
     top: 1550px;
-    
   }
-  
-  .friend{
+
+  .friend {
     position: absolute;
     width: 294px;
     height: 249px;
     left: 25px;
     top: 1550px;
   }
-  
-  .program-hamil{
+
+  .program-hamil {
     margin-left: 415px;
     margin-top: 40px;
     font-family: 'Public Sans';
@@ -1214,8 +1197,8 @@
     text-align: center;
     color: #213360;
   }
-  
-  .wujudkan-rumah{
+
+  .wujudkan-rumah {
     margin-left: 380px;
     margin-top: 20px;
     width: 250px;
@@ -1231,8 +1214,8 @@
     color: #213360;
     margin-bottom: 50px;
   }
-  
-  .kebutuhan{
+
+  .kebutuhan {
     margin-left: 410px;
     margin-top: 40px;
     width: 250px;
@@ -1247,8 +1230,8 @@
     text-align: center;
     color: #213360;
   }
-  
-  .lengkapi-kebutuhan{
+
+  .lengkapi-kebutuhan {
     margin-left: 420px;
     margin-top: 20px;
     width: 230px;
@@ -1263,17 +1246,14 @@
     text-align: center;
     color: #213360;
   }
-  
-  .inside-container-home-6{
+
+  .inside-container-home-6 {
     width: 80vw;
     height: 430px;
     margin-top: 30px;
-   
   }
 
-    
-  
-  .box-3-jumbotron{
+  .box-3-jumbotron {
     position: relative;
     display: flex;
     left: 10px;
@@ -1282,9 +1262,8 @@
     padding: 0px 0px 0px 0px;
     top: 30px;
   }
-  
 
-  .box-3-jumbotron-2{
+  .box-3-jumbotron-2 {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -1294,17 +1273,15 @@
     height: 330px;
     overflow-x: scroll;
   }
-  
-  
-  
-  .box-tulisan-6-2{
+
+  .box-tulisan-6-2 {
     width: 80vw;
     height: 30px;
     display: flex;
     justify-content: space-between;
   }
-  
-  .tulisan-6-1{
+
+  .tulisan-6-1 {
     margin-top: 30px;
     font-family: 'Public Sans';
     font-style: normal;
@@ -1313,25 +1290,25 @@
     line-height: 28px;
     color: #213360;
   }
-  
-  .tulisan-6-2{
+
+  .tulisan-6-2 {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #E0004D;
+    color: #e0004d;
     margin-top: 35px;
   }
-  
-  .inside-container-home-7{
+
+  .inside-container-home-7 {
     width: 80vw;
     height: 300px;
     margin-top: 30px;
     margin-bottom: 60px;
   }
-  
-  .jaminan{
+
+  .jaminan {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -1342,8 +1319,8 @@
     color: #213360;
     margin-top: 10px;
   }
-  
-  .container-box-7{
+
+  .container-box-7 {
     width: 90vw;
     height: 180px;
     margin-top: 30px;
@@ -1351,12 +1328,12 @@
     display: flex;
     margin-left: -10px;
   }
-  
+
   .product-card-home-3 {
     width: 30vw;
     height: 130px;
     border-radius: 20px;
-    background: #F6FAFB;
+    background: #f6fafb;
     box-shadow: -1px -1px 5px 4px rgba(54, 0, 25, 0.01), 2px 2px 2px rgba(96, 33, 51, 0.04), 4px 4px 4px 6px rgba(155, 0, 90, 0.04);
     padding-bottom: 5px;
     display: flex;
@@ -1364,30 +1341,30 @@
     align-items: center;
     position: relative;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
   }
-  
+
   .product-card-home-3:hover {
     transform: translate(0, -10px);
     box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
   }
-  
-  .obats{
+
+  .obats {
     width: 40px;
     height: 50px;
   }
-  
-  .hemat{
+
+  .hemat {
     width: 40px;
     height: 50px;
   }
-  
-  .kirim{
+
+  .kirim {
     width: 50px;
-    height:30px;
+    height: 30px;
   }
-  
-  .tulisan-7{
+
+  .tulisan-7 {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -1397,10 +1374,10 @@
     align-items: center;
     color: #213360;
     margin-left: 10px;
-    margin-top: -5px
+    margin-top: -5px;
   }
-  
-  .tulisan-7-2{
+
+  .tulisan-7-2 {
     width: 180px;
     height: 60px;
     font-family: 'Public Sans';
@@ -1412,18 +1389,17 @@
     color: #213360;
   }
 
-  .hearthome{
+  .hearthome {
     font-size: 20px;
-    color: #B4B9C7; 
-    margin-top:5px;
-
+    color: #b4b9c7;
+    margin-top: 5px;
   }
-  
+
   .product-card-home-4 {
     width: 194px;
     height: 331px;
     border-radius: 20px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
     padding-bottom: 5px;
     display: flex;
@@ -1432,15 +1408,15 @@
     align-items: center;
     position: relative;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
     left: 0px;
   }
-  
+
   .product-card-home-4:hover {
     transform: translate(0, -10px);
     box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
   }
-  
+
   .circle-home {
     border-radius: 50%;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
@@ -1454,20 +1430,19 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: transform .2s;
+    transition: transform 0.2s;
   }
-  
+
   .circle-home:hover {
-    transform: scale(1.2)
+    transform: scale(1.2);
   }
-  
-  
+
   .product-image-home {
     width: 80%;
     margin-bottom: 0px;
     margin-left: 20px;
   }
-  
+
   .product-name-home {
     font-size: 14px;
     font-weight: 700;
@@ -1475,7 +1450,7 @@
     margin-left: 20px;
     width: 130px;
   }
-  
+
   .product-price-home {
     font-size: 16px;
     font-weight: 700;
@@ -1483,15 +1458,15 @@
     margin-right: 5px;
     margin-left: 20px;
   }
-  
+
   .product-unit-home {
     font-size: 16px;
     color: #213360;
   }
-  
+
   .keranjang-home {
     background-color: white;
-    border: 3px solid #E0004D;
+    border: 3px solid #e0004d;
     /* padding: 7px 10px; */
     margin-top: 8px;
     width: 150px !important;
@@ -1500,16 +1475,16 @@
     font-size: 12px;
     font-weight: 800;
     width: 100%;
-    color: #E0004D;
+    color: #e0004d;
     align-self: center;
     cursor: pointer;
   }
-  
+
   .keranjang-home:hover {
     background-color: #ffe9f1;
   }
-  
-  .box-diskon-produk{
+
+  .box-diskon-produk {
     width: 150px;
     height: 24px;
     display: flex;
@@ -1518,8 +1493,8 @@
     margin-top: -8px;
     margin-bottom: 8px;
   }
-  
-  .nominal-diskon{
+
+  .nominal-diskon {
     width: 36px;
     height: 24px;
     font-family: 'Public Sans';
@@ -1531,12 +1506,12 @@
     align-items: center;
     text-align: center;
     justify-content: center;
-    border: 1px solid #FF6B6B;
-    color: #FF6B6B;
+    border: 1px solid #ff6b6b;
+    color: #ff6b6b;
     border-radius: 6px;
   }
-  
-  .harga-diskon-home{
+
+  .harga-diskon-home {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -1544,7 +1519,7 @@
     line-height: 16px;
     display: flex;
     align-items: center;
-    color: #B4B9C7;
+    color: #b4b9c7;
     text-decoration-line: line-through;
   }
 }
@@ -1554,7 +1529,6 @@
     height: 250vh;
     width: 100vw;
     padding: 50px 150px 50px 20px;
-   
   }
   #container-jumbotron-payment {
     padding: 0px;
@@ -1564,12 +1538,12 @@
     margin-left: -25px;
     margin-top: 100px;
   }
-  
-  .logo-home{
+
+  .logo-home {
     width: 40px;
     height: 40px;
   }
-  
+
   /* .gradient{
     position: absolute;
     width: 50vw;
@@ -1578,19 +1552,19 @@
     top: -190px;
     background: radial-gradient(50% 50% at 50% 50%, rgba(155, 0, 47, 0.1) 0%, rgba(205, 33, 56, 0) 100%);
   } */
-  
-  .inside-container-home{
+
+  .inside-container-home {
     width: 327px;
     height: 124px;
     left: 98px;
     top: 136px;
     margin-top: 160px;
-    background: #92C3D1;
+    background: #92c3d1;
     box-shadow: 0px 1px 2px 2px rgba(33, 51, 96, 0.02), 0px 4px 8px 2px rgba(0, 155, 144, 0.08);
     border-radius: 8px;
   }
-  
-  .box-jumbotron1{
+
+  .box-jumbotron1 {
     width: 247px;
     height: 232px;
     margin-left: 70px;
@@ -1598,37 +1572,36 @@
     background: transparent;
     border-radius: 16px;
   }
-  
-  .head-image{
+
+  .head-image {
     position: relative;
     width: 300px;
     height: 150px;
     top: -231px;
     left: 0px;
-   
   }
-  
-  .jumbotron1{
+
+  .jumbotron1 {
     position: absolute;
     width: 162px;
     height: 124px;
     left: 95px;
     top: 0px;
   }
-  
-  .jumbotron11{
+
+  .jumbotron11 {
     position: absolute;
     width: 167px;
     height: 96px;
     left: 170px;
-    top:20px;
+    top: 20px;
   }
-  .apotake-terpercaya{
+  .apotake-terpercaya {
     position: absolute;
     width: 210px !important;
     height: 18px;
     left: 10px;
-    top: 50px;    
+    top: 50px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -1636,27 +1609,26 @@
     line-height: 18px;
     display: flex;
     align-items: center;
-    background: linear-gradient(180deg, #6472A8 0%, #000C36 100%);
+    background: linear-gradient(180deg, #6472a8 0%, #000c36 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
-  
   }
-  
-  .selamat-datang-home{
+
+  .selamat-datang-home {
     display: none;
   }
-  
-  .box-apotakecare{
+
+  .box-apotakecare {
     position: absolute;
     width: 97.53px;
     height: 20px;
     left: -15px;
     top: 5px;
   }
-  
-  .tulisan-apotakecare{
+
+  .tulisan-apotakecare {
     position: absolute;
     font-family: 'Public Sans';
     font-style: normal;
@@ -1667,8 +1639,8 @@
     left: 70px;
     top: 15px;
   }
-  
-  .keterangan-persen-asli{
+
+  .keterangan-persen-asli {
     position: absolute;
     width: 150px;
     height: 32px;
@@ -1683,40 +1655,40 @@
     align-items: center;
     color: #213360;
   }
-  
-  .inside-container-home-2{
+
+  .inside-container-home-2 {
     width: 327px;
     height: 87px;
     margin-left: 0px;
     margin-top: 50px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 1px 1px 1px rgba(33, 51, 96, 0.02), 1px 2px 6px 2px rgba(0, 155, 144, 0.08);
     border-radius: 8px;
     display: flex;
   }
-  
-  .jumbotron2{
+
+  .jumbotron2 {
     width: 99px;
     height: 87px;
-     margin-left: 10px;
-     margin-top: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
     object-fit: cover;
   }
 
-  .jumbotron22{
+  .jumbotron22 {
     width: 50px;
     height: 60px;
-   margin-left: -80px;
+    margin-left: -80px;
     object-fit: cover;
   }
-  
-  .box-unggah-resep{
+
+  .box-unggah-resep {
     width: 352px;
     height: 168px;
     margin-left: -20px;
   }
-  
-  .tulisan-perlu-resep{
+
+  .tulisan-perlu-resep {
     position: absolute;
     width: 150px;
     height: 20px;
@@ -1732,8 +1704,8 @@
     color: #213360;
     margin-top: 80px;
   }
-  
-  .btn-unggah-resep{
+
+  .btn-unggah-resep {
     position: absolute;
     font-family: 'Public Sans';
     font-style: normal;
@@ -1748,11 +1720,11 @@
     color: #213360;
     top: 360px;
     left: 230px;
-    background: #FFFFFF ;
+    background: #ffffff;
     border: none;
   }
-  
-  .tulisan-tak-antre{
+
+  .tulisan-tak-antre {
     position: absolute;
     width: 173px;
     height: 36px;
@@ -1767,16 +1739,15 @@
     align-items: center;
     color: #213360;
   }
-  
-  
-  .inside-container-home-3{
+
+  .inside-container-home-3 {
     height: 80px;
     width: 350px;
     padding: 0px 0px 0px 0px;
     margin-top: 30px;
   }
-  
-  .home-kategori{
+
+  .home-kategori {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -1787,7 +1758,7 @@
     color: #213360;
   }
 
-  .tab-box-mobile{
+  .tab-box-mobile {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -1796,10 +1767,9 @@
     width: 370px;
     height: 60px;
     overflow-x: scroll;
-   
   }
-  
-  .box-home-kategori{
+
+  .box-home-kategori {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -1809,11 +1779,11 @@
     height: 80px;
     overflow-x: scroll;
   }
-  
-  .box-home-kategori-2{
+
+  .box-home-kategori-2 {
     display: flex;
   }
-  
+
   .product-card-home {
     width: 100px;
     height: 73px;
@@ -1826,19 +1796,19 @@
     align-items: center;
     position: relative;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
   }
-  
+
   .product-card-home:hover {
     transform: translate(0, -10px);
     box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
   }
-  
+
   .product-card-home-2 {
     width: 121px;
     height: 253px;
     border-radius: 8px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
     padding-bottom: 5px;
     display: flex;
@@ -1847,16 +1817,16 @@
     align-items: center;
     position: relative;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
     left: 0px;
   }
-  
+
   .product-card-home-2:hover {
     transform: translate(0, -10px);
     box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
   }
-  
-  .box-isi-card-home{
+
+  .box-isi-card-home {
     position: relative;
     display: flex;
     left: 180px;
@@ -1865,8 +1835,7 @@
     padding: 0px 0px 0px 0px;
   }
 
-    
-  .box-isi-card-home-2{
+  .box-isi-card-home-2 {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -1876,10 +1845,8 @@
     height: 320px;
     overflow-x: scroll;
   }
-  
-  
 
-  .Obat-obatan{
+  .Obat-obatan {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -1889,19 +1856,19 @@
     text-align: center;
     color: #213360;
   }
-  
-  .obat1{
+
+  .obat1 {
     width: 30px;
-   height: 30px;
+    height: 30px;
   }
-  
-  .inside-container-home-4{
+
+  .inside-container-home-4 {
     width: 80vw;
     height: 450px;
     margin-top: 70px;
   }
-  
-  .kejar-diskon{
+
+  .kejar-diskon {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -1912,35 +1879,34 @@
     color: #213360;
     margin-top: 30px;
   }
-  
-  .box-buruan-ikut{
+
+  .box-buruan-ikut {
     position: absolute;
     width: 100vw;
     height: 395px;
-    background: linear-gradient(150.85deg, #B0E7E8 -3.37%, #7FB4C4 103.24%);
+    background: linear-gradient(150.85deg, #b0e7e8 -3.37%, #7fb4c4 103.24%);
     border-radius: 16px;
     margin-top: 20px;
     left: -10px;
   }
-  
-  .kranjang{
+
+  .kranjang {
     position: absolute;
     width: 123px;
     height: 145px;
     left: 50px;
     top: 100px;
-    
   }
-  
-  .manusia1{
+
+  .manusia1 {
     position: absolute;
     width: 231px;
     height: 206px;
     left: 0px;
     top: 190px;
   }
-  
-  .yuk-buruan-ikut{
+
+  .yuk-buruan-ikut {
     padding-top: 50px;
     margin-left: 40px;
     width: 159px;
@@ -1953,60 +1919,59 @@
     display: flex;
     align-items: center;
     text-align: center;
-    color: #2B478B;
+    color: #2b478b;
   }
-  
-  .inside-container-home-5{
+
+  .inside-container-home-5 {
     width: 80vw;
     height: 220px;
     margin-top: 30px;
     display: flex;
     flex-direction: column;
   }
-  
-  .box-1-jumbotron{
+
+  .box-1-jumbotron {
     width: 326px;
     height: 124px;
-    background: #FFB156;
+    background: #ffb156;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
     border-radius: 16px;
   }
-  
-  .box-2-jumbotron{
+
+  .box-2-jumbotron {
     width: 326px;
     height: 124px;
-    background: #92C3D1;
+    background: #92c3d1;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
     border-radius: 16px;
     margin-top: 30px;
   }
-  
-  .hamil{
+
+  .hamil {
     position: absolute;
     left: 25px;
     top: 1075px;
     width: 200px;
     height: 125px;
   }
-  
-  .framebg{
+
+  .framebg {
     position: absolute;
     width: 169px;
     height: 124px;
     left: 24px;
     top: 1220px;
-    
   }
-  
-  .friend{
+
+  .friend {
     position: absolute;
     width: 200px;
     height: 150px;
     left: 10px;
     top: 1220px;
   }
-  
-  .program-hamil{
+
+  .program-hamil {
     margin-left: 190px;
     margin-top: 20px;
     font-family: 'Public Sans';
@@ -2019,8 +1984,8 @@
     text-align: center;
     color: #213360;
   }
-  
-  .wujudkan-rumah{
+
+  .wujudkan-rumah {
     margin-left: 190px;
     margin-top: 5px;
     width: 107px;
@@ -2036,8 +2001,8 @@
     text-align: center;
     color: #213360;
   }
-  
-  .kebutuhan{
+
+  .kebutuhan {
     margin-left: 190px;
     margin-top: 20px;
     width: 120px;
@@ -2052,8 +2017,8 @@
     text-align: center;
     color: #213360;
   }
-  
-  .lengkapi-kebutuhan{
+
+  .lengkapi-kebutuhan {
     margin-left: 190px;
     margin-top: 10px;
     width: 120px;
@@ -2069,12 +2034,11 @@
     text-align: center;
     color: #213360;
   }
-  
-  .inside-container-home-6{
+
+  .inside-container-home-6 {
     width: 80vw;
     height: 430px;
     margin-top: 30px;
-   
   }
 
   /* .box-isi-card-home{
@@ -2086,9 +2050,7 @@
     padding: 0px 0px 0px 0px;
   } */
 
-    
-  
-  .box-3-jumbotron{
+  .box-3-jumbotron {
     position: relative;
     display: flex;
     left: 10px;
@@ -2097,9 +2059,8 @@
     padding: 0px 0px 0px 0px;
     top: 30px;
   }
-  
 
-  .box-3-jumbotron-2{
+  .box-3-jumbotron-2 {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -2109,17 +2070,15 @@
     height: 280px;
     overflow-x: scroll;
   }
-  
-  
-  
-  .box-tulisan-6-2{
+
+  .box-tulisan-6-2 {
     width: 80vw;
     height: 30px;
     display: flex;
     justify-content: space-between;
   }
-  
-  .tulisan-6-1{
+
+  .tulisan-6-1 {
     margin-top: 50px;
     font-family: 'Public Sans';
     font-style: normal;
@@ -2128,26 +2087,26 @@
     line-height: 20px;
     color: #213360;
   }
-  
-  .tulisan-6-2{
+
+  .tulisan-6-2 {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 12px;
     line-height: 17px;
-    color: #E0004D;
+    color: #e0004d;
     margin-top: 5px;
     margin-top: 50px;
   }
-  
-  .inside-container-home-7{
+
+  .inside-container-home-7 {
     width: 80vw;
     height: 300px;
     margin-top: 30px;
     margin-bottom: 60px;
   }
-  
-  .jaminan{
+
+  .jaminan {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -2158,8 +2117,8 @@
     color: #213360;
     margin-top: 10px;
   }
-  
-  .container-box-7{
+
+  .container-box-7 {
     width: 80vw;
     height: 400px;
     margin-top: 30px;
@@ -2168,12 +2127,12 @@
     flex-direction: column;
     justify-content: space-around;
   }
-  
+
   .product-card-home-3 {
     width: 324px;
     height: 104px;
     border-radius: 20px;
-    background: #F6FAFB;
+    background: #f6fafb;
     box-shadow: -1px -1px 5px 4px rgba(54, 0, 25, 0.01), 2px 2px 2px rgba(96, 33, 51, 0.04), 4px 4px 4px 6px rgba(155, 0, 90, 0.04);
     padding-bottom: 5px;
     display: flex;
@@ -2181,30 +2140,30 @@
     align-items: center;
     position: relative;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
   }
-  
+
   .product-card-home-3:hover {
     transform: translate(0, -10px);
     box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
   }
-  
-  .obats{
+
+  .obats {
     width: 44px;
     height: 54.3px;
   }
-  
-  .hemat{
+
+  .hemat {
     width: 40px;
     height: 57px;
   }
-  
-  .kirim{
+
+  .kirim {
     width: 59px;
     height: 32px;
   }
-  
-  .tulisan-7{
+
+  .tulisan-7 {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -2215,8 +2174,8 @@
     color: #213360;
     margin-left: 10px;
   }
-  
-  .tulisan-7-2{
+
+  .tulisan-7-2 {
     width: 208px;
     height: 50px;
     font-family: 'Public Sans';
@@ -2228,18 +2187,17 @@
     color: #213360;
   }
 
-  .hearthome{
+  .hearthome {
     font-size: 20px;
-    color: #B4B9C7; 
-    margin-top:5px;
-
+    color: #b4b9c7;
+    margin-top: 5px;
   }
-  
+
   .product-card-home-4 {
     width: 140px;
     height: 245px;
     border-radius: 20px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
     padding-bottom: 5px;
     display: flex;
@@ -2248,15 +2206,15 @@
     align-items: center;
     position: relative;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
     left: 0px;
   }
-  
+
   .product-card-home-4:hover {
     transform: translate(0, -10px);
     box-shadow: 0px 2px 3px 6px rgba(96, 33, 33, 0.04), 0px 4px 12px 8px rgba(155, 0, 0, 0.1);
   }
-  
+
   .circle-home {
     border-radius: 50%;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.02), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
@@ -2270,20 +2228,19 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: transform .2s;
+    transition: transform 0.2s;
   }
-  
+
   .circle-home:hover {
-    transform: scale(1.2)
+    transform: scale(1.2);
   }
-  
-  
+
   .product-image-home {
     width: 50%;
     margin-bottom: 0px;
     margin-left: 30px;
   }
-  
+
   .product-name-home {
     font-family: 'Public Sans';
     font-style: normal;
@@ -2294,7 +2251,7 @@
     margin-left: 40px;
     width: 100px;
   }
-  
+
   .product-price-home {
     font-family: 'Public Sans';
     font-style: normal;
@@ -2305,7 +2262,7 @@
     margin-right: 5px;
     margin-left: 0px;
   }
-  
+
   .product-unit-home {
     font-family: 'Public Sans';
     font-style: normal;
@@ -2315,13 +2272,13 @@
     color: #213360;
   }
 
-  #box-harga-home{
+  #box-harga-home {
     margin-left: 20px;
   }
-  
+
   .keranjang-home {
     background-color: white;
-    border: 3px solid #E0004D;
+    border: 3px solid #e0004d;
     /* padding: 7px 10px; */
     margin-top: 8px;
     width: 100px !important;
@@ -2332,16 +2289,16 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 17px;
-    color: #E0004D;
+    color: #e0004d;
     align-self: center;
     cursor: pointer;
   }
-  
+
   .keranjang-home:hover {
     background-color: #ffe9f1;
   }
-  
-  .box-diskon-produk{
+
+  .box-diskon-produk {
     width: 100px;
     height: 24px;
     display: flex;
@@ -2350,8 +2307,8 @@
     margin-top: -8px;
     margin-bottom: 8px;
   }
-  
-  .nominal-diskon{
+
+  .nominal-diskon {
     width: 36px;
     height: 24px;
     font-family: 'Public Sans';
@@ -2363,12 +2320,12 @@
     align-items: center;
     text-align: center;
     justify-content: center;
-    border: 1px solid #FF6B6B;
-    color: #FF6B6B;
+    border: 1px solid #ff6b6b;
+    color: #ff6b6b;
     border-radius: 6px;
   }
-  
-  .harga-diskon-home{
+
+  .harga-diskon-home {
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
@@ -2376,7 +2333,7 @@
     line-height: 16px;
     display: flex;
     align-items: center;
-    color: #B4B9C7;
+    color: #b4b9c7;
     text-decoration-line: line-through;
   }
 }

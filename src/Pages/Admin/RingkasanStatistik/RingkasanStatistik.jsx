@@ -96,7 +96,7 @@ const RingkasanStatistik = () => {
   return (
     <div>
       <SidebarAdmin />
-      <div className="container-fluid">
+      <div className="container-fluid-statistik">
         <div className="box-statistik">
           {/* header */}
           <div className="row justify-content-between mb-3">

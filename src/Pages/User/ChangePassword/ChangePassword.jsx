@@ -1,21 +1,15 @@
-import React, { useState, CSSProperties } from 'react';
+import React, { useState, useRef } from 'react';
 import './ChangePassword.css';
 import ChangePasswords from '../../../Assets/ChangePassword.svg';
 import SidebarProfile from '../../../Components/User/SidebarProfile/SidebarProfile.jsx';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import Swal from 'sweetalert2';
-import BeatLoader from 'react-spinners/BeatLoader';
+import PulseLoader from 'react-spinners/PulseLoader';
 import { InputGroup, Input, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { faUser, faReceipt, faAngleLeft, faMoneyBills, faLocationDot, faHeart, faEnvelope, faPenToSquare, faAngleRight, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-
-const override: CSSProperties = {
-  display: 'block',
-  margin: '0 auto',
-  borderColor: 'black',
-};
+import { Link, useNavigate } from 'react-router-dom';
+import { faAngleLeft, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const ChangePassword = () => {
   const [loading, setLoading] = useState(false);
@@ -31,6 +25,59 @@ const ChangePassword = () => {
   const [oldPassword, setOldPassword] = React.useState('');
   const [newPassword, setNewPassword] = React.useState('');
   const [passwordConf, setPasswordConf] = useState('');
+  const input1 = useRef(null);
+  const [inVisible, setInVisible] = useState({
+    type: 'password',
+    title: 'Show',
+  });
+  const [inVisible1, setInVisible1] = useState({
+    type: 'password',
+    title: 'Show',
+  });
+  const [inVisible2, setInVisible2] = useState({
+    type: 'password',
+    title: 'Show',
+  });
+
+  const handleVisible = () => {
+    if (inVisible.type === 'password') {
+      setInVisible({
+        type: 'text',
+        title: 'Hide',
+      });
+    } else {
+      setInVisible({
+        type: 'password',
+        title: 'Show',
+      });
+    }
+  };
+  const handleVisible1 = () => {
+    if (inVisible1.type === 'password') {
+      setInVisible1({
+        type: 'text',
+        title: 'Hide',
+      });
+    } else {
+      setInVisible1({
+        type: 'password',
+        title: 'Show',
+      });
+    }
+  };
+  const handleVisible2 = () => {
+    if (inVisible2.type === 'password') {
+      setInVisible2({
+        type: 'text',
+        title: 'Hide',
+      });
+    } else {
+      setInVisible2({
+        type: 'password',
+        title: 'Show',
+      });
+    }
+  };
 
   let oldPasswordChange = (event) => {
     setOldPassword(event.target.value);
@@ -70,8 +117,7 @@ const ChangePassword = () => {
           confirmButtonText: 'Okay!',
           timer: 1500,
         });
-        setLoading(true);
-        navigate('/');
+        setLoading(false);
         console.log('ini res', res);
         console.log('ini res.data', res.data);
         console.log('ini res.data', res.data.message);
@@ -94,80 +140,106 @@ const ChangePassword = () => {
     <div>
       <div className="container-cp">
         <div>
-         <div className="wrapper-cp">
-         <div className="c-cp d-flex">
-             <div className='col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-cp-1'>
-                <SidebarProfile/>
-             </div>
-             <div  className='col-lg-1 col-none d-lg-block d-md-none d-none'>
-                 
-             </div>
-             <div  className='col-lg-8 col-md-9 col-12 sidebar-cp'>
-                <div className="d-lg-none d-md-none d-block d-flex mt-4">
-                        <div>
-                            <Link to='/' style={{ textDecoration:"none", color: "black", cursor: 'pointer', fontSize: "12px", marginTop: "30px", marginLeft:"10px" }}>
-                                <FontAwesomeIcon icon={faAngleLeft} />
-                            </Link>
-                        </div>
-                        <div className="mx-4 keterangan-verifikasi-desk" >Change Password</div>
-                    </div>
-                    <div className="d-lg-block d-md-block d-none">
-                    <div className="mx-4 mt-4 keterangan-verifikasi-desk">Akun Terverifikasi</div>
-                    </div>
-                        <div className=" mt-4 d-lg-block d-md-block d-none">
-                          <div className="d-flex ">
-                          <div className="tab-profile" onClick={() => navigate('/profile')}>Profile</div> 
-                            <div className="tab-profile" onClick={() => navigate('/editprofile')}>Edit Profile</div>
-                            <div className="tab-profile" onClick={() => navigate('/changepassword')}>Change Password</div>
-                          </div>
-                        </div>
-                  <div  className="d-lg-block d-md-block d-none">
-                  <hr style={{marginTop:'0px'}}/>
-                  </div>
-            <div className="box-c-1">
-              <div className="foto-change-password">
-            <img src={ChangePasswords} alt="" />
-          </div>
-              <div className="box-c-2">
-              <div className="baris-change-password-1">
-            <div>Old Password</div>
-            <InputGroup className="mb-3">
-              <Input type="text" onChange={oldPasswordChange} />
-              <Button className="icon-email-newpassword">@</Button>
-            </InputGroup>
-          </div>
-          <div className="form-group baris-change-password-2">
-            <div>New Password</div>
-            <InputGroup className="mb-3">
-              <Input type="text" onChange={newPasswordChange} />
-              <Button className="icon-email-newpassword">@</Button>
-            </InputGroup>
-          </div>
-          <div className="form-group baris-change-password-3">
-            <div>Repeat New Password</div>
-            <InputGroup className="mb-5">
-              <Input type="text" value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
-              <Button className="icon-email-newpassword">@</Button>
-            </InputGroup>
-          </div>
-          {loading ? (
-            <button disable type="submit" className=" btn btn-secondary button-simpan-change-password">
-              <BeatLoader color={'#000'} loading={loading} cssOverride={override} size={15} />
-            </button>
-          ) : (
-            <button type="submit" className=" btn btn-danger mt-4 button-simpan-change-password" onClick={() => onSubmit()}>
-              Simpan{' '}
-            </button>
-          )}
+          <div className="wrapper-cp">
+            <div className="c-cp d-flex">
+              <div className="col-lg-3 col-md-2 d-lg-block d-md-block d-none sidebar-cp-1">
+                <SidebarProfile />
               </div>
-
+              <div className="col-lg-1 col-none d-lg-block d-md-none d-none"></div>
+              <div className="col-lg-8 col-md-9 col-12 sidebar-cp">
+                <div className="d-lg-none d-md-none d-block d-flex mt-4">
+                  <div>
+                    <Link to="/" style={{ textDecoration: 'none', color: 'black', cursor: 'pointer', fontSize: '12px', marginTop: '30px', marginLeft: '10px' }}>
+                      <FontAwesomeIcon icon={faAngleLeft} />
+                    </Link>
+                  </div>
+                  <div className="mx-4 keterangan-verifikasi-desk">Change Password</div>
+                </div>
+                <div className="d-lg-block d-md-block d-none">
+                  <div className="mx-4 mt-4 keterangan-verifikasi-desk">Akun Terverifikasi</div>
+                </div>
+                <div className=" mt-4 d-lg-block d-md-block d-none">
+                  <div className="d-flex ">
+                    <div className="tab-profile" onClick={() => navigate('/profile')}>
+                      Profile
+                    </div>
+                    <div className="tab-profile" onClick={() => navigate('/editprofile')}>
+                      Edit Profile
+                    </div>
+                    <div className="tab-profile" onClick={() => navigate('/changepassword')}>
+                      Change Password
+                    </div>
+                  </div>
+                </div>
+                <div className="d-lg-block d-md-block d-none">
+                  <hr style={{ marginTop: '0px' }} />
+                </div>
+                <div className="box-c-1">
+                  <div className="foto-change-password">
+                    <img src={ChangePasswords} alt="" />
+                  </div>
+                  <div className="box-c-2">
+                    <div className="baris-change-password-1">
+                      <div className="mb-2">Old Password</div>
+                      <InputGroup className="mb-4">
+                        <Input type={inVisible.type} ref={input1} onChange={oldPasswordChange} />
+                        {inVisible.title === 'Show' ? (
+                          <Button className="icon-email-newpassword btn-light" onClick={handleVisible}>
+                            <FontAwesomeIcon icon={faEye} />
+                          </Button>
+                        ) : (
+                          <Button className="icon-email-newpassword btn-light" onClick={handleVisible}>
+                            <FontAwesomeIcon icon={faEyeSlash} />
+                          </Button>
+                        )}
+                      </InputGroup>
+                    </div>
+                    <div className="form-group baris-change-password-2">
+                      <div className="mb-2">New Password</div>
+                      <InputGroup className="mb-4">
+                        <Input type={inVisible1.type} onChange={newPasswordChange} />
+                        {inVisible1.title === 'Show' ? (
+                          <Button className="icon-email-newpassword btn-light" onClick={handleVisible1}>
+                            <FontAwesomeIcon icon={faEye} />
+                          </Button>
+                        ) : (
+                          <Button className="icon-email-newpassword btn-light" onClick={handleVisible1}>
+                            <FontAwesomeIcon icon={faEyeSlash} />
+                          </Button>
+                        )}
+                      </InputGroup>
+                    </div>
+                    <div className="form-group baris-change-password-3">
+                      <div className="mb-2">Repeat New Password</div>
+                      <InputGroup className="mb-5">
+                        <Input type={inVisible2.type} value={passwordConf} onChange={(e) => setPasswordConf(e.target.value)} />
+                        {inVisible2.title === 'Show' ? (
+                          <Button className="icon-email-newpassword btn-light" onClick={handleVisible2}>
+                            <FontAwesomeIcon icon={faEye} />
+                          </Button>
+                        ) : (
+                          <Button className="icon-email-newpassword btn-light" onClick={handleVisible2}>
+                            <FontAwesomeIcon icon={faEyeSlash} />
+                          </Button>
+                        )}
+                      </InputGroup>
+                    </div>
+                    {loading ? (
+                      <button type="button" disabled className="btn btn-danger mt-5  button-simpan-change-password">
+                        <PulseLoader color={'#FFFFFF'} loading={loading} cssOverride={{ display: 'block', margin: '0 auto', borderColor: 'white' }} size={10} margin={5} />
+                      </button>
+                    ) : (
+                      <button type="button" className="btn btn-danger mt-5  button-simpan-change-password" onClick={() => onSubmit()}>
+                        Simpan{' '}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
-             </div>
-         </div>
-         </div> 
-     </div>
-     </div>
-   
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
