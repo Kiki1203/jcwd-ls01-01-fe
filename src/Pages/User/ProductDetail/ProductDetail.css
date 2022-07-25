@@ -12,7 +12,7 @@
 #page-container {
     margin-top: 92px;
     min-height: calc(100vh - 92px);
-    min-width: 100vw;
+    width: 100vw;
     padding: 50px 100px;
     display: flex;
     justify-content: center;
@@ -80,7 +80,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
 }
 
 #satuan-obat {

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './Checkout.css';
 import axios from 'axios';
 import API_URL from "../../../Helpers/API_URL.js"
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation, useSearchParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import PaymentMethod from '../../../Components/User/PaymentMethod/PaymentMethod.jsx';
@@ -24,11 +24,27 @@ const Checkout = () => {
   const navigate = useNavigate()
   const params = useParams()
   const jenisTransaksi = params.jenis
+  const { state } = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams()
+    let idTransaksi = searchParams.get('id')
 
   useEffect(() => {
     setLoading(true)
     setError(false)
-    if(jenisTransaksi === 'produk-bebas'){
+    if(jenisTransaksi === 'beli-langsung'){
+      axios.get(`${API_URL}/transaction/getcheckoutdatabeli?productId=${state?.productId}&quantity=${state?.quantity}`, {headers: {authorization: token}})
+      .then(res => {
+        setLoading(false)
+        setProducts([...res.data.product])
+        setAddresses([...res.data.alamat])
+        setSelectedAddress(res.data.alamat.find(item => item.alamat_utama === 1))
+      })
+      .catch(e => {
+        setLoading(false)
+        setError(true)
+        setErrorMsg(e.message)
+      })
+    } else if(jenisTransaksi === 'produk-bebas'){
       axios.get(`${API_URL}/transaction/getcheckoutdata`, {headers: {authorization: token}})
       .then(res => {
         setLoading(false)
@@ -41,13 +57,28 @@ const Checkout = () => {
         setError(true)
         setErrorMsg(e.message)
       })
+    } else if(jenisTransaksi.includes('resep')){
+      axios.get(`${API_URL}/transaction/getcheckoutdataresep?id=${idTransaksi}`, {headers: {authorization: token}})
+      .then(res => {
+        setLoading(false)
+        setProducts([...res.data.products])
+        setAddresses([...res.data.alamat])
+        let mainAddress = res.data.alamat.find(item => item.alamat_utama === 1)
+        mainAddress ? setSelectedAddress(mainAddress) : setSelectedAddress(res.data.alamat[0]) 
+      })
+      .catch(e => {
+        setLoading(false)
+        setError(true)
+        setErrorMsg(e.message)
+      })
     }
   }, [])
   
   const totalHargaFunc = () => {
     let total = 0
     products.forEach(p => {
-      total += p.harga * p.quantity
+      p.diskon ? total += p.diskon * p.quantity
+      : total += p.harga * p.quantity
     })
     return total
   }
@@ -55,7 +86,7 @@ const Checkout = () => {
   const totalQtyFunc = () => {
     let total = 0
     products.forEach(p => {
-      total += p.quantity
+      total += Number(p.quantity)
     })
     return total
   }
@@ -144,7 +175,7 @@ const Checkout = () => {
                         <p className='quantity-produk-keranjang'>{`${product.quantity} ${product.satuanObat} (${product.berat * product.quantity} gr)`}</p>
                       </div>
                     </div>
-                    <p className='harga-produk-keranjang'>{'Rp' + (product.harga * product.quantity).toLocaleString('de-DE', {minimumFractionDigits: 0})}</p>
+                    <p className='harga-produk-keranjang'>{'Rp' + ((product.diskon ? product.diskon : product.harga) * product.quantity).toLocaleString('de-DE', {minimumFractionDigits: 0})}</p>
                   </div>
                 </div>
                 })

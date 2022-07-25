@@ -18,6 +18,8 @@
     font-weight: 700;
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 42.7px;
 }
 
 .button-konfirmasi-pembayaran:hover {
@@ -37,6 +39,8 @@
     font-weight: 700;
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 42.7px;
 }
 
 .button-tolak-pembayaran:hover {

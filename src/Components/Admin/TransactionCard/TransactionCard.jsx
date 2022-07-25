@@ -7,6 +7,7 @@ import API_URL  from '../../../Helpers/API_URL.js';
 import ConfirmPaymentModal from '../ConfirmPaymentModal/ConfirmPaymentModal';
 import TransactionModal from '../TransactionModal/TransactionModal';
 import ModalResep from '../ModalResep/ModalResep';
+import TransactionDetail from '../TransactionDetail/TransactionDetail';
 
 function TransactionCard({transaksi, setRerender}) {
     const [loading, setLoading] = useState(false)
@@ -16,6 +17,7 @@ function TransactionCard({transaksi, setRerender}) {
     const [mdlTransaksi, setMdlTransaksi] = useState(false)
     const [mdlConfirm, setMdlConfirm] = useState(false)
     const [mdlResep, setMdlResep] = useState(false)
+    const [mdlDetail, setMdlDetail] = useState(false)
     const status = transaksi.statusTransaksi_id
     const token = localStorage.getItem('token')
 
@@ -43,6 +45,7 @@ function TransactionCard({transaksi, setRerender}) {
     useEffect(() => {
         if(kirim || tolak){
             setMdlTransaksi(true)
+            overflowYHidden()
         }
     }, [kirim, tolak])
 
@@ -50,6 +53,14 @@ function TransactionCard({transaksi, setRerender}) {
         let total = 0
         transaksi.produk.forEach(p => {
             total += p.quantity
+        });
+        return total
+    }
+
+    const totalHargaFunc = () => {
+        let total = 0
+        transaksi.produk.forEach(p => {
+            total += p.quantity * p.harga_produk
         });
         return total
     }
@@ -78,6 +89,13 @@ function TransactionCard({transaksi, setRerender}) {
         })
     }
 
+    const overflowYHidden = () => {
+        let elems = document.getElementsByClassName('admin-page-container');
+        for (let i = 0; i < elems.length; i++) {
+            elems[i].style.overflow = "hidden";
+        }
+    }
+
     return (
         <div className='kartu-transaksi'>
             {
@@ -96,6 +114,10 @@ function TransactionCard({transaksi, setRerender}) {
                                      setOpenModal={setMdlResep}
                                      setRerender={setRerender} />
             }
+            {
+                mdlDetail && <TransactionDetail transaksi={transaksi}
+                                    setOpenModal={setMdlDetail} />
+            }
             <div className='d-flex align-items-center' style={{gap:'10px', padding:'20px 30px'}}>
                 <label className='transaksi-16-bold'>
                     <input type="checkbox" className='me-2' />
@@ -106,7 +128,8 @@ function TransactionCard({transaksi, setRerender}) {
                         status == 4 ? 'Pesanan Diproses' :
                         status == 5 ? 'Sedang Dikirim' :
                         status == 6 ? 'Pesanan Selesai' :
-                        status == 7 ? 'Pesanan Dibatalkan' : ''
+                        status == 7 ? 'Pesanan Dibatalkan' :
+                        status == 8 ? 'Menunggu Checkout' : ''
                     }
                 </label>
                 <p style={{color:'#B4B9C7', margin:'0'}}>/</p>
@@ -125,13 +148,14 @@ function TransactionCard({transaksi, setRerender}) {
                         status == 1 || transaksi.produk.length === 0 ? <div className='transaksi-detail-kiri'>
                             <p className='transaksi-detail-header'>Resep Dokter</p>
                             <button className='transaksi-salinan-resep' disabled={status == 7}
-                                onClick={() => setMdlResep(true)}>Buat Salinan Resep</button>
+                                onClick={() => {setMdlResep(true); overflowYHidden()}}>Buat Salinan Resep</button>
                         </div> :
                         <div className='transaksi-detail-kiri'>
                             <p className='transaksi-detail-header'>{transaksi.produk[0].nama_produk}</p>
                             <p className='transaksi-detail-harga'>{`${transaksi.produk[0].quantity} x ${(transaksi.produk[0].harga_produk / transaksi.produk[0].quantity).toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</p>
                             {
-                                transaksi.produk.length > 1 && <button className='transaksi-lihat-lainnya'>
+                                transaksi.produk.length > 1 && <button className='transaksi-lihat-lainnya'
+                                onClick={() => {setMdlDetail(true); overflowYHidden()}}>
                                     {`Lihat ${transaksi.produk.length - 1} produk lainnya`}
                                     <FontAwesomeIcon icon={faAngleDown} style={{marginLeft:'10px'}} />
                                 </button>
@@ -159,7 +183,7 @@ function TransactionCard({transaksi, setRerender}) {
                             <p className='transaksi-16-bold'>Total Harga</p>
                             <p className='transaksi-detail-konten'>{`(${totalQtyFunc()} produk)`}</p>
                         </div>
-                        <p className='transaksi-16-bold'>{`Rp ${transaksi.total_pembayaran.toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</p>
+                        <p className='transaksi-16-bold'>{`Rp ${(transaksi.total_pembayaran ? transaksi.total_pembayaran : totalHargaFunc()).toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</p>
                     </div>
                 }
                 <div className='d-flex justify-content-between' style={{padding:'15px 30px 20px'}}>
@@ -168,7 +192,8 @@ function TransactionCard({transaksi, setRerender}) {
                             <FontAwesomeIcon icon={faCommentDots} style={{fontSize:'18px', marginRight:'10px'}} />
                             Chat Pembeli
                         </button>
-                        <button className='transaksi-button-icon'>
+                        <button className='transaksi-button-icon'
+                            onClick={() => {setMdlDetail(true); overflowYHidden()}}>
                             <FontAwesomeIcon icon={faClipboardList} style={{fontSize:'18px', marginRight:'10px'}} />
                             Detail Pesanan
                         </button>
@@ -179,9 +204,9 @@ function TransactionCard({transaksi, setRerender}) {
                              onClick={() => onTolak()}>Tolak Pesanan</button>}
                         {(status == 1 || status == 2) ? <button className='terima-pesanan-button'
                             disabled={status == 2}
-                            onClick={() => setMdlResep(true)}>Terima Pesanan</button>
+                            onClick={() => {setMdlResep(true); overflowYHidden()}}>Terima Pesanan</button>
                          : status == 3 ? <button className='terima-pesanan-button' 
-                           onClick={() => setMdlConfirm(true)}
+                           onClick={() => {setMdlConfirm(true); overflowYHidden()}}
                            style={{fontSize:'12px'}}>Cek Bukti Pembayaran</button>
                          : status == 4 ?<button className='terima-pesanan-button'
                                          style={{fontSize:'12px'}}

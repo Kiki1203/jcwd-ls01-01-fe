@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import './FormAddress.css';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
@@ -22,7 +23,10 @@ const FormAddress = () => {
   const [Selectcity, setSelectcity] = useState('');
   const [Kodepos, setKodepos] = useState('');
   const [Selectedindex, setSelectedindex] = useState(null);
-  // List untuk placeholder, nanti di-replace pakai data dari rajaongkir
+  const { state } = useLocation();
+  const previousPath = state?.previousPath
+  const transactionId = state?.transactionId
+  const navigate = useNavigate()
 
   useEffect(() => {
     getProvince();
@@ -110,7 +114,15 @@ const FormAddress = () => {
           icon: 'success',
           confirmButtonText: 'Okay!',
         });
-        // console.log('res addAdress', res)
+        let destination = ''
+        if(previousPath === '/cart'){
+          destination = '/checkout/produk-bebas'
+        } else if(previousPath.includes('/checkout')){
+          destination = previousPath
+        } else if(previousPath === '/ditunggu' || previousPath === '/semuapesanan'){
+          destination = `/checkout/resep?id=${transactionId}`
+        }
+        navigate(destination)
       })
       .catch((err) => {
         Swal.fire({
@@ -207,7 +219,9 @@ const FormAddress = () => {
             Simpan sebagai alamat utama
           </label>
           <div className="d-flex justify-content-between mb-5">
-            <button className="button-bayar" style={{ width: '48%', backgroundColor: 'white', color: '#E0004D', border: '2px solid #E0004D' }}>
+            <button className="button-bayar"
+              style={{ width: '48%', backgroundColor: 'white', color: '#E0004D', border: '2px solid #E0004D' }}
+              onClick={() => navigate(previousPath)}>
               Batalkan
             </button>
             <button

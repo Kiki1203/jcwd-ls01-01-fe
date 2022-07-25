@@ -51,15 +51,18 @@ function CartItem({product, products, setProducts, objHargaAll, setObjHargaAll, 
         let nama = product.namaObat
         nama = nama.replace(/[^A-Za-z]+/g, '')
         const harga = product.harga
+        const diskon = product.diskon
         
         if(selected === 1){
             setObjQtyAll({...objQtyAll, [nama]: qty})
-            setObjHargaAll({...objHargaAll, [nama]: qty * harga})
+            diskon ? 
+            setObjHargaAll({...objHargaAll, [nama]: {harga: qty * harga, diskon: qty * diskon}})
+            : setObjHargaAll({...objHargaAll, [nama]: {harga: qty * harga, diskon: 0}})
         } else {
             setObjQtyAll({...objQtyAll, [nama]: 0})
-            setObjHargaAll({...objHargaAll, [nama]: 0})
+            setObjHargaAll({...objHargaAll, [nama]: {harga: 0, diskon: 0}})
         }
-        console.log(objQtyAll)
+        console.log(objHargaAll)
     }, [qty, selected])
 
     useEffect(() => {
@@ -107,7 +110,14 @@ function CartItem({product, products, setProducts, objHargaAll, setObjHargaAll, 
                         <p className='quantity-produk-keranjang'>{`${qty} ${product.satuanObat}`}</p>
                     </div>
                 </div>
-                <p className='harga-produk-keranjang'>{'Rp' + (product.harga * qty).toLocaleString('de-DE', {minimumFractionDigits: 0})}</p>
+                <div className='d-flex align-items-center'>
+                {
+                    product.diskon ? 
+                    <p className='harga-diskon-keranjang'>{'Rp' + (product.harga * qty).toLocaleString('de-DE', {minimumFractionDigits: 0})}</p>
+                    : ''
+                }
+                    <p className='harga-produk-keranjang'>{'Rp' + ((product.diskon ? product.diskon : product.harga) * qty).toLocaleString('de-DE', {minimumFractionDigits: 0})}</p>
+                </div>
             </div>
             <div className='d-flex justify-content-end align-items-center' >
                 <p className='pindahkan-ke-favorit'>Masukkan ke Favorit</p>

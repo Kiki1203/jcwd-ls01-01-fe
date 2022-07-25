@@ -11,6 +11,8 @@ import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import successImg from './../../../Assets/check-mark-illust.svg';
 import cancelledImg from './../../../Assets/x-mark-illust.svg';
+import Swal from 'sweetalert2';
+import { PulseLoader } from 'react-spinners';
 
 function ConfirmPaymentModal({transaksi, setOpenModal, setRerender}) {
     const [loading, setLoading] = useState(false)
@@ -27,11 +29,31 @@ function ConfirmPaymentModal({transaksi, setOpenModal, setRerender}) {
         setLoading(true)
         axios.patch(API_URL + '/admin/continuetransaction', {id: transaksi.id}, {headers: {authorization: token}})
         .then((res) => {
-            setSuccess(true)
-            setLoading(false)
+            axios.post(API_URL + '/admin/reducestock', {transaksi:transaksi}, {headers: {authorization: token}})
+            .then((response) => {
+                setSuccess(true)
+                setLoading(false)
+            })
+            .catch((error) =>{
+                setLoading(false)
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Terjadi kesalahan :(',
+                    icon: 'error',
+                    confirmButtonText: 'Oke',
+                    confirmButtonColor: '#E0004D'
+                })
+            })
         })
         .catch((err) =>{
             setLoading(false)
+            Swal.fire({
+                title: 'Error!',
+                text: 'Terjadi kesalahan :(',
+                icon: 'error',
+                confirmButtonText: 'Oke',
+                confirmButtonColor: '#E0004D'
+            })
         })
     }
 
@@ -49,6 +71,10 @@ function ConfirmPaymentModal({transaksi, setOpenModal, setRerender}) {
 
     const handleClose = () => {
         setOpenModal(false)
+        let elems = document.getElementsByClassName('admin-page-container');
+        for (let i = 0; i < elems.length; i++) {
+            elems[i].style.overflow = "auto";
+        }
         if(success || cancelled) {setRerender(true)}
     }
 
@@ -97,12 +123,14 @@ function ConfirmPaymentModal({transaksi, setOpenModal, setRerender}) {
                 </TransformWrapper>
                 </div>
                     <div className='d-flex justify-content-center' style={{gap:'20px'}}>
-                        <button className='button-tolak-pembayaran' onClick={() => {
-                            onCancel()
-                        }}>Tolak Pesanan</button>
-                        <button className='button-konfirmasi-pembayaran' onClick={() => {
-                            onConfirm()
-                        }}>Konfirmasi</button>
+                        <button className='button-tolak-pembayaran'
+                            disabled={loading}
+                            onClick={() => onCancel()}>
+                            {loading ? <PulseLoader size={3} margin={3} color='#E0004D' /> : 'Tolak Pesanan'}</button>
+                        <button className='button-konfirmasi-pembayaran'
+                            disabled={loading}
+                            onClick={() => onConfirm()}>
+                            {loading ? <PulseLoader size={3} margin={3} color='#ffffff' /> : 'Konfirmasi'}</button>
                     </div>
                 </>
             }

@@ -5,8 +5,13 @@ import ProductCardSmall from '../../../Components/User/ProductCardSmall/ProductC
 import axios from 'axios';
 import API_URL from "../../../Helpers/API_URL.js"
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, useLocation } from 'react-router-dom';
+import noProductIllust from './../../../Assets/no-product.svg';
+import { RingLoader } from 'react-spinners';
+import FooterMobile from '../../../Components/User/Footer/FooterMobile.jsx';
+import NavbarMobile from '../../../Components/User/Navbar/NavbarMobile.jsx';
+import Swal from 'sweetalert2';
+import { PulseLoader } from 'react-spinners';
 
 function Cart(props) {
   const [products, setProducts] = useState([])
@@ -15,10 +20,12 @@ function Cart(props) {
   const [objQtyAll, setObjQtyAll] = useState({})
   const [selectAll, setSelectAll] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [submitLoading, setSubmitLoading] = useState(false)
   const [error, setError] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const token = localStorage.getItem('myTkn')
   const navigate = useNavigate()
+  const { pathname } = useLocation();
 
   useEffect(() => {
     setLoading(true)
@@ -45,10 +52,12 @@ function Cart(props) {
     products.forEach(p => {
         if(p.selected === 1){
           newObjQtyAll[p.namaObat.replace(/[^A-Za-z]+/g, '')] = p.quantity
-          newObjHargaAll[p.namaObat.replace(/[^A-Za-z]+/g, '')] = p.quantity * p.harga
+          p.diskon ?
+          newObjHargaAll[p.namaObat.replace(/[^A-Za-z]+/g, '')] = {harga: p.harga * p.quantity, diskon: p.diskon * p.quantity}
+          : newObjHargaAll[p.namaObat.replace(/[^A-Za-z]+/g, '')] = {harga: p.harga * p.quantity, diskon: 0}
         } else {
           newObjQtyAll[p.namaObat.replace(/[^A-Za-z]+/g, '')] = 0
-          newObjHargaAll[p.namaObat.replace(/[^A-Za-z]+/g, '')] = 0
+          newObjHargaAll[p.namaObat.replace(/[^A-Za-z]+/g, '')] = {harga: 0, diskon: 0}
         }
     })
     setObjQtyAll(newObjQtyAll)
@@ -72,7 +81,16 @@ function Cart(props) {
     let arrayHarga = Object.values(objHargaAll)
     let total = 0
     arrayHarga.forEach(harga => {
-      total += harga
+      total += harga.harga
+    })
+    return total
+  }
+
+  const totalDiskonFunc = () => {
+    let arrayHarga = Object.values(objHargaAll)
+    let total = 0
+    arrayHarga.forEach(harga => {
+      total += harga.diskon
     })
     return total
   }
@@ -110,13 +128,47 @@ function Cart(props) {
     })
   }
 
+  const getAddress = async () => {
+    setSubmitLoading(true)
+    await axios.get(`${API_URL}/user/getaddress`, {headers: {authorization: token}})
+    .then(res => {
+      setSubmitLoading(false)
+      if(res.data.length > 0){
+        navigate('/checkout/produk-bebas')
+      } else {
+        navigate('/formaddress', { state: { previousPath: pathname } })
+      }
+    })
+    .catch(e => {
+      setSubmitLoading(false)
+      Swal.fire({
+        title: 'Error!',
+        text: e.message,
+        icon: 'error',
+        confirmButtonText: 'Oke',
+        confirmButtonColor: '#E0004D'
+    })
+      setError(true)
+      setErrorMsg(e.message)
+    })
+  }
+
   return (
     <div style={{position:'relative', width:'100vw', overflowX:'hidden'}}>
     <div id='corner-gradient' />
+    <NavbarMobile />
     <div id='page-container'>
       {
         loading ?
-        <h1>Loading...</h1>
+        <div className="d-flex justify-content-center align-items-center" style={{height:'calc(100vh - 92px)'}}>
+          <RingLoader color={'#E0004D'} size={150} /> </div>
+        : products.length === 0 ?
+        <div className='d-flex flex-column align-items-center justify-content-center' style={{width:'100%', height:'calc(100vh - 192px'}}>
+            <img src={noProductIllust} alt="" style={{width:'250px', margin:'20px'}} />
+            <p style={{color:'#213360', fontSize:'20px', fontWeight:'700', margin:'0px 0px 10px'}}>Oops, keranjang Anda masih kosong</p>
+            <p style={{color:'#8f939e', fontSize:'14px', margin:'0px 0px 30px'}}>Yuk mulai isi keranjang Anda!</p>
+            <button className='button-konfirmasi-pembayaran' onClick={() => navigate('/kategori/semua-kategori')}>Mulai Belanja</button>
+        </div>
         : <div style={{minWidth:'1100px'}}>
           <p id='keranjang-saya' style={{marginTop:'0px'}}>Keranjang Saya</p> 
           <div className='d-flex justify-content-between'>
@@ -150,15 +202,16 @@ function Cart(props) {
               </div>
               <div className='d-flex justify-content-between'>
                 <p className='detail-ringkasan'>Total diskon produk</p>
-                <p className='detail-ringkasan'><b>-Rp0</b></p>
+                <p className='detail-ringkasan'><b>{`-Rp${(totalHargaFunc() - totalDiskonFunc()).toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</b></p>
               </div>
               <div className='d-flex justify-content-between total-harga-container'>
-                <p className='total-harga'>Total harga</p>
-                <p className='total-harga'>{`Rp${totalHargaFunc().toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</p>
+                <p className='total-harga-cart'>Total harga</p>
+                <p className='total-harga-cart'>{`Rp${(totalDiskonFunc() !== 0 ? totalDiskonFunc() : totalHargaFunc()).toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</p>
               </div>
-              <button className='button-bayar' disabled={objQtyAll === 0}
-                onClick={() => navigate('/checkout/produk-bebas')}>
-                {`Beli (${totalQtyFunc()})`}</button>
+              <button className='button-bayar'
+                disabled={totalQtyFunc() === 0}
+                onClick={() => getAddress()}>
+                {submitLoading ? <PulseLoader size={3} margin={3} color='#ffffff' /> : `Beli (${totalQtyFunc()})`}</button>
             </div>
           </div>
           <div style={{marginTop:'70px', borderTop:'2px solid #D5D7DD'}}>
@@ -174,6 +227,7 @@ function Cart(props) {
         </div>
       }
     </div>
+    <FooterMobile />
   </div>
   )
 }

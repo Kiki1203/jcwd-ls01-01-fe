@@ -50,7 +50,7 @@ const PaymentProof = ({transactionId, setOpenModal}) => {
         axios.patch(API_URL + "/transaction/uploadpaymentproof", formData, headers)
         .then((res) => {
             setOpenModal(false)
-            navigate('/')
+            navigate('/semuapesanan')
             Swal.fire({
                 title: 'Berhasil!',
                 text: 'Bukti pembayaran Anda berhasil diunggah.',

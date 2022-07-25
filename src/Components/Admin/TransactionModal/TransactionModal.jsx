@@ -6,6 +6,10 @@ import cancelledImg from './../../../Assets/x-mark-illust.svg';
 
 function TransactionModal({jenis, setOpenModal, setRerender}) {
     const handleClose = () => {
+        let elems = document.getElementsByClassName('admin-page-container');
+        for (let i = 0; i < elems.length; i++) {
+            elems[i].style.overflow = "auto";
+        }
         setOpenModal(false)
         setRerender(true)
     }

@@ -43,6 +43,11 @@ export const SidebarData = [
         className: 'sub-nav'
       },
       {
+        title: 'Menunggu Checkout',
+        path: '/transaksiadmin/menunggu-checkout',
+        className: 'sub-nav'
+      },
+      {
         title: 'Menunggu Bukti Pembayaran',
         path: '/transaksiadmin/menunggu-bukti-pembayaran',
         className: 'sub-nav'

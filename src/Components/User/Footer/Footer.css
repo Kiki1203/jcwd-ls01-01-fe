@@ -1,16 +1,17 @@
 .Footer {
-  width: 98.5vw !important;
   margin-bottom: 0px !important;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
 }
 
 .box-footer-user{
   padding: 40px 50px;
   display: flex;
-  
 }
 
 .box-1-inside-footer-user{
-  width: 318px;
+  width: 300px;
   height: 251px;
 }
 
@@ -47,9 +48,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 195px;
+  width: 150px;
   height: 240px;
-  margin-left: 50px;
+  margin-left: 6vw;
 
 }
 
@@ -68,20 +69,16 @@
   align-items: flex-start;
   padding: 0px;
   gap: 30px;
-  width: 195px;
+  width: 100px;
   height: 186px;
-  left: 740px;
-  top: 50px;
-  margin-left: 50px;
+  margin-left: 7vw;
 
 }
 
 .box-4-inside-footer-user{
-  width: 195px;
+  width: 140px;
   height: 164px;
-  left: 1020px;
-  top: 50px;
-  margin-left: 50px;
+  margin-left: 8vw;
 }
 
 .ikuti-kami{
@@ -106,8 +103,8 @@
 
 
 .box-5-inside-footer-user{
-  
   height: 95px;
+  width: 100vw;
   background: #4F618E;
   display: flex;
   justify-content: center;
@@ -125,167 +122,56 @@
   text-align: center;
   color: #F5F6F9;
 }
-
-@media only screen and (max-width: 850px) {
-  .Footer {
-    width: 100vw !important;
-    margin-bottom: 0px !important;
-  }
-  
-  .box-footer-user{
-    padding: 40px 50px;
-    display: flex;
-    
-  }
-  
-  .box-1-inside-footer-user{
-    width: 318px;
-    height: 251px;
-  }
-  
-  .footer-logo{
-    font-family: 'Public Sans';
-    font-style: normal !important;
-    font-weight: 700 !important;
-    font-size: 23.6923px !important;
-    line-height: 28px !important;
-    letter-spacing: -0.04em !important;
-    color: #213360 !important;
-    margin-top: 5px;
-  }
-  
-  .judul-kontak{
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    color: #213360;
-  }
-  
-  .isi-kontak{
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #213360;
-  }
-  
+@media only screen and (max-width: 1000px) {
   .box-2-inside-footer-user{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 195px;
-    height: 240px;
-    margin-left: 50px;
-  
+    margin-left: 0px;
   }
-  
-  .listF {
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400 !important;
-    font-size: 14px !important;
-    line-height: 20px !important;
-    color: #213360 !important;
-  }
-  
+
   .box-3-inside-footer-user{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 30px;
-    width: 195px;
-    height: 186px;
-    left: 740px;
-    top: 50px;
-    margin-left: 50px;
-  
+    margin-left: 3vw;
   }
-  
+
   .box-4-inside-footer-user{
-    width: 195px;
-    height: 164px;
-    left: 1020px;
-    top: 50px;
-    margin-left: 50px;
-  }
-  
-  .ikuti-kami{
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
-    display: flex;
-    align-items: center;
-    color: #213360;
-  }
-  
-  .judul-medsos{
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #213360;
-  }
-  
-  
-  .box-5-inside-footer-user{
-    
-    height: 95px;
-    background: #4F618E;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .design-footer{
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #F5F6F9;
+    margin-left: 4vw;
   }
 }
-
 @media only screen and (max-width: 500px) {
   .container-footer-mobile{
-    width: 99.3vw;
-    height: 10vh;
+    width: 100vw;
+    height: 15vw;
     background: #F6FAFB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
   
   }
 
   .container-inside-footer-mobile{
     background: #F6FAFB;
     display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 5px 5px;
     margin-left: 10px;
+    gap:8vw;
   }
 
   .beranda-footer{
-    width: 41px;
-    height: 43px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 2.5vw;
     line-height: 12px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     text-align: center;
     color: #B4B9C7;
     cursor: pointer;
-    padding: 10px 10px;
-    margin: 12px;
-    text-align: center;
+    gap:1.5vw;
   }
 
   .beranda-footer:hover{
@@ -293,6 +179,9 @@
     cursor: pointer;
   }
 
+  .footer-mobile-icon {
+    font-size: 4.5vw;
+  }
 
   .Footer {
     display: none;
@@ -323,7 +212,6 @@
   
   .box-2-inside-footer-user{
     display: none;
-  
   }
   
   .listF {

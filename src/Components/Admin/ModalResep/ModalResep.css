@@ -73,6 +73,17 @@
     justify-content: center;
 }
 
+.resep-button-tambah-obat:disabled {
+    border: 2px solid gray;
+    color: gray;
+    cursor: not-allowed;
+}
+
+.resep-button-tambah-obat:disabled:hover {
+    background-color: white;
+    box-shadow: none;
+}
+
 .resep-table-container {
     border-top: 2px solid lightgray;
 }
@@ -169,4 +180,10 @@ table.resep-tabel-rincian thead th {
     font-size: 14px;
     color:#213360;
     margin:0px;
+}
+
+.error-message {
+    color: #E0004D;
+    font-size: 12px;
+    margin: 0px;
 }

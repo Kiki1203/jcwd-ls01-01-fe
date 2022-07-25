@@ -72,61 +72,35 @@ const Navbar = () => {
   if (localStorage.getItem('myTkn') || localStorage.getItem('token') === token){
     return (
       <div id="navbar" className="d-lg-block d-md-block d-none">
-         {
-        bubbleOpen && <SearchBubble searchQuery={search} products={products} setBubbleOpen={setBubbleOpen} total={total} />
-      }
+        <div className='d-flex'>
         <div className="box-navbar-logo">
-       {
-         verified === 0 ?
-         <a className="navbar-brand brand">
-         <img src={logo} alt="" />
-         Apotakecare
-       </a>
-       :
-       <a className="navbar-brand brand" href="/">
-       <img src={logo} alt="" />
-       Apotakecare
-     </a>
-       }
+        {
+          verified === 0 ?
+          <a className="navbar-brand brand">
+            <img src={logo} alt="" />
+            Apotakecare
+          </a>
+          :
+          <a className="navbar-brand brand" href="/">
+          <img src={logo} alt="" />
+          Apotakecare
+          </a>
+        }
         </div>
-        <div className="box-navbar-search-2">
-          {
-            verified === 0 ?
-            <>
-             <form>
-              <input className="form-control input-home-2"  type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"   />
-              <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home-2'/>
-            </form>
-            </>
-            :
-            <>
-            <div className='d-lg-none d-md-block d-none'>
+        <div className="box-navbar-search">
             <form>
-              <input className="form-control input-home-2" 
+              <input className="form-control input-home" 
               onChange={(e) => {
                 setSearch(e.target.value)
                 e.target.value ? setBubbleOpen(true)
                 : setBubbleOpen(false)
               }}
-               type="search" placeholder="Cari Obat..." aria-label="Search"   />
-              <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home-2'/>
+               type="search" placeholder="Cari Obat, Suplemen, Vitamin..." aria-label="Search"   />
+              <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home'/>
             </form>
-            </div>
-            <div className='d-lg-block d-md-none d-none'>
-            <form>
-              <input className="form-control input-home-2" 
-              onChange={(e) => {
-                setSearch(e.target.value)
-                e.target.value ? setBubbleOpen(true)
-                : setBubbleOpen(false)
-              }}
-               type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"   />
-              <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home-2'/>
-            </form>
-            </div>
-            </>
-          }
-         
+            {
+              bubbleOpen && <SearchBubble searchQuery={search} products={products} setBubbleOpen={setBubbleOpen} total={total} />
+            }
         </div>
         <div className="box-navbar-dropdown">
            
@@ -141,15 +115,15 @@ const Navbar = () => {
             </>
             :
            <>
-            <FontAwesomeIcon icon={faBell} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D", marginLeft: "20px",  marginTop: "15px"}}/>
-            <Link to="/cart" style={{textDecoration: "none", cursor:"pointer", color:"#E0004D", marginLeft: "20px", marginTop: "15px"}}>
-            <FontAwesomeIcon icon={faCartShopping} />
+            <FontAwesomeIcon icon={faBell} style={{textDecoration: "none", cursor:"pointer", color:"#E0004D", fontSize:'16px'}}/>
+            <Link to="/cart" style={{textDecoration: "none", cursor:"pointer", color:"#E0004D"}}>
+            <FontAwesomeIcon icon={faCartShopping} style={{fontSize:'16px'}} />
             </Link>
             <div>
             <Dropdown isOpen={dropdownOpen}
                 toggle={() => setDropdownOpen(!dropdownOpen)}>
-                <DropdownToggle id="dropdown-navbar" className="rounded-0 border-0 mt-2">
-                <FontAwesomeIcon icon={faUser} className="mx-2" />
+                <DropdownToggle id="dropdown-navbar" className="rounded-0 border-0 p-0">
+                <FontAwesomeIcon icon={faUser} />
                 <div className="navbar-hi-user">Hi, {username}</div>
                 </DropdownToggle>
                 <DropdownMenu>
@@ -168,6 +142,7 @@ const Navbar = () => {
 
           }
         </div>
+        </div>
       </div>
     );
   }else{
@@ -181,9 +156,17 @@ const Navbar = () => {
         </div>
         <div className="box-navbar-search">
           <form>
-              <input className="form-control input-home"  type="search" placeholder="Cari Obat, Suplemen, Vitamin, produk Kesehatan" aria-label="Search"   />
+              <input className="form-control input-home"  type="search" placeholder="Cari Obat, Suplemen, Vitamin..." aria-label="Search"
+                 onChange={(e) => {
+                  setSearch(e.target.value)
+                  e.target.value ? setBubbleOpen(true)
+                  : setBubbleOpen(false)
+                }}/>
               <FontAwesomeIcon icon={faMagnifyingGlass} className='logo-input-home'/>
             </form>
+            {
+              bubbleOpen && <SearchBubble searchQuery={search} products={products} setBubbleOpen={setBubbleOpen} total={total} />
+            }
         </div>
         <div className="box-navbar-button">
         <Link to="/login" style={{ textDecoration: 'none'}}>

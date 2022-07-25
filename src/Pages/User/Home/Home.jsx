@@ -91,7 +91,6 @@ const printData = (props) => {
                   <div className="box-diskon-produk">
                     <div className="nominal-diskon">10%</div>
                     <div className="harga-diskon-home">{value.harga.toLocaleString('de-DE', { minimumFractionDigits: 0})}</div>
-
                   </div>
                   <div id="box-harga-home" style={{display:'flex'}}>
                         <span className='product-price-home'>Rp</span>
@@ -354,24 +353,20 @@ const homePage = () => {
       <div id="container-jumbotron-payment" className="d-lg-block d-md-block d-none">
         <div>
           <div>Metode Pembayaran</div>
-          <div className="d-flex justify-content-center">
-            <img src={bca} alt="" className="me-4" />
-            <img src={mandiri} alt="" className="me-4" />
-            <img src={permata} alt="" className="me-4" />
-            <img src={ovo} alt="" className="me-4" />
-            <img src={gopay} alt="" className="me-4" />
-            <img src={shoope} alt="" className="col-1" />
+          <div className="d-flex justify-content-center align-items-center mt-2" style={{gap:'30px'}}>
+            <img src={bca} style={{height:'30px'}} alt="" />
+            <img src={mandiri} style={{height:'30px'}} alt="" className="mb-2" />
+            <img src={permata} style={{height:'30px'}} alt="" className="mb-3" />
+            <img src={ovo} style={{height:'30px'}} alt="" />
+            <img src={gopay} style={{height:'30px'}} alt="" />
+            <img src={shoope} style={{height:'40px'}} alt="" />
           </div>
         </div>
             </div>
           </>
         }
-          <div className="d-lg-none d-md-none d-block" id="container-jumbotron-payment">
         <FooterMobile/>
-      </div>
-       
       </div >
-    
     </div>
   );
 }

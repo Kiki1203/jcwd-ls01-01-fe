@@ -7,11 +7,20 @@ import { useNavigate } from 'react-router-dom';
 
 function CartModal({product, setOpenModal}) {
     const navigate = useNavigate()
+    
+    const handleClose = () => {
+        let elems = document.getElementsByTagName('html');
 
+        for (let i = 0; i < elems.length; i++) {
+            elems[i].removeAttribute('style');
+        }
+        setOpenModal(false)
+    }
+    
     return (
-        <div className='modal-background fixed-top' onClick={() => setOpenModal(false)}>
+        <div className='modal-background fixed-top' onClick={() => handleClose()}>
             <div className='modal-container' onClick={e => e.stopPropagation()}>
-                <FontAwesomeIcon icon={faXmark} className='close-icon' onClick={() => setOpenModal(false)} />
+                <FontAwesomeIcon icon={faXmark} className='close-icon' onClick={() => handleClose()} />
                 <p className='berhasil-ditambahkan'>Produk Berhasil Ditambahkan!</p>
                 <div className='cart-row'>
                     <div className='d-flex align-items-center'>
@@ -20,7 +29,7 @@ function CartModal({product, setOpenModal}) {
                     </div>
                     <button className='lihat-keranjang' onClick={() => {
                         navigate('/cart')
-                        setOpenModal(false)
+                        handleClose()
                     }}>Lihat Keranjang</button>
                 </div>
             </div>
