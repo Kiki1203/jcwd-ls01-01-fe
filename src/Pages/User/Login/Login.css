@@ -10,11 +10,67 @@
   padding: 10px 94px 20px 120px !important;
 }
 
+/* ipad AIR */
 @media (max-width: 991.98px) {
   #naviadmin {
+    display: none;
+  }
+  .none {
+    display: none;
+  }
+  .image-register {
     display: none !important;
   }
   .form-login {
-    padding: 60px 40px 575px 40px !important;
+    padding: 312px 150px 400px 150px !important;
+  }
+}
+/* ipad mini */
+@media (max-width: 800px) {
+  #naviadmin {
+    display: none;
+  }
+  .image-register {
+    display: none !important;
+  }
+  .form-login {
+    padding: 283px 150px 273px 150px !important;
+  }
+}
+
+/* iphone XR  */
+@media (max-width: 576px) {
+  #naviadmin {
+    display: none;
+  }
+  .image-register {
+    display: none !important;
+  }
+  .form-login {
+    padding: 200px 40px 227px 40px !important;
+  }
+}
+/* iphone 12 PRO  */
+@media (max-width: 391px) {
+  #naviadmin {
+    display: none;
+  }
+  .image-register {
+    display: none !important;
+  }
+  .form-login {
+    padding: 170px 40px 205px 40px !important;
+  }
+}
+/* iphone SE  */
+@media (max-width: 376px) {
+  #naviadmin {
+    display: none;
+  }
+  .image-register {
+    display: none !important;
+  }
+  .form-login {
+    padding: 120px 40px 21vw 40px !important;
   }
 }

@@ -10,6 +10,7 @@ import image from './../../../Assets/iconImage.svg';
 import { InputGroup, InputGroupText, Input } from 'reactstrap';
 import RingLoader from 'react-spinners/RingLoader';
 import upload from './../../../Assets/upload.svg';
+import FooterMobile from '../../../Components/User/Footer/FooterMobile.jsx';
 
 const UploadResep = () => {
   const [editImageFileName, seteditImageFileName] = React.useState('Select Image...');
@@ -93,7 +94,7 @@ const UploadResep = () => {
   ));
 
   return (
-    <div>
+    <div className="container-fluid">
       {loading ? (
         <div className="d-flex justify-content-center">
           <div className="loader text-center">
@@ -101,14 +102,14 @@ const UploadResep = () => {
           </div>
         </div>
       ) : (
-        <div className="container-fluid container-uploadResep">
+        <div className="container-uploadResep ">
           <div className="row">
             <div className="col-12 mb-2 none mkm">Send Receipt</div>
-            <div className=" col-12 mb-4 spa none">
-              Tak perlu antre & obat langsung dikirimkan ke lokasi anda! <b> Foto tidak boleh lebih dari 10 MB.</b>
-            </div>
             <div className="col-12 box-upload py-5 px-5">
-              <div className="mkm">Unggah Resep </div>
+              <div className="mkm mb-2">Unggah Resep </div>
+              <div className=" col-12 mb-4 spa">
+                Tak perlu antre & obat langsung dikirim! <b> Foto tidak boleh lebih dari 10 MB.</b>
+              </div>
               <hr />
               <div className="col-sm-12 col-md-6 col-lg-6  text-start mb-2">
                 <div>{files}</div>
@@ -138,6 +139,7 @@ const UploadResep = () => {
               </div>
             </div>
           </div>
+          <FooterMobile />
         </div>
       )}
     </div>
