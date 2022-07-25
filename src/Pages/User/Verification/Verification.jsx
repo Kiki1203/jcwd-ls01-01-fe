@@ -81,12 +81,12 @@ const Verification = () => {
         </div>
         <div className='box-verification-page'>
             <div className="logo-verify-page"><img src={VerifyPage} alt=""/></div>
-            <div className="tulisan-oops">Oops...Maaf, </div>
-            <div className="tulisan-not-allowed">Anda tidak diizinkan mengakses homepage, jangan lupa untuk menverifikasi akun anda, atau klik tombol di bawah ini:</div>
+            <div className="tulisan-oops">Oops... Maaf, </div>
+            <div className="tulisan-not-allowed">Anda tidak diizinkan mengakses halaman ini, jangan lupa untuk menverifikasi akun Anda, atau klik tombol di bawah ini untuk mengirim ulang link verifikasi:</div>
             <button className="button-resend-email" disabled={loading} onClick={() => onResendEmail()}>
               {
                 loading ?
-                'Loading..'
+                'Loading...'
                 :
                 'Resend Email Verification'
               }

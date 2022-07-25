@@ -132,7 +132,7 @@
 
 @media only screen and (max-width: 500px) {
     .product-card-small {
-        height: 68vw;
+        height: 70vw;
         width: 38vw;
         border-radius: 3.8vw;
     }
@@ -164,7 +164,7 @@
     
     .keranjang {
         border: 2px solid #E0004D;
-        margin-top: 2.85vw;
+        margin-top: 0px;
         border-radius: 1.9vw;
         font-size: 2.28vw;
         padding: 1.33vw 0px;
@@ -184,5 +184,9 @@
 
     .product-card-detail {
         height: 20.9vw;
+    }
+    
+    .butuh-resep {
+        margin: 0px;
     }
 }

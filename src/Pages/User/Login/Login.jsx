@@ -13,6 +13,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import PulseLoader from 'react-spinners/PulseLoader';
 import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
+import { getUserData } from '../../../Redux/Actions/userAction';
 
 const Login = () => {
   const [password, setPassword] = useState('');
@@ -20,6 +22,7 @@ const Login = () => {
   const [verified, setVerified] = useState(false);
   const [loading, setLoading] = useState(false);
   const [myTkn, setMyTkn] = useState('');
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const Toast = Swal.mixin({
     toast: true,
@@ -60,6 +63,7 @@ const Login = () => {
     setLoading(true);
     Axios.post(`${API_URL}/user/login`, data)
       .then((res) => {
+        dispatch(getUserData(res.data.id, res.data.verified))
         console.log(res.data);
         if (res.data.error === true) {
           setLoading(false);

@@ -4,7 +4,7 @@ let initialState = {
   message: '',
   is_redirect: false,
   is_login: false,
-  is_confirmed: 0,
+  isConfirmed: 0,
   token: '',
   id: '',
   authChecked: false,
@@ -25,7 +25,9 @@ let initialState = {
     case 'ISLOGIN_FALSE':
       return { ...state, is_login: false };
     case 'IS_CONFIRMED':
-      return { ...state, is_confirmed: action.payload };
+      return { ...state, isConfirmed: action.payload };
+    case 'GET_USER_DATA':
+      return { ...state, id: action.payload.id, isConfirmed: action.payload.isConfirmed };
     case 'USER_LOGOUT':
       return initialState;
     default:

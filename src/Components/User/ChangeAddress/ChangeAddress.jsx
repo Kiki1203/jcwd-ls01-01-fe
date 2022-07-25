@@ -3,18 +3,21 @@ import './ChangeAddress.css';
 import API_URL from "../../../Helpers/API_URL.js"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 
 function CartModal({addresses, setOpenModal, selected, setSelected, setSelectedKurir}) {
     const navigate = useNavigate()
     const { pathname } = useLocation();
+    const [searchParams, setSearchParams] = useSearchParams()
+    let id = searchParams.get('id')
+    console.log(id)
 
     return (
         <div className='modal-background fixed-top' onClick={() => setOpenModal(false)}>
             <div className='modal-alamat-container' onClick={e => e.stopPropagation()}>
                 <FontAwesomeIcon icon={faXmark} className='close-icon' onClick={() => setOpenModal(false)} />
                 <p className='modal-alamat-header'>Pilih Alamat Pengiriman</p>
-                <button className='tambah-alamat-baru' onClick={() => navigate('/formaddress', { state: { previousPath: pathname } })}>Tambah Alamat Baru</button>
+                <button className='tambah-alamat-baru' onClick={() => navigate('/formaddress', { state: { previousPath: pathname, id: id } })}>Tambah Alamat Baru</button>
                 <div className='alamat-rows-container'>
                 {
                     addresses.map((a) => {

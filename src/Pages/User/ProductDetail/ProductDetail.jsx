@@ -2,18 +2,21 @@ import React from 'react';
 import './ProductDetail.css';
 import ProductCardSmall from '../../../Components/User/ProductCardSmall/ProductCardSmall.jsx';
 import CartModal from '../../../Components/User/CartModal/CartModal';
+import VerifyModal from '../../../Components/User/VerifyModal/VerifyModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentDots, faShareNodes, faMinus, faPlus, faCartShopping, faHeart } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import { useEffect, useState } from 'react';
-import { Navigate, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function ProductDetail(props) {
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [openModalVerify, setOpenModalVerify] = useState(false)
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -23,6 +26,7 @@ function ProductDetail(props) {
   const productId = params.id;
   const token = localStorage.getItem('myTkn');
   const navigate = useNavigate();
+  const verified = useSelector(state => state.user.isConfirmed)
 
   useEffect(() => {
     setLoading(true);
@@ -64,6 +68,8 @@ function ProductDetail(props) {
   const addToCart = () => {
     if (!token) {
       navigate('/login');
+    } else if (verified === 0){
+      setOpenModalVerify(true)
     } else {
       axios
         .post(
@@ -92,6 +98,7 @@ function ProductDetail(props) {
     <div style={{ position: 'relative', width: '100vw', overflowX: 'hidden' }}>
       <div id="corner-gradient" />
       {openModal && <CartModal product={product} setOpenModal={setOpenModal} />}
+      {openModalVerify && <VerifyModal setOpenModal={setOpenModalVerify} />}
       <div id="page-container">
         {loading ? (
           <h1>Loading...</h1>
@@ -146,7 +153,15 @@ function ProductDetail(props) {
                 {qty > product.stok && <p style={{ color: '#E0004D', marginTop: '10px', fontSize: '14px' }}>Jumlah produk melebihi stok, tolong dikurangi, ya!</p>}
                 <div className="d-flex" style={{ marginTop: '40px' }}>
                   {product.butuhResep === 'Ya' ? (
-                    <button id="button-beli" style={{ marginLeft: '0px' }}>
+                    <button id="button-beli" 
+                      style={{ marginLeft: '0px' }}
+                      onClick={() => {
+                        if (!token) {
+                          navigate('/login');
+                        } else if (verified === 0){
+                          setOpenModalVerify(true)
+                        } else {navigate('/uploadresep')}
+                      }}>
                       Upload Resep
                     </button>
                   ) : (
@@ -155,7 +170,13 @@ function ProductDetail(props) {
                         <FontAwesomeIcon icon={faCartShopping} style={{ marginRight: '20px', fontSize: '18px' }} />
                         Keranjang
                       </button>
-                      <button id="button-beli" disabled={qty > product.stok} onClick={() => navigate("/checkout/beli-langsung", { state: { productId: productId, quantity: qty } })}>
+                      <button id="button-beli" disabled={qty > product.stok} onClick={() => {
+                        if (!token) {
+                          navigate('/login');
+                        } else if (verified === 0){
+                          setOpenModalVerify(true)
+                        } else {
+                        navigate("/checkout/beli-langsung", { state: { productId: productId, quantity: qty } })}}}>
                         Beli
                       </button>
                     </>

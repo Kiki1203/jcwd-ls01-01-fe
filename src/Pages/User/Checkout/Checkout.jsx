@@ -227,7 +227,7 @@ const Checkout = () => {
                             <p className="quantity-produk-keranjang">{`${product.quantity} ${product.satuanObat} (${product.berat * product.quantity} gr)`}</p>
                           </div>
                         </div>
-                        <p className="harga-produk-keranjang">{'Rp' + (product.harga * product.quantity).toLocaleString('de-DE', { minimumFractionDigits: 0 })}</p>
+                        <p className="harga-produk-keranjang">{'Rp' + ((product.diskon ? product.diskon : product.harga) * product.quantity).toLocaleString('de-DE', { minimumFractionDigits: 0 })}</p>
                       </div>
                     </div>
                   );

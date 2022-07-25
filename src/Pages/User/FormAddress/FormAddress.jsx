@@ -25,6 +25,7 @@ const FormAddress = () => {
   const [Selectedindex, setSelectedindex] = useState(null);
   const { state } = useLocation();
   const previousPath = state?.previousPath
+  const previousParam = state?.id
   const transactionId = state?.transactionId
   const navigate = useNavigate()
 
@@ -118,7 +119,11 @@ const FormAddress = () => {
         if(previousPath === '/cart'){
           destination = '/checkout/produk-bebas'
         } else if(previousPath.includes('/checkout')){
-          destination = previousPath
+          if(previousParam){
+            destination = `${previousPath}?id=${previousParam}`
+          } else {
+            destination = previousPath
+          }
         } else if(previousPath === '/ditunggu' || previousPath === '/semuapesanan'){
           destination = `/checkout/resep?id=${transactionId}`
         }

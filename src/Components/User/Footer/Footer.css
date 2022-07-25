@@ -122,6 +122,9 @@
   text-align: center;
   color: #F5F6F9;
 }
+.container-footer-mobile{
+  display: none;
+}
 @media only screen and (max-width: 1000px) {
   .box-2-inside-footer-user{
     margin-left: 0px;
@@ -146,7 +149,7 @@
     position: fixed;
     bottom: 0px;
     left: 0px;
-  
+    z-index: 999999;
   }
 
   .container-inside-footer-mobile{

@@ -27,11 +27,15 @@ function CartModal({product, setOpenModal}) {
                         <img className='cart-image' src={`${API_URL}/${product.gambar}`} alt="" />
                         <p className='cart-name'>{product.namaObat}</p>
                     </div>
-                    <button className='lihat-keranjang' onClick={() => {
+                    <button className='lihat-keranjang gone-in-smaller-screen' onClick={() => {
                         navigate('/cart')
                         handleClose()
                     }}>Lihat Keranjang</button>
                 </div>
+                <button className='lihat-keranjang appear-in-smaller-screen' onClick={() => {
+                        navigate('/cart')
+                        handleClose()
+                    }}>Lihat Keranjang</button>
             </div>
         </div>
     )

@@ -65,6 +65,15 @@
         overflow-y: auto;
     }
     .produk-tidak-ditemukan {
-        font-size:14px;
+        font-size:13px;
+    }
+
+    .search-result {
+        font-size:11px !important;
+        text-align: left;
+    }
+
+    #lihat-semua {
+        font-size: 12px;
     }
 }
