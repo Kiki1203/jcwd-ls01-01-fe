@@ -111,9 +111,10 @@
 @media only screen and (max-width: 850px) {
 
     .container-verification{
-        min-width: 90vw !important;
+        width: 80vw !important;
         padding: 0px 0px 0px 0px;
-        min-height: 64.3vh !important;
+        min-height: 66vh !important;
+       
       }
 
        

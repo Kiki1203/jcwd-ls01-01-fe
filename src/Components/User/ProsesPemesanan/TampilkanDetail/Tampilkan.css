@@ -159,7 +159,7 @@
 
     .modal-container-payment {
       height: auto;
-      width: 300px;
+      width: 350px;
       height: 300px;
       background-color: white;
       border-radius: 10px;
@@ -175,40 +175,41 @@
     }
   
     .harga-obat-tampilkan{
-      width: 90.22px;
+      width: 90px;
       height: 20px;
       font-family: 'Public Sans';
       font-style: normal;
       font-weight: 700;
-      font-size: 14px;
-      line-height: 20px;
+      font-size: 12px;
+      line-height: 18px;
       display: flex;
       align-items: center;
       text-align: right;
       color: #213360;
+     
     }
   
     .nama-obat-tampilkan{
-      width: 250px;
-      height: 24px;
+      width: 180px;
+      height: 30px;
       left: 148px;
       top: -50px;
       font-family: 'Public Sans';
       font-style: normal;
       font-weight: 400;
-      font-size: 16px;
-      line-height: 24px;
+      font-size: 14px;
+      line-height: 18px;
       display: flex;
       align-items: center;
       color: #213360;
-      border: 1px solid blue;
+     
     }
   
     .jumlah-obat-tampilkan{
       width: 150px;
       height: 18px;
       left: 148px;
-      top: -70px;
+      top: -60px;
       font-family: 'Public Sans';
       font-style: normal;
       font-weight: 400;
@@ -220,19 +221,19 @@
     }
   
     .foto-tampilkan{
-      width: 91px;
-      height: 66.23px;
-      left: 40px;
-      top: 20px;
+      width: 60px;
+      height: 60px;
+     
     }
   
   
     .box-tampilkan-pesanan{
-      width: 180px;
+      width: 330px;
       height: 15vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-left: 80px
+      margin-left: -20px;
+    
     }
   }

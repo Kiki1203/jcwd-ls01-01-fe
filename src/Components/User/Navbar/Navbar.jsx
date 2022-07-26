@@ -74,18 +74,10 @@ const Navbar = () => {
       <div id="navbar" className="d-lg-block d-md-block d-none">
         <div className='d-flex'>
         <div className="box-navbar-logo">
-        {
-          verified === 0 ?
-          <a className="navbar-brand brand">
-            <img src={logo} alt="" />
-            Apotakecare
-          </a>
-          :
-          <a className="navbar-brand brand" href="/">
+        <a className="navbar-brand brand" href="/">
           <img src={logo} alt="" />
           Apotakecare
           </a>
-        }
         </div>
         <div className="box-navbar-search">
             <form>

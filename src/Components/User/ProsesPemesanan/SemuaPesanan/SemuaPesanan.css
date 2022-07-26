@@ -1072,13 +1072,13 @@
   
   .box-pagination-semua{
     width: 95vw;
-    height: 200px;
+    height: 100px;
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: center;
     margin-top: 15px;
     margin-bottom: 5px;
-    /* border: 3px solid blue */
+    /* border: 3px solid red */
   }
 
   .box-inside-pp{

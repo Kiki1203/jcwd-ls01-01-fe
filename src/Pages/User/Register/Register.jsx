@@ -125,11 +125,7 @@ const Register = () => {
     }
   };
 
-  if (localStorage.getItem('token')) {
-    return <Navigate to="/homeadmin" />;
-  }
-
-  if (localStorage.getItem('myTkn')) {
+  if(localStorage.getItem('myTkn') || localStorage.getItem('token')){
     return <Navigate to="/" />;
   }
 

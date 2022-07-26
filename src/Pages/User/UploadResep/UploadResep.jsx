@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useDropzone } from 'react-dropzone';
 import Divider from '@mui/material/Divider';
 import './UploadResep.css';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import image from './../../../Assets/iconImage.svg';
 import { InputGroup, InputGroupText, Input } from 'reactstrap';
 import RingLoader from 'react-spinners/RingLoader';
@@ -17,6 +17,28 @@ const UploadResep = () => {
   const [editImageFile, seteditImageFile] = React.useState(undefined);
   const navigate = useNavigate();
   const [loading, setLoading] = React.useState(false);
+  const [verified, setVerified] = useState('')
+  const [tokenUser, setTokenUser] = useState("");
+  
+  useEffect(() => {
+    setLoading(true)
+    let tokens = localStorage.getItem('myTkn')
+    const headers = {
+        headers: { 
+            'Authorization': `${tokens}`,
+        }
+    }
+    axios.get(`${API_URL}/user/checkuserverify`, headers)
+    .then((res) => {
+      setLoading(false)
+        setVerified(res.data.verified)
+        setTokenUser(res.data.token)
+    }).catch((err) => {
+        console.log('ini err get',err)
+        setLoading(false)
+    })
+  }, [tokenUser, verified])
+
   const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -93,6 +115,7 @@ const UploadResep = () => {
     </InputGroup>
   ));
 
+ const uploudResep = () => {
   return (
     <div className="container-fluid">
       {loading ? (
@@ -144,6 +167,36 @@ const UploadResep = () => {
       )}
     </div>
   );
+ }
+
+ if(localStorage.getItem('myTkn')){
+  if(verified === 0){
+    return(
+      <Navigate to='/verification' />
+    )
+  }else{
+    return(
+      <>{uploudResep()}</>
+    )
+  }
+}else{
+  if(localStorage.getItem('token') === tokenUser){
+    if(verified === 0){
+      return(
+        <Navigate to='/verification' />
+      )
+    }else{
+      return(
+        <>{uploudResep()}</>
+      )  
+    }
+  }else{
+    return(
+      <Navigate to='/' />
+    ) 
+  }
+}
+
 };
 
 export default UploadResep;

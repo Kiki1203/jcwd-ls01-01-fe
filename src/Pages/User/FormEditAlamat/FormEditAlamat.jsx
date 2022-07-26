@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './FormEditAlamat.css';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useNavigate, useParams, Link, Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -27,6 +27,27 @@ const FormEditAlamat = () => {
   const [Selectedindex, setSelectedindex] = useState(null);
   const navigate = useNavigate();
   let params = useParams();
+  const [loading, setLoading] = useState(false);
+  const [verified, setVerified] = useState('')
+  const [tokenUser, setTokenUser] = useState("");
+  useEffect(() => {
+    
+    let tokens = localStorage.getItem('myTkn')
+    const headers = {
+        headers: { 
+            'Authorization': `${tokens}`,
+        }
+    }
+    axios.get(`${API_URL}/user/checkuserverify`, headers)
+    .then((res) => {
+      
+        setVerified(res.data.verified)
+        setTokenUser(res.data.token)
+    }).catch((err) => {
+        console.log('ini err get',err)
+       
+    })
+  }, [tokenUser, verified])
 
   useEffect(() => {
     getProvince();
@@ -161,159 +182,190 @@ const FormEditAlamat = () => {
     EditAddress();
   };
 
-  return (
-    <div>
-      <div />
-      <div id="page-container-ap">
-        <div id="form-address-container-2">
-        <div className="d-lg-none d-md-none d-block d-flex navbar-pro">
-                    <div>
-                        <Link to='/profile' style={{ textDecoration:"none", color: "black", cursor: 'pointer', fontSize: "12px", marginTop: "35px", marginLeft:"10px" }}>
-                            <FontAwesomeIcon icon={faAngleLeft} className="logo-1-p"/>
-                        </Link>
-                    </div>
-                    <div  id="header-alamat-pengiriman-2"  style={{marginTop: "35px", marginLeft: "30px"}}>Edit Alamat Pengiriman</div>
-                </div>
-                <div className="d-lg-block d-md-block d-none">
-                <div  id="header-alamat-pengiriman">Edit Alamat Pengiriman</div>
-                </div>
-          <div className="d-flex mt-2">
-            <p className="title-input">Label Alamat</p>
-            <p className="contoh-input">Contoh: Apartemen</p>
-          </div>
-          <input type="text" className="input-alamat" defaultValue={LabelAlamat} onChange={(e) => SetLabelAlamat(e.target.value)} />
-          <p className="title-input" style={{ margin: '30px 0px 5px' }}>
-            Info Penerima
-          </p>
-          <div className="d-flex justify-content-between">
-            <div style={{ width: '48%' }}>
-              <p className="mini-title-input">Nama Depan</p>
-              <input type="text" className="input-alamat" defaultValue={NamaDepan} onChange={(e) => SetNamaDepan(e.target.value)} />
+  const editAlamat = () => {
+    return (
+      <div>
+        <div />
+        <div id="page-container-ap">
+          <div id="form-address-container-2">
+          <div className="d-lg-none d-md-none d-block d-flex navbar-pro">
+                      <div>
+                          <Link to='/profile' style={{ textDecoration:"none", color: "black", cursor: 'pointer', fontSize: "12px", marginTop: "35px", marginLeft:"10px" }}>
+                              <FontAwesomeIcon icon={faAngleLeft} className="logo-1-p" style={{marginTop: "5px"}}/>
+                          </Link>
+                      </div>
+                      <div  id="header-alamat-pengiriman-2"  style={{marginTop: "35px", marginLeft: "30px"}}>Edit Alamat Pengiriman</div>
+                  </div>
+                  <div className="d-lg-block d-md-block d-none">
+                  <div  id="header-alamat-pengiriman">Edit Alamat Pengiriman</div>
+                  </div>
+            <div className="d-flex mt-2">
+              <p className="title-input">Label Alamat</p>
+              <p className="contoh-input">Contoh: Apartemen</p>
             </div>
-            <div style={{ width: '48%' }}>
-              <p className="mini-title-input">Nama Belakang</p>
-              <input type="text" className="input-alamat" defaultValue={NameBelakang} onChange={(e) => SetNamaBelakang(e.target.value)} />
+            <input type="text" className="input-alamat" defaultValue={LabelAlamat} onChange={(e) => SetLabelAlamat(e.target.value)} />
+            <p className="title-input" style={{ margin: '10px 0px 5px' }}>
+              Info Penerima
+            </p>
+            <div className="d-flex justify-content-between">
+              <div style={{ width: '48%' }}>
+                <p className="mini-title-input">Nama Depan</p>
+                <input type="text" className="input-alamat" defaultValue={NamaDepan} onChange={(e) => SetNamaDepan(e.target.value)} />
+              </div>
+              <div style={{ width: '48%' }}>
+                <p className="mini-title-input">Nama Belakang</p>
+                <input type="text" className="input-alamat" defaultValue={NameBelakang} onChange={(e) => SetNamaBelakang(e.target.value)} />
+              </div>
             </div>
-          </div>
-          <p className="mini-title-input">Nomor HP</p>
-          <input type="text" className="input-alamat" defaultValue={NoHP} style={{ width: '48%' }} onChange={(e) => SetNoHP(e.target.value)} />
-          <div className="d-flex justify-content-between">
-            <div style={{ width: '48%' }}>
-              <p className="mini-title-input">Provinsi</p>
-              <select
-                className="select-alamat"
-                onChange={(e) => {
-                  getCity(e.target.value.split('-')[0]);
-                  SetIdProvinsi(e.target.value.split('-')[0]);
-                  SetProvinsi(e.target.value.split('-')[1]);
-                }}
-              >
-                {
-                 Provinsi ?
-                 <>
-                  <option selected className="selected">
-                 {Provinsi}
-                </option>
+            <p className="mini-title-input">Nomor HP</p>
+            <input type="text" className="input-alamat" defaultValue={NoHP} style={{ width: '48%' }} onChange={(e) => SetNoHP(e.target.value)} />
+            <div className="d-flex justify-content-between">
+              <div style={{ width: '48%' }}>
+                <p className="mini-title-input">Provinsi</p>
+                <select
+                  className="select-alamat"
+                  onChange={(e) => {
+                    getCity(e.target.value.split('-')[0]);
+                    SetIdProvinsi(e.target.value.split('-')[0]);
+                    SetProvinsi(e.target.value.split('-')[1]);
+                  }}
+                >
+                  {
+                   Provinsi ?
+                   <>
+                    <option selected className="selected">
+                   {Provinsi}
+                  </option>
+                    {Province.map((value, index) => {
+                    return (
+                      <option value={`${value.province_id}-${value.province}`} key={index}>
+                        {value.province}
+                      </option>
+                    );
+                  })}
+                   </>
+                   :
+                   <>
+                   <option selected className="selected">
+                    Pilih Provinsi
+                  </option>
                   {Province.map((value, index) => {
-                  return (
-                    <option value={`${value.province_id}-${value.province}`} key={index}>
-                      {value.province}
-                    </option>
-                  );
-                })}
-                 </>
-                 :
-                 <>
-                 <option selected className="selected">
-                  Pilih Provinsi
-                </option>
-                {Province.map((value, index) => {
-                  return (
-                    <option value={`${value.province_id}-${value.province}`} key={index}>
-                      {value.province}
-                    </option>
-                  );
-                })}
-                 </> 
-                }
-                
-              </select>
+                    return (
+                      <option value={`${value.province_id}-${value.province}`} key={index}>
+                        {value.province}
+                      </option>
+                    );
+                  })}
+                   </> 
+                  }
+                  
+                </select>
+              </div>
+              <div style={{ width: '48%' }}>
+                <p className="mini-title-input">Kota/Kabupaten</p>
+                <select
+                  className="select-alamat"
+                  onChange={(e) => {
+                    setSelectedindex(e.target.value.split('-')[0]);
+                    SetIdKota(e.target.value.split('-')[1]);
+                    SetKota(e.target.value.split('-')[2]);
+                  }}
+                >
+                  {
+                    Kota ?
+                    <>  
+                  <option selected={Nocity} className="selected">
+                   {Kota}
+                  </option>
+                  {City.map((value, index) => {
+                    return (
+                      <option value={`${index}-${value.city_id}-${value.city_name}`} key={index} onChange={(e) => SetIdKota(e.target.value.city.id)}>
+                        {value.city_name}
+                      </option>
+                    );
+                  })}</>
+                    :
+                    <>
+                     <option selected={Nocity} className="selected">
+                    Pilih Kota/Kabupaten
+                  </option>
+                  {City.map((value, index) => {
+                    return (
+                      <option value={`${index}-${value.city_id}-${value.city_name}`} key={index} onChange={(e) => SetIdKota(e.target.value.city.id)}>
+                        {value.city_name}
+                      </option>
+                    );
+                  })}
+                    </>
+                  }
+                 
+                </select>
+              </div>
             </div>
-            <div style={{ width: '48%' }}>
-              <p className="mini-title-input">Kota/Kabupaten</p>
-              <select
-                className="select-alamat"
-                onChange={(e) => {
-                  setSelectedindex(e.target.value.split('-')[0]);
-                  SetIdKota(e.target.value.split('-')[1]);
-                  SetKota(e.target.value.split('-')[2]);
+            <p className="mini-title-input">Alamat</p>
+            <input type="text" className="input-alamat" defaultValue={Alamat} onChange={(e) => SetAlamat(e.target.value)} />
+            <p className="mini-title-input">Kode Pos</p>
+            <input type="text" className="input-alamat" disabled placeholder="Pilih kota" value={Kodepos} style={{ width: '48%' }} />
+              {
+                AlamatUtama === 1 ?
+                <label className="sidebar-checkbox mt-2 mb-0 d-block">
+                <input type="checkbox" onChange={(e) => SetAlamatUtama(e.target.checked === true ? '0' : '1')} />
+                Simpan bukan sebagai alamat utama
+              </label>
+                :
+              <label className="sidebar-checkbox mt-2 d-block">
+                <input type="checkbox" onChange={(e) => SetAlamatUtama(e.target.checked === true ? '1' : '0')} />
+                Simpan sebagai alamat utama
+              </label>
+              }
+            <div className="d-flex justify-content-between ">
+              <button className="button-bayar" style={{ width: '48%', backgroundColor: 'white', color: '#E0004D', border: '2px solid #E0004D' }} onClick={() => navigate(`/alamatpengiriman`)}>
+                Batalkan
+              </button>
+              <button
+                className="button-bayar"
+                style={{ width: '48%' }}
+                onClick={() => {
+                  onSubmit();
                 }}
               >
-                {
-                  Kota ?
-                  <>  
-                <option selected={Nocity} className="selected">
-                 {Kota}
-                </option>
-                {City.map((value, index) => {
-                  return (
-                    <option value={`${index}-${value.city_id}-${value.city_name}`} key={index} onChange={(e) => SetIdKota(e.target.value.city.id)}>
-                      {value.city_name}
-                    </option>
-                  );
-                })}</>
-                  :
-                  <>
-                   <option selected={Nocity} className="selected">
-                  Pilih Kota/Kabupaten
-                </option>
-                {City.map((value, index) => {
-                  return (
-                    <option value={`${index}-${value.city_id}-${value.city_name}`} key={index} onChange={(e) => SetIdKota(e.target.value.city.id)}>
-                      {value.city_name}
-                    </option>
-                  );
-                })}
-                  </>
-                }
-               
-              </select>
+                Simpan Alamat 
+              </button>
             </div>
-          </div>
-          <p className="mini-title-input">Alamat</p>
-          <input type="text" className="input-alamat" defaultValue={Alamat} onChange={(e) => SetAlamat(e.target.value)} />
-          <p className="mini-title-input">Kode Pos</p>
-          <input type="text" className="input-alamat" disabled placeholder="Pilih kota" value={Kodepos} style={{ width: '48%' }} />
-            {
-              AlamatUtama === 1 ?
-              <label className="sidebar-checkbox mt-4 mb-5 d-block">
-              <input type="checkbox" onChange={(e) => SetAlamatUtama(e.target.checked === true ? '0' : '1')} />
-              Simpan bukan sebagai alamat utama
-            </label>
-              :
-            <label className="sidebar-checkbox mt-4 mb-0 d-block">
-              <input type="checkbox" onChange={(e) => SetAlamatUtama(e.target.checked === true ? '1' : '0')} />
-              Simpan sebagai alamat utama
-            </label>
-            }
-          <div className="d-flex justify-content-between mb-2">
-            <button className="button-bayar" style={{ width: '48%', backgroundColor: 'white', color: '#E0004D', border: '2px solid #E0004D' }} onClick={() => navigate(`/alamatpengiriman`)}>
-              Batalkan
-            </button>
-            <button
-              className="button-bayar"
-              style={{ width: '48%' }}
-              onClick={() => {
-                onSubmit();
-              }}
-            >
-              Simpan Alamat 
-            </button>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  if(localStorage.getItem('myTkn')){
+    if(verified === 0){
+      return(
+        <Navigate to='/verification' />
+      )
+    }else{
+      return(
+        <>{editAlamat()}</>
+      )
+    }
+  }else{
+    if(localStorage.getItem('token') === tokenUser){
+      if(verified === 0){
+        return(
+          <Navigate to='/verification' />
+        )
+      }else{
+        return(
+          <>{editAlamat()}</>
+        )  
+      }
+    }else{
+      return(
+        <Navigate to='/' />
+      ) 
+    }
+  }
+  
 };
 
 export default FormEditAlamat;
