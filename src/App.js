@@ -13,7 +13,6 @@ import Verification from './Pages/User/Verification/Verification.jsx';
 import Confirmation from './Pages/User/Confirmation/Confirmation.jsx';
 import FormAddress from './Pages/User/FormAddress/FormAddress.jsx';
 import Home from './Pages/User/Home/Home.jsx';
-import OrderProcess from './Pages/User/OrderProcess/OrderProcess.jsx';
 import ProductDetail from './Pages/User/ProductDetail/ProductDetail.jsx';
 import ProductList from './Pages/User/ProductList/ProductList.jsx';
 import Profile from './Pages/User/Profile/Profile.jsx';
@@ -80,7 +79,6 @@ function App() {
           <Route path="/confirmation/:token" element={<Confirmation />} />
           <Route path="/verification" element={<Verification />} />
           <Route path="/FormAddress" element={<FormAddress />} />
-          <Route path="/OrderProcess" element={<OrderProcess />} />
           <Route path="/ProductDetail/:id" element={<ProductDetail />} />
           <Route path="/kategori/:kategori" element={<ProductList />} />
           <Route path="/profile" element={<Profile />} />
