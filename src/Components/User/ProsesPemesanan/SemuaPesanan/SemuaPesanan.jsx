@@ -82,6 +82,7 @@ const SemuaPesanan  = () => {
 }
 
   const onCheckoutResep = async (id) => {
+    const token = localStorage.getItem('myTkn')
     await axios.get(`${API_URL}/user/getaddress`, {headers: {authorization: token}})
     .then(res => {
       if(res.data.length > 0){

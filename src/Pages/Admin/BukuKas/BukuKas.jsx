@@ -28,7 +28,7 @@ const BukuKas = () => {
     })
 }, [tokenAdmin])
   const fetchbukukas = async () => {
-    const response = await axios.get('http://localhost:5000/admin/bukukas').catch((err) => console.log(err));
+    const response = await axios.get(`${API_URL}/admin/bukukas`).catch((err) => console.log(err));
     if (response) {
       const databukukas = response.data;
       console.log('datamasuk', databukukas.masuk);
@@ -83,53 +83,53 @@ const BukuKas = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="box-table-isi">
-              <table className="table">
-                <thead style={{ background: '#213360' }} className="box-table-isi">
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Tanggal</th>
-                    <th scope="col">Aktifitas</th>
-                    <th scope="col">Masuk</th>
-                    <th scope="col">Keluar</th>
-                    <th scope="col">Saldo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.map((value, index) => {
-                    return (
-                      <tr key={value.id}>
-                        <th scope="row">{value.noFakturMasuk}</th>
-                        <td>{value.tanggalMasuk.split('T')[0]}</td>
-                        <td>N0.Faktur:{value.noFakturMasuk}MOB</td>
-                        <td>{rupiah(value.hargaBeli)}</td>
-                        <td>-</td>
-                        <td>{rupiah(value.hargaBeli * value.stokMasuk)}</td>
-                      </tr>
-                    );
-                  })}
-                  {data1.map((value, index) => {
-                    return (
-                      <tr key={value.id}>
-                        <th scope="row">{value.id}</th>
-                        <td>{value.tanggalKeluar.split('T')[0]}</td>
-                        <td>N0.Faktur:{value.noFakturKeluar}</td>
-                        <td>-</td>
-                        <td>{rupiah(value.hargaKeluar)}</td>
-                        <td>{rupiah(value.hargaKeluar * 3)}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-           
+              <div className="box-table-isi">
+                <table className="table box-table-isi">
+                  <thead style={{ background: '#213360' }}>
+                    <tr>
+                      <th scope="col">No</th>
+                      <th scope="col">Tanggal</th>
+                      <th scope="col">Aktifitas</th>
+                      <th scope="col">Masuk</th>
+                      <th scope="col">Keluar</th>
+                      <th scope="col">Saldo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.map((value, index) => {
+                      return (
+                        <tr key={value.id}>
+                          <th scope="row">{value.noFakturMasuk}</th>
+                          <td>{value.tanggalMasuk.split('T')[0]}</td>
+                          <td>N0.Faktur:{value.noFakturMasuk}MOB</td>
+                          <td>{rupiah(value.hargaBeli)}</td>
+                          <td>-</td>
+                          <td>{rupiah(value.hargaBeli * value.stokMasuk)}</td>
+                        </tr>
+                      );
+                    })}
+                    {data1.map((value, index) => {
+                      return (
+                        <tr key={value.id}>
+                          <th scope="row">{value.id}</th>
+                          <td>{value.tanggalKeluar.split('T')[0]}</td>
+                          <td>N0.Faktur:{value.noFakturKeluar}</td>
+                          <td>-</td>
+                          <td>{rupiah(value.hargaKeluar)}</td>
+                          <td>{rupiah(value.hargaKeluar * 3)}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
     );
-  }
+  };
+
 
   
   if(localStorage.getItem('myTkn')){
