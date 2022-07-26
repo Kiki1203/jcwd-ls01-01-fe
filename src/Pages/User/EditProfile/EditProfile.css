@@ -566,7 +566,7 @@
     flex-direction: column;
     margin-top: 0px;
     margin-left: 0px;
-    margin-bottom: 120px;
+    margin-bottom: 150px;
     
   }
   
@@ -622,7 +622,7 @@
     height: 130px;
     background: #C4C4C4;
     border-radius: 50%;
-    margin-left: 150px;
+    margin-left: 130px;
     margin-top: 150px;
    
   }
@@ -661,7 +661,7 @@
     gap: 10px;
     width: 200px;
     height: 26px;
-    margin-left: -50px;
+    margin-left: -30px;
     background: #cfd4e1;
     border-radius: 8px;
     font-family: 'Public Sans';
@@ -815,7 +815,7 @@
     font-size: 12px;
     line-height: 17px;
     border-radius: 8px;
-    margin-left: 160px;
+    margin-left: 150px;
     margin-top: 20px;
     margin-bottom: 100px;
   }

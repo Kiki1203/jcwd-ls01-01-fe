@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './AlamatPageProfile.css';
 import SidebarProfile from "../../../Components/User/SidebarProfile/SidebarProfile.jsx";
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import { RingLoader } from "react-spinners";
@@ -24,7 +24,27 @@ const AlamatPage  = () => {
     const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
     const [showAllProducts, setShowAllProducts] = useState(false)
     const [totalData, setTotalData] = useState(0);
-
+    const [verified, setVerified] = useState('')
+    const [tokenUser, setTokenUser] = useState("");
+    
+    useEffect(() => {
+      setLoading(true)
+      let tokens = localStorage.getItem('myTkn')
+      const headers = {
+          headers: { 
+              'Authorization': `${tokens}`,
+          }
+      }
+      axios.get(`${API_URL}/user/checkuserverify`, headers)
+      .then((res) => {
+        setLoading(false)
+          setVerified(res.data.verified)
+          setTokenUser(res.data.token)
+      }).catch((err) => {
+          console.log('ini err get',err)
+          setLoading(false)
+      })
+    }, [tokenUser, verified])
     useEffect(() => {
         let token = localStorage.getItem('myTkn')
         const headers = {
@@ -127,7 +147,8 @@ const AlamatPage  = () => {
       }
 
       
-    return(
+    const alamatPage = () => {
+      return(
         <div>
           <div className="container-pp">
             <div>
@@ -162,7 +183,9 @@ const AlamatPage  = () => {
                            loading ? 
                            <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
                            :
-                           <div className="box-mp">{printData()}</div>
+                           <div className="box-mp">{printData()}
+                                <div className="button-tambah-alamat-2"  onClick={() => navigate('/FormAddress')} >Add New Address</div>
+                           </div>
                          }
                         </>
                         :
@@ -182,12 +205,12 @@ const AlamatPage  = () => {
                       }
              <div className="box-pagination-semua d-flex">
              {
-               data.length > 1 ?
+               data.length > 2 ?
                <ul className="pageNumbers2">
           
                <li className="mx-3">
                      {
-                        data.length > 1 ?
+                        data.length > 2 ?
                         <button
                        onClick={handlePrevbtn}
                        disabled={currentPage == pages[0] ? true : false}
@@ -205,7 +228,7 @@ const AlamatPage  = () => {
   
                    <li>
                      {
-                        data.length > 1 ?
+                        data.length > 2 ?
                         <button
                         onClick={handleNextbtn}
                         disabled={currentPage == pages[pages.length - 1] ? true : false}
@@ -234,6 +257,35 @@ const AlamatPage  = () => {
         
         </div>
     )
+    }
+
+    if(localStorage.getItem('myTkn')){
+      if(verified === 0){
+        return(
+          <Navigate to='/verification' />
+        )
+      }else{
+        return(
+          <>{alamatPage()}</>
+        )
+      }
+    }else{
+      if(localStorage.getItem('token') === tokenUser){
+        if(verified === 0){
+          return(
+            <Navigate to='/verification' />
+          )
+        }else{
+          return(
+            <>{alamatPage()}</>
+          )  
+        }
+      }else{
+        return(
+          <Navigate to='/' />
+        ) 
+      }
+    }
 }
 
 export default AlamatPage

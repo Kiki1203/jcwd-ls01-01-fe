@@ -157,6 +157,13 @@
   margin-left: -20px;
 }
 
+.box-unggah-resep-2 {
+  width: 600px;
+  height: 50px;
+  margin-left: 200px;
+  margin-top: 20px;
+}
+
 .tulisan-perlu-resep {
   margin-top: 35px;
   font-family: 'Public Sans';
@@ -167,6 +174,18 @@
   display: flex;
   align-items: center;
   color: #213360;
+}
+
+.keterangan-verify{
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  margin-right: 30px;
+  margin-top: 5px;
+  width: 300px;
 }
 
 .btn-unggah-resep {
@@ -382,7 +401,7 @@
 
 .hamil {
   position: absolute;
-  left: 150px;
+  left: 120px;
   top: 1345px;
   width: 338px;
   height: 212px;
@@ -392,7 +411,7 @@
   position: absolute;
   width: 348px;
   height: 212px;
-  left: 650px;
+  left: 620px;
   top: 1330px;
 }
 
@@ -400,7 +419,7 @@
   position: absolute;
   width: 294px;
   height: 249px;
-  left: 670px;
+  left: 620px;
   top: 1330px;
 }
 
@@ -1163,7 +1182,7 @@
   .hamil {
     position: absolute;
     left: 25px;
-    top: 1335px;
+    top: 1400px;
     width: 330px;
     height: 220px;
   }
@@ -1173,7 +1192,7 @@
     width: 348px;
     height: 212px;
     left: 25px;
-    top: 1550px;
+    top: 1630px;
   }
 
   .friend {
@@ -1181,7 +1200,7 @@
     width: 294px;
     height: 249px;
     left: 25px;
-    top: 1550px;
+    top: 1630px;
   }
 
   .program-hamil {
@@ -1522,6 +1541,14 @@
     color: #b4b9c7;
     text-decoration-line: line-through;
   }
+
+  .box-unggah-resep-2 {
+    width: 600px;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 20px;
+   
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -1530,6 +1557,15 @@
     width: 100vw;
     padding: 50px 150px 50px 20px;
   }
+
+  .box-unggah-resep-2 {
+    width: 300px;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 20px;
+   
+  }
+  
   #container-jumbotron-payment {
     padding: 0px;
     height: 100px;
@@ -1693,7 +1729,7 @@
     width: 150px;
     height: 20px;
     left: 24px;
-    top: 200px;
+    top: 280px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -1718,7 +1754,7 @@
     width: 10px;
     height: 10px;
     color: #213360;
-    top: 360px;
+    top: 430px;
     left: 230px;
     background: #ffffff;
     border: none;
@@ -1729,7 +1765,7 @@
     width: 173px;
     height: 36px;
     left: 123px;
-    top: 330px;
+    top: 400px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 500;
@@ -1950,7 +1986,7 @@
   .hamil {
     position: absolute;
     left: 25px;
-    top: 1075px;
+    top: 1145px;
     width: 200px;
     height: 125px;
   }
@@ -1960,7 +1996,7 @@
     width: 169px;
     height: 124px;
     left: 24px;
-    top: 1220px;
+    top: 1290px;
   }
 
   .friend {
@@ -1968,7 +2004,7 @@
     width: 200px;
     height: 150px;
     left: 10px;
-    top: 1220px;
+    top: 1290px;
   }
 
   .program-hamil {
@@ -2101,9 +2137,10 @@
 
   .inside-container-home-7 {
     width: 80vw;
-    height: 300px;
+    height: 500px;
     margin-top: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
+   
   }
 
   .jaminan {

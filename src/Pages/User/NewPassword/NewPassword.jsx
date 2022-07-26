@@ -4,7 +4,7 @@ import { InputGroup, Input, Button } from 'reactstrap';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import Swal from 'sweetalert2';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import gambar from './../../../Assets/login.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -116,6 +116,10 @@ const NewPassword = () => {
         console.log('err.response.data.message', err.response.data.message);
       });
   };
+
+  if(localStorage.getItem('myTkn') || localStorage.getItem('token')){
+    return <Navigate to="/" />;
+  }
   return (
     <div>
       <div className="container-fluid">

@@ -63,7 +63,10 @@ if(isRedirect){
     <>
    <div className='container-confirmation'>
          <div className="d-lg-none d-md-none d-block navbar-pro">
-            <div className="logo-to-homepage"><FontAwesomeIcon icon={faAngleLeft} /></div>
+         <Link to={localStorage.getItem('myTkn') ? "/" : "/login"} style={{textDecoration: "none"}}>
+         <div className="logo-to-homepage"><FontAwesomeIcon icon={faAngleLeft} /></div>
+                </Link>
+           
             <div className="tulisan-confirmation">Confirmation</div>
         </div>
         <div>

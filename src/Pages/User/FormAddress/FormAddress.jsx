@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import './FormAddress.css';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
@@ -27,6 +27,27 @@ const FormAddress = () => {
   const previousPath = state?.previousPath
   const transactionId = state?.transactionId
   const navigate = useNavigate()
+  const [verified, setVerified] = useState('')
+  const [tokenUser, setTokenUser] = useState("");
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    
+    let tokens = localStorage.getItem('myTkn')
+    const headers = {
+        headers: { 
+            'Authorization': `${tokens}`,
+        }
+    }
+    axios.get(`${API_URL}/user/checkuserverify`, headers)
+    .then((res) => {
+      
+        setVerified(res.data.verified)
+        setTokenUser(res.data.token)
+    }).catch((err) => {
+        console.log('ini err get',err)
+      
+    })
+  }, [tokenUser, verified])
 
   useEffect(() => {
     getProvince();
@@ -51,6 +72,7 @@ const FormAddress = () => {
     axios
       .get('http://localhost:5000/rajaongkir/getProvince')
       .then((response) => {
+        console.log('provinsi', response.data.data.rajaongkir.results)
         setProvince(response.data.data.rajaongkir.results);
       })
       .catch((err) => {
@@ -138,6 +160,7 @@ const FormAddress = () => {
     addAddress();
   };
 
+ const formAddress = () => {
   return (
     <div style={{ position: 'relative', width: '100vw', overflowX: 'hidden' }}>
       <div id="corner-gradient" />
@@ -238,6 +261,37 @@ const FormAddress = () => {
       </div>
     </div>
   );
+ }
+
+
+ if(localStorage.getItem('myTkn')){
+  if(verified === 0){
+    return(
+      <Navigate to='/verification' />
+    )
+  }else{
+    return(
+      <>{formAddress()}</>
+    )
+  }
+}else{
+  if(localStorage.getItem('token') === tokenUser){
+    if(verified === 0){
+      return(
+        <Navigate to='/verification' />
+      )
+    }else{
+      return(
+        <>{formAddress()}</>
+      )  
+    }
+  }else{
+    return(
+      <Navigate to='/' />
+    ) 
+  }
+}
+
 };
 
 export default FormAddress;

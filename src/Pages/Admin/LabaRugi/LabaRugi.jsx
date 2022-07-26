@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import API_URL  from '../../../Helpers/API_URL.js';
 import './LabaRugi.css';
 import SidebarAdmin from '../../../Components/Admin/SidebarAdmin/SidebarAdmin.jsx';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const LabaRugi = () => {
+  const [tokenAdmin, setTokenAdmin] = useState('')
+  useEffect(() => {
+    let token = localStorage.getItem('token')
+    const headers = {
+        headers: { 
+            'Authorization': `${token}`,
+        }
+    }
+    axios.get(`${API_URL}/admin/gettokenadmin`, headers)
+    .then((res) => {
+        setTokenAdmin(res.data[0].token)
+    }).catch((err) => {
+        console.log('ini err get',err)
+    })
+}, [tokenAdmin])
+
+const labaRugi = () => {
   return (
     <div>
       <SidebarAdmin />
@@ -80,6 +100,31 @@ const LabaRugi = () => {
       </div>
     </div>
   );
+
+}
+
+ 
+  if(localStorage.getItem('myTkn')){
+    if(localStorage.getItem('myTkn') === tokenAdmin){
+        return(
+            <>{labaRugi()}</>
+        )
+    }else{
+        return(
+            <Navigate to='/' />
+        )
+    }
+}else{
+    if(localStorage.getItem('token') === tokenAdmin){
+        return(
+            <>{labaRugi()}</>
+        )
+    }else if(!localStorage.getItem('token')){
+        return(
+            <Navigate to='/loginadmin' />
+        )
+    }
+}
 };
 
 export default LabaRugi;
