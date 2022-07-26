@@ -1,11 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import './UploadSuccess.css';
 import uploadsuccess from '../../../Assets/uploadSuccess.svg';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
+import axios from 'axios';
+import API_URL  from '../../../Helpers/API_URL.js';
 
 const UploadSuccess = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false)
+    const [verified, setVerified] = useState('')
+    const [tokenUser, setTokenUser] = useState("");
+    useEffect(() => {
+      setLoading(true)
+      let tokens = localStorage.getItem('myTkn')
+      const headers = {
+          headers: { 
+              'Authorization': `${tokens}`,
+          }
+      }
+      axios.get(`${API_URL}/user/checkuserverify`, headers)
+      .then((res) => {
+        setLoading(false)
+          setVerified(res.data.verified)
+          setTokenUser(res.data.token)
+      }).catch((err) => {
+          console.log('ini err get',err)
+          setLoading(false)
+      })
+    }, [tokenUser, verified])
 
+ const uploudSukses = () => {
   return (
     <div className="container-fluid container-upload-success">
       <div className="row justify-content-center">
@@ -32,6 +56,35 @@ const UploadSuccess = () => {
       </div>
     </div>
   );
+ }
+
+  if(localStorage.getItem('myTkn')){
+    if(verified === 0){
+      return(
+        <Navigate to='/verification' />
+      )
+    }else{
+      return(
+        <>{uploudSukses()}</>
+      )
+    }
+  }else{
+    if(localStorage.getItem('token') === tokenUser){
+      if(verified === 0){
+        return(
+          <Navigate to='/verification' />
+        )
+      }else{
+        return(
+          <>{uploudSukses()}</>
+        )  
+      }
+    }else{
+      return(
+        <Navigate to='/' />
+      ) 
+    }
+  }
 };
 
 export default UploadSuccess;

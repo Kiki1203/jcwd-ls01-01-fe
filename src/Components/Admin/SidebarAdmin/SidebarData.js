@@ -18,11 +18,7 @@ export const SidebarData = [
       {
         title: 'Daftar Produk',
         path: '/daftarprodukadmin',
-      },
-      {
-        title: 'Tambah Produk',
-        path: '/tambahproduk',
-      },
+      }
     ],
   },
   {

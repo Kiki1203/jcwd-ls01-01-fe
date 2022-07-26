@@ -13,6 +13,7 @@ import Sidebar2 from "../../SidebarProsesPemesanan/Sidebar2";
 import { RingLoader } from "react-spinners";
 import FooterMobile from "../../Footer/FooterMobile.jsx"
 import noProductIllust from '../../../../Assets/no-product.svg';
+import ModalZoomResep2 from '../SemuaPesanan/ModalZoomResep2.jsx';
 
 const TabDibatalkan  = () => {
     
@@ -30,9 +31,11 @@ const TabDibatalkan  = () => {
   const [openModal, setOpenModal] = useState(false)
   const [verified, setVerified] = useState('')
   const [token, setToken] = useState('')
+  const [openModal2, setOpenModal2] = useState(false)
+  const [gambar, setGambar] = useState("")
 
   useEffect(() => {
-    setLoading(true)
+   
     let tokens = localStorage.getItem('myTkn')
     const headers = {
         headers: { 
@@ -41,12 +44,12 @@ const TabDibatalkan  = () => {
     }
     axios.get(`${API_URL}/user/checkuserverify`, headers)
     .then((res) => {
-      setLoading(false)
+      
         setVerified(res.data.verified)
         setToken(res.data.token)
     }).catch((err) => {
         console.log('ini err get',err)
-        setLoading(false)
+        
     })
   }, [token, verified])
 
@@ -77,6 +80,11 @@ const TabDibatalkan  = () => {
     setOpenModal(true)
 }
 
+const openZoom = (gambar) => {
+  setOpenModal2(true)
+  setGambar(gambar)
+}
+
   const printData = (props) => {
     return data.map((value, index) => {
         return (
@@ -85,6 +93,9 @@ const TabDibatalkan  = () => {
                   {
                           openModal && <Tampilkan2 setOpenModal={setOpenModal}  id={idProduk}/>
                   }
+                  {
+                        openModal2 && <ModalZoomResep2 setOpenModal2={setOpenModal2} setGambar={gambar}/>
+                 }
                     <div className="inside-box-semua-pesanan">
                           <div className="tanggal-semua-pesanan">{moment(value.tanggal_transaksi).format('LLL')}</div>
                           <div className="notifikasi-dibatalkan-pesanan"><div className="status-dibatalkan-pesanan">Pesanan {value.status_transaksi}</div></div>
@@ -98,7 +109,7 @@ const TabDibatalkan  = () => {
                               <div className="nama-obat-semua-pesanan">Nomor Resep</div>
                               <div className="harga-obat-semua-pesanan">TIMER</div>
                               <div  className="jumlah-obat-semua-pesanan mt-2">{value.result2[0].no_pemesanan}</div>
-                              <div className="button-tampilkan-detail-semua" >Perbesar gambar</div>
+                              <div className="button-tampilkan-detail-semua" onClick={() => openZoom(value.result2[0].gambar)}  >Perbesar gambar</div>
                               </>
                               :
                               <>

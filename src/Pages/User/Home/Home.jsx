@@ -35,7 +35,14 @@ import logo from './../../../Assets/LogoFull.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, Navigate } from "react-router-dom";
-
+import Swal from 'sweetalert2';
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 5000,
+  timerProgressBar: true,
+});
 
 const Home = () => {
   const [loading, setLoading] = React.useState(false);
@@ -44,6 +51,36 @@ const Home = () => {
   const [verified, setVerified] = useState('')
   const [token, setToken] = useState('')
   const navigate = useNavigate()
+
+  const onResendEmail = () => {
+    let token = localStorage.getItem('myTkn');
+    setLoading(true)
+    axios.post(
+      `${API_URL}/user/resend`,
+      {},
+      {
+        headers: {
+          Authorization: token,
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+      .then((res) => {
+        setLoading(false)
+        Swal.fire({
+          title: 'Success!',
+          text: 'Silahkan Check Email untuk Verifikasi',
+          icon: 'success',
+          confirmButtonText: 'Okay!',
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false)
+      });
+  };
+
   useEffect(() => {
     setLoading(true)
     axios.get(`${API_URL}/product/homeproduk`)
@@ -205,6 +242,52 @@ const homePage = () => {
            </div>
           </div>
         </div>
+        {
+           verified === 0 ?
+           <>
+           <div className="box-unggah-resep-2 d-lg-block d-md-block d-none">
+            <div className="d-flex">
+              <div className='keterangan-verify' style={{color: "red"}}>Akun anda belum terverifikasi, silahkan check email atau klik button berikut:</div>
+           <div className="d-lg-none d-md-block d-none">
+           <button className="button-resend-email"   style={{marginTop: "-130px", marginLeft: "250px"}}disabled={loading} onClick={() => onResendEmail()}>
+              {
+                loading ?
+                'Loading..'
+                :
+                'Resend Email Verification'
+              }
+            </button>
+           </div>
+         <div className="d-lg-block d-md-none d-none">
+         <button className="button-resend-email"   style={{marginTop: "50px"}}disabled={loading} onClick={() => onResendEmail()}>
+              {
+                loading ?
+                'Loading..'
+                :
+                'Resend Email Verification'
+              }
+            </button>
+         </div>
+              </div>
+           </div>
+           <div className="box-unggah-resep-2 d-lg-none d-md-none d-block">
+            <div className="d-flex">
+              <div className='keterangan-verify' style={{color: "red", fontSize: "12px"}}>Klik button berikut untuk verifikasi akun:</div>
+              <button className="button-resend-email"   style={{marginTop: "-210px"}}disabled={loading} onClick={() => onResendEmail()}>
+              {
+                loading ?
+                'Loading..'
+                :
+                'Resend Email Verification'
+              }
+            </button>
+              </div>
+           </div>
+           </>
+           :
+           <></>
+        }
+      
         <div className='inside-container-home-2'>
        <div  className='d-lg-block d-md-block d-none'>
        <img src={jumbotron2} alt="" className="jumbotron2" />
@@ -220,7 +303,15 @@ const homePage = () => {
          !localStorage.getItem('myTkn') ?
         <FontAwesomeIcon icon={faAngleRight} onClick={() => navigate('/login')} className='btn-unggah-resep'/>
         :
-        <FontAwesomeIcon icon={faAngleRight} onClick={() => navigate('/uploadresep')} className='btn-unggah-resep'/>
+        <>
+        {
+          verified === 0 ?
+          <FontAwesomeIcon icon={faAngleRight} onClick={() => navigate('/verification')} className='btn-unggah-resep'/>
+          :
+          <FontAwesomeIcon icon={faAngleRight} onClick={() => navigate('/uploadresep')} className='btn-unggah-resep'/>
+        }
+        </>
+        
        }
           </div>
          <div className='d-lg-block d-md-block d-none'>
@@ -229,7 +320,14 @@ const homePage = () => {
           !localStorage.getItem('myTkn') ?
           <button className='btn-unggah-resep' onClick={() => navigate('/login')}>Unggah Resep</button>
           :
+         <>
+         {
+          verified === 0 ?
+          <button className='btn-unggah-resep' onClick={() => navigate('/verification')}>Unggah Resep</button>
+          :
           <button className='btn-unggah-resep' onClick={() => navigate('/uploadresep')}>Unggah Resep</button>
+         }
+         </>
          }
         
          </div>
@@ -374,26 +472,14 @@ const homePage = () => {
 
 
 if(localStorage.getItem('myTkn')){
-  if(verified === 0){
-    return(
-      <Navigate to='/verification' />
-    )
-  }else{
-    return(
-      <>{homePage()}</>
-    )
-  }
+  return(
+    <>{homePage()}</>
+  )
 }else{
   if(localStorage.getItem('token') === token){
-    if(verified === 0){
-      return(
-        <Navigate to='/verification' />
-      )
-    }else{
-      return(
-        <>{homePage()}</>
-      )  
-    }
+    return(
+      <>{homePage()}</>
+    )  
   }else{
     return(
       <>{homePage()}</>

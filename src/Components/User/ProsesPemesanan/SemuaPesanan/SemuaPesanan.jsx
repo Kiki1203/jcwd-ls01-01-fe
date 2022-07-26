@@ -13,6 +13,7 @@ import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import { RingLoader } from "react-spinners";
 import FooterMobile from "../../Footer/FooterMobile.jsx"
 import noProductIllust from '../../../../Assets/no-product.svg';
+import ModalZoomResep2 from './ModalZoomResep2.jsx';
 
 // PAGE INI MENAMPILKAN SEMUA PROSES PESANAN USER
 const SemuaPesanan  = () => {
@@ -31,6 +32,8 @@ const SemuaPesanan  = () => {
   const [verified, setVerified] = useState('')
   const [token, setToken] = useState('')
   const { pathname } = useLocation();
+  const [openModal2, setOpenModal2] = useState(false)
+  const [gambar, setGambar] = useState("")
 
   useEffect(() => {
     setLoading(true)
@@ -92,6 +95,10 @@ const SemuaPesanan  = () => {
       })
     }
   
+const openZoom = (gambar) => {
+  setOpenModal2(true)
+  setGambar(gambar)
+}
 
   const printData = (props) => {
     return data.map((value, index) => {
@@ -101,6 +108,9 @@ const SemuaPesanan  = () => {
             {
                     openModal && <Tampilkan setOpenModal={setOpenModal}  id={idProduk}/>
              }
+               {
+                        openModal2 && <ModalZoomResep2 setOpenModal2={setOpenModal2} setGambar={gambar}/>
+                 }
           <div className="inside-box-semua-pesanan">
               <div className="tanggal-semua-pesanan">{moment(value.tanggal_transaksi).format('LLL')}</div>
               {
@@ -153,8 +163,8 @@ const SemuaPesanan  = () => {
                   </div>
                   <div className="nama-obat-semua-pesanan">Nomor Resep</div>
                   <div className="harga-obat-semua-pesanan">TIMER</div>
-                  <div  className="jumlah-obat-semua-pesanan "  style={{marginTop: '-10px'}}>{value.resultRiwayatResep[0].no_pemesanan}</div>
-                  <div className="button-tampilkan-detail-semua" >Perbesar gambar</div>
+                  <div  className="jumlah-obat-semua-pesanan "  style={{marginTop: '0px'}}>{value.resultRiwayatResep[0].no_pemesanan}</div>
+                  <div className="button-tampilkan-detail-semua"  onClick={() => openZoom(value.resultRiwayatResep[0].gambar)} >Perbesar gambar</div>
                   <div className="d-lg-none d-md-none d-block">
                   <div className="garis-semua-resep"></div>
                   <div className="box-chat-cs-semua-resep" style={{marginTop: '30px'}}>
@@ -171,7 +181,7 @@ const SemuaPesanan  = () => {
                   <div className="nama-obat-semua-pesanan">Nomor Resep</div>
                   <div className="harga-obat-semua-pesanan">TIMER</div>
                   <div  className="jumlah-obat-semua-pesanan" style={{marginTop: '0px'}}>{value.result2[0].no_pemesanan}</div>
-                  <div className="button-tampilkan-detail-semua" >Perbesar gambar</div>
+                  <div className="button-tampilkan-detail-semua"  onClick={() => openZoom(value.result2[0].gambar_resep)}>Perbesar gambar</div>
                   <div className="d-lg-none d-md-none d-block">
                   <div className="garis-semua-resep"></div>
                   <div className="box-chat-cs-semua-resep" style={{marginTop: '30px'}}>

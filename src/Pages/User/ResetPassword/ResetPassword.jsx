@@ -4,7 +4,7 @@ import { InputGroup, InputGroupText, Input, Button } from 'reactstrap';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import PulseLoader from 'react-spinners/PulseLoader';
 
 import gambar from './../../../Assets/login.svg';
@@ -51,6 +51,10 @@ const ResetPassword = () => {
         console.log('err.response.data.message', err.response.data.message);
       });
   };
+
+  if(localStorage.getItem('myTkn') || localStorage.getItem('token')){
+    return <Navigate to="/" />;
+  }
   return (
     <div>
       <div className="container-fluid">

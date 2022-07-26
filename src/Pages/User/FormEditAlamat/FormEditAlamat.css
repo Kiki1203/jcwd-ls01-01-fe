@@ -106,5 +106,15 @@ select::-ms-expand{
 }
 
 @media only screen and (max-width: 500px) {
-
+    #page-container-ap{
+        margin-top: 92px;
+        height: 700px;
+        width: 90vw;
+        padding: 0px 0px 20px 0px;
+        margin-top: 150px;
+        margin-left: 20px;
+        display: flex;
+        justify-content: center;
+       
+    }
 }

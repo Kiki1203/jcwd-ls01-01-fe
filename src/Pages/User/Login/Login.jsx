@@ -77,14 +77,12 @@ const Login = () => {
         }
         if (res.data.error === false) {
           localStorage.setItem('myTkn', res.data.token);
-          if (res.data.token) {
-            if (res.data.verified === 0) {
-              setMyTkn(res.data.token);
-              navigate('/verification');
-            } else if (res.data.verified === 1) {
-              setMyTkn(res.data.token);
-              navigate('/');
-            }
+          if (res.data.verified === 0) {
+            setMyTkn(res.data.token);
+            navigate('/verification');
+          } else if (res.data.verified === 1) {
+            setMyTkn(res.data.token);
+            navigate('/');
           }
         }
       })
@@ -205,17 +203,7 @@ const Login = () => {
     }
   }
 
-  //   if(localStorage.getItem('token')){
-  //     return(
-  //         <Navigate to='/homeadmin' />
-  //     )
-  //   }
 
-  //   if(localStorage.getItem('myTkn')){
-  //     return(
-  //         <Navigate to='/' />
-  //     )
-  // }
 };
 
 export default Login;

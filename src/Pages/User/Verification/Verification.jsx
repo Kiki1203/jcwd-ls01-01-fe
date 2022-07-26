@@ -4,8 +4,8 @@ import Axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import VerifyPage from '../../../Assets/VerifyPage.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import { useParams, Navigate } from 'react-router-dom'
+import { faAngleLeft, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { useParams, Navigate, useNavigate } from 'react-router-dom'
 import FooterMobile from '../../../Components/User/Footer/FooterMobile.jsx'
 // SweetAlert
 import Swal from 'sweetalert2';
@@ -21,6 +21,12 @@ const Verification = () => {
   const [verified, setVerified] = useState("");
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState('')
+  const navigate = useNavigate()
+
+   const btnLogOut = () => {
+    localStorage.removeItem('myTkn');
+    navigate("/")
+  }
   const onResendEmail = () => {
     let token = localStorage.getItem('myTkn');
     setLoading(true)
@@ -78,11 +84,13 @@ const Verification = () => {
         <div className="d-lg-none d-md-none d-block navbar-pro">
             <FontAwesomeIcon icon={faAngleLeft} className="logove1" />
             <div className="tulisan-verification">Verification</div>
+            <FontAwesomeIcon icon={faArrowRightFromBracket}  onClick={() => btnLogOut()} style={{textDecoration: "none", cursor:"pointer", marginLeft: "320px", marginTop: "50px"}} />
         </div>
         <div className='box-verification-page'>
             <div className="logo-verify-page"><img src={VerifyPage} alt=""/></div>
             <div className="tulisan-oops">Oops... Maaf, </div>
-            <div className="tulisan-not-allowed">Anda tidak diizinkan mengakses halaman ini, jangan lupa untuk menverifikasi akun Anda, atau klik tombol di bawah ini untuk mengirim ulang link verifikasi:</div>
+            <div className="tulisan-not-allowed">Anda tidak diizinkan mengakses halaman yang Anda tuju. Jangan lupa untuk menverifikasi akun Anda, atau klik tombol di bawah ini untuk mengirim ulang link verifikasi:</div>
+
             <button className="button-resend-email" disabled={loading} onClick={() => onResendEmail()}>
               {
                 loading ?

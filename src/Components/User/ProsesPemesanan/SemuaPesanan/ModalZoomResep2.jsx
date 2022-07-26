@@ -7,18 +7,18 @@ import {
   } from "@pronestor/react-zoom-pan-pinch";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import API_URL  from '../../../Helpers/API_URL.js';
+import API_URL  from '../../../../Helpers/API_URL.js';
 
 
-function ModalZoomResep({setOpenModal, setGambar}) {
- 
+function ModalZoomResep2({setOpenModal2, setGambar}) {
+
 
     return (
-        <div className='modal-background fixed-top' onClick={() => setOpenModal(false)}>
+        <div className='modal-background fixed-top' onClick={() => setOpenModal2(false)}>
             <div className='modal-container' style={{height:'500px', width:'370px'}} onClick={e => e.stopPropagation()}>
                 <FontAwesomeIcon icon={faXmark} className='close-icon'
                     style={{zIndex:'999'}}
-                    onClick={() => setOpenModal(false)}
+                    onClick={() => setOpenModal2(false)}
                     />
             <div className='resep-mid-container'>
             <div style={{position:'relative', width:'330px', height:'430px', marginBottom:'15px', backgroundColor:'lightgray'}}>
@@ -54,4 +54,4 @@ function ModalZoomResep({setOpenModal, setGambar}) {
     )
 }
 
-export default ModalZoomResep;
+export default ModalZoomResep2;
