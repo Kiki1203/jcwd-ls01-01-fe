@@ -8,8 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Navigate, useNavigate } from 'react-router-dom';
 
+
 const BukuKas = () => {
-  const [tokenAdmin, setTokenAdmin] = useState('')
+  const [data, setData] = useState([]);
+  const [data1, setData1] = useState([]);
+    const [tokenAdmin, setTokenAdmin] = useState('')
   useEffect(() => {
     let token = localStorage.getItem('token')
     const headers = {
@@ -24,6 +27,28 @@ const BukuKas = () => {
         console.log('ini err get',err)
     })
 }, [tokenAdmin])
+  const fetchbukukas = async () => {
+    const response = await axios.get('http://localhost:5000/admin/bukukas').catch((err) => console.log(err));
+    if (response) {
+      const databukukas = response.data;
+      console.log('datamasuk', databukukas.masuk);
+      setData(databukukas.masuk);
+      setData1(databukukas.keluar);
+    }
+  };
+
+  useEffect(() => {
+    fetchbukukas();
+  }, []);
+
+  const rupiah = (number) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+    }).format(number);
+  };
+
+
 
   const bukuKas = () => {
     return (
@@ -58,37 +83,47 @@ const BukuKas = () => {
                   </div>
                 </div>
               </div>
-              <div className="box-table-isi">
-                <table className="table">
-                  <thead style={{ background: '#213360' }} className="box-table-isi">
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td colspan="2">Larry the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            </div>
+            <div className="box-table-isi">
+              <table className="table">
+                <thead style={{ background: '#213360' }} className="box-table-isi">
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Tanggal</th>
+                    <th scope="col">Aktifitas</th>
+                    <th scope="col">Masuk</th>
+                    <th scope="col">Keluar</th>
+                    <th scope="col">Saldo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((value, index) => {
+                    return (
+                      <tr key={value.id}>
+                        <th scope="row">{value.noFakturMasuk}</th>
+                        <td>{value.tanggalMasuk.split('T')[0]}</td>
+                        <td>N0.Faktur:{value.noFakturMasuk}MOB</td>
+                        <td>{rupiah(value.hargaBeli)}</td>
+                        <td>-</td>
+                        <td>{rupiah(value.hargaBeli * value.stokMasuk)}</td>
+                      </tr>
+                    );
+                  })}
+                  {data1.map((value, index) => {
+                    return (
+                      <tr key={value.id}>
+                        <th scope="row">{value.id}</th>
+                        <td>{value.tanggalKeluar.split('T')[0]}</td>
+                        <td>N0.Faktur:{value.noFakturKeluar}</td>
+                        <td>-</td>
+                        <td>{rupiah(value.hargaKeluar)}</td>
+                        <td>{rupiah(value.hargaKeluar * 3)}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+           
             </div>
           </div>
         </div>

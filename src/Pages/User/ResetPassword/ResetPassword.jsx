@@ -63,7 +63,7 @@ const ResetPassword = () => {
             <img src={gambar} alt="" />
           </div>
           <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 box-form-register">
-            <div className="form-newpassword">
+            <div className="form-resetpassword">
               <div className="mb-5 mkm">Lupa Password</div>
               <div className="">Email</div>
               <InputGroup className="mb-5">
