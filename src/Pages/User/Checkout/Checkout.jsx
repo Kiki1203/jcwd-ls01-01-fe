@@ -1,81 +1,85 @@
 import React, { useState, useEffect } from 'react';
 import './Checkout.css';
 import axios from 'axios';
-import API_URL from "../../../Helpers/API_URL.js"
+import API_URL from '../../../Helpers/API_URL.js';
 import { useNavigate, useParams, useLocation, useSearchParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import PaymentMethod from '../../../Components/User/PaymentMethod/PaymentMethod.jsx';
 import ChangeAddress from '../../../Components/User/ChangeAddress/ChangeAddress.jsx';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 const Checkout = () => {
-  const [products, setProducts] = useState([])
-  const [addresses, setAddresses] = useState([])
-  const [berat1, setBerat] = useState('')
-  const [selectedAddress, setSelectedAddress] = useState({})
-  const [selectedKurir, setSelectedKurir] = useState(null)
-  const [selectedPaymentMtd, setSelectedPaymentMtd] = useState(null)
-  const [kurirOpen, setKurirOpen] = useState(false)
-  const [openMdlAlamat, setOpenMdlAlamat] = useState(false)
-  const [openMdlPembayaran, setOpenMdlPembayaran] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [products, setProducts] = useState([]);
+  const [addresses, setAddresses] = useState([]);
+  const [berat1, setBerat] = useState('');
+  const [selectedAddress, setSelectedAddress] = useState({});
+  const [selectedKurir, setSelectedKurir] = useState(null);
+  const [selectedPaymentMtd, setSelectedPaymentMtd] = useState(null);
+  const [kurirOpen, setKurirOpen] = useState(false);
+  const [openMdlAlamat, setOpenMdlAlamat] = useState(false);
+  const [openMdlPembayaran, setOpenMdlPembayaran] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [loadingbutton, setLoadingButton] = useState(false);
-  const [error, setError] = useState(false)
-  const [errorMsg, setErrorMsg] = useState('')
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [arraykurir, setArraykurir] = useState([]);
-  const token = localStorage.getItem('myTkn')
-  const navigate = useNavigate()
-  const params = useParams()
-  const jenisTransaksi = params.jenis
+  const token = localStorage.getItem('myTkn');
+  const navigate = useNavigate();
+  const params = useParams();
+  const jenisTransaksi = params.jenis;
   const { state } = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams()
-  let idTransaksi = searchParams.get('id')
+  const [searchParams, setSearchParams] = useSearchParams();
+  let idTransaksi = searchParams.get('id');
 
   useEffect(() => {
-    setLoading(true)
-    setError(false)
-    if(jenisTransaksi === 'beli-langsung'){
-      axios.get(`${API_URL}/transaction/getcheckoutdatabeli?productId=${state?.productId}&quantity=${state?.quantity}`, {headers: {authorization: token}})
-      .then(res => {
-        setLoading(false)
-        setProducts([...res.data.product])
-        setAddresses([...res.data.alamat])
-        setSelectedAddress(res.data.alamat.find(item => item.alamat_utama === 1))
-      })
-      .catch(e => {
-        setLoading(false)
-        setError(true)
-        setErrorMsg(e.message)
-      })
-    } else if(jenisTransaksi === 'produk-bebas'){
-      axios.get(`${API_URL}/transaction/getcheckoutdata`, {headers: {authorization: token}})
-      .then(res => {
-        setLoading(false)
-        setProducts([...res.data.products])
-        setAddresses([...res.data.alamat])
-        setSelectedAddress(res.data.alamat.find(item => item.alamat_utama === 1))
-      })
-      .catch(e => {
-        setLoading(false)
-        setError(true)
-        setErrorMsg(e.message)
-      })
-    } else if(jenisTransaksi.includes('resep')){
-      axios.get(`${API_URL}/transaction/getcheckoutdataresep?id=${idTransaksi}`, {headers: {authorization: token}})
-      .then(res => {
-        setLoading(false)
-        setProducts([...res.data.products])
-        setAddresses([...res.data.alamat])
-        let mainAddress = res.data.alamat.find(item => item.alamat_utama === 1)
-        mainAddress ? setSelectedAddress(mainAddress) : setSelectedAddress(res.data.alamat[0]) 
-      })
-      .catch(e => {
-        setLoading(false)
-        setError(true)
-        setErrorMsg(e.message)
-      })
+    setLoading(true);
+    setError(false);
+    if (jenisTransaksi === 'beli-langsung') {
+      axios
+        .get(`${API_URL}/transaction/getcheckoutdatabeli?productId=${state?.productId}&quantity=${state?.quantity}`, { headers: { authorization: token } })
+        .then((res) => {
+          setLoading(false);
+          setProducts([...res.data.product]);
+          setAddresses([...res.data.alamat]);
+          setSelectedAddress(res.data.alamat.find((item) => item.alamat_utama === 1));
+        })
+        .catch((e) => {
+          setLoading(false);
+          setError(true);
+          setErrorMsg(e.message);
+        });
+    } else if (jenisTransaksi === 'produk-bebas') {
+      axios
+        .get(`${API_URL}/transaction/getcheckoutdata`, { headers: { authorization: token } })
+        .then((res) => {
+          setLoading(false);
+          setProducts([...res.data.products]);
+          setAddresses([...res.data.alamat]);
+          setSelectedAddress(res.data.alamat.find((item) => item.alamat_utama === 1));
+        })
+        .catch((e) => {
+          setLoading(false);
+          setError(true);
+          setErrorMsg(e.message);
+        });
+    } else if (jenisTransaksi.includes('resep')) {
+      axios
+        .get(`${API_URL}/transaction/getcheckoutdataresep?id=${idTransaksi}`, { headers: { authorization: token } })
+        .then((res) => {
+          setLoading(false);
+          setProducts([...res.data.products]);
+          setAddresses([...res.data.alamat]);
+          let mainAddress = res.data.alamat.find((item) => item.alamat_utama === 1);
+          mainAddress ? setSelectedAddress(mainAddress) : setSelectedAddress(res.data.alamat[0]);
+        })
+        .catch((e) => {
+          setLoading(false);
+          setError(true);
+          setErrorMsg(e.message);
+        });
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     let berat2 = 0;
@@ -125,23 +129,22 @@ const Checkout = () => {
         });
     }
   }, [selectedAddress, berat1]);
-  
+
   const totalHargaFunc = () => {
-    let total = 0
-    products.forEach(p => {
-      p.diskon ? total += p.diskon * p.quantity
-      : total += p.harga * p.quantity
-    })
-    return total
-  }
-  
+    let total = 0;
+    products.forEach((p) => {
+      p.diskon ? (total += p.diskon * p.quantity) : (total += p.harga * p.quantity);
+    });
+    return total;
+  };
+
   const totalQtyFunc = () => {
-    let total = 0
-    products.forEach(p => {
-      total += Number(p.quantity)
-    })
-    return total
-  }
+    let total = 0;
+    products.forEach((p) => {
+      total += Number(p.quantity);
+    });
+    return total;
+  };
 
   return (
     <div style={{ position: 'relative', width: '100vw', overflowX: 'hidden' }}>
@@ -181,8 +184,8 @@ const Checkout = () => {
                 <div style={{ position: 'relative' }}>
                   <div className="custom-select-checkout" style={{ borderRadius: kurirOpen && '10px 10px 0px 0px' }} onClick={() => setKurirOpen(!kurirOpen)}>
                     {loadingbutton ? (
-                      <div type="button" disable>
-                        loading
+                      <div type="button" disabled>
+                        <PulseLoader color={'#FFFFFF'} cssOverride={{ borderColor: 'white', margin: '0 auto' }} size={10} />
                       </div>
                     ) : (
                       <div>
@@ -191,25 +194,27 @@ const Checkout = () => {
                       </div>
                     )}
                   </div>
-                  {kurirOpen && <div className={`options-container`}>
-                    {arraykurir.map((kurir) => {
-                      return (
-                        <div
-                          className="kurir-option"
-                          onClick={() => {
-                            setSelectedKurir(kurir);
-                            setKurirOpen(false);
-                          }}
-                        >
-                          <div>
-                            <p className="kurir-nama">{kurir.nama}</p>
-                            <p className="kurir-etd">{`Estimasi tiba dalam ${kurir.etd} hari`}</p>
+                  {kurirOpen && (
+                    <div className={`options-container`}>
+                      {arraykurir.map((kurir) => {
+                        return (
+                          <div
+                            className="kurir-option"
+                            onClick={() => {
+                              setSelectedKurir(kurir);
+                              setKurirOpen(false);
+                            }}
+                          >
+                            <div>
+                              <p className="kurir-nama">{kurir.nama}</p>
+                              <p className="kurir-etd">{`Estimasi tiba dalam ${kurir.etd} hari`}</p>
+                            </div>
+                            <p className="kurir-tarif">{`Rp${kurir.tarif.toLocaleString('de-DE', { minimumFractionDigits: 0 })}`}</p>
                           </div>
-                          <p className="kurir-tarif">{`Rp${kurir.tarif.toLocaleString('de-DE', { minimumFractionDigits: 0 })}`}</p>
-                        </div>
-                      );
-                    })}
-                  </div>}
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="produk-keranjang-container">

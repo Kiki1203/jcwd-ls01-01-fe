@@ -50,12 +50,49 @@
   font-size: 14px !important;
   line-height: 20px !important;
 }
-
+/* ipad AIR */
 @media (max-width: 991.98px) {
   .image-register {
     display: none !important;
   }
   .form-register {
-    padding: 30px 40px 495px 40px !important;
+    padding: 210px 150px 400px 150px !important;
+  }
+}
+/* ipad mini */
+@media (max-width: 800px) {
+  .image-register {
+    display: none !important;
+  }
+  .form-register {
+    padding: 180px 150px 273px 150px !important;
+  }
+}
+
+/* iphone XR  */
+@media (max-width: 576px) {
+  .image-register {
+    display: none !important;
+  }
+  .form-register {
+    padding: 122px 40px 200px 40px !important;
+  }
+}
+/* iphone 12 PRO  */
+@media (max-width: 391px) {
+  .image-register {
+    display: none !important;
+  }
+  .form-register {
+    padding: 114px 40px 160px 40px !important;
+  }
+}
+/* iphone SE  */
+@media (max-width: 376px) {
+  .image-register {
+    display: none !important;
+  }
+  .form-register {
+    padding: 30px 40px 18vw 40px !important;
   }
 }

@@ -1,3 +1,34 @@
 .container-upload-success {
   padding: 140px 100px 50px 100px;
 }
+/* ipad AIR */
+@media (max-width: 991.98px) {
+  .container-upload-success {
+    padding: 220px 100px 150px 100px;
+  }
+}
+/* ipad mini */
+@media (max-width: 800px) {
+  .container-upload-success {
+    padding: 180px 100px 68px 100px;
+  }
+}
+
+/* iphone XR  */
+@media (max-width: 576px) {
+  .container-upload-success {
+    padding: 210px 0px 50px 0px;
+  }
+}
+/* iphone 12 PRO  */
+@media (max-width: 391px) {
+  .container-upload-success {
+    padding: 190px 0px 50px 10px;
+  }
+}
+/* iphone SE  */
+@media (max-width: 376px) {
+  .container-upload-success {
+    padding: 140px 0px 50px 0px;
+  }
+}

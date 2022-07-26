@@ -71,7 +71,7 @@ const FormAddress = () => {
 
   const getProvince = () => {
     axios
-      .get('http://localhost:5000/rajaongkir/getProvince')
+      .get(`${API_URL}/rajaongkir/getProvince`)
       .then((response) => {
         console.log('provinsi', response.data.data.rajaongkir.results)
         setProvince(response.data.data.rajaongkir.results);
@@ -85,7 +85,7 @@ const FormAddress = () => {
     console.log(e);
     setSelectedindex(null);
     axios
-      .get('http://localhost:5000/rajaongkir/getCity', {
+      .get(`${API_URL}/rajaongkir/getCity`, {
         headers: {
           ProvinceId: e,
         },
@@ -137,6 +137,7 @@ const FormAddress = () => {
           icon: 'success',
           confirmButtonText: 'Oke!',
         });
+
         let destination = ''
         if(previousPath === '/cart'){
           destination = '/checkout/produk-bebas'
@@ -149,7 +150,7 @@ const FormAddress = () => {
         } else if(previousPath === '/ditunggu' || previousPath === '/semuapesanan'){
           destination = `/checkout/resep?id=${transactionId}`
         }
-        navigate(destination)
+        navigate(destination);
       })
       .catch((err) => {
         Swal.fire({
@@ -247,9 +248,7 @@ const FormAddress = () => {
             Simpan sebagai alamat utama
           </label>
           <div className="d-flex justify-content-between mb-5">
-            <button className="button-bayar"
-              style={{ width: '48%', backgroundColor: 'white', color: '#E0004D', border: '2px solid #E0004D' }}
-              onClick={() => navigate(previousPath)}>
+            <button className="button-bayar" style={{ width: '48%', backgroundColor: 'white', color: '#E0004D', border: '2px solid #E0004D' }} onClick={() => navigate(previousPath)}>
               Batalkan
             </button>
             <button
