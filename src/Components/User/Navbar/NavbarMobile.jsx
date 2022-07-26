@@ -13,12 +13,24 @@ const NavbarMobile = () => {
     let [dropdownOpen, setDropdownOpen] = useState(false); 
     const [username, setUsername] = useState([]);
     const [verified, setVerified] = useState([])
-    const navigate = useNavigate()
     const [bubbleOpen, setBubbleOpen] = useState(false)
     const [search, setSearch] = useState('')
     const [products, setProducts] = useState([])
     const [total, setTotal] = useState(0)
     const [token, setToken] = useState('')
+    const navigate = useNavigate()
+
+    useEffect(() => {
+      if(search.length){
+        axios.get(`${API_URL}/product/searchproducts?entry=${search}`, {headers: {'Access-Control-Allow-Origin': '*'}})
+        .then((res) => {
+            setProducts(res.data.products)
+            setTotal(res.data.total)
+        }).catch((err) => {
+            console.log('Error di search:', err)
+        })
+      }
+    }, [search])
 
   return (
     <div className="d-lg-none d-md-none d-block">

@@ -8,6 +8,9 @@ import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import noProductIllust from './../../../Assets/no-product.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import NavbarMobile from '../../../Components/User/Navbar/NavbarMobile';
+import FooterMobile from '../../../Components/User/Footer/FooterMobile';
+import { useSelector } from 'react-redux';
 
 function ProductList(props) {
     const [numProducts, setNumProducts] = useState(0)
@@ -25,6 +28,8 @@ function ProductList(props) {
     const [searchParams, setSearchParams] = useSearchParams()
     let searchQuery = searchParams.get('search')
     const navigate = useNavigate()
+    const {id, isConfirmed} = useSelector((state) => state.user)
+    console.log('id, isConfirmed', id, isConfirmed)
 
     useEffect(() => {
         kategori === 'semua-kategori' && setHeaderKategori('Semua Kategori')
@@ -87,7 +92,7 @@ function ProductList(props) {
         let paginationButtons = []
         for(let i=1; i<=Math.ceil(numProducts/12); i++) {
             paginationButtons.push(<button
-            className={`btn ${pageNumber == i ? 'btn-danger' : 'btn-outline-danger'}`}
+            className={`btn button-paginate-custom ${pageNumber == i ? 'btn-danger' : 'btn-outline-danger'}`}
             style={{marginRight: '5px', marginLeft: '5px'}}
             onClick={() => setPageNumber(i)}>{i}</button>)
         }
@@ -109,6 +114,8 @@ function ProductList(props) {
 
     return (
         <div id='page-container' style={{padding:'50px 0px'}}>
+            <NavbarMobile />
+            <FooterMobile />
             <div id='sidebar'>
                 <div id='kategori'>
                     <div>
@@ -246,9 +253,9 @@ function ProductList(props) {
                 </div>
             </div>
             <div id='products'>
-                <p style={{fontSize:'24px', fontWeight:'700'}}>{headerKategori}</p>
-                <hr style={{borderColor:'#B4B9C7', borderWidth:'2px'}} />
-                <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+                <p className='gone-in-smaller-screen' style={{fontSize:'24px', fontWeight:'700'}}>{headerKategori}</p>
+                <hr className='gone-in-smaller-screen' style={{borderColor:'#B4B9C7', borderWidth:'2px'}} />
+                <div className='gone-in-smaller-screen' style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
                         {
                             searchQuery 
                             ? <div className='filter-bullet'>
@@ -271,6 +278,37 @@ function ProductList(props) {
                         </div>
                     </div>
                 </div>
+                <div className='appear-in-smaller-screen product-category-titles-sm'>
+                <p className='sm-category-title' onClick={ () => searchQuery ? navigate('/kategori/semua-kategori?search=' + searchQuery)
+        : navigate('/kategori/semua-kategori')}>Semua kategori</p>
+                    <p className='sm-category-title'  onClick={ () => searchQuery ? navigate('/kategori/obat-obatan?search=' + searchQuery)
+        : navigate('/kategori/obat-obatan')}>Obat-obatan</p>
+                    <p className='sm-category-title' onClick={() => searchQuery ? navigate('/kategori/nutrisi?search=' + searchQuery)
+        : navigate('/kategori/nutrisi')}>Nutrisi</p>
+                    <p className='sm-category-title' onClick={() => searchQuery ? navigate('/kategori/herbal?search=' + searchQuery)
+        : navigate('/kategori/herbal')}>Herbal</p>
+                    <p className='sm-category-title' onClick={() => searchQuery ? navigate('/kategori/vitamin-suplemen?search=' + searchQuery)
+        : navigate('/kategori/vitamin-suplemen')}>Vitamin & Suplemen</p>
+                    <p className='sm-category-title' onClick={() => searchQuery ? navigate('/kategori/alat-kesehatan?search=' + searchQuery)
+        : navigate('/kategori/alat-kesehatan')}>Alat Kesehatan</p>
+                    <p className='sm-category-title' onClick={() => searchQuery ? navigate('/kategori/perawatan-tubuh?search=' + searchQuery)
+        : navigate('/kategori/perawatan-tubuh')}>Perawatan Tubuh</p>
+                    <p className='sm-category-title' onClick={() => searchQuery ? navigate('/kategori/ibu-anak?search=' + searchQuery)
+        : navigate('/kategori/ibu-anak')}>Ibu & Anak</p>
+                </div>
+                <div className='appear-in-smaller-screen'>
+                    <div className='d-flex mt-3 justify-content-center'>
+                    {
+                        searchQuery 
+                        ? <div className='filter-bullet'>
+                            {`${numProducts} hasil pencarian "${searchQuery}"`}
+                            <FontAwesomeIcon icon={faXmark} className='filter-bullet-x'
+                            onClick={() => setSearchParams({})} />
+                        </div>
+                        : <p className='product-header-description'>{numProducts} produk di {headerKategori}</p>
+                    }
+                    </div>
+                </div>
                 <div id='product-cards-container'>
                     {
                         loading
@@ -286,7 +324,7 @@ function ProductList(props) {
                         </div>
                     }
                 </div>
-                <div className='d-flex justify-content-end'>
+                <div className='d-flex justify-content-center mt-4'>
                     {paginationButtonGenerator()}
                 </div>
             </div>

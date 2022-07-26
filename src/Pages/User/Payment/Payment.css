@@ -131,3 +131,14 @@
     background-color: white;
     cursor:not-allowed; 
 }
+
+.cara-pembayaran-no {
+    width: 20px;
+    color: #737A8D;
+    font-size: 16px;
+}
+
+.cara-pembayaran-desc {
+    color: #737A8D;
+    font-size: 16px;
+}

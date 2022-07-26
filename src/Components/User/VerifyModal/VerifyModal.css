@@ -1,0 +1,25 @@
+.modal-container-verify {
+    height: auto;
+    width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 35px;
+    padding-bottom: 45px;
+}
+
+.modal-verify-text {
+    font: 14px;
+    color: #213360;
+    margin-bottom: 15px;
+    text-align: center;
+}
+@media only screen and (max-width: 500px) {
+    .modal-container-verify {
+        width: 90vw;
+    }
+}

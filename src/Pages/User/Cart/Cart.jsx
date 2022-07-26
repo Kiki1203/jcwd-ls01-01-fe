@@ -12,6 +12,7 @@ import FooterMobile from '../../../Components/User/Footer/FooterMobile.jsx';
 import NavbarMobile from '../../../Components/User/Navbar/NavbarMobile.jsx';
 import Swal from 'sweetalert2';
 import { PulseLoader } from 'react-spinners';
+import { useSelector } from 'react-redux';
 
 function Cart(props) {
   const [products, setProducts] = useState([])
@@ -26,9 +27,15 @@ function Cart(props) {
   const token = localStorage.getItem('myTkn')
   const navigate = useNavigate()
   const { pathname } = useLocation();
-
+  const verified = useSelector(state => state.user.isConfirmed)
+  
   useEffect(() => {
     setLoading(true)
+    if (!token) {
+      navigate('/login');
+    } else if (verified === 0){
+      navigate('/verification')
+    }
     setError(false)
     getCart()
   }, [])

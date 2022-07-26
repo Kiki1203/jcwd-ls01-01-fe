@@ -45,6 +45,17 @@ export const onCheckUserVerify = (token) => {
   };
 };
 
+export const getUserData = (id, isConfirmed) => {
+  return (dispatch) => {
+  dispatch({
+    type: 'GET_USER_DATA',
+    payload: {
+      id: id,
+      isConfirmed: isConfirmed
+    }
+  })}
+}
+
 export const onUserLogout = () => {
   localStorage.removeItem('myTkn');
   return {

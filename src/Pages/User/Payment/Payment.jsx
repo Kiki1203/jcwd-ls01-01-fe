@@ -7,9 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import PaymentProof from '../../../Components/User/PaymentProof/PaymentProof';
+import useCountdown from '../../../../src/Helpers/useCountdown';
+import { RingLoader } from 'react-spinners';
+import Swal from 'sweetalert2';
 
 const Payment = () => {
     const [transaction, setTransaction] = useState({})
+    const [formattedDate, setFormattedDate] = useState('')
     const [metodePembayaran, setMetodePembayaran] = useState({})
     const [products, setproducts] = useState([])
     const [showAllProducts, setShowAllProducts] = useState(false)
@@ -19,6 +23,11 @@ const Payment = () => {
     const transactionId = params.id
     const token = localStorage.getItem('myTkn')
     const navigate = useNavigate()
+    const endTime = new Date().getTime() + (3600000 * 24);
+    const [timeLeft, setEndTime] = useCountdown(endTime);
+      const hours = Math.floor(timeLeft / 3600000);
+      const minutes = Math.floor(timeLeft / 60000) % 60;
+      const seconds = Math.floor(timeLeft / 1000) % 60;
 
     useEffect(() => {
       setLoading(true)
@@ -27,6 +36,9 @@ const Payment = () => {
         setTransaction(res.data.transaction)
         setMetodePembayaran(res.data.metodePembayaran)
         setproducts(res.data.products)
+        let date = new Date(res.data.transaction.createdAt)
+        date.setHours(date.getHours() + 24)
+        setEndTime(date.getTime())
       })
       .catch(e => {
         console.log('masuk error payment', e)
@@ -35,8 +47,57 @@ const Payment = () => {
     }, [])
 
     useEffect(() => {
+      let date = new Date()
+      console.log('waktu_ganti_transaksi', transaction.waktu_ganti_status)
+      if(transaction.waktu_ganti_status){
+        date = new Date(transaction.waktu_ganti_status)
+      } else if(transaction.createdAt){
+        date = new Date(transaction.createdAt)
+      }
+      if(transaction.waktu_ganti_status || transaction.createdAt){
+        date.setHours(date.getHours() + 7 + 24)
+        date = date.toISOString()
+        let formatted = date.substr(8,1) == 0 ? date.substr(9,1) : date.substr(8,2)
+        formatted += ' '
+        formatted += date.substr(5,2) == '01' ? 'Jan' :
+        date.substr(5,2) == '02' ? 'Feb' :
+        date.substr(5,2) == '03' ? 'Mar' :
+        date.substr(5,2) == '04' ? 'Apr' :
+        date.substr(5,2) == '05' ? 'Mei' :
+        date.substr(5,2) == '06' ? 'Jun' :
+        date.substr(5,2) == '07' ? 'Jul' :
+        date.substr(5,2) == '08' ? 'Agu' :       
+        date.substr(5,2) == '09' ? 'Sep' :
+        date.substr(5,2) == '10' ? 'Okt' :
+        date.substr(5,2) == '11' ? 'Nov' :
+        'Des'
+        formatted += ` ${date.substr(0,4)}, ${date.substr(11,5)} WIB`
+        setFormattedDate(formatted)
+      } 
+  }, [transaction])
+
+    useEffect(() => {
       if(transaction.totalPembayaran && metodePembayaran.id && products.length) setLoading(false)
     }, [transaction, metodePembayaran, products])
+
+    const copy = () => {
+      const el = document.createElement('input');
+      el.value = metodePembayaran.no_va
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      Swal.fire({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        text: 'No. VA berhasil disalin!',
+        timer: 5000,
+        color: 'white',
+        background: '#3A3B3C',
+        backdrop: 'rgba(0,0,0,0)'
+      })
+  }
 
   return (
     <div style={{position:'relative', width:'100vw', overflowX:'hidden'}}>
@@ -46,20 +107,22 @@ const Payment = () => {
       <div id='corner-gradient' />
       <div id='page-container'>
         {
-          loading ? <h1>Loading...</h1> :
+          loading ? <div className="d-flex justify-content-center align-items-center"
+                    style={{height:'500px'}}>
+                    <RingLoader color={'#E0004D'} size={150} /> </div> :
           <div id='payment-container'>
           <p id='header-payment'>Menunggu Pembayaran</p>
           <div className='payment-section-container d-flex justify-content-between align-items-center'>
             <div>
               <p className='payment-small-title'>Batas Akhir Pembayaran</p>
-              <p className='payment-deadline'>Kamis, 21 Juli 2022, 20:45</p>
+              <p className='payment-deadline'>{formattedDate}</p>
             </div>
             <div className='d-flex align-items-center'>
-              <p className='payment-timer-number'>23</p>
+              <p className='payment-timer-number'>{hours}</p>
               <p className='payment-timer-colon'>:</p>
-              <p className='payment-timer-number'>38</p>
+              <p className='payment-timer-number'>{minutes}</p>
               <p className='payment-timer-colon'>:</p>
-              <p className='payment-timer-number'>57</p>
+              <p className='payment-timer-number'>{seconds}</p>
 
             </div>
           </div>
@@ -127,7 +190,8 @@ const Payment = () => {
                       <p className='payment-small-title'>Nomor Virtual Account</p>
                       <p className='payment-method-numbers'>{metodePembayaran.no_va}</p>
                     </div>
-                    <div className='d-flex align-items-center' style={{cursor:'pointer'}}>
+                    <div className='d-flex align-items-center' style={{cursor:'pointer'}}
+                      onClick={copy}>
                       <p className='payment-salin'>Salin</p>
                       <FontAwesomeIcon icon={faCopy} style={{marginLeft:'10px', fontSize:'24px', color:'#E0004D'}} />
                     </div>
@@ -155,6 +219,20 @@ const Payment = () => {
               Upload Bukti Pembayaran
             </button>
           </div>
+          <hr />
+            <p id='header-payment' style={{margin:'30px 0px 20px'}}>Cara Pembayaran</p>
+            <div className='cara-pembayaran-desc-container'>
+            {
+              metodePembayaran.cara_bayar_desc.split(',').map((c, i) => {
+                return <div className='d-flex'>
+                  <div className='cara-pembayaran-no'>{`${i + 1}.`}</div>
+                  <div className='cara-pembayaran-desc'>{c}</div>
+
+                </div>
+              })
+            }
+          </div>
+
         </div>
         }
       </div>

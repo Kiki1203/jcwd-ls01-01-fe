@@ -8,6 +8,8 @@ import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
 import SearchBubble from '../SearchBubble/SearchBubble';
+import { useDispatch } from 'react-redux';
+import { getUserData } from '../../../Redux/Actions/userAction';
 
 const Navbar = () => {
   let [dropdownOpen, setDropdownOpen] = useState(false); 
@@ -20,6 +22,7 @@ const Navbar = () => {
   const [total, setTotal] = useState(0)
   const [token, setToken] = useState('')
   let params = useParams();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if(search.length){
@@ -45,6 +48,7 @@ const Navbar = () => {
         setVerified(res.data.verified)
         setUsername(res.data.username)
         setToken(res.data.token)
+        dispatch(getUserData(res.data.id, res.data.verified))
     }).catch((err) => {
         console.log('ini err verified',err)
     })
@@ -52,12 +56,14 @@ const Navbar = () => {
 
   const btnLogOut = () => {
     localStorage.removeItem('myTkn');
+    dispatch(getUserData('',0))
     navigate("/")
   }
 
    const btnLogOut2 = () => {
-    localStorage.removeItem('myTkn'); 
-     navigate("/login")
+    localStorage.removeItem('myTkn');
+    dispatch(getUserData('',0))
+    navigate("/login")
   }
 
   if(localStorage.getItem('token')){

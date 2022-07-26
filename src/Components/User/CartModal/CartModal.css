@@ -80,3 +80,35 @@
     background-color: #cc0047;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 33, 0.08), 0px 4px 12px 4px rgba(155, 0, 0, 0.08);
 }
+
+@media only screen and (max-width: 500px) {
+    .modal-container {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 25px;
+    }
+    .berhasil-ditambahkan {
+        font-size: 15px;
+    }
+    .cart-image {
+        height: 80px;
+        margin-right: 10px;
+    }
+    .lihat-keranjang {
+        background-color: #E0004D;
+        border-radius: 100px;
+        border: none;
+        outline: none;
+        padding: 10px 20px;
+        color: white;
+        font-size: 11px;
+        font-weight: 700;
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+    }
+}

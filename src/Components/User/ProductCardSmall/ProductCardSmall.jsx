@@ -5,14 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import CartModal from '../CartModal/CartModal';
+import VerifyModal from '../VerifyModal/VerifyModal';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function ProductCardSmall({product}) {
     const [openModal, setOpenModal] = useState(false)
+    const [openModalVerify, setOpenModalVerify] = useState(false)
     const navigate = useNavigate()
     const token = localStorage.getItem('myTkn')
+    const verified = useSelector(state => state.user.isConfirmed)
 
     const addToCart = () => {
         axios.post(`${API_URL}/transaction/addtocart`,{
@@ -21,6 +25,7 @@ function ProductCardSmall({product}) {
         },{ headers: {authorization: token}})
         .then((res) => {
             setOpenModal(true)
+            overflowYHidden()
         }).catch((err) => {
           Swal.fire({
             title: 'Error!',
@@ -29,6 +34,12 @@ function ProductCardSmall({product}) {
             confirmButtonText: 'Okay!'
         })
         })
+    }
+
+    const onClickKeranjang = () => {
+        if(verified === 1 && token) {addToCart()}
+        if(verified === 0 && token) {setOpenModalVerify(true)}
+        if(!token) {navigate('/login')}
     }
 
     const overflowYHidden = () => {
@@ -43,6 +54,9 @@ function ProductCardSmall({product}) {
         <div>
             {
                 openModal && <CartModal product={product} setOpenModal={setOpenModal} />
+            }
+            {
+                openModalVerify && <VerifyModal setOpenModal={setOpenModalVerify} />
             }
             <div className='product-card-small' onClick={() => navigate(`/productdetail/${product.id}`)}>
                 <div className='circle' onClick={(e) => e.stopPropagation()}>
@@ -71,8 +85,7 @@ function ProductCardSmall({product}) {
                     </div>
                     : <button className='keranjang' onClick={(e) => {
                         e.stopPropagation()
-                        addToCart()
-                        overflowYHidden()
+                        onClickKeranjang()
                     }}>
                         Keranjang
                     </button>
