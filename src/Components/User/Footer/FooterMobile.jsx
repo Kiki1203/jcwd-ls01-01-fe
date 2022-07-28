@@ -16,11 +16,32 @@ const Footer = () => {
           <FontAwesomeIcon icon={faHome}className='footer-mobile-icon' />
            Beranda
           </div>
-           <div className="beranda-footer" onClick={() => navigate('/kategori/semua-kategori')}>
-          <FontAwesomeIcon icon={faPills} className='footer-mobile-icon' />
-           Kategori
+          { !localStorage.getItem('myTkn') ? 
+          <>
+           <div className="beranda-footer" onClick={() => navigate('/login')}>
+           <FontAwesomeIcon icon={faPills} className='footer-mobile-icon' />
+            Kategori
+           </div>
+           <div className="beranda-footer" onClick={() => navigate('/login')}>
+          <FontAwesomeIcon icon={faReceipt} className='footer-mobile-icon' />
+           Transaksi
           </div>
-          <div className="beranda-footer" onClick={() => navigate('/semuapesanan')}>
+          <div className="beranda-footer" onClick={() => navigate('/login')}>
+          <FontAwesomeIcon icon={faHeadset} className='footer-mobile-icon' />
+           Bantuan
+          </div>
+          <div className="beranda-footer" onClick={() => navigate('/login')}>
+          <FontAwesomeIcon icon={faUser} className='footer-mobile-icon' />
+           Profile
+          </div>
+          </>
+           :
+          <>
+           <div className="beranda-footer" onClick={() => navigate('/kategori/semua-kategori')}>
+           <FontAwesomeIcon icon={faPills} className='footer-mobile-icon' />
+            Kategori
+           </div>
+           <div className="beranda-footer" onClick={() => navigate('/semuapesanan')}>
           <FontAwesomeIcon icon={faReceipt} className='footer-mobile-icon' />
            Transaksi
           </div>
@@ -32,6 +53,9 @@ const Footer = () => {
           <FontAwesomeIcon icon={faUser} className='footer-mobile-icon' />
            Profile
           </div>
+          </>
+          }
+        
         </div>
       </div>
     </div>

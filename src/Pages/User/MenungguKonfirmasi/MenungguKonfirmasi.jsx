@@ -8,7 +8,7 @@ import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
 import ModalZoomResep from './ModalZoomResep.jsx';
-
+import useCountdown from '../../../../src/Helpers/useCountdown';
 import FooterMobile from "../../../Components/User/Footer/FooterMobile.jsx"
 
 const MenungguKonfirmasi  = () => {
@@ -19,6 +19,14 @@ const MenungguKonfirmasi  = () => {
     const [tokenUser, setTokenUser] = useState("");
     const [openModal, setOpenModal] = useState(false)
     const [gambar, setGambar] = useState("")
+    const [transaction, setTransaction] = useState({})
+    const [formattedDate, setFormattedDate] = useState('')
+    const endTime = new Date().getTime() + (60000 * 5);
+    const [timeLeft, setEndTime] = useCountdown(endTime);
+      const hours = Math.floor(timeLeft / 3600000);
+      const minutes = Math.floor(timeLeft / 60000) % 60;
+      const seconds = Math.floor(timeLeft / 1000) % 60;
+
     useEffect(() => {
       
       let tokens = localStorage.getItem('myTkn')
@@ -32,6 +40,7 @@ const MenungguKonfirmasi  = () => {
         
           setVerified(res.data.verified)
           setTokenUser(res.data.token)
+          
       }).catch((err) => {
           console.log('ini err get',err)
          
@@ -48,8 +57,19 @@ const MenungguKonfirmasi  = () => {
         axios.get(`${API_URL}/product/getresep`, headers)
         .then((res) => {
             console.log(res.data)
-            setData(res.data)
-    
+            if(res.data.message){
+              if(res.data.message === "Tidak Ada Data Resep Terbaru"){
+                navigate('/uploadresep');
+              }
+            }else{
+              setData(res.data)
+              for (let i = 0; i < res.data.length; i++) {
+                let date = new Date(res.data[i].tgl_pemesanan)
+                date.setMinutes(date.getMinutes() + 5)
+                setEndTime(date.getTime())
+              }
+            }
+           
         }).catch((err) => {
             console.log('ini err get',err)
         })
@@ -106,7 +126,21 @@ const MenungguKonfirmasi  = () => {
                         </div>
                         <div className="tulisan-perbesar-gambar" onClick={() => openZoom(value.gambar_resep)}>Perbesar Gambar</div>
                         <div className='tulisan-menunggu-balasan'>Mohon menunggu balasan dari apoteker selama 5 menit</div>
-                        <div className='timer-logo-menunggu-konfirmasi'>Timer</div>
+                        <div className='timer-logo-menunggu-konfirmasi'>
+                        <div className='d-flex justify-content-between align-items-center'>
+                            <div>
+                              <p className='payment-deadline'>{formattedDate}</p>
+                            </div>
+                            <div className='d-flex align-items-center'>
+                              <p className='payment-timer-number'>{hours}</p>
+                              <p className='payment-timer-colon'>:</p>
+                              <p className='payment-timer-number'>{minutes}</p>
+                              <p className='payment-timer-colon'>:</p>
+                              <p className='payment-timer-number'>{seconds}</p>
+
+                            </div>
+                          </div>
+                        </div>
                         <div className="garis-dalam-detail-resep-2"></div>
                         <div className="box-batalkan-pengajuan d-flex">
                             <button className="tulisan-batalkan-pengajuan" disabled={loading} onClick={() => onBtnDeleteProduct(value.transaksi_id)}>

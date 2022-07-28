@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState , PureComponent  } from 'react'
 import { Navigate } from 'react-router-dom'
 import './Dashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,7 +11,7 @@ import dua from '../../../Assets/dua.svg'
 import tiga from '../../../Assets/tiga.png'
 import rev1 from '../../../Assets/Rev1.svg'
 import rev2 from '../../../Assets/Rev.png'
-
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, AreaChart, Area, BarChart, Bar, Cell, ResponsiveContainer } from 'recharts';
 
 const DashboardAdmin  = () => {
   const [tokenAdmin, setTokenAdmin] = useState('')
@@ -65,6 +65,95 @@ useEffect(() => {
         console.log('ini err get',err)
     })
 }, [])
+
+const data2 = [
+    {
+      name: 'Jan',
+      obatBebas: 4000,
+      obatRacikan: 2400,
+      amt: 2400,
+    },
+    {
+      name: 'Feb',
+      obatBebas: 3000,
+      obatRacikan: 1398,
+      amt: 2210,
+    },
+    {
+      name: 'Mar',
+      obatBebas: 2000,
+      obatRacikan: 9800,
+      amt: 2290,
+    },
+    {
+      name: 'Apr',
+      obatBebas: 2780,
+      obatRacikan: 3908,
+      amt: 2000,
+    },
+    {
+      name: 'May',
+      obatBebas: 1890,
+    obatRacikan: 4800,
+      amt: 2181,
+    },
+    {
+      name: 'Jun',
+      obatBeas: 2390,
+      obatRacikan: 3800,
+      amt: 2500,
+    },
+    {
+      name: 'Jul',
+      obatBebas: 3490,
+      obatRacikan: 4200,
+      amt: 2100,
+    },
+    {
+      name: 'Ags',
+      obatBebas: 3500,
+      obatRacikan: 4100,
+      amt: 2100,
+    },
+    {
+      name: 'Sep',
+      obatBebas: 3400,
+      obatRacikan: 4300,
+      amt: 2100,
+    },
+    {
+      name: 'Okt',
+      obatBebas: 3495,
+      obatRacikan: 4400,
+      amt: 2100,
+    },
+    {
+      name: 'Nov',
+      obatBebas: 3450,
+      obatRacikan: 4500,
+      amt: 2100,
+    },
+    {
+      name: 'Des',
+      obatBebas: 3490,
+      obatRacikan: 4300,
+      amt: 2100,
+    },
+  ];
+  const data3 = [
+    {
+      name: 'Dibatalkan Auto',
+      obatRacikan: 120,
+    },
+    {
+      name: 'Ditolak Apotik',
+      obatRacikan: 50,
+    },
+    {
+      name: 'Permintaan Pembeli',
+      obatRacikan: 140,
+    },
+  ];
 
 const homePageAdmin = () => {
     var newPesanan = pesananBaru + pesananBaru2 + pesananBaru3
@@ -132,8 +221,55 @@ const homePageAdmin = () => {
                       <div className="keterangan-expired-3-bulan-lagi">Kedaluwarsa 3 Bulan Kedepan</div>
                       <div className="nominal-expired-3-bulan-lagi">0</div>
                   </div>
-                  <img src={rev1} alt="" className="box-profit-dashboard-admin" />
-                  <img src={rev2} alt="" className="box-penjualan-obat-dashboard-admin" />
+                  <div  className="box-profit-dashboard-admin" >
+                    <div className="d-flex mt-3 justify-content-between">
+                    <div className="tulisan-pejualan-obat-1">
+                                Profit
+                            </div>
+                    <select className="form-select form-select-sm w-50 mx-3" aria-label="form-select-sm example">
+                      <option selected>Pilihan</option>
+                      <option value="">Bulanan</option>
+                      <option value="">Tahuanan</option>
+                      <option value="">Mingguan</option>
+                    </select>
+                    </div>
+                    <div className="tulisan-pejualan-obat-2 mt-1">
+                                Data dinyatakan dalam jutaan rupiah
+                            </div>
+                  <BarChart width={400} height={300} data={data2} margin={{ top: 30, right: 0, left: 20, bottom: 5 }}>
+                    <CartesianGrid vertical={false} />
+                    <XAxis axisLine={false} tickLine={false} dataKey="name" />
+                    <YAxis axisLine={false} tickLine={false} />
+                    <Tooltip />
+                    <Legend align="right" />
+                    <Bar type="monotone" dataKey="obatBebas" stroke="#8884d8" dot={false}  fill="#8884d8" />
+                    <Bar type="monotone" dataKey="obatRacikan" stroke="#82ca9d" dot={false}   fill="#82ca9d"/>
+                  </BarChart>
+                  </div>
+                  <div className="box-penjualan-obat-dashboard-admin">
+                  <div className="d-flex mt-3 justify-content-between">
+                    <div className="tulisan-pejualan-obat-1">
+                        Pejualan Obat
+                    </div>
+                  <select className="form-select form-select-sm w-50  mx-3" aria-label="form-select-sm example">
+                      <option selected>Pilihan</option>
+                      <option value="">Bulanan</option>
+                      <option value="">Tahuanan</option>
+                      <option value="">Mingguan</option>
+                    </select>
+                  </div>
+                  <LineChart width={400} height={320} data={data2} margin={{ top: 30, right: 0, left: 20, bottom: 5 }}>
+                    <CartesianGrid vertical={false} />
+                    <XAxis axisLine={false} tickLine={false} dataKey="name" />
+                    <YAxis axisLine={false} tickLine={false} />
+                    <Tooltip />
+                    <Legend align="right" />
+                    <Line type="monotone" dataKey="obatBebas" stroke="#8884d8" dot={false} />
+                    <Line type="monotone" dataKey="obatRacikan" stroke="#82ca9d" dot={false} />
+                  </LineChart>
+                  </div>
+                  {/* <img src={rev1} alt="" className="box-profit-dashboard-admin" /> */}
+                  {/* <img src={rev2} alt="" className="box-penjualan-obat-dashboard-admin" /> */}
                   
                   </div>
           </div>
