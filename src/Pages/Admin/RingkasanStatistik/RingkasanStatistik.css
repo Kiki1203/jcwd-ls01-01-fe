@@ -14,13 +14,20 @@
   box-shadow: 0px 2px 3px 2px rgb(96 33 38 / 2%), 0px 4px 12px 4px rgb(155 0 41 / 8%);
   border-radius: 10px;
 }
+.box-kecil-chart {
+  height: 120px;
+  width: 140px !important;
+  background: #ffffff;
+  box-shadow: 0px 2px 3px 2px rgb(96 33 38 / 2%), 0px 4px 12px 4px rgb(155 0 41 / 8%);
+  border-radius: 10px;
+}
 .box-chart-penjualan {
   background: #ffffff;
   box-shadow: 0px 2px 3px 2px rgb(96 33 38 / 2%), 0px 4px 12px 4px rgb(155 0 41 / 8%);
   border-radius: 10px;
 }
 .box-chart-pendapatan {
-  width: 450px !important;
+  width: 460px !important;
   background: #ffffff;
   box-shadow: 0px 2px 3px 2px rgb(96 33 38 / 2%), 0px 4px 12px 4px rgb(155 0 41 / 8%);
   border-radius: 10px;
@@ -51,4 +58,29 @@
   font-weight: 700 !important;
   font-size: 10px !important;
   line-height: 12px !important;
+}
+
+.titlehead {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 25px;
+  color: #213360;
+}
+.isihead {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 33px;
+  color: #213360;
+}
+.title {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #213360;
 }
