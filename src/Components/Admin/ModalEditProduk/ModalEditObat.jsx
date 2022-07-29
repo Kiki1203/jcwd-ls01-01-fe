@@ -183,6 +183,7 @@ const ModalEditObat = ({setOpenModal, selected, setSelected, id}) => {
           formData.append('data', JSON.stringify(data))
           axios.patch(API_URL + `/admin/editproduct?id=${idProduk}`, formData, headers)
           .then((res) => {
+            console.log('res', res)
               if(res.data.message === "Update Product Success"){
                 setSelected(3)
               }

@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function ProductDetail(props) {
@@ -27,6 +27,8 @@ function ProductDetail(props) {
   const token = localStorage.getItem('myTkn');
   const navigate = useNavigate();
   const verified = useSelector(state => state.user.isConfirmed)
+  const [submitLoading, setSubmitLoading] = useState(false)
+  const { pathname } = useLocation();
 
   useEffect(() => {
     setLoading(true);
@@ -93,6 +95,31 @@ function ProductDetail(props) {
         });
     }
   };
+
+  const getAddress = async () => {
+    setSubmitLoading(true)
+    await axios.get(`${API_URL}/user/getaddress`, {headers: {authorization: token}})
+    .then(res => {
+      setSubmitLoading(false)
+      if(res.data.length > 0){
+        navigate('/checkout/beli-langsung', { state: { productId: productId, quantity: qty } })
+      } else {
+        navigate('/formaddress', { state: { previousPath: pathname } })
+      }
+    })
+    .catch(e => {
+      setSubmitLoading(false)
+      Swal.fire({
+        title: 'Error!',
+        text: e.message,
+        icon: 'error',
+        confirmButtonText: 'Oke',
+        confirmButtonColor: '#E0004D'
+    })
+      setError(true)
+      setErrorMsg(e.message)
+    })
+  }
 
   return (
     <div style={{ position: 'relative', width: '100vw', overflowX: 'hidden' }}>
@@ -170,13 +197,15 @@ function ProductDetail(props) {
                         <FontAwesomeIcon icon={faCartShopping} style={{ marginRight: '20px', fontSize: '18px' }} />
                         Keranjang
                       </button>
+                      
                       <button id="button-beli" disabled={qty > product.stok} onClick={() => {
                         if (!token) {
                           navigate('/login');
                         } else if (verified === 0){
                           setOpenModalVerify(true)
                         } else {
-                        navigate("/checkout/beli-langsung", { state: { productId: productId, quantity: qty } })}}}>
+                          getAddress({ state: { productId: productId, quantity: qty } })
+                       }}}>
                         Beli
                       </button>
                     </>

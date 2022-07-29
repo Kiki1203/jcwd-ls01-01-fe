@@ -10,6 +10,7 @@ import PaymentProof from '../../../Components/User/PaymentProof/PaymentProof';
 import useCountdown from '../../../../src/Helpers/useCountdown';
 import { RingLoader } from 'react-spinners';
 import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
 
 const Payment = () => {
     const [transaction, setTransaction] = useState({})
@@ -23,11 +24,23 @@ const Payment = () => {
     const transactionId = params.id
     const token = localStorage.getItem('myTkn')
     const navigate = useNavigate()
+    const [error, setError] = useState(false);
     const endTime = new Date().getTime() + (3600000 * 24);
     const [timeLeft, setEndTime] = useCountdown(endTime);
       const hours = Math.floor(timeLeft / 3600000);
       const minutes = Math.floor(timeLeft / 60000) % 60;
       const seconds = Math.floor(timeLeft / 1000) % 60;
+      const verified = useSelector(state => state.user.isConfirmed)
+      useEffect(() => {
+        setLoading(true)
+        if (!token) {
+          navigate('/');
+        } else if (verified === 0){
+          navigate('/verification')
+        }
+        setError(false)
+        
+      }, [])
 
     useEffect(() => {
       setLoading(true)
