@@ -48,9 +48,26 @@ const RingkasanStatistik = () => {
   const [Pokb2, setPokb2] = useState([]);
   const [Pnov2, setPnov2] = useState([]);
   const [Pdes2, setPdes2] = useState([]);
-
+  const [tokenAdmin, setTokenAdmin] = useState('')
   var time = new Date().getTime(); // get your number
   var date = new Date(time); // create Date object
+  
+  useEffect(() => {
+    let token = localStorage.getItem('token')
+    const headers = {
+        headers: { 
+            'Authorization': `${token}`,
+        }
+    }
+    axios.get(`${API_URL}/admin/gettokenadmin`, headers)
+    .then((res) => {
+        setTokenAdmin(res.data[0].token)
+    }).catch((err) => {
+        console.log('ini err get',err)
+    })
+}, [tokenAdmin])
+
+ 
 
   const fectDataHead = async () => {
     const response = await axios.get(`${API_URL}/admin/statistik`).catch((err) => console.log(err));
@@ -64,6 +81,8 @@ const RingkasanStatistik = () => {
       setRata_penjualan(data.Rata_penjualan[0].Rata_penjualan);
     }
   };
+  
+ 
 
   useEffect(() => {
     getTahunPenadapatan();
@@ -314,7 +333,6 @@ const RingkasanStatistik = () => {
       Total_pembatalan: Pdes2,
     },
   ];
-
   return (
     <div>
       <SidebarAdmin />
@@ -421,14 +439,14 @@ const RingkasanStatistik = () => {
                 <div className="mt-4 chart_pendapat">
                   <AreaChart width={400} height={250} data={dataPendapatan} margin={{ top: 10, right: 20, left: -10, bottom: 0 }}>
                     <defs>
-                      <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                        <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                      <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
+                        <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
                       </linearGradient>
                     </defs>
                     <XAxis axisLine={false} dataKey="name" tickLine={false} minTickGap="5" />
                     <YAxis axisLine={false} tickLine={false} />
-                    <CartesianGrid vertical={false} />
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
                     <Tooltip />
                     <Area type="monotone" dataKey="Total_pendapatan" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
                   </AreaChart>
@@ -474,8 +492,30 @@ const RingkasanStatistik = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  
+  }
+  if(localStorage.getItem('myTkn')){
+    if(localStorage.getItem('myTkn') === tokenAdmin){
+        return(
+            <>{ringkasanStatistik()}</>
+        )
+    }else{
+        return(
+            <Navigate to='/' />
+        )
+    }
+}else{
+    if(localStorage.getItem('token') === tokenAdmin){
+        return(
+            <>{ringkasanStatistik()}</>
+        )
+    }else if(!localStorage.getItem('token')){
+        return(
+            <Navigate to='/loginadmin' />
+        )
+    }
+  }
 };
 
 export default RingkasanStatistik;
