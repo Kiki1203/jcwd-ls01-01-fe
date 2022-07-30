@@ -400,6 +400,23 @@
     text-align: right;
     color: #213360;
   }
+
+   .harga-obat-semua-pesanan-2{
+    position: relative;
+    width: 90.22px;
+    height: 20px;
+    left: 480px;
+    top: -70px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #213360;
+  }
   
   .jumlah-obat-semua-pesanan{
     position: relative;

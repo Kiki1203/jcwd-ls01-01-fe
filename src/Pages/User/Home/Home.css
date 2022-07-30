@@ -377,10 +377,11 @@
 
 .inside-container-home-5 {
   width: 80vw;
-  height: 220px;
+  height: 250px;
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
+  
 }
 
 .box-1-jumbotron {
@@ -389,6 +390,7 @@
   background: #ffb156;
   box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
   border-radius: 16px;
+  display: flex;
 }
 
 .box-2-jumbotron {
@@ -397,34 +399,32 @@
   background: #92c3d1;
   box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
   border-radius: 16px;
+  display: flex;
 }
 
 .hamil {
-  position: absolute;
-  left: 120px;
-  top: 1345px;
+ 
   width: 338px;
   height: 212px;
+  
 }
 
 .framebg {
-  position: absolute;
+  position: relative;
   width: 348px;
   height: 212px;
-  left: 620px;
-  top: 1330px;
+  left: -270px;
+  top: 0px;
 }
 
 .friend {
-  position: absolute;
   width: 294px;
   height: 249px;
-  left: 620px;
-  top: 1330px;
+  margin-top: -20px;
 }
 
 .program-hamil {
-  margin-left: 310px;
+  margin-left: -10px;
   margin-top: 60px;
   font-family: 'Public Sans';
   font-style: normal;
@@ -438,7 +438,7 @@
 }
 
 .wujudkan-rumah {
-  margin-left: 270px;
+  margin-left: -50px;
   margin-top: 5px;
   width: 230px;
   height: 48px;
@@ -454,7 +454,7 @@
 }
 
 .kebutuhan {
-  margin-left: 270px;
+  margin-left: -300px;
   margin-top: 60px;
   width: 201px;
   height: 56px;
@@ -470,7 +470,7 @@
 }
 
 .lengkapi-kebutuhan {
-  margin-left: 270px;
+  margin-left: -300px;
   margin-top: 5px;
   width: 200px;
   height: 48px;
@@ -1160,6 +1160,7 @@
     margin-top: 30px;
     display: flex;
     flex-direction: column;
+    
   }
 
   .box-1-jumbotron {
@@ -1168,6 +1169,7 @@
     background: #ffb156;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
     border-radius: 16px;
+    display: flex;
   }
 
   .box-2-jumbotron {
@@ -1176,89 +1178,85 @@
     background: #92c3d1;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
     border-radius: 16px;
-    margin-top: 30px;
+    display: flex
   }
 
   .hamil {
-    position: absolute;
-    left: 25px;
-    top: 1400px;
-    width: 330px;
-    height: 220px;
+ 
+    width: 338px;
+    height: 212px;
+    
   }
-
+  
   .framebg {
-    position: absolute;
+    position: relative;
     width: 348px;
     height: 212px;
-    left: 25px;
-    top: 1630px;
+    left: -270px;
+    top: 0px;
   }
-
+  
   .friend {
-    position: absolute;
     width: 294px;
     height: 249px;
-    left: 25px;
-    top: 1630px;
+    margin-top: -20px;
   }
-
+  
   .program-hamil {
-    margin-left: 415px;
-    margin-top: 40px;
+    margin-left: 140px;
+    margin-top: 60px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 20px;
     line-height: 28px;
     display: flex;
     align-items: center;
     text-align: center;
     color: #213360;
   }
-
+  
   .wujudkan-rumah {
-    margin-left: 380px;
-    margin-top: 20px;
-    width: 250px;
-    height: 48px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #213360;
-    margin-bottom: 50px;
-  }
-
-  .kebutuhan {
-    margin-left: 410px;
-    margin-top: 40px;
-    width: 250px;
-    height: 56px;
-    font-family: 'Public Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 28px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #213360;
-  }
-
-  .lengkapi-kebutuhan {
-    margin-left: 420px;
-    margin-top: 20px;
+    margin-left: 100px;
+    margin-top: 5px;
     width: 230px;
     height: 48px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #213360;
+  }
+  
+  .kebutuhan {
+    margin-left: -200px;
+    margin-top: 60px;
+    width: 201px;
+    height: 56px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #213360;
+  }
+  
+  .lengkapi-kebutuhan {
+    margin-left: -200px;
+    margin-top: 5px;
+    width: 200px;
+    height: 48px;
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
     line-height: 24px;
     display: flex;
     align-items: center;
@@ -1560,9 +1558,10 @@
 
   .box-unggah-resep-2 {
     width: 300px;
-    height: 50px;
+    height: 80px;
     margin-left: 20px;
     margin-top: 20px;
+   
    
   }
   
@@ -1693,21 +1692,22 @@
   }
 
   .inside-container-home-2 {
-    width: 327px;
-    height: 87px;
+    width: 352px;
+    height: 168px;
     margin-left: 0px;
-    margin-top: 50px;
-    background: #ffffff;
-    box-shadow: 0px 1px 1px 1px rgba(33, 51, 96, 0.02), 1px 2px 6px 2px rgba(0, 155, 144, 0.08);
-    border-radius: 8px;
     display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0px;
   }
 
   .jumbotron2 {
     width: 99px;
     height: 87px;
-    margin-left: 10px;
-    margin-top: 10px;
+    margin-left: -150px;
+    margin-top: 0px;
     object-fit: cover;
   }
 
@@ -1719,17 +1719,24 @@
   }
 
   .box-unggah-resep {
-    width: 352px;
-    height: 168px;
-    margin-left: -20px;
+    width: 327px;
+    height: 87px;
+    margin-left: 0px;
+    margin-top: 50px;
+    background: #ffffff;
+    box-shadow: 0px 1px 1px 1px rgba(33, 51, 96, 0.02), 1px 2px 6px 2px rgba(0, 155, 144, 0.08);
+    border-radius: 8px;
+    display: flex;
+    
+    
   }
 
   .tulisan-perlu-resep {
-    position: absolute;
+    position: relative;
     width: 150px;
     height: 20px;
-    left: 24px;
-    top: 280px;
+    left: -10px;
+    top: -120px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -1742,7 +1749,6 @@
   }
 
   .btn-unggah-resep {
-    position: absolute;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 700;
@@ -1754,18 +1760,18 @@
     width: 10px;
     height: 10px;
     color: #213360;
-    top: 430px;
-    left: 230px;
     background: #ffffff;
     border: none;
+    margin-top: -100px;
+    margin-left: 140px;
   }
 
   .tulisan-tak-antre {
-    position: absolute;
+    position: relative;
     width: 173px;
     height: 36px;
-    left: 123px;
-    top: 400px;
+    left: -40px;
+    top: -80px;
     font-family: 'Public Sans';
     font-style: normal;
     font-weight: 500;
@@ -1780,7 +1786,7 @@
     height: 80px;
     width: 350px;
     padding: 0px 0px 0px 0px;
-    margin-top: 30px;
+    margin-top: 0px;
   }
 
   .home-kategori {
@@ -1800,9 +1806,10 @@
     align-items: flex-start;
     padding: 0px;
     gap: 30px;
-    width: 370px;
+    width: 350px;
     height: 60px;
     overflow-x: scroll;
+   
   }
 
   .box-home-kategori {
@@ -1811,9 +1818,10 @@
     align-items: flex-start;
     padding: 0px;
     gap: 50px;
-    width: 370px;
+    width: 350px;
     height: 80px;
     overflow-x: scroll;
+   
   }
 
   .box-home-kategori-2 {
@@ -1869,6 +1877,7 @@
     height: 320px;
     width: 160px;
     padding: 0px 0px 0px 0px;
+   
   }
 
   .box-isi-card-home-2 {
@@ -1880,6 +1889,7 @@
     width: 160px;
     height: 320px;
     overflow-x: scroll;
+   
   }
 
   .Obat-obatan {
@@ -1959,11 +1969,12 @@
   }
 
   .inside-container-home-5 {
-    width: 80vw;
-    height: 220px;
+    width: 85vw;
+    height: 310px;
     margin-top: 30px;
     display: flex;
     flex-direction: column;
+   
   }
 
   .box-1-jumbotron {
@@ -1972,6 +1983,7 @@
     background: #ffb156;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
     border-radius: 16px;
+    display: flex;
   }
 
   .box-2-jumbotron {
@@ -1980,35 +1992,32 @@
     background: #92c3d1;
     box-shadow: 0px 2px 3px 2px rgba(96, 33, 41, 0.02), 0px 4px 12px 4px rgba(155, 0, 93, 0.08);
     border-radius: 16px;
-    margin-top: 30px;
+    margin-top: 0px;
+    display: flex;
   }
 
   .hamil {
-    position: absolute;
-    left: 25px;
-    top: 1145px;
+    
     width: 200px;
     height: 125px;
   }
 
   .framebg {
-    position: absolute;
+    position: relative;
     width: 169px;
     height: 124px;
-    left: 24px;
-    top: 1290px;
+    left: -150px;
+    top: 0px;
   }
 
   .friend {
-    position: absolute;
     width: 200px;
     height: 150px;
-    left: 10px;
-    top: 1290px;
+    margin-top: -10px;
   }
 
   .program-hamil {
-    margin-left: 190px;
+    margin-left: 0px;
     margin-top: 20px;
     font-family: 'Public Sans';
     font-style: normal;
@@ -2022,7 +2031,7 @@
   }
 
   .wujudkan-rumah {
-    margin-left: 190px;
+    margin-left: 0px;
     margin-top: 5px;
     width: 107px;
     height: 54px;
@@ -2039,7 +2048,7 @@
   }
 
   .kebutuhan {
-    margin-left: 190px;
+    margin-left: -150px;
     margin-top: 20px;
     width: 120px;
     height: 40px;
@@ -2055,7 +2064,7 @@
   }
 
   .lengkapi-kebutuhan {
-    margin-left: 190px;
+    margin-left: -150px;
     margin-top: 10px;
     width: 120px;
     height: 36px;

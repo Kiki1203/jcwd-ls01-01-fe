@@ -389,14 +389,18 @@ const homePage = () => {
         <div className="inside-container-home-5">
           <div className='box-1-jumbotron'>
             <img src={hamil} alt="" className="hamil" />
+            <div>
             <div className='program-hamil'>Program Hamil</div>
             <div className='wujudkan-rumah'>Wujudkan rumah tanggamu dengan si buah hati</div>
+            </div>
           </div>
           <div className='box-2-jumbotron'>
             <img src={friend} alt="" className="friend" />
             <img src={framebg} alt="" className="framebg" />
+            <div>
             <div className='kebutuhan'>Kebutuhan Untuk Sehari-hari</div>
             <div className='lengkapi-kebutuhan'>Lengkapi kebutuhan gizi & asupan setiap saat</div>
+            </div>
           </div>
   
         </div>
