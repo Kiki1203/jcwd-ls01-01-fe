@@ -14,6 +14,7 @@ import { RingLoader } from "react-spinners";
 import FooterMobile from "../../Footer/FooterMobile.jsx"
 import noProductIllust from '../../../../Assets/no-product.svg';
 import ModalZoomResep2 from './ModalZoomResep2.jsx';
+import useCountdown from '../../../../Helpers/useCountdown.jsx';
 
 // PAGE INI MENAMPILKAN SEMUA PROSES PESANAN USER
 const SemuaPesanan  = () => {
@@ -34,6 +35,12 @@ const SemuaPesanan  = () => {
   const { pathname } = useLocation();
   const [openModal2, setOpenModal2] = useState(false)
   const [gambar, setGambar] = useState("")
+  var [formattedDate, setFormattedDate] = useState('')
+    var endTime = new Date().getTime() + (60000 * 5);
+    var [timeLeft, setEndTime] = useCountdown(endTime);
+      var hours = Math.floor(timeLeft / 3600000);
+      var minutes = Math.floor(timeLeft / 60000) % 60;
+      var seconds = Math.floor(timeLeft / 1000) % 60;
 
   useEffect(() => {
     setLoading(true)
@@ -69,6 +76,12 @@ const SemuaPesanan  = () => {
           setTotalData(res.data[0].total[0].total)
           setData(res.data)
           setLoading(false)
+          for (let i = 0; i < res.data.length; i++) {
+             console.log('res.data[i].tanggal_transaksi',res.data[i].result2[0].tgl_pemesanan)
+            let date = new Date(res.data[i].result2[0].tgl_pemesanan)
+            date.setMinutes(date.getMinutes() + 5)
+            setEndTime(date.getTime())
+        }
           // setProdukPertama(res.data.dataPertama)
       }).catch((err) => {
           console.log('ini err get',err)
@@ -163,7 +176,21 @@ const openZoom = (gambar) => {
                     <img src={`${API_URL + '/'}${value.resultRiwayatResep[0].gambar}`} alt='Image Preview' className="foto-produk-semua" />
                   </div>
                   <div className="nama-obat-semua-pesanan">Nomor Resep</div>
-                  <div className="harga-obat-semua-pesanan">TIMER</div>
+                  <div className="harga-obat-semua-pesanan-2">
+                  <div className='d-flex justify-content-between align-items-center'>
+                            <div>
+                              <p className='payment-deadline'>{formattedDate}</p>
+                            </div>
+                            <div className='d-flex align-items-center'>
+                              <p className='payment-timer-number'>00</p>
+                              <p className='payment-timer-colon'>:</p>
+                              <p className='payment-timer-number'>00</p>
+                              <p className='payment-timer-colon'>:</p>
+                              <p className='payment-timer-number'>00</p>
+
+                            </div>
+                          </div>
+                  </div>
                   <div  className="jumlah-obat-semua-pesanan "  style={{marginTop: '0px'}}>{value.resultRiwayatResep[0].no_pemesanan}</div>
                   <div className="button-tampilkan-detail-semua"  onClick={() => openZoom(value.resultRiwayatResep[0].gambar)} >Perbesar gambar</div>
                   <div className="d-lg-none d-md-none d-block">
@@ -180,7 +207,21 @@ const openZoom = (gambar) => {
                     <img src={`${API_URL + '/'}${value.result2[0].gambar_resep}`} alt='Image Preview' className="foto-produk-semua" />
                   </div>
                   <div className="nama-obat-semua-pesanan">Nomor Resep</div>
-                  <div className="harga-obat-semua-pesanan">TIMER</div>
+                  <div className="harga-obat-semua-pesanan-2">
+                  <div className='d-flex justify-content-between align-items-center'>
+                  <div>
+                              <p className='payment-deadline'>{formattedDate}</p>
+                            </div>
+                            <div className='d-flex align-items-center'>
+                              <p className='payment-timer-number'>{hours}</p>
+                              <p className='payment-timer-colon'>:</p>
+                              <p className='payment-timer-number'>{minutes}</p>
+                              <p className='payment-timer-colon'>:</p>
+                              <p className='payment-timer-number'>{seconds}</p>
+
+                            </div>
+                          </div>
+                  </div>
                   <div  className="jumlah-obat-semua-pesanan" style={{marginTop: '0px'}}>{value.result2[0].no_pemesanan}</div>
                   <div className="button-tampilkan-detail-semua"  onClick={() => openZoom(value.result2[0].gambar_resep)}>Perbesar gambar</div>
                   <div className="d-lg-none d-md-none d-block">

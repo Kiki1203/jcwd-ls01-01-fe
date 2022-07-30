@@ -42,6 +42,7 @@ const Verification = () => {
       }
     )
       .then((res) => {
+        console.log('res btn resend', res)
         setLoading(false)
         Swal.fire({
           title: 'Success!',
@@ -84,7 +85,7 @@ const Verification = () => {
         <div className="d-lg-none d-md-none d-block navbar-pro">
             <FontAwesomeIcon icon={faAngleLeft} className="logove1" />
             <div className="tulisan-verification">Verification</div>
-            <FontAwesomeIcon icon={faArrowRightFromBracket}  onClick={() => btnLogOut()} style={{textDecoration: "none", cursor:"pointer", marginLeft: "320px", marginTop: "50px"}} />
+            <FontAwesomeIcon icon={faArrowRightFromBracket}  onClick={() => btnLogOut()} style={{textDecoration: "none", cursor:"pointer", marginLeft: "330px", marginTop: "50px"}} />
         </div>
         <div className='box-verification-page'>
             <div className="logo-verify-page"><img src={VerifyPage} alt=""/></div>

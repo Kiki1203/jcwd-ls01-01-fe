@@ -8,7 +8,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import PaymentMethod from '../../../Components/User/PaymentMethod/PaymentMethod.jsx';
 import ChangeAddress from '../../../Components/User/ChangeAddress/ChangeAddress.jsx';
 import PulseLoader from 'react-spinners/PulseLoader';
-
+import { useSelector } from 'react-redux';
 const Checkout = () => {
   const [products, setProducts] = useState([]);
   const [addresses, setAddresses] = useState([]);
@@ -31,6 +31,18 @@ const Checkout = () => {
   const { state } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   let idTransaksi = searchParams.get('id');
+  const verified = useSelector(state => state.user.isConfirmed)
+
+  useEffect(() => {
+    setLoading(true)
+    if (!token) {
+      navigate('/');
+    } else if (verified === 0){
+      navigate('/verification')
+    }
+    setError(false)
+    
+  }, [])
 
   useEffect(() => {
     setLoading(true);
