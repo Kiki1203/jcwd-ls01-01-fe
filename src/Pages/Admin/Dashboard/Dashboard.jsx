@@ -1,8 +1,9 @@
+
 import React, { useEffect, useState , PureComponent  } from 'react'
 import { Navigate } from 'react-router-dom'
 import './Dashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowCircleRight} from '@fortawesome/free-solid-svg-icons';
+import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 import SidebarAdmin from '../../../Components/Admin/SidebarAdmin/SidebarAdmin.jsx';
 import axios from 'axios';
 import API_URL  from '../../../Helpers/API_URL.js';
@@ -25,46 +26,50 @@ const DashboardAdmin  = () => {
   const [selesai, setSelesai] = useState('')
   const [batalkan, setBatalkan] = useState('')
 
-  useEffect(() => {
-    let token = localStorage.getItem('token')
-    const headers = {
-        headers: { 
-            'Authorization': `${token}`,
-        }
-    }
-    axios.get(`${API_URL}/admin/gettokenadmin`, headers)
-    .then((res) => {
-        setTokenAdmin(res.data[0].token)
-      
-        
-    }).catch((err) => {
-        console.log('ini err get',err)
-    })
-}, [tokenAdmin])
 
-useEffect(() => {
-    let token = localStorage.getItem('token')
+  useEffect(() => {
+    let token = localStorage.getItem('token');
     const headers = {
-        headers: { 
-            'Authorization': `${token}`,
-        }
-    }
-    axios.get(`${API_URL}/admin/gethomedata`, headers)
-    .then((res) => {
-        console.log(res)
-        setStok()
-        setData(res.data.data.length)
-        setPesananBaru(res.data.pesananBaru.length)
-        setPesananBaru2(res.data.pesananBaru2.length)
-        setPesananBaru3(res.data.pesananBaru3.length)
-        setSiapkirim(res.data.siapKirim.length)
-        setSedangkirim(res.data.sedangKirim.length)
-        setSelesai(res.data.selesai.length)
-        setBatalkan(res.data.dibatalkan.length)
-    }).catch((err) => {
-        console.log('ini err get',err)
-    })
-}, [])
+      headers: {
+        Authorization: `${token}`,
+      },
+    };
+    axios
+      .get(`${API_URL}/admin/gettokenadmin`, headers)
+      .then((res) => {
+        setTokenAdmin(res.data[0].token);
+      })
+      .catch((err) => {
+        console.log('ini err get', err);
+      });
+  }, [tokenAdmin]);
+
+  useEffect(() => {
+    let token = localStorage.getItem('token');
+    const headers = {
+      headers: {
+        Authorization: `${token}`,
+      },
+    };
+    axios
+      .get(`${API_URL}/admin/gethomedata`, headers)
+      .then((res) => {
+        console.log(res);
+        setStok();
+        setData(res.data.data.length);
+        setPesananBaru(res.data.pesananBaru.length);
+        setPesananBaru2(res.data.pesananBaru2.length);
+        setPesananBaru3(res.data.pesananBaru3.length);
+        setSiapkirim(res.data.siapKirim.length);
+        setSedangkirim(res.data.sedangKirim.length);
+        setSelesai(res.data.selesai.length);
+        setBatalkan(res.data.dibatalkan.length);
+      })
+      .catch((err) => {
+        console.log('ini err get', err);
+      });
+  }, []);
+
 
 const data2 = [
     {
@@ -158,7 +163,7 @@ const data2 = [
 const homePageAdmin = () => {
     var newPesanan = pesananBaru + pesananBaru2 + pesananBaru3
     return (
-        <>
+      <>
         <SidebarAdmin />
           <div className="container">
                   <div className="full-box-dashboard-admin-page">
@@ -270,37 +275,26 @@ const homePageAdmin = () => {
                   </div>
                   {/* <img src={rev1} alt="" className="box-profit-dashboard-admin" /> */}
                   {/* <img src={rev2} alt="" className="box-penjualan-obat-dashboard-admin" /> */}
-                  
                   </div>
           </div>
-        </>
+        </div>
+      </>
     );
-  }
+  };
 
-    if(localStorage.getItem('myTkn')){
-        if(localStorage.getItem('myTkn') === tokenAdmin){
-            return(
-                <>{homePageAdmin()}</>
-            )
-        }else{
-            return(
-                <Navigate to='/' />
-            )
-        }
-    }else{
-        if(localStorage.getItem('token') === tokenAdmin){
-            return(
-                <>{homePageAdmin()}</>
-            )
-        }else if(!localStorage.getItem('token')){
-            return(
-                <Navigate to='/loginadmin' />
-            )
-        }
+  if (localStorage.getItem('myTkn')) {
+    if (localStorage.getItem('myTkn') === tokenAdmin) {
+      return <>{homePageAdmin()}</>;
+    } else {
+      return <Navigate to="/" />;
     }
-  
+  } else {
+    if (localStorage.getItem('token') === tokenAdmin) {
+      return <>{homePageAdmin()}</>;
+    } else if (!localStorage.getItem('token')) {
+      return <Navigate to="/loginadmin" />;
+    }
+  }
+};
 
-    
-}
-
-export default DashboardAdmin
+export default DashboardAdmin;
