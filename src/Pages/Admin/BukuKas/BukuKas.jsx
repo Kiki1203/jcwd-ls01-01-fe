@@ -29,7 +29,6 @@ const BukuKas = () => {
         console.log('ini err get', err);
       });
   }, [tokenAdmin]);
-
   const fetchbukukas = async () => {
     const response = await axios.get(`${API_URL}/admin/bukukas`).catch((err) => console.log(err));
     if (response) {
@@ -86,9 +85,7 @@ const BukuKas = () => {
               </div>
               <div className="box-table-isi">
                 <table className="table box-table-isi">
-
                   <thead style={{ background: '#213360', color: 'white' }}>
-
                     <tr>
                       <th scope="col">No</th>
                       <th scope="col">Tanggal</th>
@@ -102,14 +99,12 @@ const BukuKas = () => {
                     {data.map((value, index) => {
                       return (
                         <tr key={value.id}>
-
                           <th scope="row">{index + 1}</th>
                           <td>{moment(value.tanggalMasuk).format('DD/MM/YYYY')}</td>
                           <td>N0.Faktur pembelian:{value.noFakturMasuk}APTKPBB</td>
                           <td></td>
                           <td>{rupiah(value.hargaBeli * value.stokMasuk)}</td>
                           <td>{rupiah(7171500 - value.hargaBeli)}</td>
-
                         </tr>
                       );
                     })}

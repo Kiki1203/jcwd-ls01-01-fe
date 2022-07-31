@@ -3,7 +3,7 @@ import axios from 'axios';
 import API_URL from '../../../Helpers/API_URL.js';
 import './LabaRugi.css';
 import SidebarAdmin from '../../../Components/Admin/SidebarAdmin/SidebarAdmin.jsx';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const LabaRugi = () => {
   const [tokenAdmin, setTokenAdmin] = useState('');
@@ -29,11 +29,14 @@ const LabaRugi = () => {
         console.log('ini err get', err);
       });
   }, [tokenAdmin]);
+
+
   useEffect(() => {
     getData();
   }, []);
   var time = new Date().getTime(); // get your number
   var date = new Date(time); // create Date object
+
 
   const getData = (e) => {
     console.log(e);
@@ -279,5 +282,4 @@ const LabaRugi = () => {
     }
   }
 };
-
 export default LabaRugi;
