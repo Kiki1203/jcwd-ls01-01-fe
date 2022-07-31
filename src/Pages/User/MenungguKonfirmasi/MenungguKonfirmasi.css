@@ -186,9 +186,9 @@ color: #737A8D;
 position: absolute;
 width: 133px;
 height: 28px;
-left: 653px;
+left: 630px;
 top: 168px;
-border: 1px solid red;
+
 }
 
 .garis-dalam-detail-resep-2{
@@ -444,7 +444,7 @@ border-radius: 8px;
       position: absolute;
       width: 133px;
       height: 28px;
-      left: 500px;
+      left: 0px;
       top: 168px;
     
       }

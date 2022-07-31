@@ -33,7 +33,7 @@ const TabDibatalkan  = () => {
   const [token, setToken] = useState('')
   const [openModal2, setOpenModal2] = useState(false)
   const [gambar, setGambar] = useState("")
-
+ var [formattedDate, setFormattedDate] = useState('')
   useEffect(() => {
    
     let tokens = localStorage.getItem('myTkn')
@@ -107,7 +107,22 @@ const openZoom = (gambar) => {
                                 <img src={`${API_URL + '/'}${value.result2[0].gambar}`} alt='Image Preview' className="foto-produk-semua" />
                               </div>
                               <div className="nama-obat-semua-pesanan">Nomor Resep</div>
-                              <div className="harga-obat-semua-pesanan">TIMER</div>
+                              <div className="harga-obat-semua-pesanan-2">
+                              <div className='d-flex justify-content-between align-items-center'>
+                            <div>
+                              <p className='payment-deadline'>{formattedDate}</p>
+                            </div>
+                            <div className='d-flex align-items-center'>
+                              <p className='payment-timer-number'>00</p>
+                              <p className='payment-timer-colon'>:</p>
+                              <p className='payment-timer-number'>00</p>
+                              <p className='payment-timer-colon'>:</p>
+                              <p className='payment-timer-number'>00</p>
+
+                            </div>
+                          </div>
+
+                              </div>
                               <div  className="jumlah-obat-semua-pesanan mt-2">{value.result2[0].no_pemesanan}</div>
                               <div className="button-tampilkan-detail-semua" onClick={() => openZoom(value.result2[0].gambar)}  >Perbesar gambar</div>
                               </>

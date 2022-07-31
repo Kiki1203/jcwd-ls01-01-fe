@@ -30,7 +30,7 @@ const BukuKas = () => {
       });
   }, [tokenAdmin]);
   const fetchbukukas = async () => {
-    const response = await axios.get('http://localhost:5000/admin/bukukas').catch((err) => console.log(err));
+    const response = await axios.get(`${API_URL}/admin/bukukas`).catch((err) => console.log(err));
     if (response) {
       const databukukas = response.data;
       console.log('datamasuk', databukukas.masuk);

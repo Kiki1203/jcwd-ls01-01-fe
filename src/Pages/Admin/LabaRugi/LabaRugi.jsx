@@ -30,11 +30,13 @@ const LabaRugi = () => {
       });
   }, [tokenAdmin]);
 
+
   useEffect(() => {
     getData();
   }, []);
   var time = new Date().getTime(); // get your number
   var date = new Date(time); // create Date object
+
 
   const getData = (e) => {
     console.log(e);

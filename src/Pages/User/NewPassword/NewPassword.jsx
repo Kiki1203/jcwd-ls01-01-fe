@@ -12,6 +12,7 @@ import PulseLoader from 'react-spinners/PulseLoader';
 
 const NewPassword = () => {
   let params = useParams();
+
   const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -105,8 +106,8 @@ const NewPassword = () => {
       .catch((err) => {
         setLoading(true);
         Swal.fire({
-          title: 'Error!',
-          text: err.response.data.message,
+          title: `${err.response.data.message}`,
+          text: ` Link Expired Pleased Check Email Again !`,
           icon: 'error',
           confirmButtonText: 'Okay!',
         });
@@ -117,7 +118,7 @@ const NewPassword = () => {
       });
   };
 
-  if(localStorage.getItem('myTkn') || localStorage.getItem('token')){
+  if (localStorage.getItem('myTkn') || localStorage.getItem('token')) {
     return <Navigate to="/" />;
   }
   return (

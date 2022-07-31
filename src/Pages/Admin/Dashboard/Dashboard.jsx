@@ -1,28 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+
+import React, { useEffect, useState , PureComponent  } from 'react'
+import { Navigate } from 'react-router-dom'
 import './Dashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 import SidebarAdmin from '../../../Components/Admin/SidebarAdmin/SidebarAdmin.jsx';
 import axios from 'axios';
-import API_URL from '../../../Helpers/API_URL.js';
-import satu from '../../../Assets/satu.svg';
-import dua from '../../../Assets/dua.svg';
-import tiga from '../../../Assets/tiga.png';
-import rev1 from '../../../Assets/Rev1.svg';
-import rev2 from '../../../Assets/Rev.png';
+import API_URL  from '../../../Helpers/API_URL.js';
+import satu from '../../../Assets/satu.svg'
+import dua from '../../../Assets/dua.svg'
+import tiga from '../../../Assets/tiga.png'
+import rev1 from '../../../Assets/Rev1.svg'
+import rev2 from '../../../Assets/Rev.png'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, AreaChart, Area, BarChart, Bar, Cell, ResponsiveContainer } from 'recharts';
 
-const DashboardAdmin = () => {
-  const [tokenAdmin, setTokenAdmin] = useState('');
-  const [data, setData] = useState('');
-  const [stok, setStok] = useState('');
-  const [pesananBaru, setPesananBaru] = useState('');
-  const [pesananBaru2, setPesananBaru2] = useState('');
-  const [pesananBaru3, setPesananBaru3] = useState('');
-  const [siapKirim, setSiapkirim] = useState('');
-  const [sedangKirim, setSedangkirim] = useState('');
-  const [selesai, setSelesai] = useState('');
-  const [batalkan, setBatalkan] = useState('');
+const DashboardAdmin  = () => {
+  const [tokenAdmin, setTokenAdmin] = useState('')
+  const [data, setData] = useState('')
+  const [stok, setStok] = useState('')
+  const [pesananBaru, setPesananBaru] = useState('')
+  const [pesananBaru2, setPesananBaru2] = useState('')
+  const [pesananBaru3, setPesananBaru3] = useState('')
+  const [siapKirim, setSiapkirim] = useState('')
+  const [sedangKirim, setSedangkirim] = useState('')
+  const [selesai, setSelesai] = useState('')
+  const [batalkan, setBatalkan] = useState('')
+
+
 
   useEffect(() => {
     let token = localStorage.getItem('token');
@@ -65,7 +69,100 @@ const DashboardAdmin = () => {
       .catch((err) => {
         console.log('ini err get', err);
       });
+
   }, [stok]);
+
+
+
+const data2 = [
+    {
+      name: 'Jan',
+      obatBebas: 4000,
+      obatRacikan: 2400,
+      amt: 2400,
+    },
+    {
+      name: 'Feb',
+      obatBebas: 3000,
+      obatRacikan: 1398,
+      amt: 2210,
+    },
+    {
+      name: 'Mar',
+      obatBebas: 2000,
+      obatRacikan: 9800,
+      amt: 2290,
+    },
+    {
+      name: 'Apr',
+      obatBebas: 2780,
+      obatRacikan: 3908,
+      amt: 2000,
+    },
+    {
+      name: 'May',
+      obatBebas: 1890,
+    obatRacikan: 4800,
+      amt: 2181,
+    },
+    {
+      name: 'Jun',
+      obatBeas: 2390,
+      obatRacikan: 3800,
+      amt: 2500,
+    },
+    {
+      name: 'Jul',
+      obatBebas: 3490,
+      obatRacikan: 4200,
+      amt: 2100,
+    },
+    {
+      name: 'Ags',
+      obatBebas: 3500,
+      obatRacikan: 4100,
+      amt: 2100,
+    },
+    {
+      name: 'Sep',
+      obatBebas: 3400,
+      obatRacikan: 4300,
+      amt: 2100,
+    },
+    {
+      name: 'Okt',
+      obatBebas: 3495,
+      obatRacikan: 4400,
+      amt: 2100,
+    },
+    {
+      name: 'Nov',
+      obatBebas: 3450,
+      obatRacikan: 4500,
+      amt: 2100,
+    },
+    {
+      name: 'Des',
+      obatBebas: 3490,
+      obatRacikan: 4300,
+      amt: 2100,
+    },
+  ];
+  const data3 = [
+    {
+      name: 'Dibatalkan Auto',
+      obatRacikan: 120,
+    },
+    {
+      name: 'Ditolak Apotik',
+      obatRacikan: 50,
+    },
+    {
+      name: 'Permintaan Pembeli',
+      obatRacikan: 140,
+    },
+  ];
+
 
   const homePageAdmin = () => {
     var newPesanan = pesananBaru + pesananBaru2 + pesananBaru3;
