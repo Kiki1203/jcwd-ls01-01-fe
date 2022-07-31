@@ -2,12 +2,13 @@
   padding-top: 10vw;
   padding-left: 26vw !important;
   padding-right: 2vw !important;
+  padding-bottom: 20vw !important;
   background: linear-gradient(155.7deg, #f5ded6 -45.88%, #fcf7f9 45.77%, #fcf1f7 117.72%);
 }
 .box-table-buku {
   padding: 35px 30px 20px 30px;
   width: 910px;
-  height: 900px;
+  height: 1150px;
   background: #ffffff;
   box-shadow: 0px 2px 3px 2px rgb(96 33 38 / 2%), 0px 4px 12px 4px rgb(155 0 41 / 8%);
   border-radius: 10px;
