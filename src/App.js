@@ -79,8 +79,8 @@ function App() {
           <Route path="/checkout/:jenis" element={<Checkout />} />
           <Route path="/confirmation/:token" element={<Confirmation />} />
           <Route path="/verification" element={<Verification />} />
-          <Route path="/FormAddress" element={<FormAddress />} />
           <Route path="/alamatbaru" element={<FormAddress2 />} />
+          <Route path="/formaddress" element={<FormAddress />} />
           <Route path="/ProductDetail/:id" element={<ProductDetail />} />
           <Route path="/kategori/:kategori" element={<ProductList />} />
           <Route path="/profile" element={<Profile />} />
