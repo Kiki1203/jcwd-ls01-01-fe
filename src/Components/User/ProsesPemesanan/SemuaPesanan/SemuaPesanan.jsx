@@ -176,21 +176,8 @@ const openZoom = (gambar) => {
                     <img src={`${API_URL + '/'}${value.resultRiwayatResep[0].gambar}`} alt='Image Preview' className="foto-produk-semua" />
                   </div>
                   <div className="nama-obat-semua-pesanan">Nomor Resep</div>
-                  <div className="harga-obat-semua-pesanan-2">
-                  <div className='d-flex justify-content-between align-items-center'>
-                            <div>
-                              <p className='payment-deadline'>{formattedDate}</p>
-                            </div>
-                            <div className='d-flex align-items-center'>
-                              <p className='payment-timer-number'>00</p>
-                              <p className='payment-timer-colon'>:</p>
-                              <p className='payment-timer-number'>00</p>
-                              <p className='payment-timer-colon'>:</p>
-                              <p className='payment-timer-number'>00</p>
-
-                            </div>
-                          </div>
-                  </div>
+                  <div className="harga-obat-semua-pesanan-2"></div>
+                  
                   <div  className="jumlah-obat-semua-pesanan "  style={{marginTop: '0px'}}>{value.resultRiwayatResep[0].no_pemesanan}</div>
                   <div className="button-tampilkan-detail-semua"  onClick={() => openZoom(value.resultRiwayatResep[0].gambar)} >Perbesar gambar</div>
                   <div className="d-lg-none d-md-none d-block">
@@ -432,7 +419,7 @@ if (minPageNumberLimit >= 1) {
                          :
                          <div className='d-flex flex-column align-items-center' style={{width:'100%'}}>
                          <img src={noProductIllust} alt="" style={{width:'250px', margin:'20px'}} />
-                         <p style={{color:'#213360', fontSize:'20px', fontWeight:'700', margin:'0px 0px 10px'}}>Oops, pesanan masih kosong</p>
+                         <p style={{color:'#213360', fontSize:'20px', fontWeight:'700', margin:'0px 0px 10px', textAlign: "center"}}>Oops, pesanan masih kosong</p>
                          <p style={{color:'#8f939e', fontSize:'14px', margin:'0px 0px 30px'}}>Silahkan berbelanja terlebih dahulu</p>
                      </div>
                        }
@@ -440,12 +427,12 @@ if (minPageNumberLimit >= 1) {
                     }
            <div className="box-pagination-semua d-flex">
            {
-             data.length > 1 ?
+             data.length > 0 ?
              <ul className="pageNumbers2">
         
              <li className="mx-3">
                    {
-                      data.length > 1 ?
+                      data.length > 0 ?
                       <button
                      onClick={handlePrevbtn}
                      disabled={currentPage == pages[0] ? true : false}
@@ -463,7 +450,7 @@ if (minPageNumberLimit >= 1) {
 
                  <li>
                    {
-                      data.length > 1 ?
+                      data.length > 0 ?
                       <button
                       onClick={handleNextbtn}
                       disabled={currentPage == pages[pages.length - 1] ? true : false}

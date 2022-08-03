@@ -109,17 +109,7 @@ const openZoom = (gambar) => {
                               <div className="nama-obat-semua-pesanan">Nomor Resep</div>
                               <div className="harga-obat-semua-pesanan-2">
                               <div className='d-flex justify-content-between align-items-center'>
-                            <div>
-                              <p className='payment-deadline'>{formattedDate}</p>
-                            </div>
-                            <div className='d-flex align-items-center'>
-                              <p className='payment-timer-number'>00</p>
-                              <p className='payment-timer-colon'>:</p>
-                              <p className='payment-timer-number'>00</p>
-                              <p className='payment-timer-colon'>:</p>
-                              <p className='payment-timer-number'>00</p>
-
-                            </div>
+                           
                           </div>
 
                               </div>
@@ -260,7 +250,7 @@ const dibatalkanPesanan = () => {
                        :
                        <div className='d-flex flex-column align-items-center mt-5' style={{width:'100%'}}>
                        <img src={noProductIllust} alt="" style={{width:'250px', margin:'20px'}} />
-                       <p style={{color:'#213360', fontSize:'19px', fontWeight:'700', margin:'0px 0px 10px'}}>Oops, belum ada pesanan yang dibatalkan</p>
+                       <p style={{color:'#213360', fontSize:'19px', fontWeight:'700', margin:'0px 0px 10px', textAlign: "center"}}>Oops, belum ada pesanan yang dibatalkan</p>
                        <p style={{color:'#8f939e', fontSize:'14px', margin:'0px 0px 30px'}}>Silahkan kembali berbelanja terlebih dahulu</p>
                    </div>
                      }
@@ -268,12 +258,12 @@ const dibatalkanPesanan = () => {
                   }
          <div className="box-pagination-semua d-flex">
          {
-             data.length > 1 ?
+             data.length > 0 ?
              <ul className="pageNumbers2">
         
              <li className="mx-3">
                    {
-                      data.length > 1 ?
+                      data.length > 0 ?
                       <button
                      onClick={handlePrevbtn}
                      disabled={currentPage == pages[0] ? true : false}
@@ -291,7 +281,7 @@ const dibatalkanPesanan = () => {
 
                  <li>
                    {
-                      data.length > 1 ?
+                      data.length > 0 ?
                       <button
                       onClick={handleNextbtn}
                       disabled={currentPage == pages[pages.length - 1] ? true : false}
