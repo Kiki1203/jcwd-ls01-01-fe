@@ -2,13 +2,13 @@
   padding-top: 10vw;
   padding-left: 26vw !important;
   padding-right: 2vw !important;
-  padding-bottom: 20vw !important;
+  padding-bottom: 100vw !important;
   background: linear-gradient(155.7deg, #f5ded6 -45.88%, #fcf7f9 45.77%, #fcf1f7 117.72%);
 }
 .box-table-buku {
   padding: 35px 30px 20px 30px;
   width: 910px;
-  height: 1150px;
+  max-height: 2300px;
   background: #ffffff;
   box-shadow: 0px 2px 3px 2px rgb(96 33 38 / 2%), 0px 4px 12px 4px rgb(155 0 41 / 8%);
   border-radius: 10px;
@@ -16,3 +16,25 @@
 .box-table-isi {
   border-radius: 10.2157px !important;
 }
+
+thead {
+  background: #213360;
+  border-radius: 10px 10px 0px 0px !important;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+}
+tbody {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1a1e2b;
+}
+
