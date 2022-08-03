@@ -184,7 +184,7 @@ const AlamatPage  = () => {
                            <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
                            :
                            <div className="box-mp">{printData()}
-                                <div className="button-tambah-alamat-2"  onClick={() => navigate('/FormAddress')} >Add New Address</div>
+                                <div className="button-tambah-alamat-2"  onClick={() => navigate('/formaddress')} >Add New Address</div>
                            </div>
                          }
                         </>
@@ -205,12 +205,12 @@ const AlamatPage  = () => {
                       }
              <div className="box-pagination-semua d-flex">
              {
-               data.length > 2 ?
+               data.length > 0 ?
                <ul className="pageNumbers2">
           
                <li className="mx-3">
                      {
-                        data.length > 2 ?
+                        data.length > 0 ?
                         <button
                        onClick={handlePrevbtn}
                        disabled={currentPage == pages[0] ? true : false}
@@ -228,7 +228,7 @@ const AlamatPage  = () => {
   
                    <li>
                      {
-                        data.length > 2 ?
+                        data.length > 0 ?
                         <button
                         onClick={handleNextbtn}
                         disabled={currentPage == pages[pages.length - 1] ? true : false}
