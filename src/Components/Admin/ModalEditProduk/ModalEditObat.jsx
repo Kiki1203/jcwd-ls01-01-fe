@@ -178,9 +178,11 @@ const ModalEditObat = ({setOpenModal, selected, setSelected, id}) => {
               stok: qty,
               expired: expired,   
           }
-  
+          console.log('file', file)
           formData.append('gambar', file)
           formData.append('data', JSON.stringify(data))
+         
+          console.log('formData', formData)
           axios.patch(API_URL + `/admin/editproduct?id=${idProduk}`, formData, headers)
           .then((res) => {
             console.log('res', res)

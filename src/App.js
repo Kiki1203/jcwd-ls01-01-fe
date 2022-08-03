@@ -12,6 +12,7 @@ import Checkout from './Pages/User/Checkout/Checkout.jsx';
 import Verification from './Pages/User/Verification/Verification.jsx';
 import Confirmation from './Pages/User/Confirmation/Confirmation.jsx';
 import FormAddress from './Pages/User/FormAddress/FormAddress.jsx';
+import FormAddress2 from './Pages/User/FormAddress2/FormAddress2.jsx';
 import Home from './Pages/User/Home/Home.jsx';
 import ProductDetail from './Pages/User/ProductDetail/ProductDetail.jsx';
 import ProductList from './Pages/User/ProductList/ProductList.jsx';
@@ -78,6 +79,7 @@ function App() {
           <Route path="/checkout/:jenis" element={<Checkout />} />
           <Route path="/confirmation/:token" element={<Confirmation />} />
           <Route path="/verification" element={<Verification />} />
+          <Route path="/alamatbaru" element={<FormAddress2 />} />
           <Route path="/formaddress" element={<FormAddress />} />
           <Route path="/ProductDetail/:id" element={<ProductDetail />} />
           <Route path="/kategori/:kategori" element={<ProductList />} />

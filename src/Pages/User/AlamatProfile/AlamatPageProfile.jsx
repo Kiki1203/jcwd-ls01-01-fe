@@ -28,7 +28,6 @@ const AlamatPage  = () => {
     const [tokenUser, setTokenUser] = useState("");
     
     useEffect(() => {
-      setLoading(true)
       let tokens = localStorage.getItem('myTkn')
       const headers = {
           headers: { 
@@ -37,14 +36,13 @@ const AlamatPage  = () => {
       }
       axios.get(`${API_URL}/user/checkuserverify`, headers)
       .then((res) => {
-        setLoading(false)
           setVerified(res.data.verified)
           setTokenUser(res.data.token)
       }).catch((err) => {
           console.log('ini err get',err)
-          setLoading(false)
       })
     }, [tokenUser, verified])
+
     useEffect(() => {
         let token = localStorage.getItem('myTkn')
         const headers = {
@@ -54,13 +52,13 @@ const AlamatPage  = () => {
         }
         axios.get(`${API_URL}/user/getalamatuser?page=${currentPage}&limit=${itemsPerPage}`, headers)
         .then((res) => {
-            console.log('res', res)
+            console.log('res get alamat user', res)
             setData(res.data)
             setTotalData(res.data[0].total[0].total)
         }).catch((err) => {
             console.log('ini err get',err)
         })
-    }, [])
+    }, [currentPage, itemsPerPage])
 
     const printData = () => {
         return data.map((value, index) => {
@@ -71,7 +69,7 @@ const AlamatPage  = () => {
                     <div className="d-flex box-inside-ap">
                     <div>
                         {
-                            value.label_alamat.includes("Rumah") ?
+                            value.label_alamat.includes("Rumah") || value.label_alamat.includes("Home") ?
                             <img src={rumah} alt="" className="foto-rumah" />
                             :
                             <img src={kantor} alt="" className="foto-rumah" />
@@ -184,7 +182,7 @@ const AlamatPage  = () => {
                            <> <div className="box-pd d-flex justify-content-center align-items-center mt-5"><RingLoader color={'#E0004D'} size={150}/></div></>
                            :
                            <div className="box-mp">{printData()}
-                                <div className="button-tambah-alamat-2"  onClick={() => navigate('/formaddress')} >Add New Address</div>
+                                <div className="button-tambah-alamat-2"  onClick={() => navigate('/alamatbaru')} >Add New Address</div>
                            </div>
                          }
                         </>
@@ -198,7 +196,7 @@ const AlamatPage  = () => {
                            <img src={noProductIllust} alt="" style={{width:'250px', margin:'20px'}} />
                            <p style={{color:'#213360', fontSize:'20px', fontWeight:'700', margin:'0px 0px 10px'}}>Oops, alamat masih kosong</p>
                            <p style={{color:'#8f939e', fontSize:'14px', margin:'0px 0px 30px'}}>Silahkan isi alamat terlebih dahulu</p>
-                           <div className="button-tambah-alamat"  onClick={() => navigate('/FormAddress')} >Add New Address</div>
+                           <div className="button-tambah-alamat"  onClick={() => navigate('/alamatbaru')} >Add New Address</div>
                        </div>
                          }
                         </>

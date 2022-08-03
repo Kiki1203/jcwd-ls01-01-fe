@@ -18,7 +18,7 @@ const Footer = () => {
           </div>
           { !localStorage.getItem('myTkn') ? 
           <>
-           <div className="beranda-footer" onClick={() => navigate('/login')}>
+           <div className="beranda-footer" onClick={() => navigate('/kategori/semua-kategori')}>
            <FontAwesomeIcon icon={faPills} className='footer-mobile-icon' />
             Kategori
            </div>

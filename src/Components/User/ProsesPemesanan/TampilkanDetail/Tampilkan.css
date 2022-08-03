@@ -133,7 +133,8 @@
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
-    margin-left: 200px;
+    margin-left: 300px;
+    margin-top: -30px;
   }
 
   @media only screen and (max-width: 500px) {

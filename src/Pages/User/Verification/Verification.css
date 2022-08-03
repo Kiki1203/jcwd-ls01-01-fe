@@ -1,5 +1,5 @@
 .container-verification{
-    min-height: 100vh;
+    min-height: 105vh;
     min-width: 90vw;
     padding: 50px 150px 50px 150px;
    
@@ -48,8 +48,8 @@
         position: relative;
         width: 565px;
         height: 119px;
-        left: 0px;
-        top: -40px;
+        left: 10px;
+        top: -20px;
         font-family: 'Public Sans';
         font-style: normal;
         font-weight: 400;
@@ -72,7 +72,7 @@
         width: 250px;
         height: 52px;
         left: 0px;
-        top: -50px;
+        top: -20px;
         background: #E0004D;
         border-radius: 8px;
         font-family: 'Public Sans';

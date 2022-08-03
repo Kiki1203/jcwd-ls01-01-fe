@@ -142,3 +142,34 @@
     color: #737A8D;
     font-size: 16px;
 }
+
+@media only screen and (max-width: 500px) {
+    .payment-deadline {
+        color: #213360;
+        font-size: 12px;
+        font-weight: 700;
+        margin: 0px;
+    }
+    
+    .payment-timer-number {
+        background-color: #FF6B6B;
+        margin: 0px;
+        border-radius: 3px;
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        height: 20px;
+        width: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .payment-timer-colon {
+        color: #FF6B6B;
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0px 10px;
+    }
+}
+

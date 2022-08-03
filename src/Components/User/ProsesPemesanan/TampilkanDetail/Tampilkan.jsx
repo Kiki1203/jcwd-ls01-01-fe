@@ -46,6 +46,7 @@ const Tampilkan = ({setOpenModal, id}) => {
              </div>
               <div className="harga-obat-tampilkan">{`Rp ${value.harga_produk.toLocaleString('de-DE', {minimumFractionDigits: 0})}`}</div>
               </div>
+              <div className="button-selesai-resep-2" onClick={() => navigate(`/ProductDetail/${value.Produk_id}`)}>Beli Lagi</div>
               </div>
             )
         })

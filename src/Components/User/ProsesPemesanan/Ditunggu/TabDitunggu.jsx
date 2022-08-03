@@ -334,12 +334,12 @@ const ditungguPesanan  = () => {
                   }
          <div className="box-pagination-semua d-flex">
          {
-             data.length > 1 ?
+             data.length > 0 ?
              <ul className="pageNumbers2">
         
              <li className="mx-3">
                    {
-                      data.length > 1 ?
+                      data.length > 0 ?
                       <button
                      onClick={handlePrevbtn}
                      disabled={currentPage == pages[0] ? true : false}
@@ -357,7 +357,7 @@ const ditungguPesanan  = () => {
 
                  <li>
                    {
-                      data.length > 1 ?
+                      data.length > 0 ?
                       <button
                       onClick={handleNextbtn}
                       disabled={currentPage == pages[pages.length - 1] ? true : false}

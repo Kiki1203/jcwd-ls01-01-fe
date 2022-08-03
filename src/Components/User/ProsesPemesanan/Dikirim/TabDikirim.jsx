@@ -242,7 +242,7 @@ const btnPesananDiterima = (id) => {
                          :
                          <div className='d-flex flex-column align-items-center' style={{width:'100%'}}>
                          <img src={noProductIllust} alt="" style={{width:'250px', margin:'20px'}} />
-                         <p style={{color:'#213360', fontSize:'20px', fontWeight:'700', margin:'0px 0px 10px'}}>Oops, belum ada pesanan yang dikirim</p>
+                         <p style={{color:'#213360', fontSize:'17px', fontWeight:'700', margin:'0px 0px 10px', textAlign: "center"}}>Oops, belum ada pesanan yang dikirim</p>
                          <p style={{color:'#8f939e', fontSize:'14px', margin:'0px 0px 30px'}}>Silahkan kembali berbelanja terlebih dahulu</p>
                      </div>
                        }
@@ -250,12 +250,12 @@ const btnPesananDiterima = (id) => {
                     }
            <div className="box-pagination-semua d-flex">
            {
-               data.length > 1 ?
+               data.length > 0 ?
                <ul className="pageNumbers2">
           
                <li className="mx-3">
                      {
-                        data.length > 1 ?
+                        data.length > 0 ?
                         <button
                        onClick={handlePrevbtn}
                        disabled={currentPage == pages[0] ? true : false}
@@ -273,7 +273,7 @@ const btnPesananDiterima = (id) => {
   
                    <li>
                      {
-                        data.length > 1 ?
+                        data.length > 0 ?
                         <button
                         onClick={handleNextbtn}
                         disabled={currentPage == pages[pages.length - 1] ? true : false}
